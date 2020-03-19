@@ -3,4 +3,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/healthcheck', to: proc { [200, {}, ['OK']] }
+
+  get '/', to: 'form#show'
 end
