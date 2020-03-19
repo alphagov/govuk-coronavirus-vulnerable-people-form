@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Offer support - GOV.UK</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title><%= yield :title %> - GOV.UK</title>
+  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-  </head>
+  <%= yield :meta_tags %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body class="full-width govuk-width-container">
+  <%= render "header" %>
+
+  <div class="wrapper govuk-width-container" id="wrapper" lang="en">
+    <%= render "breadcrumbs" %>
+
+    <main id="content" role="main" class="content">
+      <%= yield %>
+    </main>
+  </div>
+</body>
 </html>
