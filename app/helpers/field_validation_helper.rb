@@ -18,7 +18,7 @@ module FieldValidationHelper
       return [{ field: page.to_s,
                 text: t(
                   "coronavirus_form.#{page}.custom_select_error",
-                  default: t("coronavirus_form.errors.radio_field", field: t("coronavirus_form.#{page}.title")).humanize
+                  default: t("coronavirus_form.errors.radio_field", field: t("coronavirus_form.#{page}.title")).humanize,
                 ) }]
     end
 
@@ -26,7 +26,7 @@ module FieldValidationHelper
       return [{ field: page.to_s,
                 text: t(
                   "coronavirus_form.#{page}.custom_enter_error",
-                  default: t("coronavirus_form.errors.missing_mandatory_text_field", field: t("coronavirus_form.#{page}.title")).humanize
+                  default: t("coronavirus_form.errors.missing_mandatory_text_field", field: t("coronavirus_form.#{page}.title")).humanize,
                 ) }]
     end
 
@@ -38,7 +38,7 @@ module FieldValidationHelper
       return [{ field: page.to_s,
                 text: t(
                   "coronavirus_form.#{page}.custom_select_error",
-                  default: t("coronavirus_form.errors.checkbox_field", field: t("coronavirus_form.#{page}.title")).humanize
+                  default: t("coronavirus_form.errors.checkbox_field", field: t("coronavirus_form.#{page}.title")).humanize,
                 ) }]
     end
 
@@ -46,7 +46,7 @@ module FieldValidationHelper
       return [{ field: page.to_s,
                 text: t(
                   "coronavirus_form.#{page}.custom_select_error",
-                  default: t("coronavirus_form.errors.missing_mandatory_text_field", field: t("coronavirus_form.#{page}.title")).humanize
+                  default: t("coronavirus_form.errors.missing_mandatory_text_field", field: t("coronavirus_form.#{page}.title")).humanize,
                 ) }]
     end
 

@@ -17,7 +17,7 @@ class CoronavirusForm::WhichServicesController < ApplicationController
     invalid_fields = validate_checkbox_field(
       PAGE,
       values: which_services,
-      allowed_values: I18n.t("coronavirus_form.#{PAGE}.options").map { |_, item| item.dig(:label) }
+      allowed_values: I18n.t("coronavirus_form.#{PAGE}.options").map { |_, item| item.dig(:label) },
     )
 
     if invalid_fields.any?
