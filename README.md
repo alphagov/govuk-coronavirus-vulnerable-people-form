@@ -9,11 +9,21 @@ locally on your machine.
 
 ### Prequisites
 
-Clone the app and run `bundle` locally.
+Clone the app and run `bundle` locally.  You will need Postgres installed in order for bundler to install the `pg` gem.
 
-You'll also need to have postgres running.
+### Installing Postgres
 
-### Running the application
+    brew install postgres
+
+### Running Postgres
+
+     postgres -D /usr/local/var/postgres
+
+### Set up your local database
+
+    rails db:setup
+
+### Running the application (Postgres will need to be running)
 
     foreman start
 
