@@ -15,6 +15,7 @@
     <script>
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
+    <%= render "govuk_publishing_components/components/skip_link" %>
     <%= render "govuk_publishing_components/components/layout_header", { environment: "public" } %>
     <div class="govuk-width-container">
       <%= render "breadcrumbs" %>
