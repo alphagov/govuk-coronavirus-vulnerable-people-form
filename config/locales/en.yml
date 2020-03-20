@@ -30,4 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  start_page:
+    title: Offer support as a business to help with coronavirus
+    body: Use this service to share the types of things your business can help with or might be able to help with. You'll be contacted with more information about how you can help.
+    button_label: Start now
