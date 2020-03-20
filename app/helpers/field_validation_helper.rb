@@ -4,7 +4,7 @@ module FieldValidationHelper
   def validate_mandatory_text_fields(mandatory_fields, page)
     invalid_fields = []
     mandatory_fields.each do |field|
-      next unless session[field].blank?
+      next if session[field].present?
 
       invalid_fields << { field: field.to_s,
                           text: t("coronavirus_form.#{page}.#{field}.custom_error",
