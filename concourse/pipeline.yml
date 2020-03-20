@@ -52,6 +52,7 @@ jobs:
             CF_PASSWORD: ((paas-password))
             CF_ORG: govuk_development
             CF_SPACE: staging
+            BASIC_AUTH_PASSWORD: ((basic-auth-password))
           run:
             dir: src
             path: sh
@@ -65,6 +66,7 @@ jobs:
                 cf t -o "$CF_ORG" -s "$CF_SPACE"
                 cf v3-create-app govuk-coronavirus-business-volunteer-form || true
                 cf v3-apply-manifest -f manifest.yml
+                cf set-env govuk-coronavirus-business-volunteer-form BASIC_AUTH_PASSWORD "$BASIC_AUTH_PASSWORD"
                 cf v3-zdt-push govuk-coronavirus-business-volunteer-form --wait-for-deploy-complete --no-route
                 cf map-route govuk-coronavirus-business-volunteer-form cloudapps.digital --hostname govuk-coronavirus-business-volunteer-form-stg
 
@@ -83,5 +85,5 @@ jobs:
           run:
             # TODO we can come up with a more thorough test than this
             path: curl
-            args: ['--fail', '--head', '--silent', 'https://govuk-coronavirus-business-volunteer-form-stg.cloudapps.digital/']
+            args: ['--fail', '--silent', '--verbose', '--user', 'gds:((basic-auth-password))', 'https://govuk-coronavirus-business-volunteer-form-stg.cloudapps.digital/']
 
