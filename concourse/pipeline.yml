@@ -5,6 +5,12 @@ resource_types:
     source:
       repository: nulldriver/cf-cli-resource
 
+  - name: travis
+    type: docker-image
+    source:
+      repository: rbakergds/travis-resource
+      tag: latest
+
 resources:
   - name: govuk-coronavirus-business-volunteer-form
     type: git
@@ -13,41 +19,22 @@ resources:
       uri: https://github.com/alphagov/govuk-coronavirus-business-volunteer-form
       branch: master
 
+  - name: govuk-coronavirus-business-volunteer-form-travis-build
+    type: travis
+    icon: sync
+    source:
+      repository: alphagov/govuk-coronavirus-business-volunteer-form
+      travis-token: ((travis-api-token))
+      branch: master
+      pro: true
+
 jobs:
-  - name: run-specs
-    plan:
-      - get: govuk-coronavirus-business-volunteer-form
-        trigger: true
-      - task: run-specs
-        config:
-          platform: linux
-          image_resource:
-            type: docker-image
-            source:
-              repository: ruby
-              tag: '2.6.5'
-          inputs:
-            - name: govuk-coronavirus-business-volunteer-form
-              path: src
-          caches:
-            - path: vendor/bundle
-          run:
-            dir: src
-            path: sh
-            args:
-              - '-c'
-              - |
-                set -eu
-
-                bundle install --path ../vendor/bundle
-                bundle exec rake spec
-
   - name: deploy-to-staging
     serial: true
     plan:
-      - get: govuk-coronavirus-business-volunteer-form
-        passed: [run-specs]
+      - get: govuk-coronavirus-business-volunteer-form-travis-build
         trigger: true
+      - get: govuk-coronavirus-business-volunteer-form
       - task: paas-staging
         config:
           platform: linux
