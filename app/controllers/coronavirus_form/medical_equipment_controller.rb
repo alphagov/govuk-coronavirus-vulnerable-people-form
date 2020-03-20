@@ -30,7 +30,7 @@ class CoronavirusForm::MedicalEquipmentController < ApplicationController
     end
   end
 
-  private
+private
 
   PAGE = "medical_equipment"
 

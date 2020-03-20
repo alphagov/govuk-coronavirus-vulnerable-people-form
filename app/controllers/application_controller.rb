@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     )
   end
 
-  private
+private
 
   helper_method :previous_path
 

@@ -28,7 +28,7 @@ class CoronavirusForm::WhichServicesController < ApplicationController
     end
   end
 
-  private
+private
 
   PAGE = "which_services"
   NEXT_PAGE = "thank_you"

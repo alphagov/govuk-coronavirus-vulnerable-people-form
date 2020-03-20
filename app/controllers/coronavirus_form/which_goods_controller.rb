@@ -30,7 +30,7 @@ class CoronavirusForm::WhichGoodsController < ApplicationController
     end
   end
 
-  private
+private
 
   PAGE = "which_goods"
   NEXT_PAGE = "which_services"
