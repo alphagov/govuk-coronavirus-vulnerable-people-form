@@ -1,24 +1,41 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title><%= yield :title %> - GOV.UK</title>
-  <%= javascript_include_tag "application" %>
-  <%= stylesheet_link_tag "application" %>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-
-  <%= yield :meta_tags %>
-</head>
-
-<body class="full-width govuk-width-container">
-  <%= render "header" %>
-
-  <div class="wrapper govuk-width-container" id="wrapper" lang="en">
-    <%= render "breadcrumbs" %>
-
-    <main id="content" role="main" class="content">
-      <%= yield %>
-    </main>
-  </div>
-</body>
+<html lang="en" class="govuk-template">
+  <head>
+    <meta charset="utf-8" />
+    <title><%= yield :title %> - GOV.UK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "print", media: "print" %>
+    <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
+    <%= yield :meta_tags %>
+  </head>
+  <body class="govuk-template__body">
+    <script>
+      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+    </script>
+    <%= render "govuk_publishing_components/components/skip_link" %>
+    <%= render "govuk_publishing_components/components/layout_header", { environment: "public" } %>
+    <div class="govuk-width-container">
+      <%= render "govuk_publishing_components/components/phase_banner", {
+        phase: "alpha",
+        message: sanitize("This part of GOV.UK is being built – #{link_to('find out what alpha means', 'https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works', class: "govuk-link", target: "_blank")}")
+      } %>
+      <% if yield(:back_link).present? %>
+        <%= yield(:back_link) %>
+      <% else %>
+        <%= render "breadcrumbs" %>
+      <% end %>
+      <main class="govuk-main-wrapper<%= " govuk-main-wrapper--l" if yield(:back_link).blank?%>" id="main-content" role="main">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <%= yield %>
+          </div>
+        </div>
+      </main>
+    </div>
+    <%= render "govuk_publishing_components/components/layout_footer" %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
