@@ -1,0 +1,26 @@
+{
+  "name": "Coronavirus form",
+  "repository": "https://github.com/alphagov/govuk-coronavirus-business-volunteer-form",
+  "env": {
+    "GOVUK_APP_DOMAIN": {
+      "value": "www.gov.uk"
+    },
+    "GOVUK_WEBSITE_ROOT": {
+      "value": "https://www.gov.uk"
+    },
+    "BASIC_AUTH_USERNAME": {
+      "required": true
+    },
+    "BASIC_AUTH_PASSWORD": {
+      "required": true
+    },
+    "REQUIRE_BASIC_AUTH": "true"
+  },
+  "image": "heroku/ruby",
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-ruby"
+    }
+  ],
+  "addons": []
+}
