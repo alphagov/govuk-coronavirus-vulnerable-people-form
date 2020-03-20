@@ -11,7 +11,7 @@ resources:
     icon: github-circle
     source:
       uri: https://github.com/alphagov/govuk-coronavirus-business-volunteer-form
-      branch: techops-ify
+      branch: master
 
 jobs:
   - name: run-specs
