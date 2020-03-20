@@ -1,0 +1,12 @@
+---
+applications:
+- name: govuk-coronavirus-business-volunteer-form
+  buildpack: ruby_buildpack
+  memory: 1G
+  instances: 5
+  services:
+  - govuk-coronavirus-business-volunteer-form-db
+  env:
+    GOVUK_APP_DOMAIN: cloudapps.digital
+    GOVUK_WEBSITE_ROOT: www.gov.uk
+
