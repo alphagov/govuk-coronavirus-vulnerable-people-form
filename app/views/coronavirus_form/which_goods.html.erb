@@ -1,0 +1,73 @@
+<% content_for :title do %><%= t('coronavirus_form.which_goods.title') %><% end %>
+<% content_for :extra_headers do %>
+  <meta name="description" content="<%= t('coronavirus_form.which_goods.title') %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<main id="main-content" role="main">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <%= render "coronavirus_form/validation_error" %>
+      <%= form_tag({},
+        "data-module": "track-coronavirus-form-business-which-goods",
+        "data-question-key": "which_goods",
+        "id": "which_goods"
+      ) do %>
+      <%= render "govuk_publishing_components/components/checkboxes", {
+        heading: t('coronavirus_form.which_goods.title'),
+        is_page_heading: true,
+        name: "which_goods[]",
+        items: [
+          {
+            value: t('coronavirus_form.which_goods.options.medical_equipment.label'),
+            label: t('coronavirus_form.which_goods.options.medical_equipment.label'),
+            checked: session[:which_goods].include?(t('coronavirus_form.which_goods.options.medical_equipment.label')),
+          },
+          {
+            value: t('coronavirus_form.which_goods.options.hotel_rooms.label'),
+            label: t('coronavirus_form.which_goods.options.hotel_rooms.label'),
+            checked: session[:which_goods].include?(t('coronavirus_form.which_goods.options.hotel_rooms.label')),
+          },
+          {
+            value: t('coronavirus_form.which_goods.options.food.label'),
+            label: t('coronavirus_form.which_goods.options.food.label'),
+            checked: session[:which_goods].include?(t('coronavirus_form.which_goods.options.food.label')),
+          },
+          {
+            value: t('coronavirus_form.which_goods.options.space.label'),
+            label: t('coronavirus_form.which_goods.options.space.label'),
+            checked: session[:which_goods].include?(t('coronavirus_form.which_goods.options.space.label')),
+          },
+          {
+            value: t('coronavirus_form.which_goods.options.manufacturing_equipment.label'),
+            label: t('coronavirus_form.which_goods.options.manufacturing_equipment.label'),
+            checked: session[:which_goods].include?(t('coronavirus_form.which_goods.options.manufacturing_equipment.label')),
+          },
+          {
+            value: t('coronavirus_form.which_goods.options.other_goods.label'),
+            label: t('coronavirus_form.which_goods.options.other_goods.label'),
+            checked: session[:which_goods].include?(t('coronavirus_form.which_goods.options.other_goods.label')),
+            conditional: render("govuk_publishing_components/components/input", {
+              label: {
+                text: t('coronavirus_form.which_goods.options.other_goods.input.label'),
+              },
+              name: "which_goods_other_details",
+              value: session[:which_goods_other_details],
+              width: 10
+            })
+          },
+          {
+            value: t('coronavirus_form.which_goods.options.no_goods.label'),
+            label: t('coronavirus_form.which_goods.options.no_goods.label'),
+            checked: session[:which_goods].include?(t('coronavirus_form.which_goods.options.no_goods.label')),
+          },
+        ]
+      } %>
+      <%= render "govuk_publishing_components/components/button", text: "Save and continue", margin_bottom: true %>
+      <% end %>
+    </div>
+  </div>
+</main>

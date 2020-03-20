@@ -1,36 +1,63 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
   start_page:
     title: Offer support as a business to help with coronavirus
     body: Use this service to share the types of things your business can help with or might be able to help with. You'll be contacted with more information about how you can help.
     button_label: Start now
+  coronavirus_form:
+    errors:
+      heading: "There is a problem"
+      radio_field: "Select %{field}"
+      checkbox_field: "Select at least one %{field}"
+      missing_mandatory_text_field: "Enter %{field}"
+      invalid_money: "%{field} must be an amount of money, like 15000"
+      missing_year: "%{field} must include a year"
+      missing_month: "%{field} must include a month"
+      missing_day: "%{field} must include a day"
+      invalid_date: "Enter a real %{field}"
+      date_order: "The end date must be after the start date"
+      email_format: "Enter email address in the correct format, like name@example.com"
+      postcode_format: "Enter a real postcode"
+    which_goods:
+      title: What goods can your business help with?
+      hint: Select the types of things you think you can help with
+      options:
+        medical_equipment:
+          label: "Medical equipment"
+        hotel_rooms:
+          label: "Hotel rooms"
+        food:
+          label: "Food"
+        space:
+          label: "Space"
+        manufacturing_equipment:
+          label: "Manufacturing equipment"
+        other_goods:
+          label: "Other goods"
+          hint: UK based businesses
+          input:
+            label: Please provide a description
+        no_goods:
+          label: "I can't provide goods"
+      custom_select_error: Select select which goods you can provide
+    which_services:
+      title: What services can your business help with?
+      hint: Select the types of things you think you can help with
+      options:
+        transport:
+          label: "Transport"
+        consultancy:
+          label: "Consultancy"
+        expertise:
+          label: "Expertise"
+        social_care:
+          label: "Social care"
+        other_services:
+          label: "Other services"
+        no_services:
+          label: "I can't provide services"
+      custom_select_error: Select select which services you can provide
+    thank_you:
+      title: "Thank you for telling us how you can help"
+      sub_heading: We'll be in touch to discuss how you can help.
+      next_text: "View all coronavirus (COVID-19) content"
+      next_link: "https://www.gov.uk/coronavirus"
