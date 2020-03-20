@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'byebug'
-require 'simplecov'
+require "byebug"
+require "simplecov"
 
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../config/environment', __dir__)
-require 'rspec/rails'
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path("../config/environment", __dir__)
+require "rspec/rails"
 
-Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
 SimpleCov.start
 
 RSpec.configure do |config|

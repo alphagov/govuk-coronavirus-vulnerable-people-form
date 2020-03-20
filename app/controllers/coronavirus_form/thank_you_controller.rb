@@ -2,6 +2,6 @@
 
 class CoronavirusForm::ThankYouController < ApplicationController
   def show
-    render 'coronavirus_form/thank_you'
+    render "coronavirus_form/thank_you"
   end
 end

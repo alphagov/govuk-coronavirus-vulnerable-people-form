@@ -26,16 +26,16 @@ class CoronavirusForm::WhichGoodsController < ApplicationController
       flash.now[:validation] = invalid_fields
       render "coronavirus_form/#{PAGE}"
     else
-      redirect_to controller: session['check_answers_seen'] ? 'coronavirus_form/check_answers' : "coronavirus_form/#{NEXT_PAGE}", action: 'show'
+      redirect_to controller: session["check_answers_seen"] ? "coronavirus_form/check_answers" : "coronavirus_form/#{NEXT_PAGE}", action: "show"
     end
   end
 
   private
 
-  PAGE = 'which_goods'
-  NEXT_PAGE = 'which_services'
+  PAGE = "which_goods"
+  NEXT_PAGE = "which_services"
 
   def previous_path
-    '/'
+    "/"
   end
 end
