@@ -60,6 +60,6 @@ en:
       custom_select_error: Select select which services you can provide
     thank_you:
       title: "Thank you for telling us how you can help"
-      sub_heading: We'll be in touch to discuss how you can help.
+      sub_heading: "We'll be in touch to discuss how you can help."
       next_text: "View all coronavirus (COVID-19) content"
       next_link: "https://www.gov.uk/coronavirus"
