@@ -18,6 +18,7 @@ group :development do
 end
 
 group :test do
+  gem "scss-lint", "~> 0.7.0", require: false
   gem "simplecov", "~> 0.16"
   gem "therubyracer", "~> 0.12"
 end
