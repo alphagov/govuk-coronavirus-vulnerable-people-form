@@ -30,3 +30,13 @@ Clone the app and run `bundle` locally.  You will need Postgres installed in ord
 ### Running the tests
 
     bundle exec rake
+
+## Deployment pipeline
+
+Every commit to master is deployed to GOV.UK PaaS by
+[this concourse pipeline](https://cd.gds-reliability.engineering/teams/govuk-tools/pipelines/govuk-coronavirus-business-volunteer-form),
+which is configured in [concourse/pipeline.yml](concourse/pipeline.yml).
+
+The concourse pipeline has credentials for the `govuk-forms-deployer` user in
+GOV.UK PaaS. This user has the SpaceDeveloper role, so it can `cf push` the application.
+

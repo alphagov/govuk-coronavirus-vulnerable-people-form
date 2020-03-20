@@ -19,6 +19,7 @@ end
 
 group :test do
   gem 'simplecov', '~> 0.16'
+  gem 'therubyracer', '~> 0.12'
 end
 
 group :development, :test do

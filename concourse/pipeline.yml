@@ -1,0 +1,100 @@
+---
+resource_types:
+  - name: cf-cli
+    type: docker-image
+    source:
+      repository: nulldriver/cf-cli-resource
+
+resources:
+  - name: govuk-coronavirus-business-volunteer-form
+    type: git
+    icon: github-circle
+    source:
+      uri: https://github.com/alphagov/govuk-coronavirus-business-volunteer-form
+      branch: master
+
+jobs:
+  - name: run-specs
+    plan:
+      - get: govuk-coronavirus-business-volunteer-form
+        trigger: true
+      - task: run-specs
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: ruby
+              tag: '2.6.5'
+          inputs:
+            - name: govuk-coronavirus-business-volunteer-form
+              path: src
+          caches:
+            - path: vendor/bundle
+          run:
+            dir: src
+            path: sh
+            args:
+              - '-c'
+              - |
+                set -eu
+
+                bundle install --path ../vendor/bundle
+                bundle exec rake spec
+
+  - name: deploy-to-staging
+    serial: true
+    plan:
+      - get: govuk-coronavirus-business-volunteer-form
+        passed: [run-specs]
+        trigger: true
+      - task: paas-staging
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: governmentpaas/cf-cli
+              tag: latest
+          inputs:
+            - name: govuk-coronavirus-business-volunteer-form
+              path: src
+          params:
+            CF_API: https://api.cloud.service.gov.uk
+            CF_USERNAME: ((paas-username))
+            CF_PASSWORD: ((paas-password))
+            CF_ORG: govuk_development
+            CF_SPACE: staging
+          run:
+            dir: src
+            path: sh
+            args:
+              - '-c'
+              - |
+                set -eu
+
+                cf api "$CF_API"
+                cf auth
+                cf t -o "$CF_ORG" -s "$CF_SPACE"
+                cf v3-create-app govuk-coronavirus-business-volunteer-form || true
+                cf v3-apply-manifest -f manifest.yml
+                cf v3-zdt-push govuk-coronavirus-business-volunteer-form --wait-for-deploy-complete --no-route
+                cf map-route govuk-coronavirus-business-volunteer-form cloudapps.digital --hostname govuk-coronavirus-business-volunteer-form-stg
+
+  - name: smoke-test-staging
+    plan:
+      - get: govuk-coronavirus-business-volunteer-form
+        trigger: true
+        passed: [deploy-to-staging]
+      - task: smoke-test
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: governmentpaas/curl-ssl
+          run:
+            # TODO we can come up with a more thorough test than this
+            path: curl
+            args: ['--fail', '--head', '--silent', 'https://govuk-coronavirus-business-volunteer-form-stg.cloudapps.digital/']
+
