@@ -1,0 +1,9 @@
+<% content_for :title do %><%= t('check_your_answers.title') %><% end %>
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('check_your_answers.title') %>" />
+<% end %>
+
+<%= render "govuk_publishing_components/components/title", {
+  title: t('check_your_answers.title'),
+  margin_top: 0
+} %>

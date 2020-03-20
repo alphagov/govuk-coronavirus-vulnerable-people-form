@@ -25,6 +25,7 @@ end
 group :development, :test do
   gem 'byebug', '~> 10'
   gem 'foreman', '~> 0.87.0'
-  gem 'rspec-rails', '~> 3'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rubocop-govuk'
+  gem 'rails-controller-testing', '~> 1.0'
 end

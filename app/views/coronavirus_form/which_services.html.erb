@@ -1,0 +1,29 @@
+<% content_for :title do %><%= t('coronavirus_form.which_services.title') %><% end %>
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('coronavirus_form.which_services.title') %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= render "coronavirus_form/validation_error" %>
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-business-which-services",
+  "data-question-key": "which_services",
+  "id": "which_services"
+) do %>
+<%= render "govuk_publishing_components/components/checkboxes", {
+  heading: t('coronavirus_form.which_services.title'),
+  is_page_heading: true,
+  name: "which_services[]",
+  items: t('coronavirus_form.which_services.options').map do |_, item|
+    {
+      value: item[:label],
+      label: item[:label],
+      checked: session[:which_services].include?(item[:label]),
+    }
+  end
+} %>
+<%= render "govuk_publishing_components/components/button", text: "Save and continue", margin_bottom: true %>
+<% end %>
