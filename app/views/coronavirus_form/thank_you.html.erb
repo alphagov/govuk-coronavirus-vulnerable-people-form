@@ -1,0 +1,14 @@
+<% content_for :title do %><%= t('coronavirus_form.thank_you.title') %><% end %>
+<%= render "govuk_publishing_components/components/title", {
+  title: t('coronavirus_form.thank_you.title'),
+  margin_top: 0
+} %>
+<%= render "govuk_publishing_components/components/lead_paragraph", {
+  text: t('coronavirus_form.thank_you.sub_heading')
+} %>
+
+<a href="<%= t('coronavirus_form.thank_you.next_link') %>">
+  <%= render "govuk_publishing_components/components/lead_paragraph", {
+    text: t('coronavirus_form.thank_you.next_text')
+  } %>
+</a>
