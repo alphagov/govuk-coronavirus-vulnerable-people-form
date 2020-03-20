@@ -1,0 +1,29 @@
+<% content_for :title do %><%= t('coronavirus_form.medical_equipment.title') %><% end %>
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('coronavirus_form.medical_equipment.title') %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= render "coronavirus_form/validation_error" %>
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-business-medical-equipment",
+  "data-question-key": "medical_equipment",
+  "id": "medical_equipment"
+) do %>
+<%= render "govuk_publishing_components/components/radio", {
+  heading: t('coronavirus_form.medical_equipment.title'),
+  is_page_heading: true,
+  name: "medical_equipment",
+  items: t('coronavirus_form.medical_equipment.options').map do |_, item|
+    {
+      value: item[:label],
+      text: item[:label],
+      checked: session[:medical_equipment] == item[:label]
+    }
+  end
+} %>
+<%= render "govuk_publishing_components/components/button", text: "Save and continue", margin_bottom: true %>
+<% end %>

@@ -19,6 +19,14 @@ en:
       date_order: "The end date must be after the start date"
       email_format: "Enter email address in the correct format, like name@example.com"
       postcode_format: "Enter a real postcode"
+    medical_equipment:
+      title: Do you have medical equipment to offer?
+      options:
+        yes:
+          label: "Yes"
+        no:
+          label: "No"
+      custom_select_error: Please let us know if you have medical equipment to offer
     which_goods:
       title: What goods can your business help with?
       hint: Select the types of things you think you can help with

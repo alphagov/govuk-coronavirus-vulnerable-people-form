@@ -13,8 +13,8 @@ module FieldValidationHelper
     invalid_fields
   end
 
-  def validate_radio_field(page, radio:, other: false)
-    if radio.blank?
+  def validate_radio_field(page, radio:, allowed_values:, other: false)
+    if radio.blank? || allowed_values.exclude?(radio)
       return [{ field: page.to_s,
                 text: t(
                   "coronavirus_form.#{page}.custom_select_error",

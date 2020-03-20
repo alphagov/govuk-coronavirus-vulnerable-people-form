@@ -8,6 +8,15 @@ Rails.application.routes.draw do
   get '/', to: 'coronavirus_form/start#show'
 
   # Question pages
+  get '/coronavirus-form/medical-equipment' => 'coronavirus_form/medical_equipment#show'
+  post '/coronavirus-form/medical-equipment' => 'coronavirus_form/medical_equipment#submit'
+
+  get '/coronavirus-form/medical-equipment-kind' => 'coronavirus_form/medical_equipment_kind#show'
+  post '/coronavirus-form/medical-equipment-kind' => 'coronavirus_form/medical_equipment_kind#submit'
+
+  get '/coronavirus-form/hotel-rooms' => 'coronavirus_form/hotel_rooms#show'
+  post '/coronavirus-form/hotel-rooms' => 'coronavirus_form/hotel_rooms#submit'
+
   get '/coronavirus-form/which-goods' => 'coronavirus_form/which_goods#show'
   post '/coronavirus-form/which-goods' => 'coronavirus_form/which_goods#submit'
 
