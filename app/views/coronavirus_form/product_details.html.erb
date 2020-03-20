@@ -1,0 +1,74 @@
+<% content_for :title do %><%= t('coronavirus_form.product_details.title') %><% end %>
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('coronavirus_form.product_details.title') %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= render "govuk_publishing_components/components/title", {
+  title:t("coronavirus_form.product_details.title"),
+  margin_top: 0
+} %>
+
+<%= render "coronavirus_form/validation_error" %>
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-business-product-details",
+  "data-question-key": "product_details",
+  "id": "product_details"
+) do %>
+<div style="display:none;">
+  <%= render "govuk_publishing_components/components/input", {
+    name: "product_id",
+    value: @product["product_id"],
+  } %>
+</div>
+<%= render "govuk_publishing_components/components/input", {
+  label: {
+    text: t('coronavirus_form.product_details.product_name.label')
+  },
+  name: "product_name",
+  value: @product["product_name"],
+} %>
+<%= render "govuk_publishing_components/components/input", {
+  label: {
+    text: t('coronavirus_form.product_details.product_cost.label'),
+  },
+  hint: t('coronavirus_form.product_details.product_cost.hint'),
+  name: "product_cost",
+  value: @product["product_cost"],
+} %>
+<%= render "govuk_publishing_components/components/input", {
+  label: {
+    text: t('coronavirus_form.product_details.certification_details.label'),
+  },
+  hint: t('coronavirus_form.product_details.certification_details.hint'),
+  name: "certification_details",
+  value: @product["certification_details"],
+} %>
+<%= render "govuk_publishing_components/components/input", {
+  label: {
+    text: t('coronavirus_form.product_details.product_postcode.label')
+  },
+  name: "product_postcode",
+  value: @product["product_postcode"],
+} %>
+<%= render "govuk_publishing_components/components/input", {
+  label: {
+    text: t('coronavirus_form.product_details.product_url.label')
+  },
+  name: "product_url",
+  value: @product["product_url"],
+} %>
+<%= render "govuk_publishing_components/components/input", {
+  label: {
+    text: t('coronavirus_form.product_details.lead_time.label')
+  },
+  name: "lead_time",
+  type: "number",
+  value: @product["lead_time"],
+  width: 10,
+} %>
+<%= render "govuk_publishing_components/components/button", text: "Save and continue", margin_bottom: true %>
+<% end %>

@@ -26,6 +26,54 @@ en:
           label: "Yes"
         option_no:
           label: "No"
+    medical_equipment_type:
+      title: What kind of medical equipment?
+      options:
+        number_ppe:
+          label: PPE
+        number_testing_equipment:
+          label: Testing equipment
+        other:
+          label: Other
+          input:
+            label: Please provide a description
+          error_message: Please provide details of the other medical equipment you can provide
+      custom_select_error: Please provide details of the medical equipment you can provide
+    manufacturer_check:
+      title: What kind of business are you?
+      hint: Select the best way to describe your business
+      options:
+        manufacturer:
+          label: Manufacturer
+        distributor:
+          label: Distributor
+        agent:
+          label: Agent
+        individual:
+          label: Individual
+    product_details:
+      title: Tell us about the equipment that you are offering
+      product_name:
+        label: Name of product
+      product_cost:
+        label: Cost of product
+        hint: For example, £23.99. Enter 0 if you will donate it.
+      certification_details:
+        label: Certification details
+        hint: For example, CE marking or EN standards.
+      product_postcode:
+        label: Postcode of stock location or manufacture
+      product_url:
+        label: URL of product specification document (optional)
+      lead_time:
+        label: Lead time in days
+    additional_product_check:
+      title: Can you offer another product?
+      options:
+        option_yes:
+          label: "Yes"
+        option_no:
+          label: "No"
     which_goods:
       title: What goods can your business help with?
       hint: Select the types of things you think you can help with
@@ -47,7 +95,7 @@ en:
             label: Please provide a description
         no_goods:
           label: "I can't provide goods"
-      custom_select_error: Select select which goods you can provide
+      custom_select_error: Select which goods you can provide
     which_services:
       title: What services can your business help with?
       hint: Select the types of things you think you can help with
@@ -64,7 +112,7 @@ en:
           label: "Other services"
         no_services:
           label: "I can't provide services"
-      custom_select_error: Select select which services you can provide
+      custom_select_error: Select which services you can provide
     thank_you:
       title: "Thank you for telling us how you can help"
       sub_heading: "We'll be in touch to discuss how you can help."

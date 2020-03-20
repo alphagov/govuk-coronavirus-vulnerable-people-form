@@ -1,0 +1,47 @@
+<% content_for :title do %><%= t('coronavirus_form.medical_equipment_type.title') %><% end %>
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('coronavirus_form.medical_equipment_type.title') %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= render "coronavirus_form/validation_error" %>
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-business-medical-equipment-type",
+  "data-question-key": "medical_equipment_type",
+  "id": "medical_equipment_type"
+) do %>
+<%= render "govuk_publishing_components/components/checkboxes", {
+  heading: t('coronavirus_form.medical_equipment_type.title'),
+  is_page_heading: true,
+  name: "medical_equipment_type[]",
+  items: [
+    {
+      value: t('coronavirus_form.medical_equipment_type.options.number_ppe.label'),
+      label: t('coronavirus_form.medical_equipment_type.options.number_ppe.label'),
+      checked: session[:medical_equipment_type].include?(t('coronavirus_form.medical_equipment_type.options.number_ppe.label')),
+    },
+    {
+      value: t('coronavirus_form.medical_equipment_type.options.number_testing_equipment.label'),
+      label: t('coronavirus_form.medical_equipment_type.options.number_testing_equipment.label'),
+      checked: session[:medical_equipment_type].include?(t('coronavirus_form.medical_equipment_type.options.number_testing_equipment.label')),
+    },
+    {
+      value: t('coronavirus_form.medical_equipment_type.options.other.label'),
+      label: t('coronavirus_form.medical_equipment_type.options.other.label'),
+      checked: session[:medical_equipment_type].include?(t('coronavirus_form.medical_equipment_type.options.other.label')),
+      conditional: render("govuk_publishing_components/components/input", {
+        label: {
+          text: t('coronavirus_form.medical_equipment_type.options.other.input.label'),
+        },
+        name: "medical_equipment_type_other",
+        value: session[:medical_equipment_type_other],
+        width: 10
+      })
+    },
+  ]
+} %>
+<%= render "govuk_publishing_components/components/button", text: "Save and continue", margin_bottom: true %>
+<% end %>

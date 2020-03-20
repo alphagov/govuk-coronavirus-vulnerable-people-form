@@ -17,6 +17,15 @@ Rails.application.routes.draw do
   get "/coronavirus-form/do-you-have-hotel-rooms-to-offer" => "coronavirus_form/hotel_rooms#show"
   post "/coronavirus-form/do-you-have-hotel-rooms-to-offer" => "coronavirus_form/hotel_rooms#submit"
 
+  get "/coronavirus-form/are-you-a-manufacturer" => "coronavirus_form/manufacturer_check#show"
+  post "/coronavirus-form/are-you-a-manufacturer" => "coronavirus_form/manufacturer_check#submit"
+
+  get "/coronavirus-form/product-details" => "coronavirus_form/product_details#show"
+  post "/coronavirus-form/product-details" => "coronavirus_form/product_details#submit"
+
+  get "/coronavirus-form/additional-product" => "coronavirus_form/additional_product_check#show"
+  post "/coronavirus-form/additional-product" => "coronavirus_form/additional_product_check#submit"
+
   get "/coronavirus-form/which-goods" => "coronavirus_form/which_goods#show"
   post "/coronavirus-form/which-goods" => "coronavirus_form/which_goods#submit"
 
