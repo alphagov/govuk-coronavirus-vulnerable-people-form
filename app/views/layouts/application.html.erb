@@ -22,8 +22,12 @@
         phase: "alpha",
         message: sanitize("This part of GOV.UK is being built – #{link_to('find out what alpha means', 'https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works', class: "govuk-link", target: "_blank")}")
       } %>
-      <%= render "breadcrumbs" %>
-      <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+      <% if yield(:back_link).present? %>
+        <%= yield(:back_link) %>
+      <% else %>
+        <%= render "breadcrumbs" %>
+      <% end %>
+      <main class="govuk-main-wrapper<%= " govuk-main-wrapper--l" if yield(:back_link).blank?%>" id="main-content" role="main">
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
             <%= yield %>
