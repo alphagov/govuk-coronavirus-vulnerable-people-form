@@ -6,6 +6,7 @@ applications:
   instances: 5
   services:
   - govuk-coronavirus-business-volunteer-form-db
+  - logit-ssl-drain
   env:
     GOVUK_APP_DOMAIN: cloudapps.digital
     GOVUK_WEBSITE_ROOT: www.gov.uk
