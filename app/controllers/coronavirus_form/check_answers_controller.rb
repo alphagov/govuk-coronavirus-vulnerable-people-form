@@ -5,6 +5,6 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
   def show
     session[:check_answers_seen] = true
-    render 'coronavirus_form/check_answers'
+    render "coronavirus_form/check_answers"
   end
 end

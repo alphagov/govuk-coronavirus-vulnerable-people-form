@@ -19,23 +19,23 @@ class CoronavirusForm::WhichGoodsController < ApplicationController
     invalid_fields = validate_checkbox_field(
       PAGE,
       values: which_goods,
-      allowed_values: I18n.t("coronavirus_form.#{PAGE}.options").map { |_, item| item.dig(:label) }
+      allowed_values: I18n.t("coronavirus_form.#{PAGE}.options").map { |_, item| item.dig(:label) },
     )
 
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
       render "coronavirus_form/#{PAGE}"
     else
-      redirect_to controller: session['check_answers_seen'] ? 'coronavirus_form/check_answers' : "coronavirus_form/#{NEXT_PAGE}", action: 'show'
+      redirect_to controller: session["check_answers_seen"] ? "coronavirus_form/check_answers" : "coronavirus_form/#{NEXT_PAGE}", action: "show"
     end
   end
 
-  private
+private
 
-  PAGE = 'which_goods'
-  NEXT_PAGE = 'which_services'
+  PAGE = "which_goods"
+  NEXT_PAGE = "which_services"
 
   def previous_path
-    '/'
+    "/"
   end
 end

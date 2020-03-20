@@ -22,15 +22,15 @@ class CoronavirusForm::MedicalEquipmentController < ApplicationController
       flash.now[:validation] = invalid_fields
       render "coronavirus_form/#{PAGE}"
     elsif session["check_answers_seen"]
-      redirect_to controller: "coronavirus_form/check_answers", action: 'show'
+      redirect_to controller: "coronavirus_form/check_answers", action: "show"
     elsif session[:medical_equipment] == I18n.t("coronavirus_form.medical_equipment.options.option_yes.label")
-      redirect_to controller: "coronavirus_form/medical_equipment_type", action: 'show'
+      redirect_to controller: "coronavirus_form/medical_equipment_type", action: "show"
     else
-      redirect_to controller: "coronavirus_form/hotel_rooms", action: 'show'
+      redirect_to controller: "coronavirus_form/hotel_rooms", action: "show"
     end
   end
 
-  private
+private
 
   PAGE = "medical_equipment"
 

@@ -2,6 +2,6 @@
 
 class CoronavirusForm::StartController < ApplicationController
   def show
-    render 'coronavirus_form/start'
+    render "coronavirus_form/start"
   end
 end
