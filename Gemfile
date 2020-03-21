@@ -6,9 +6,12 @@ source "https://rubygems.org"
 
 gem "rails", "~> 6.0.2"
 
+gem "aws-sdk-kms"
 gem "bootsnap", "~> 1"
 gem "govuk_app_config", "~> 2.1.1"
 gem "govuk_publishing_components", "~> 21.31.0"
+gem "kms_encrypted"
+gem "lockbox"
 gem "pg", "~> 1"
 gem "puma", "~> 4.3"
 gem "uglifier", "~> 4.2"
