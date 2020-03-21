@@ -2,9 +2,9 @@
 
 require "spec_helper"
 
-RSpec.describe CoronavirusForm::MedicalConditionsController, type: :controller do
-  let(:current_template) { "coronavirus_form/medical_conditions" }
-  let(:session_key) { :medical_conditions }
+RSpec.describe CoronavirusForm::DietaryRequirementsController, type: :controller do
+  let(:current_template) { "coronavirus_form/dietary_requirements" }
+  let(:session_key) { :dietary_requirements }
 
   describe "GET show" do
     it "renders the form" do
@@ -16,34 +16,34 @@ RSpec.describe CoronavirusForm::MedicalConditionsController, type: :controller d
   describe "POST submit" do
     let(:selected) { permitted_values.sample }
     let(:permitted_values) do
-      I18n.t("coronavirus_form.medical_conditions.options").map { |_, item| item[:label] }
+      I18n.t("coronavirus_form.dietary_requirements.options").map { |_, item| item[:label] }
     end
 
     it "sets session variables" do
-      post :submit, params: { medical_conditions: selected }
+      post :submit, params: { dietary_requirements: selected }
       expect(session[session_key]).to eq selected
     end
 
     it "validates any option is chosen" do
-      post :submit, params: { medical_conditions: "" }
+      post :submit, params: { dietary_requirements: "" }
 
       expect(response).to render_template(current_template)
     end
 
     it "redirects to next step for a permitted response" do
-      post :submit, params: { medical_conditions: selected }
-      expect(response).to redirect_to(coronavirus_form_virus_test_path)
+      post :submit, params: { dietary_requirements: selected }
+      expect(response).to redirect_to("/")
     end
 
     it "validates a valid option is chosen" do
-      post :submit, params: { medical_conditions: "<script></script>" }
+      post :submit, params: { dietary_requirements: "<script></script>" }
 
       expect(response).to render_template(current_template)
     end
 
     it "redirects to check your answers if check your answers previously seen" do
       session[:check_answers_seen] = true
-      post :submit, params: { medical_conditions: selected }
+      post :submit, params: { dietary_requirements: selected }
 
       expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
     end

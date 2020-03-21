@@ -66,6 +66,15 @@ en:
           label: Yes, I've been tested and I do not have coronavirus
         option_no:
           label: No, I have not been tested
+    dietary_requirements:
+      title: Do you have any special dietary requirements?
+      hint: For example, you're a vegetarian or you have a food allergy.
+      options:
+        option_yes:
+          label: "Yes"
+        option_no:
+          label: "No"
+      custom_select_error: Please select Yes or No
     addiction:
       title: "Do you have a history of addiction?"
       options:
