@@ -53,6 +53,19 @@ module FieldValidationHelper
     []
   end
 
+  def validate_date_fields(year, month, day, field)
+    return [] if year.blank? && month.blank? && day.blank?
+
+    invalid_fields = []
+    invalid_fields << { field: field.to_s, text: t("coronavirus_form.errors.missing_year", field: field).humanize } if year.blank?
+    invalid_fields << { field: field.to_s, text: t("coronavirus_form.errors.missing_month", field: field).humanize } if month.blank?
+    invalid_fields << { field: field.to_s, text: t("coronavirus_form.errors.missing_day", field: field).humanize } if day.blank?
+    unless(invalid_fields != [] || Date.valid_date?(year.to_i, month.to_i, day.to_i))
+      invalid_fields << { field: field.to_s, text: t("coronavirus_form.errors.invalid_date", field: field).humanize }
+    end
+    invalid_fields
+  end
+
   def validate_email_address(field, email_address)
     if email_address =~ /@/
       []

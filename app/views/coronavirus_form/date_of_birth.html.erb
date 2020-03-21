@@ -1,0 +1,47 @@
+<% content_for :title do %><%= t('coronavirus_form.date_of_birth.title') %><% end %>
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('coronavirus_form.date_of_birth.title') %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-vulnerable-people-date-of-birth",
+  "data-question-key": "date_of_birth",
+  "id": "date_of_birth"
+) do %>
+<%= render "govuk_publishing_components/components/title", {
+  title: t('coronavirus_form.date_of_birth.title'),
+  margin_top: 0,
+} %>
+
+<%= render "govuk_publishing_components/components/date_input", {
+  name: "date_of_birth",
+  legend_text: t('coronavirus_form.date_of_birth.hint'),
+  error_message: error_items('date_of_birth'),
+  items: [
+    {
+      label: "Day",
+      name: "day",
+      width: 2,
+      value: session["date_of_birth"]["day"]
+    },
+    {
+      label: "Month",
+      name: "month",
+      width: 2,
+      value: session["date_of_birth"]["month"]
+    },
+    {
+      label: "Year",
+      name: "year",
+      width: 4,
+      value: session["date_of_birth"]["year"]
+    }
+  ]
+} %>
+
+<%= render "govuk_publishing_components/components/button", text: "Continue", margin_bottom: true %>
+<% end %>
