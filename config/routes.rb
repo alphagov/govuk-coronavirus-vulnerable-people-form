@@ -20,4 +20,7 @@ Rails.application.routes.draw do
   # Check answers page
   get "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#show"
   post "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#submit"
+
+  # Final page
+  get "/coronavirus-form/confirmation" => "coronavirus_form/confirmation#show"
 end

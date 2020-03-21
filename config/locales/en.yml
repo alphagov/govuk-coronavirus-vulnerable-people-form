@@ -58,3 +58,5 @@ en:
           label: Yes, I've been tested and I do not have coronavirus
         option_no:
           label: No, I have not been tested
+    confirmation:
+      title: "Confirmation"
