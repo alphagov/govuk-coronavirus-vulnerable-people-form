@@ -108,6 +108,17 @@ en:
         label: "Phone number (for text messages)"
       email:
         label: "Email address"
+    know_nhs_number:
+      title: "Do you know your NHS number?"
+      hint: |
+        An NHS number is a 10 digit number, like 485 777 3456.
+        <br /><br />
+        You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
+      options:
+        option_yes:
+          label: "Yes, I know my NHS number"
+        option_no:
+          label: "No, I do not know my NHS number"
     confirmation:
       title: "Confirmation"
     name:

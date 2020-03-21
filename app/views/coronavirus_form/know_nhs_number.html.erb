@@ -1,0 +1,30 @@
+<% content_for :title do %><%= t('coronavirus_form.know_nhs_number.title') %><% end %>
+    <% content_for :meta_tags do %>
+      <meta name="description" content="<%= t('coronavirus_form.know_nhs_number.title') %>" />
+    <% end %>
+    
+    <% content_for :back_link do %>
+      <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+    <% end %>
+    
+    <%= form_tag({},
+      "data-module": "track-coronavirus-form-vulnerable-people-know_nhs_number",
+      "data-question-key": "know_nhs_number",
+      "id": "know_nhs_number"
+    ) do %>
+    <%= render "govuk_publishing_components/components/radio", {
+      heading: t('coronavirus_form.know_nhs_number.title'),
+      is_page_heading: true,
+      name: "know_nhs_number",
+      hint: sanitize(t('coronavirus_form.know_nhs_number.hint')),
+      items: t('coronavirus_form.know_nhs_number.options').map do |_, item|
+        {
+          value: item[:label],
+          text: item[:label],
+          checked: session[:know_nhs_number] == item[:label],
+        }
+      end
+    } %>
+    <%= render "govuk_publishing_components/components/button", text: "Continue", margin_bottom: true %>
+    <% end %>
+    
