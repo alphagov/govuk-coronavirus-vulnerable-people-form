@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get "/coronavirus-form/nhs-letter", to: "coronavirus_form/nhs_letter#show"
   post "/coronavirus-form/nhs-letter", to: "coronavirus_form/nhs_letter#submit"
 
+  get "/coronavirus-form/virus-test", to: "coronavirus_form/virus_test#show"
+  post "/coronavirus-form/virus-test", to: "coronavirus_form/virus_test#submit"
+
   # Check answers page
   get "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#show"
   post "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#submit"
