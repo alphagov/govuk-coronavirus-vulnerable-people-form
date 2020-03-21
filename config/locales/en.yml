@@ -65,6 +65,15 @@ en:
         no_services:
           label: "I can't provide services"
       custom_select_error: Select select which services you can provide
+    hotel_rooms:
+      title: Do you have hotel rooms to offer?
+      options:
+        yes_staying_in:
+          label: "Yes - for people to stay in"
+        yes_all_uses:
+          label: "Yes - for any use"
+        no_option:
+          label: "No"
     thank_you:
       title: "Thank you for telling us how you can help"
       sub_heading: "We'll be in touch to discuss how you can help."
