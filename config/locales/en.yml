@@ -28,6 +28,27 @@ en:
           label: "No"
         not_sure:
           label: "Not sure"
+    medical_conditions:
+      title: Do you have a medical condition that makes you vulnerable to coronavirus?
+      description: |
+        <p class="govuk-body">You’re vulnerable if you:</p>
+        <ul class="govuk-list govuk-list--bullet"> 
+          <li>have had a solid organ transplant</li>
+          <li>have lung cancer, and you’re getting active chemotherapy or radical radiotherapy</li>
+          <li>have cancer of the blood or bone marrow, at any stage of treatment - for example, leukaemia, lymphoma or myeloma</li>
+          <li>have any cancer for which you’re getting immunotherapy or other continuing antibody treatments</li>
+          <li>have any cancer for which you’re getting a targeted treatment which can affect the immune system - for example, protein kinase inhibitors or PARP inhibitors</li>
+          <li>have had bone marrow or stem cell transplants in the last 6 months, or are still taking immunosuppression drugs</li>
+          <li>have a severe respiratory condition - including cystic fibrosis, severe asthma or severe COPD (Chronic Obstructive Pulmonary Disease)</li>
+          <li>have a rare disease or inborn error of metabolism that significantly increases your risk of infection - for example SCID or homozygous sickle cell</li>
+          <li>are getting an immunosuppression therapy</li>
+          <li>are pregnant and have a significant congenital heart disease</li>
+        </ul>
+      options:
+        option_yes:
+          label: "Yes, I have a medical condition that makes me vulnerable to coronavirus"
+        option_no:
+          label: "No, I do not have a medical condition that makes me vulnerable to coronavirus"
     virus_test:
       title: Have you been tested for coronavirus?
       options:

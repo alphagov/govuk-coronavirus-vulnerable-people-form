@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CoronavirusForm::NhsLetterController < ApplicationController
+class CoronavirusForm::MedicalConditionsController < ApplicationController
   include ActionView::Helpers::SanitizeHelper
   include FieldValidationHelper
 
@@ -9,19 +9,17 @@ class CoronavirusForm::NhsLetterController < ApplicationController
   end
 
   def submit
-    nhs_letter = sanitize(params[:nhs_letter]).presence
-    session[:nhs_letter] = nhs_letter
+    medical_conditions = sanitize(params[:medical_conditions]).presence
+    session[:medical_conditions] = medical_conditions
 
     invalid_fields = validate_radio_field(
       PAGE,
-      radio: nhs_letter,
+      radio: medical_conditions,
     )
 
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
       render "coronavirus_form/#{PAGE}"
-    elsif session["check_answers_seen"]
-      redirect_to controller: "coronavirus_form/check_answers", action: "show"
     else
       redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
     end
@@ -29,8 +27,8 @@ class CoronavirusForm::NhsLetterController < ApplicationController
 
 private
 
-  PAGE = "nhs_letter"
-  NEXT_PAGE = "medical_conditions"
+  PAGE = "medical_conditions"
+  NEXT_PAGE = "virus_test"
 
   def previous_path
     "/"
