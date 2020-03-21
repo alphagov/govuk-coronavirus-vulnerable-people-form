@@ -16,5 +16,4 @@ test:
 
 production:
   <<: *default
-  database: coronavirus_form_production
   url: <%= ENV["DATABASE_URL"]%>
