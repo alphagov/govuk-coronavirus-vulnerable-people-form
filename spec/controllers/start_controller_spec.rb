@@ -2,8 +2,8 @@
 
 require "spec_helper"
 
-RSpec.describe CoronavirusForm::StartController, type: :controller do
-  let(:current_template) { "coronavirus_form/start" }
+RSpec.describe StartController, type: :controller do
+  let(:current_template) { "start" }
 
   describe "GET show" do
     it "renders the form" do

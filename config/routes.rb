@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   get "/healthcheck", to: proc { [200, {}, %w[OK]] }
 
   # Start page
-  get "/", to: "coronavirus_form/start#show"
+  get "/", to: "start#show"
 
   # Question pages
 
   # Check answers page
-  get "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#show"
-  post "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#submit"
+  get "check-your-answers" => "check_answers#show"
+  post "check-your-answers" => "check_answers#submit"
 end

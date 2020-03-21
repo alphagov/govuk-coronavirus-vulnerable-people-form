@@ -2,8 +2,8 @@
 
 require "spec_helper"
 
-RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
-  let(:current_template) { "coronavirus_form/check_answers" }
+RSpec.describe CheckAnswersController, type: :controller do
+  let(:current_template) { "check_answers" }
 
   describe "GET show" do
     it "renders the form" do
