@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   get "/", to: "coronavirus_form/start#show"
 
   # Question pages
-  get "/coronavirus-form/do-you-have-medical-equipment-to-offer" => "coronavirus_form/medical_equipment#show"
-  post "/coronavirus-form/do-you-have-medical-equipment-to-offer" => "coronavirus_form/medical_equipment#submit"
+  get "/coronavirus-form/medical-equipment" => "coronavirus_form/medical_equipment#show"
+  post "/coronavirus-form/medical-equipment" => "coronavirus_form/medical_equipment#submit"
 
-  get "/coronavirus-form/what-kind-of-medical-equipment" => "coronavirus_form/medical_equipment_type#show"
-  post "/coronavirus-form/what-kind-of-medical-equipment" => "coronavirus_form/medical_equipment_type#submit"
+  get "/coronavirus-form/medical-equipment-type" => "coronavirus_form/medical_equipment_type#show"
+  post "/coronavirus-form/medical-equipment-type" => "coronavirus_form/medical_equipment_type#submit"
 
-  get "/coronavirus-form/do-you-have-hotel-rooms-to-offer" => "coronavirus_form/hotel_rooms#show"
-  post "/coronavirus-form/do-you-have-hotel-rooms-to-offer" => "coronavirus_form/hotel_rooms#submit"
+  get "/coronavirus-form/hotel-rooms" => "coronavirus_form/hotel_rooms#show"
+  post "/coronavirus-form/hotel-rooms" => "coronavirus_form/hotel_rooms#submit"
 
   get "/coronavirus-form/which-goods" => "coronavirus_form/which_goods#show"
   post "/coronavirus-form/which-goods" => "coronavirus_form/which_goods#submit"

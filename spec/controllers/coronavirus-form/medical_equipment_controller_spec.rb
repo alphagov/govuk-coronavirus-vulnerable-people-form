@@ -23,20 +23,20 @@ RSpec.describe CoronavirusForm::MedicalEquipmentController, type: :controller do
     it "redirects to next step for yes response" do
       post :submit, params: { medical_equipment: "Yes" }
 
-      expect(response).to redirect_to("/coronavirus-form/what-kind-of-medical-equipment")
+      expect(response).to redirect_to(coronavirus_form_medical_equipment_type_path)
     end
 
     it "redirects to next sub-question for no response" do
       post :submit, params: { medical_equipment: "No" }
 
-      expect(response).to redirect_to("/coronavirus-form/do-you-have-hotel-rooms-to-offer")
+      expect(response).to redirect_to(coronavirus_form_hotel_rooms_path)
     end
 
     it "redirects to check your answers if check your answers previously seen" do
       session[:check_answers_seen] = true
       post :submit, params: { medical_equipment: "Yes" }
 
-      expect(response).to redirect_to("/coronavirus-form/check-your-answers")
+      expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
     end
 
     it "validates any option is chosen" do
