@@ -81,6 +81,26 @@ en:
           label: "Yes"
         option_no:
           label: "No"
+    expert_advice:
+      title: Can you offer expert advice?
+      hint: Select the types of expertise or consultancy experience you have
+      options:
+        medical:
+          label: "Medical expertise"
+        engineering:
+          label: "Engineering expertise"
+        construction:
+          label: "Construction expertise"
+        project_management:
+          label: "Project management or procurement expertise"
+        it:
+          label: "IT services expertise"
+        manufacturing:
+          label: "Manufacturing expertise"
+        other:
+          label: "Other expertise"
+        input:
+          label: "Give a description"
     thank_you:
       title: "Thank you for telling us how you can help"
       sub_heading: "We'll be in touch to discuss how you can help."
