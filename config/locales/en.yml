@@ -75,6 +75,15 @@ en:
         option_no:
           label: "No"
       custom_select_error: Please select Yes or No
+    essential_supplies:
+      title: Do you have a way of getting essential supplies delivered at the moment?
+      hint: For example, friends or family who can make sure you have enough food.
+      options:
+        option_yes:
+          label: "Yes"
+        option_no:
+          label: "No"
+      custom_select_error: Please select Yes or No
     addiction:
       title: "Do you have a history of addiction?"
       options:

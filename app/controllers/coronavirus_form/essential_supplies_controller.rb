@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CoronavirusForm::DietaryRequirementsController < ApplicationController
+class CoronavirusForm::EssentialSuppliesController < ApplicationController
   include ActionView::Helpers::SanitizeHelper
   include FieldValidationHelper
 
@@ -9,12 +9,12 @@ class CoronavirusForm::DietaryRequirementsController < ApplicationController
   end
 
   def submit
-    dietary_requirements = sanitize(params[:dietary_requirements]).presence
-    session[:dietary_requirements] = dietary_requirements
+    essential_supplies = sanitize(params[:essential_supplies]).presence
+    session[:essential_supplies] = essential_supplies
 
     invalid_fields = validate_radio_field(
       PAGE,
-      radio: dietary_requirements,
+      radio: essential_supplies,
     )
 
     if invalid_fields.any?
@@ -29,8 +29,8 @@ class CoronavirusForm::DietaryRequirementsController < ApplicationController
 
 private
 
-  PAGE = "dietary_requirements"
-  NEXT_PAGE = "start" # TODO changeme
+  PAGE = "essential_supplies"
+  NEXT_PAGE = "start" # TODO change to q11
 
   def previous_path
     "/" # TODO
