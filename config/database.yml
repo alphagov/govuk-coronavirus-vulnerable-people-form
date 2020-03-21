@@ -6,12 +6,12 @@ default: &default
 
 development:
   <<: *default
-  database: coronavirus_form_development
+  database: coronavirus_vulnerable_form_development
   url: <%= ENV["DATABASE_URL"]%>
 
 test:
   <<: *default
-  database: coronavirus_form_test
+  database: coronavirus_vulnerable_form_test
   url: <%= ENV["TEST_DATABASE_URL"] %>
 
 production:
