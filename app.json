@@ -1,6 +1,6 @@
 {
   "name": "Coronavirus form",
-  "repository": "https://github.com/alphagov/govuk-coronavirus-business-volunteer-form",
+  "repository": "https://github.com/alphagov/govuk-coronavirus-vulnerable-people-form",
   "env": {
     "GOVUK_APP_DOMAIN": {
       "value": "www.gov.uk"
