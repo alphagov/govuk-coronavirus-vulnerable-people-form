@@ -17,18 +17,13 @@
   heading: t('coronavirus_form.medical_equipment.title'),
   is_page_heading: true,
   name: "medical_equipment",
-  items: [
+  items: t('coronavirus_form.medical_equipment.options').map do |_, item|
     {
-      value: t('coronavirus_form.medical_equipment.options.option_yes.label'),
-      text: t('coronavirus_form.medical_equipment.options.option_yes.label'),
-      checked: session[:medical_equipment] == t('coronavirus_form.medical_equipment.options.option_yes.label'),
-    },
-    {
-      value: t('coronavirus_form.medical_equipment.options.option_no.label'),
-      text: t('coronavirus_form.medical_equipment.options.option_no.label'),
-      checked: session[:medical_equipment] == t('coronavirus_form.medical_equipment.options.option_no.label'),
-    },
-  ]
+      value: item[:label],
+      text: item[:label],
+      checked: session[:medical_equipment] == item[:label],
+    }
+  end
 } %>
 <%= render "govuk_publishing_components/components/button", text: "Save and continue", margin_bottom: true %>
 <% end %>
