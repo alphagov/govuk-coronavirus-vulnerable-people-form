@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get "/", to: "coronavirus_form/start#show"
 
   # Question pages
+  get "/coronavirus-form/nhs-letter", to: "coronavirus_form/nhs_letter#show"
+  post "/coronavirus-form/nhs-letter", to: "coronavirus_form/nhs_letter#submit"
 
   # Check answers page
   get "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#show"

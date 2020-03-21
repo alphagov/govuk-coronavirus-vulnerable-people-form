@@ -19,3 +19,12 @@ en:
       date_order: "The end date must be after the start date"
       email_format: "Enter email address in the correct format, like name@example.com"
       postcode_format: "Enter a real postcode"
+    nhs_letter:
+      title: Have you recently had a letter from the NHS about your situation as someone who's at high risk from coronavirus?
+      options:
+        option_yes:
+          label: "Yes"
+        option_no:
+          label: "No"
+        not_sure:
+          label: "Not sure"
