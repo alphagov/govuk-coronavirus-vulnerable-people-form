@@ -16,6 +16,7 @@
       heading: t('coronavirus_form.medical_conditions.title'),
       is_page_heading: true,
       name: "medical_conditions",
+      error_message: error_items('medical_conditions'),
       description: sanitize(t('coronavirus_form.medical_conditions.description')),
       items: t('coronavirus_form.medical_conditions.options').map do |_, item|
         {

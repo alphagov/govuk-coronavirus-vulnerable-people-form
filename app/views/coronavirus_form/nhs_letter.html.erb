@@ -16,6 +16,7 @@
   heading: t('coronavirus_form.nhs_letter.title'),
   is_page_heading: true,
   name: "nhs_letter",
+  error_message: error_items('nhs_letter'),
   items: t('coronavirus_form.nhs_letter.options').map do |_, item|
     {
       value: item[:label],

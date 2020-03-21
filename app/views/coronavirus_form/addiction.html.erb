@@ -16,6 +16,7 @@
   heading: t('coronavirus_form.addiction.title'),
   is_page_heading: true,
   name: "addiction",
+  error_message: error_items('addiction'),
   items: t('coronavirus_form.addiction.options').map do |_, item|
     {
       value: item[:label],
