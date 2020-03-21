@@ -99,6 +99,15 @@ en:
           label: "Yes, I’ve had problems with drug addiction or alcohol addiction (alcoholism)"
         option_no:
           label: "No"
+    contact_details:
+      title: "Enter your contact details"
+      hint: "You can use someone else's contact details if that's easier."
+      phone_number_calls:
+        label: "Phone number (for phone calls)"
+      phone_number_texts:
+        label: "Phone number (for text messages)"
+      email:
+        label: "Email address"
     confirmation:
       title: "Confirmation"
     name:

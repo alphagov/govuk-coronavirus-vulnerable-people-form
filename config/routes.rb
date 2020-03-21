@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   get "/coronavirus-form/carry-supplies", to: "coronavirus_form/carry_supplies#show"
   post "coronavirus-form/carry-supplies", to: "coronavirus_form/carry_supplies#submit"
 
+  get "/coronavirus-form/contact-details", to: "coronavirus_form/contact_details#show"
+  post "/coronavirus-form/contact-details", to: "coronavirus_form/contact_details#submit"
+
   # Check answers page
   get "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#show"
   post "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#submit"
