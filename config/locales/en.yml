@@ -11,6 +11,8 @@ en:
       radio_field: "Select %{field}"
       checkbox_field: "Select at least one %{field}"
       missing_mandatory_text_field: "Enter %{field}"
+      missing_postcode_field: "Enter either a postcode or a county"
+      missing_county_field: "Enter either a postcode or a county"
       invalid_money: "%{field} must be an amount of money, like 15000"
       missing_year: "%{field} must include a year"
       missing_month: "%{field} must include a month"
@@ -123,3 +125,16 @@ en:
         label: Middle names (optional)
       last_name:
         label: Last name
+    support_address:
+      title: What is the address where you need support?
+      hint: If you’re applying for someone else, enter the address of the person who needs support.
+      building_and_street:
+        label: Building and street
+      building_and_street_line_1:
+        label: Building and street (First line)
+      town_city:
+        label: Town or city
+      county:
+        label: County
+      postcode:
+        label: Postcode
