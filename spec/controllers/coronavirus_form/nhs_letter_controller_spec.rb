@@ -30,15 +30,22 @@ RSpec.describe CoronavirusForm::NhsLetterController, type: :controller do
       expect(response).to render_template(current_template)
     end
 
+    it "validates a valid option is chosen" do
+      post :submit, params: { nhs_letter: "<script></script>" }
+
+      expect(response).to render_template(current_template)
+    end
+
     it "redirects to next step for a permitted response" do
       post :submit, params: { nhs_letter: selected }
       expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
     end
 
-    it "validates a valid option is chosen" do
-      post :submit, params: { nhs_letter: "<script></script>" }
+    it "redirects to check your answers if check your answers previously seen" do
+      session[:check_answers_seen] = true
+      post :submit, params: { nhs_letter: "Yes" }
 
-      expect(response).to render_template(current_template)
+      expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
     end
   end
 end

@@ -20,6 +20,8 @@ class CoronavirusForm::NhsLetterController < ApplicationController
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
       render "coronavirus_form/#{PAGE}"
+    elsif session["check_answers_seen"]
+      redirect_to controller: "coronavirus_form/check_answers", action: "show"
     else
       redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
     end
