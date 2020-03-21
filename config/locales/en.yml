@@ -4,7 +4,9 @@ en:
     body: Work in progress
     button_label: Start now
   check_your_answers:
-    title: "Work in progress"
+    title: Check your answers before sending your application
+    heading: Now send your application
+    confirmation: By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.
   not_eligible_medical:
     title: Sorry, you’re not eligible for help through this service at the moment
     description: |

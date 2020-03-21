@@ -5,6 +5,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
   def show
     if session[:nhs_letter].present?
+      @items = items
       session[:check_answers_seen] = true
       render "coronavirus_form/check_answers"
     else
@@ -29,5 +30,30 @@ private
     timestamp = Time.zone.now.strftime("%Y%m%d-%H%M%S")
     random_id = SecureRandom.hex(3).upcase
     "#{timestamp}-#{random_id}"
+  end
+
+  def items
+    questions.map do |question|
+      # We have answers as strings and hashes. The hashes need a little more
+      # work to make them readable.
+      value = session[question].is_a?(Hash) ? concat_answer(session[question]) : session[question]
+
+      {
+        field: t("coronavirus_form.questions.#{question}.title"),
+        value: value,
+        edit: {
+          href: question.dasherize,
+        },
+      }
+    end
+  end
+
+  def concat_answer(answer)
+    answer.values.compact.join(" ")
+  end
+
+  def questions
+    @questions ||= YAML.load_file(Rails.root.join("config/locales/en.yml"))
+    @questions["en"]["coronavirus_form"]["questions"].keys
   end
 end
