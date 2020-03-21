@@ -7,6 +7,7 @@ applications:
   services:
   - govuk-coronavirus-vulnerable-people-form-db
   - logit-ssl-drain
+  - splunk-ssl-drain
   env:
     GOVUK_APP_DOMAIN: cloudapps.digital
     GOVUK_WEBSITE_ROOT: www.gov.uk
