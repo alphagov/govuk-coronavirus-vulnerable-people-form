@@ -75,3 +75,11 @@ en:
           label: "No"
     confirmation:
       title: "Confirmation"
+    name:
+      title: What is your name?
+      first_name:
+        label: First name
+      middle_name:
+        label: Middle names (optional)
+      last_name:
+        label: Last name

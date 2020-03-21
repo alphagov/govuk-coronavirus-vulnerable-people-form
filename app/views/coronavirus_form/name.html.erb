@@ -1,0 +1,45 @@
+<% content_for :title do %><%= t('coronavirus_form.name.title') %><% end %>
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('coronavirus_form.name.title') %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= render "govuk_publishing_components/components/title", {
+  title: t('coronavirus_form.name.title'),
+  margin_top: 0
+} %>
+
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-vulnerable-people-name",
+  "data-question-key": "name",
+  "id": "name"
+) do %>
+<%= render "govuk_publishing_components/components/input", {
+  label: {
+    text: t('coronavirus_form.name.first_name.label')
+  },
+  name: "first_name",
+  error_message: error_items('first_name'),
+  value: session["name"]["first_name"],
+} %>
+<%= render "govuk_publishing_components/components/input", {
+  label: {
+    text: t('coronavirus_form.name.middle_name.label')
+  },
+  name: "middle_name",
+  error_message: error_items('middle_name'),
+  value: session["name"]["middle_name"],
+} %>
+<%= render "govuk_publishing_components/components/input", {
+  label: {
+    text: t('coronavirus_form.name.last_name.label')
+  },
+  name: "last_name",
+  error_message: error_items('last_name'),
+  value: session["name"]["last_name"],
+} %>
+<%= render "govuk_publishing_components/components/button", text: "Continue", margin_bottom: true %>
+<% end %>
