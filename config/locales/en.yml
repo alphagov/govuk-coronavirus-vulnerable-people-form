@@ -109,7 +109,12 @@ en:
       email:
         label: "Email address"
     confirmation:
-      title: "Confirmation"
+      title: "Registration complete."
+      description: |
+        <p class="govuk-body">If your support needs change, go to <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">www.gov.uk/coronavirus-extremely-vulnerable</a> and go through the questions again.</p>
+        <p class="govuk-body">If you need essential supplies urgently, call <a class="govuk-link" href="tel:0800 0288327">0800 0288327</a>.</p>
+        <p class="govuk-body">If you need medical advice, call the NHS on 111. If it's a medical emergecy, call 999.</p>
+        <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
     name:
       title: What is your name?
       first_name:
