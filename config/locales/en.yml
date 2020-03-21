@@ -5,6 +5,20 @@ en:
     button_label: Start now
   check_your_answers:
     title: "Work in progress"
+  not_eligible_medical:
+    title: Sorry, you’re not eligible for help through this service at the moment
+    description: |
+      <p class="govuk-body">Your local authority needs to prioritise people who have a medical condition that makes them extremely vulnerable to coronavirus, so you will not be eligible for direct support from your local authority.</p>
+      <p class="govuk-body">You can get help on <a class="govuk-link" href="https://www.gov.uk/coronavirus">what you need to do</a>.</p>
+      <p class="govuk-body">If your medical condition changes, return to <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">the start of this service</a> and go through the questions again.</p>
+      <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
+  not_eligible_supplies:
+    title: Sorry, you’re not eligible for help through this service at the moment
+    description: |
+      <p class="govuk-body">Your local authority needs to prioritise people who do not have anyone to help with essential supplies, so you will not be eligible for direct support from your local authority.</p>
+      <p class="govuk-body">You can get help on <a class="govuk-link" href="https://www.gov.uk/coronavirus">what you need to do</a>.</p>
+      <p class="govuk-body">If your situation changes, return to <a class="govuk-link" ref="https://www.gov.uk/coronavirus-extremely-vulnerable">the start of this service</a> and go through the questions again.</p>
+      <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
   coronavirus_form:
     errors:
       heading: "There is a problem"

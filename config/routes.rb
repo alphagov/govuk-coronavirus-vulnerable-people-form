@@ -46,6 +46,12 @@ Rails.application.routes.draw do
   get "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#show"
   post "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#submit"
 
+  # Not eligible for supplies
+  get "/coronavirus-form/not-eligible-medical" => "coronavirus_form/not_eligible_medical#show"
+
+  # Check answers page
+  get "/coronavirus-form/not-eligible-supplies" => "coronavirus_form/not_eligible_supplies#show"
+
   # Final page
   get "/coronavirus-form/confirmation" => "coronavirus_form/confirmation#show"
 end
