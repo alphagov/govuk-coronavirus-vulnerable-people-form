@@ -1,7 +1,7 @@
 en:
   start_page:
-    title: Offer support as a business to help with coronavirus
-    body: Use this service to share the types of things your business can help with or might be able to help with. You'll be contacted with more information about how you can help.
+    title: Work in progress
+    body: Work in progress
     button_label: Start now
   check_your_answers:
     title: "Work in progress"
@@ -19,70 +19,3 @@ en:
       date_order: "The end date must be after the start date"
       email_format: "Enter email address in the correct format, like name@example.com"
       postcode_format: "Enter a real postcode"
-    medical_equipment:
-      title: Do you have medical equipment to offer?
-      options:
-        option_yes:
-          label: "Yes"
-        option_no:
-          label: "No"
-    which_goods:
-      title: What goods can your business help with?
-      hint: Select the types of things you think you can help with
-      options:
-        medical_equipment:
-          label: "Medical equipment"
-        hotel_rooms:
-          label: "Hotel rooms"
-        food:
-          label: "Food"
-        space:
-          label: "Space"
-        manufacturing_equipment:
-          label: "Manufacturing equipment"
-        other_goods:
-          label: "Other goods"
-          hint: UK based businesses
-          input:
-            label: Please provide a description
-        no_goods:
-          label: "I can't provide goods"
-      custom_select_error: Select select which goods you can provide
-    which_services:
-      title: What services can your business help with?
-      hint: Select the types of things you think you can help with
-      options:
-        transport:
-          label: "Transport"
-        consultancy:
-          label: "Consultancy"
-        expertise:
-          label: "Expertise"
-        social_care:
-          label: "Social care"
-        other_services:
-          label: "Other services"
-        no_services:
-          label: "I can't provide services"
-      custom_select_error: Select select which services you can provide
-    hotel_rooms:
-      title: Do you have hotel rooms to offer?
-      options:
-        yes_staying_in:
-          label: "Yes - for people to stay in"
-        yes_all_uses:
-          label: "Yes - for any use"
-        no_option:
-          label: "No"
-    offer_food:
-      title: Can you offer food?
-      options:
-        option_yes:
-          label: "Yes"
-        option_no:
-          label: "No"
-    thank_you:
-      title: "Thank you for telling us how you can help"
-      sub_heading: "We'll be in touch to discuss how you can help."
-      next_text: "View all coronavirus (COVID-19) content"
-      next_link: "https://www.gov.uk/coronavirus"
