@@ -6,3 +6,7 @@ inherit_gem:
 inherit_mode:
   merge:
     - Exclude
+
+Metrics/BlockLength:
+  Exclude:
+    - config/routes.rb
