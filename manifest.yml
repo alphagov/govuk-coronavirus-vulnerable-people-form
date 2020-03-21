@@ -1,11 +1,11 @@
 ---
 applications:
-- name: govuk-coronavirus-business-volunteer-form
+- name: govuk-coronavirus-vulnerable-people-form
   buildpack: ruby_buildpack
   memory: 1G
   instances: 5
   services:
-  - govuk-coronavirus-business-volunteer-form-db
+  - govuk-coronavirus-vulnerable-people-form-db
   - logit-ssl-drain
   env:
     GOVUK_APP_DOMAIN: cloudapps.digital

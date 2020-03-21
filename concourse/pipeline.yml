@@ -5,36 +5,36 @@ resource_types:
     source:
       repository: nulldriver/cf-cli-resource
 
-  - name: travis
-    type: docker-image
-    source:
-      repository: rbakergds/travis-resource
-      tag: latest
+  #- name: travis
+  #  type: docker-image
+  #  source:
+  #    repository: rbakergds/travis-resource
+  #    tag: latest
 
 resources:
-  - name: govuk-coronavirus-business-volunteer-form
+  - name: govuk-coronavirus-vulnerable-people-form
     type: git
     icon: github-circle
     source:
-      uri: https://github.com/alphagov/govuk-coronavirus-business-volunteer-form
+      uri: https://github.com/alphagov/govuk-coronavirus-vulnerable-people-form
       branch: master
 
-  - name: govuk-coronavirus-business-volunteer-form-travis-build
-    type: travis
-    icon: sync
-    source:
-      repository: alphagov/govuk-coronavirus-business-volunteer-form
-      travis-token: ((travis-api-token))
-      branch: master
-      pro: true
+  #- name: govuk-coronavirus-vulnerable-people-form-travis-build
+  #  type: travis
+  #  icon: sync
+  #  source:
+  #    repository: alphagov/govuk-coronavirus-vulnerable-people-form
+  #    travis-token: ((travis-api-token))
+  #    branch: master
+  #    pro: true
 
 jobs:
   - name: deploy-to-staging
     serial: true
     plan:
-      - get: govuk-coronavirus-business-volunteer-form-travis-build
+      # - get: govuk-coronavirus-vulnerable-people-form-travis-build
+      - get: govuk-coronavirus-vulnerable-people-form
         trigger: true
-      - get: govuk-coronavirus-business-volunteer-form
       - task: paas-staging
         config:
           platform: linux
@@ -44,7 +44,7 @@ jobs:
               repository: governmentpaas/cf-cli
               tag: latest
           inputs:
-            - name: govuk-coronavirus-business-volunteer-form
+            - name: govuk-coronavirus-vulnerable-people-form
               path: src
           params:
             CF_API: https://api.cloud.service.gov.uk
@@ -64,15 +64,15 @@ jobs:
                 cf api "$CF_API"
                 cf auth
                 cf t -o "$CF_ORG" -s "$CF_SPACE"
-                cf v3-create-app govuk-coronavirus-business-volunteer-form || true
+                cf v3-create-app govuk-coronavirus-vulnerable-people-form || true
                 cf v3-apply-manifest -f manifest.yml
-                cf set-env govuk-coronavirus-business-volunteer-form BASIC_AUTH_PASSWORD "$BASIC_AUTH_PASSWORD"
-                cf v3-zdt-push govuk-coronavirus-business-volunteer-form --wait-for-deploy-complete --no-route
-                cf map-route govuk-coronavirus-business-volunteer-form cloudapps.digital --hostname govuk-coronavirus-business-volunteer-form-stg
+                cf set-env govuk-coronavirus-vulnerable-people-form BASIC_AUTH_PASSWORD "$BASIC_AUTH_PASSWORD"
+                cf v3-zdt-push govuk-coronavirus-vulnerable-people-form --wait-for-deploy-complete --no-route
+                cf map-route govuk-coronavirus-vulnerable-people-form cloudapps.digital --hostname govuk-coronavirus-vulnerable-people-form-stg
 
   - name: smoke-test-staging
     plan:
-      - get: govuk-coronavirus-business-volunteer-form
+      - get: govuk-coronavirus-vulnerable-people-form
         trigger: true
         passed: [deploy-to-staging]
       - task: smoke-test
@@ -85,5 +85,5 @@ jobs:
           run:
             # TODO we can come up with a more thorough test than this
             path: curl
-            args: ['--fail', '--silent', '--verbose', '--user', 'gds:((basic-auth-password))', 'https://govuk-coronavirus-business-volunteer-form-stg.cloudapps.digital/']
+            args: ['--fail', '--silent', '--verbose', '--user', 'gds:((basic-auth-password))', 'https://govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital/']
 
