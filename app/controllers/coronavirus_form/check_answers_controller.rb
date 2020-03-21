@@ -4,8 +4,12 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
   include ActionView::Helpers::SanitizeHelper
 
   def show
-    session[:check_answers_seen] = true
-    render "coronavirus_form/check_answers"
+    if session[:nhs_letter].present?
+      session[:check_answers_seen] = true
+      render "coronavirus_form/check_answers"
+    else
+      redirect_to controller: "coronavirus_form/start", action: "show"
+    end
   end
 
   def submit
