@@ -35,6 +35,10 @@ Rails.application.routes.draw do
   get "/coronavirus-form/essential-supplies", to: "coronavirus_form/essential_supplies#show"
   post "coronavirus-form/essential-supplies", to: "coronavirus_form/essential_supplies#submit"
 
+  # Question: Carry supplies
+  get "/coronavirus-form/carry-supplies", to: "coronavirus_form/carry_supplies#show"
+  post "coronavirus-form/carry-supplies", to: "coronavirus_form/carry_supplies#submit"
+
   # Check answers page
   get "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#show"
   post "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#submit"
