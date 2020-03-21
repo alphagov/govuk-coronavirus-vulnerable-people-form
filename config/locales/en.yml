@@ -49,6 +49,14 @@ en:
           label: "Yes, I have a medical condition that makes me vulnerable to coronavirus"
         option_no:
           label: "No, I do not have a medical condition that makes me vulnerable to coronavirus"
+    temperature_or_cough:
+      title: Do you have a high temperature or a new, continuous cough?
+      hint: A continuous cough means coughing a lot for more than an hour, or 3 or more coughing episodes in 24 hours
+      options:
+        option_yes:
+          label: "Yes"
+        option_no:
+          label: "No"
     virus_test:
       title: Have you been tested for coronavirus?
       options:
