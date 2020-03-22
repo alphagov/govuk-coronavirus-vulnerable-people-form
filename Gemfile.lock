@@ -316,6 +316,7 @@ DEPENDENCIES
   rspec-rails (~> 4.0.0.beta2)
   rubocop-govuk
   scss-lint (~> 0.7.0)
+  sentry-raven (~> 3.0)
   simplecov (~> 0.16)
   therubyracer (~> 0.12)
   uglifier (~> 4.2)
