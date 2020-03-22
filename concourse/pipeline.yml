@@ -43,6 +43,7 @@ jobs:
           BASIC_AUTH_PASSWORD: ((basic-auth-password))
           AWS_ACCESS_KEY_ID: ((aws-access-key-id))
           AWS_SECRET_ACCESS_KEY: ((aws-secret-access-key))
+          AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME: ((aws-dynamodb-submissions-table-name))
           HOSTNAME: govuk-coronavirus-vulnerable-people-form-stg
 
   - name: smoke-test-staging
@@ -67,6 +68,7 @@ jobs:
           BASIC_AUTH_PASSWORD: ((basic-auth-password))
           AWS_ACCESS_KEY_ID: ((aws-access-key-id-prod))
           AWS_SECRET_ACCESS_KEY: ((aws-secret-access-key-prod))
+          AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME: ((aws-dynamodb-submissions-table-name))
           HOSTNAME: govuk-coronavirus-vulnerable-people-form-prod
 
   - name: smoke-test-prod

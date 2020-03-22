@@ -7,10 +7,10 @@ source "https://rubygems.org"
 gem "rails", "~> 6.0.2"
 
 gem "bootsnap", "~> 1"
+gem "dynamoid"
 gem "govuk_app_config", "~> 2.1.1"
 gem "govuk_publishing_components", "~> 21.31.0"
 gem "log_formatter", "~> 0.8.2"
-gem "pg", "~> 1"
 gem "puma", "~> 4.3"
 gem "sentry-raven", "~> 3.0"
 gem "uglifier", "~> 4.2"
@@ -21,7 +21,6 @@ end
 
 group :test do
   gem "cucumber-rails", "~> 2.0", require: false
-  gem "database_cleaner", "~> 1.8"
   gem "scss-lint", "~> 0.7.0", require: false
   gem "simplecov", "~> 0.16"
   gem "therubyracer", "~> 0.12"
