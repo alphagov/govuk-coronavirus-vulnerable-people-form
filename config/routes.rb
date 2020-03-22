@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # Start page
   get "/", to: "coronavirus_form/start#show"
 
+  get "/coronavirus-form/privacy", to: "coronavirus_form/privacy#show"
+
   # (v4[sunday]) Question 1: Do you live in England?
   get "/coronavirus-form/live-in-england", to: "coronavirus_form/live_in_england#show"
   post "/coronavirus-form/live-in-england", to: "coronavirus_form/live_in_england#submit"

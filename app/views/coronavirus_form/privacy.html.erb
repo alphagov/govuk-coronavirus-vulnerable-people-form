@@ -1,0 +1,8 @@
+<% content_for :title do %><%= t('privacy_page.title') %><% end %>
+
+<%= render "govuk_publishing_components/components/title", {
+  title:t("privacy_page.title"),
+  margin_top: 0
+} %>
+
+<%= sanitize(t('privacy_page.body_text')) %>
