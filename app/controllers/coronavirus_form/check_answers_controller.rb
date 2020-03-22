@@ -53,9 +53,9 @@ private
     joiner = " "
 
     if question.eql?("contact_details")
-      concatenated_answer << "Phone number: #{answer['phone_number_calls']}" unless answer["phone_number_calls"].nil?
-      concatenated_answer << "Text: #{answer['phone_number_texts']}" unless answer["phone_number_texts"].nil?
-      concatenated_answer << "Email: #{answer['email']}" unless answer["email"].nil?
+      concatenated_answer << "Phone number: #{answer['phone_number_calls']}" if answer["phone_number_calls"]
+      concatenated_answer << "Text: #{answer['phone_number_texts']}" if answer["phone_number_texts"]
+      concatenated_answer << "Email: #{answer['email']}" if answer["email"]
       joiner = "<br>"
     elsif question.eql?("support_address")
       concatenated_answer = answer.values.compact
