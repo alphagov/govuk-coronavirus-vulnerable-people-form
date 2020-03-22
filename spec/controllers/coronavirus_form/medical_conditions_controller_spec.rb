@@ -30,9 +30,14 @@ RSpec.describe CoronavirusForm::MedicalConditionsController, type: :controller d
       expect(response).to render_template(current_template)
     end
 
-    it "redirects to next step for a permitted response" do
-      post :submit, params: { medical_conditions: selected }
+    it "redirects to next step for a yes response" do
+      post :submit, params: { medical_conditions: I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes.label") }
       expect(response).to redirect_to(coronavirus_form_know_nhs_number_path)
+    end
+
+    it "redirects to ineligible page for a no response" do
+      post :submit, params: { medical_conditions: I18n.t("coronavirus_form.questions.medical_conditions.options.option_no.label") }
+      expect(response).to redirect_to(coronavirus_form_not_eligible_medical_path)
     end
 
     it "validates a valid option is chosen" do
