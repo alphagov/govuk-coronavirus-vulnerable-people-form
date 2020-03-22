@@ -33,9 +33,9 @@ class CoronavirusForm::KnowNhsNumberController < ApplicationController
 private
 
   PAGE = "know_nhs_number"
-  NEXT_PAGE = "check_answers"
+  NEXT_PAGE = "nhs_number"
 
   def previous_path
-    coronavirus_form_contact_details_path
+    coronavirus_form_medical_conditions_path
   end
 end
