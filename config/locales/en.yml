@@ -49,6 +49,13 @@ en:
         <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
     questions:
       # These should be in the order that they're asked
+      live_in_england:
+        title: Do you live in England?
+        options:
+          option_yes:
+            label: "Yes"
+          option_no:
+            label: "No"
       nhs_letter:
         title: Have you recently had a letter from the NHS about your situation as someone who's at high risk from coronavirus?
         options:

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get "/", to: "coronavirus_form/start#show"
 
   # (v4[sunday]) Question 1: Do you live in England?
+  get "/coronavirus-form/live-in-england", to: "coronavirus_form/live_in_england#show"
+  post "/coronavirus-form/live-in-england", to: "coronavirus_form/live_in_england#submit"
 
   # (v4[sunday]) Question 2: Have you recently had a letter from the NHS...
   get "/coronavirus-form/nhs-letter", to: "coronavirus_form/nhs_letter#show"
