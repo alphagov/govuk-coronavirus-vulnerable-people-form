@@ -19,10 +19,6 @@
     <%= render "govuk_publishing_components/components/skip_link" %>
     <%= render "govuk_publishing_components/components/layout_header", { environment: "public" } %>
     <div class="govuk-width-container">
-      <%= render "govuk_publishing_components/components/phase_banner", {
-        phase: "alpha",
-        message: sanitize("This part of GOV.UK is being built – #{link_to('find out what alpha means', 'https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works', class: "govuk-link", target: "_blank")}")
-      } %>
       <% if yield(:back_link).present? %>
         <%= yield(:back_link) %>
       <% else %>
