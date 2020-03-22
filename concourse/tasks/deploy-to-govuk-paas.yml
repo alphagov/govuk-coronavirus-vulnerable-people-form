@@ -12,7 +12,7 @@ params:
   CF_USERNAME: ((paas-username))
   CF_PASSWORD: ((paas-password))
   CF_ORG: govuk_development
-  SENTRY_DSN: TODO
+  SENTRY_DSN: https://((sentry-dsn))
   CF_SPACE:
   HOSTNAME:
   BASIC_AUTH_PASSWORD:
