@@ -1,15 +1,19 @@
-<% content_for :title do %>
-  <%= t("coronavirus_form.questions.medical_conditions.title") %>
-<% end %>
+<% content_for :title do %><%= t('coronavirus_form.questions.medical_conditions.title') %><% end %>
+    <% content_for :meta_tags do %>
+      <meta name="description" content="<%= t('coronavirus_form.questions.medical_conditions.title') %>" />
+    <% end %>
+    
+    <% content_for :back_link do %>
+      <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+    <% end %>
 
-<% content_for :meta_tags do %>
-  <meta name="description" content="<%= t("coronavirus_form.questions.medical_conditions.title") %>" />
-<% end %>
+    <% description_html = capture do %>
+      <%= render "govuk_publishing_components/components/inset_text" do %>
+         <%= sanitize(t('coronavirus_form.questions.medical_conditions.description')) %>
+      <% end %>
+    <% end %>
 
-<% content_for :back_link do %>
-  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
-<% end %>
-
+    
     <%= form_tag({},
       "data-module": "track-coronavirus-form-vulnerable-people-medical_conditions",
       "data-question-key": "medical_conditions",
@@ -20,9 +24,9 @@
       heading: t("coronavirus_form.questions.medical_conditions.title"),
       is_page_heading: true,
       name: "medical_conditions",
-      error_message: error_items("medical_conditions"),
-      description: sanitize(t("coronavirus_form.questions.medical_conditions.description")),
-      items: t("coronavirus_form.questions.medical_conditions.options").map do |_, item|
+      error_message: error_items('medical_conditions'),
+      description: description_html,
+      items: t('coronavirus_form.questions.medical_conditions.options').map do |_, item|
         {
           value: item[:label],
           text: item[:label],
