@@ -157,6 +157,8 @@ en:
         building_and_street_line_1:
           label: Building and street (First line)
           custom_error: Enter a building and street
+        building_and_street_line_2:
+          label: Building and street (Second line)
         town_city:
           label: Town or city
           custom_error: Enter a town or city

@@ -36,6 +36,9 @@
   value: session[:support_address]["building_and_street_line_1"],
 } %>
 
+<label class="govuk-visually-hidden" for="building_and_street_line_2">
+  <%= t('coronavirus_form.questions.support_address.building_and_street_line_2.label') %>
+</label>
 <%= render "govuk_publishing_components/components/input", {
   id: "building_and_street_line_2",
   name: "building_and_street_line_2",
