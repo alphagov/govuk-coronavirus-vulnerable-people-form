@@ -15,7 +15,7 @@ class CoronavirusForm::DateOfBirthController < ApplicationController
     session["date_of_birth"]["month"] = sanitize(params.dig("date_of_birth", "month")).presence
     session["date_of_birth"]["year"] = sanitize(params.dig("date_of_birth", "year")).presence
 
-    invalid_fields = validate_date_fields(
+    invalid_fields = validate_date_of_birth(
       session["date_of_birth"]["year"],
       session["date_of_birth"]["month"],
       session["date_of_birth"]["day"],

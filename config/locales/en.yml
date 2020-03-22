@@ -112,6 +112,8 @@ en:
       date_order: "Date of birth must be in the past"
       email_format: "Enter email address in the correct format, like name@example.com"
       postcode_format: "Enter a real postcode"
+      negative_date: "Enter a real %{field}"
+      date_not_a_number: "Enter %{field} as a number"
     confirmation:
       title: "Registration complete"
       description: |

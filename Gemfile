@@ -14,6 +14,7 @@ gem "log_formatter", "~> 0.8.2"
 gem "puma", "~> 4.3"
 gem "sass-rails", "< 6"
 gem "sentry-raven", "~> 3.0"
+gem "timecop"
 gem "uglifier", "~> 4.2"
 
 group :development do
