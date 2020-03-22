@@ -13,8 +13,10 @@ params:
   CF_PASSWORD: ((paas-password))
   CF_ORG: govuk_development
   SENTRY_DSN: https://((sentry-dsn))
+  CF_STARTUP_TIMEOUT:
   CF_SPACE:
   HOSTNAME:
+  INSTANCES:
   BASIC_AUTH_PASSWORD:
   AWS_ACCESS_KEY_ID:
   AWS_SECRET_ACCESS_KEY:
@@ -31,6 +33,9 @@ run:
       cf t -o "$CF_ORG" -s "$CF_SPACE"
       cf v3-create-app govuk-coronavirus-vulnerable-people-form || true
       cf v3-apply-manifest -f manifest.yml
+      cf set-env govuk-coronavirus-vulnerable-people-form CF_STARTUP_TIMEOUT "$CF_STARTUP_TIMEOUT"
+
+      cf scale -i "$INSTANCES" govuk-coronavirus-vulnerable-people-form
 
       cf set-env govuk-coronavirus-vulnerable-people-form BASIC_AUTH_PASSWORD "$BASIC_AUTH_PASSWORD"
       cf set-env govuk-coronavirus-vulnerable-people-form SENTRY_DSN "$SENTRY_DSN"
