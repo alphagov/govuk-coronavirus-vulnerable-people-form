@@ -34,6 +34,8 @@ private
   NEXT_PAGE = "basic_care_needs"
 
   def previous_path
-    nhs_number_path
+    return nhs_number_path if session[:know_nhs_number] == I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label")
+
+    know_nhs_number_path
   end
 end
