@@ -53,7 +53,7 @@ module FieldValidationHelper
     []
   end
 
-  def validate_date_fields(year, month, day, field)
+  def validate_date_of_birth(year, month, day, field)
     invalid_fields = []
     # If all fields are missing
     if year.blank? && month.blank? && day.blank?
