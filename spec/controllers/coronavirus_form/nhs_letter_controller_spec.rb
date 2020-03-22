@@ -16,7 +16,7 @@ RSpec.describe CoronavirusForm::NhsLetterController, type: :controller do
   describe "POST submit" do
     let(:selected) { permitted_values.sample }
     let(:permitted_values) do
-      I18n.t("coronavirus_form.nhs_letter.options").map { |_, item| item[:label] }
+      I18n.t("coronavirus_form.questions.nhs_letter.options").map { |_, item| item[:label] }
     end
 
     it "sets session variables" do
