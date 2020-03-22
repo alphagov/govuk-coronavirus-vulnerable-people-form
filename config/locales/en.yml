@@ -180,38 +180,3 @@ en:
           option_no:
             label: "No"
         custom_select_error: Select yes if there is someone in the house who is able to carry a delivery of supplies inside
-      temperature_or_cough:
-        title: Do you have a high temperature or a new, continuous cough?
-        hint: A continuous cough means coughing a lot for more than an hour, or 3 or more coughing episodes in 24 hours
-        options:
-          option_yes:
-            label: "Yes"
-          option_no:
-            label: "No"
-        custom_select_error: Please select Yes or No
-      virus_test:
-        title: Have you been tested for coronavirus?
-        options:
-          yes_tested_have_virus:
-            label: Yes, I've been tested and I have coronavirus
-          yes_tested_no_virus:
-            label: Yes, I've been tested and I do not have coronavirus
-          option_no:
-            label: No, I have not been tested
-        custom_select_error: Please select an option
-      supermarkets:
-        title: Do you want us to share your details with supermarkets, if that becomes possible?
-        hint: This is in case it becomes possible for supermarkets to prioritise you if you place a 'click and collect' order.
-        options:
-          option_yes:
-            label: "Yes"
-          option_no:
-            label: "No"
-        custom_select_error: Select yes if you have a way of getting essential supplies delivered at the moment
-      addiction:
-        title: "Do you have a history of addiction?"
-        options:
-          option_yes:
-            label: "Yes, I’ve had problems with drug addiction or alcohol addiction (alcoholism)"
-          option_no:
-            label: "No"
