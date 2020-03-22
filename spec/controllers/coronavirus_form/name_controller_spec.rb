@@ -38,13 +38,13 @@ RSpec.describe CoronavirusForm::NameController, type: :controller do
     %w(first_name last_name).each do |field|
       it "validates #{field} is required" do
         post :submit, params: params.except(field)
-
+        expect(response).to have_http_status(:unprocessable_entity)
         expect(response).to render_template(current_template)
       end
 
       it "validates a value for #{field} is required" do
         post :submit, params: params.merge(field => "")
-
+        expect(response).to have_http_status(:unprocessable_entity)
         expect(response).to render_template(current_template)
       end
     end
@@ -58,7 +58,7 @@ RSpec.describe CoronavirusForm::NameController, type: :controller do
 
     it "validates a valid option is chosen" do
       post :submit, params: { first_name: "<script></script>" }
-
+      expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(current_template)
     end
 

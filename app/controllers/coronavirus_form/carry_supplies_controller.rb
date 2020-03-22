@@ -19,7 +19,7 @@ class CoronavirusForm::CarrySuppliesController < ApplicationController
 
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
-      render "coronavirus_form/#{PAGE}"
+      render "coronavirus_form/#{PAGE}", status: :unprocessable_entity
     elsif session["check_answers_seen"]
       redirect_to controller: "coronavirus_form/check_answers", action: "show"
     else
