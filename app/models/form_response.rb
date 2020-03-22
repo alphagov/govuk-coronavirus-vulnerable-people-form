@@ -1,7 +1,7 @@
 class FormResponse
   include Dynamoid::Document
 
-  table name: :'coronavirus-vulnerable-people-local', key: :reference_id
+  table name: Rails.configuration.submissions_db_table_name, key: :reference_id
   field :reference_id, :string
   range :unix_timestamp, :datetime
 
