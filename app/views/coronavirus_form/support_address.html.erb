@@ -29,6 +29,7 @@
   label: {
     text: t('coronavirus_form.questions.support_address.building_and_street.label')
   },
+  id: "building_and_street_line_1",
   name: "building_and_street_line_1",
   type: "text",
   error_message: error_items('building_and_street_line_1'),
@@ -36,6 +37,7 @@
 } %>
 
 <%= render "govuk_publishing_components/components/input", {
+  id: "building_and_street_line_2",
   name: "building_and_street_line_2",
   error_message: error_items('building_and_street_line_2'),
   value: session[:support_address]["building_and_line_2"],
@@ -45,6 +47,7 @@
   label: {
     text: t('coronavirus_form.questions.support_address.town_city.label')
   },
+  id: "town_city",
   name: "town_city",
   type: "text",
   error_message: error_items('town_city'),
@@ -56,6 +59,7 @@
   label: {
     text: t('coronavirus_form.questions.support_address.county.label')
   },
+  id: "county",
   name: "county",
   type: "text",
   error_message: error_items('county'),
@@ -67,6 +71,7 @@
   label: {
     text: t('coronavirus_form.questions.support_address.postcode.label')
   },
+  id: "postcode",
   name: "postcode",
   type: "text",
   error_message: error_items('postcode'),
