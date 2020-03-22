@@ -25,4 +25,12 @@
   <%= t('check_your_answers.confirmation') %>
 </p>
 
-<%= render "govuk_publishing_components/components/button", text: "Accept and send", margin_bottom: true %>
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-vulnerable-people-check_your_answers",
+  "id": "check_your_answers",
+  "novalidate": "true"
+) do %>
+
+  <%= render "govuk_publishing_components/components/button", text: t('check_your_answers.submit'), margin_bottom: true %>
+<% end %>
+
