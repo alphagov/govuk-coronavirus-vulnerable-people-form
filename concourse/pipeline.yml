@@ -35,7 +35,7 @@ jobs:
       - get: govuk-coronavirus-vulnerable-people-form-travis-build
         trigger: true
       - get: govuk-coronavirus-vulnerable-people-form
-      - task: paas-staging
+      - task: deploy-to-paas
         config:
         file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/deploy-to-govuk-paas.yml
         params:
@@ -62,7 +62,7 @@ jobs:
       - get: govuk-coronavirus-vulnerable-people-form
         trigger: true
         passed: [smoke-test-staging]
-      - task: paas-staging
+      - task: deploy-to-paas
         file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/deploy-to-govuk-paas.yml
         params:
           CF_SPACE: production
