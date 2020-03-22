@@ -32,6 +32,21 @@ RSpec.describe FieldValidationHelper, type: :helper do
       expect(invalid_fields).to eq [{ field: "date-day", text: "Enter a real day" }]
     end
 
+    it "returns an error if year is not a number" do
+      invalid_fields = validate_date_of_birth("Foo", "6", "25", "date")
+      expect(invalid_fields).to eq [{ field: "date-year", text: "Enter year as a number" }]
+    end
+
+    it "returns an error if month is not a number" do
+      invalid_fields = validate_date_of_birth("1990", "Foo", "25", "date")
+      expect(invalid_fields).to eq [{ field: "date-month", text: "Enter month as a number" }]
+    end
+
+    it "returns an error if day is not a number" do
+      invalid_fields = validate_date_of_birth("1990", "6", "Foo", "date")
+      expect(invalid_fields).to eq [{ field: "date-day", text: "Enter day as a number" }]
+    end
+
     it "returns an error if no date is entered" do
       invalid_fields = validate_date_of_birth("", "", "", "date")
       expect(invalid_fields).to eq [{ field: "date-day", text: "Enter your date of birth" }]
