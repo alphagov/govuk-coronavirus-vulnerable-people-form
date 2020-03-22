@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   # (v4[sunday]) Question 3: What is your name?
   get "/coronavirus-form/name", to: "coronavirus_form/name#show"
-  post "coronavirus-form/name", to: "coronavirus_form/name#submit"
+  post "/coronavirus-form/name", to: "coronavirus_form/name#submit"
 
   # (v4[sunday]) Question 4: What is your date of birth?
   get "/coronavirus-form/date-of-birth", to: "coronavirus_form/date_of_birth#show"
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   # (v4[sunday]) Question 7: Do you have a medical condition that makes you vulnerable to coronavirus?
   get "/coronavirus-form/medical-conditions", to: "coronavirus_form/medical_conditions#show"
-  post "coronavirus-form/medical-conditions", to: "coronavirus_form/medical_conditions#submit"
+  post "/coronavirus-form/medical-conditions", to: "coronavirus_form/medical_conditions#submit"
 
   # (v4[sunday]) Question 8.1: Do you know your NHS numbe?
   get "/coronavirus-form/know-nhs-number", to: "coronavirus_form/know_nhs_number#show"
@@ -43,23 +43,25 @@ Rails.application.routes.draw do
 
   # (v4[sunday]) Question 9: Do you have a way of getting essential supplies delivered?
   get "/coronavirus-form/essential-supplies", to: "coronavirus_form/essential_supplies#show"
-  post "coronavirus-form/essential-supplies", to: "coronavirus_form/essential_supplies#submit"
+  post "/coronavirus-form/essential-supplies", to: "coronavirus_form/essential_supplies#submit"
 
   # (v4[sunday]) Question 10: Do you want us to share your details with supermarkets, if that becomes possible?
 
   # (v4[sunday]) Question 11: Are your basic care needs being met at the moment?
   get "/coronavirus-form/basic-care-needs", to: "coronavirus_form/basic_care_needs#show"
-  post "coronavirus-form/basic-care-needs", to: "coronavirus_form/basic_care_needs#submit"
+  post "/coronavirus-form/basic-care-needs", to: "coronavirus_form/basic_care_needs#submit"
 
   # (v4[sunday]) Question 12: Do you have family, friends or neighbours you can talk to?
+  get "/coronavirus-form/people-to-talk-to", to: "coronavirus_form/people_to_talk_to#show"
+  post "coronavirus-form/people-to-talk-to", to: "coronavirus_form/people_to_talk_to#submit"
 
   # (v4[sunday]) Question 13: Do you have any special dietary requirements?
   get "/coronavirus-form/dietary-requirements", to: "coronavirus_form/dietary_requirements#show"
-  post "coronavirus-form/dietary-requirements", to: "coronavirus_form/dietary_requirements#submit"
+  post "/coronavirus-form/dietary-requirements", to: "coronavirus_form/dietary_requirements#submit"
 
   # (v4[sunday]) Question 14: Is there someone in the house who's able to carry a delivery of supplies inside?
   get "/coronavirus-form/carry-supplies", to: "coronavirus_form/carry_supplies#show"
-  post "coronavirus-form/carry-supplies", to: "coronavirus_form/carry_supplies#submit"
+  post "/coronavirus-form/carry-supplies", to: "coronavirus_form/carry_supplies#submit"
 
   # Check answers page
   get "/coronavirus-form/check-your-answers" => "coronavirus_form/check_answers#show"

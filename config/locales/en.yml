@@ -195,3 +195,11 @@ en:
             must_be_a_number: NHS number must be a number
             must_be_ten_digits: NHS number must be ten digits
             must_have_checksum: NHS number must be valid
+      people_to_talk_to:
+        title: Do you have family, friends or neighbours you can talk to?
+        hint: These might be people you talk to over the phone or online.
+        options:
+          option_yes:
+            label: "Yes"
+          option_no:
+            label: "No"
