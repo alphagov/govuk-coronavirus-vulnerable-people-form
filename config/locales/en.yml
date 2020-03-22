@@ -65,7 +65,7 @@ en:
             label: "No"
           not_sure:
             label: "Not sure"
-        custom_select_error: Please select Yes or No
+        custom_select_error: Select if you received the letter from the NHS
       medical_conditions:
         title: Do you have a medical condition that makes you vulnerable to coronavirus?
         description: |
