@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   post "coronavirus-form/essential-supplies", to: "coronavirus_form/essential_supplies#submit"
 
   # (v3) Question 10: Are your basic care needs being met at the moment?
+  get "/coronavirus-form/basic-care-needs", to: "coronavirus_form/basic_care_needs#show"
+  post "coronavirus-form/basic-care-needs", to: "coronavirus_form/basic_care_needs#submit"
 
   # (v3) Question 11: Do you have any special dietary requirements?
   get "/coronavirus-form/dietary-requirements", to: "coronavirus_form/dietary_requirements#show"
