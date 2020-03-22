@@ -9,4 +9,5 @@ inherit_mode:
 
 Metrics/BlockLength:
   Exclude:
-    - config/routes.rb
+    - config/**/*
+    - config/environments/production.rb
