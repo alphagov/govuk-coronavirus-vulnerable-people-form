@@ -169,7 +169,7 @@ en:
             label: "Yes, I know my NHS number"
           option_no:
             label: "No, I do not know my NHS number"
-        custom_select_error: Please select Yes or No
+        custom_select_error: Select yes if you know your NHS number
       name:
         title: What is your name?
         first_name:
@@ -213,7 +213,7 @@ en:
         nhs_number:
           label: NHS Number
           custom_errors:
-            missing: NHS number is required
+            missing: Enter your 10-digit NHS number
             must_be_a_number: NHS number must be a number
-            must_be_ten_digits: NHS number must be ten digits
-            must_have_checksum: NHS number must be valid
+            must_be_ten_digits: NHS number must be 10 digits
+            must_have_checksum: Enter a real NHS number
