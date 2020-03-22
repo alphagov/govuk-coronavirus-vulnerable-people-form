@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get "/coronavirus-form/medical-conditions", to: "coronavirus_form/medical_conditions#show"
   post "coronavirus-form/medical-conditions", to: "coronavirus_form/medical_conditions#submit"
 
-  # (v4[sunday]) Question 8.1: Do you know your NHS numbe?
+  # (v4[sunday]) Question 8.1: Do you know your NHS number?
   get "/coronavirus-form/know-nhs-number", to: "coronavirus_form/know_nhs_number#show"
   post "/coronavirus-form/know-nhs-number", to: "coronavirus_form/know_nhs_number#submit"
 
@@ -47,21 +47,15 @@ Rails.application.routes.draw do
   get "/coronavirus-form/essential-supplies", to: "coronavirus_form/essential_supplies#show"
   post "coronavirus-form/essential-supplies", to: "coronavirus_form/essential_supplies#submit"
 
-  # (v4[sunday]) Question 10: Do you want us to share your details with supermarkets, if that becomes possible?
-  get "/coronavirus-form/supermarkets", to: "coronavirus_form/supermarkets#show"
-  post "coronavirus-form/supermarkets", to: "coronavirus_form/supermarkets#submit"
-
-  # (v4[sunday]) Question 11: Are your basic care needs being met at the moment?
+  # (v4[sunday]) Question 10: Are your basic care needs being met at the moment?
   get "/coronavirus-form/basic-care-needs", to: "coronavirus_form/basic_care_needs#show"
   post "coronavirus-form/basic-care-needs", to: "coronavirus_form/basic_care_needs#submit"
 
-  # (v4[sunday]) Question 12: Do you have family, friends or neighbours you can talk to?
-
-  # (v4[sunday]) Question 13: Do you have any special dietary requirements?
+  # (v4[sunday]) Question 11: Do you have any special dietary requirements?
   get "/coronavirus-form/dietary-requirements", to: "coronavirus_form/dietary_requirements#show"
   post "coronavirus-form/dietary-requirements", to: "coronavirus_form/dietary_requirements#submit"
 
-  # (v4[sunday]) Question 14: Is there someone in the house who's able to carry a delivery of supplies inside?
+  # (v4[sunday]) Question 12: Is there someone in the house who's able to carry a delivery of supplies inside?
   get "/coronavirus-form/carry-supplies", to: "coronavirus_form/carry_supplies#show"
   post "coronavirus-form/carry-supplies", to: "coronavirus_form/carry_supplies#submit"
 
@@ -86,6 +80,9 @@ Rails.application.routes.draw do
   get "/coronavirus-form/virus-test", to: "coronavirus_form/virus_test#show"
   post "/coronavirus-form/virus-test", to: "coronavirus_form/virus_test#submit"
 
+  # Do you want us to share your details with supermarkets, if that becomes possible?
+  get "/coronavirus-form/supermarkets", to: "coronavirus_form/supermarkets#show"
+  post "coronavirus-form/supermarkets", to: "coronavirus_form/supermarkets#submit"
 
   # Do you have a high temperature or a new, continuous cough?
   get "/coronavirus-form/temperature-or-cough", to: "coronavirus_form/temperature_or_cough#show"
