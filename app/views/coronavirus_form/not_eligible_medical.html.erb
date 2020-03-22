@@ -3,6 +3,10 @@
   <meta name="description" content="<%= t('not_eligible_medical.title') %>" />
 <% end %>
 
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
 <%= render "govuk_publishing_components/components/title", {
   title: t('not_eligible_medical.title'),
   margin_top: 0
