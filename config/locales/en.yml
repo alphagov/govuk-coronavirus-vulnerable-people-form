@@ -177,10 +177,12 @@ en:
         title: What is your name?
         first_name:
           label: First name
+          custom_error: Enter your first name
         middle_name:
           label: Middle names (optional)
         last_name:
           label: Last name
+          custom_error: Enter your last name
       support_address:
         title: What is the address where you need support?
         hint: If you’re applying for someone else, enter the address of the person who needs support.
