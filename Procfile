@@ -1,1 +1,1 @@
-web: rake db:migrate && bin/rails server
+web: bin/rails server
