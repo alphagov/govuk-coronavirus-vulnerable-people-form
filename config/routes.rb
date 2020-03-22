@@ -72,7 +72,7 @@ Rails.application.routes.draw do
   # Not eligible for supplies
   get "/coronavirus-form/not-eligible-medical" => "coronavirus_form/not_eligible_medical#show"
 
-  # Not eligible, not England
+  # Person isn't eligible if not in England
   get "/coronavirus-form/not-eligible-england" => "coronavirus_form/not_eligible_england#show"
 
   # Final page
