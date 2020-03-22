@@ -178,7 +178,7 @@ en:
           label: Postcode
       basic_care_needs:
         title: Are your basic care needs being met at the moment?
-        hint: For example, washing and bathing yourself and keeping your house clean, with the help of friends or family. 
+        hint: For example, washing and bathing yourself and keeping your house clean, with the help of friends or family.
         options:
           option_yes:
             label: "Yes"
@@ -190,4 +190,8 @@ en:
         hint_where_to_find: You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
         nhs_number:
           label: NHS Number
-          custom_error: NHS number is required
+          custom_errors:
+            missing: NHS number is required
+            must_be_a_number: NHS number must be a number
+            must_be_ten_digits: NHS number must be ten digits
+            must_have_checksum: NHS number must be valid
