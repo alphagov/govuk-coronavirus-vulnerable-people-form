@@ -75,6 +75,33 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       expect(response).to redirect_to(next_page)
     end
 
+    it "redirects to next step when postcode is valid" do
+      valid_postcodes = [
+        "AA9A 9AA",
+        "A9A 9AA",
+        "A9 9AA",
+        "A99 9AA",
+        "AA9 9AA",
+        "AA99 9AA",
+        "BFPO 1",
+        "BFPO 9",
+      ]
+
+      valid_postcodes.each do |postcode|
+        params["postcode"] = postcode
+        post :submit, params: params
+
+        expect(response).to redirect_to(next_page)
+      end
+    end
+
+    it "does not redirect to next step when postcode is invalid" do
+      params["postcode"] = "AAA1 1AA"
+      post :submit, params: params
+
+      expect(response).to render_template(current_template)
+    end
+
     described_class::REQUIRED_FIELDS.each do |field|
       it "requires that key #{field} be provided" do
         post :submit, params: params.except(field)
