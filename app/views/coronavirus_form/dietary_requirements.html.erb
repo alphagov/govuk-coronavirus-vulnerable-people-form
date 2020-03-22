@@ -13,7 +13,8 @@
     <%= form_tag({},
       "data-module": "track-coronavirus-form-vulnerable-people-dietary-requirements",
       "data-question-key": "dietary_requirements",
-      "id": "dietary_requirements"
+      "id": "dietary_requirements",
+      "novalidate": "true"
     ) do %>
     <%= render "govuk_publishing_components/components/radio", {
       heading: t("coronavirus_form.questions.dietary_requirements.title"),

@@ -13,7 +13,8 @@
     <%= form_tag({},
       "data-module": "track-coronavirus-form-vulnerable-people-carry-supplies",
       "data-question-key": "carry_supplies",
-      "id": "carry_supplies"
+      "id": "carry_supplies",
+      "novalidate": "true"
     ) do %>
     <%= render "govuk_publishing_components/components/radio", {
       heading: t("coronavirus_form.questions.carry_supplies.title"),

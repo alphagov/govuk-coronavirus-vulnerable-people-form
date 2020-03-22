@@ -13,7 +13,8 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-know_nhs_number",
   "data-question-key": "know_nhs_number",
-  "id": "know_nhs_number"
+  "id": "know_nhs_number",
+  "novalidate": "true"
 ) do %>
 
     <%= render "govuk_publishing_components/components/radio", {

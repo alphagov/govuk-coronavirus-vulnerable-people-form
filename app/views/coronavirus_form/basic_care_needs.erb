@@ -12,7 +12,8 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-basic-care-needs",
   "data-question-key": "basic_care_needs",
-  "id": "basic_care_needs"
+  "id": "basic_care_needs",
+  "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/radio", {
   heading: t("coronavirus_form.questions.basic_care_needs.title"),

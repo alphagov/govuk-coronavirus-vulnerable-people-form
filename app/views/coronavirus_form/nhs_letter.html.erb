@@ -13,7 +13,8 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-nhs_letter",
   "data-question-key": "nhs_letter",
-  "id": "nhs_letter"
+  "id": "nhs_letter",
+  "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/radio", {
   heading: t("coronavirus_form.questions.nhs_letter.title"),

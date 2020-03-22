@@ -54,14 +54,20 @@ module FieldValidationHelper
   end
 
   def validate_date_fields(year, month, day, field)
-    return [] if year.blank? && month.blank? && day.blank?
-
     invalid_fields = []
-    invalid_fields << { field: field.to_s, text: t("coronavirus_form.errors.missing_year", field: field).humanize } if year.blank?
-    invalid_fields << { field: field.to_s, text: t("coronavirus_form.errors.missing_month", field: field).humanize } if month.blank?
-    invalid_fields << { field: field.to_s, text: t("coronavirus_form.errors.missing_day", field: field).humanize } if day.blank?
+    # If all fields are missing
+    if year.blank? && month.blank? && day.blank?
+      invalid_fields << { field: "#{field}-day", text: t("coronavirus_form.errors.missing_date") }
+    # If one or more fields are input incorrectly, find the first incorrect one and link to it.
+    elsif day.blank?
+      invalid_fields << { field: "#{field}-day", text: t("coronavirus_form.errors.missing_fields") }
+    elsif month.blank?
+      invalid_fields << { field: "#{field}-month", text: t("coronavirus_form.errors.missing_fields") }
+    elsif year.blank?
+      invalid_fields << { field: "#{field}-year", text: t("coronavirus_form.errors.missing_fields") }
+    end
     unless(invalid_fields != [] || Date.valid_date?(year.to_i, month.to_i, day.to_i))
-      invalid_fields << { field: field.to_s, text: t("coronavirus_form.errors.invalid_date", field: field).humanize }
+      invalid_fields << { field: "#{field}-day", text: t("coronavirus_form.errors.invalid_date") }
     end
     invalid_fields
   end

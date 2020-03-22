@@ -12,7 +12,8 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-virus_test",
   "data-question-key": "virus_test",
-  "id": "virus_test"
+  "id": "virus_test",
+  "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/radio", {
   heading: t("coronavirus_form.questions.virus_test.title"),

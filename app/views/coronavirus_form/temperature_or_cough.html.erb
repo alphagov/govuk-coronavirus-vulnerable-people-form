@@ -12,7 +12,8 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-temperature_or_cough",
   "data-question-key": "temperature_or_cough",
-  "id": "temperature_or_cough"
+  "id": "temperature_or_cough",
+  "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/radio", {
   heading: t("coronavirus_form.questions.temperature_or_cough.title"),

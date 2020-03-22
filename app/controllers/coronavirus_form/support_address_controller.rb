@@ -52,17 +52,15 @@ private
 
     invalid_fields = []
 
-    if product["postcode"].blank?
-      invalid_fields << {
-        field: "postcode",
-        text: t("coronavirus_form.errors.missing_postcode_field"),
-      }
-    end
-
     if product["county"].blank?
       invalid_fields << {
         field: "county",
-        text: t("coronavirus_form.errors.missing_county_field"),
+        text: t("coronavirus_form.errors.missing_county_or_postcode_field"),
+      }
+    elsif product["postcode"].blank?
+      invalid_fields << {
+        field: "postcode",
+        text: t("coronavirus_form.errors.missing_county_or_postcode_field"),
       }
     end
 

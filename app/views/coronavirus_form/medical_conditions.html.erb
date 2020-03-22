@@ -13,7 +13,8 @@
     <%= form_tag({},
       "data-module": "track-coronavirus-form-vulnerable-people-medical_conditions",
       "data-question-key": "medical_conditions",
-      "id": "medical_conditions"
+      "id": "medical_conditions",
+      "novalidate": "true"
     ) do %>
     <%= render "govuk_publishing_components/components/radio", {
       heading: t("coronavirus_form.questions.medical_conditions.title"),
