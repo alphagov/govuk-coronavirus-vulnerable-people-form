@@ -40,7 +40,6 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       expect(session[session_key]).to eq address
     end
 
-    # [1st line, Town, postcode] OR [1st line, Town, County]
     it "does not require address line 2" do
       post :submit, params: params.except("building_and_street_line_2")
 

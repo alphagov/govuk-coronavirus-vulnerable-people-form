@@ -23,24 +23,28 @@ RSpec.describe CoronavirusForm::NhsNumberController, type: :controller do
     it "validates the nhs_number is required" do
       post :submit, params: {}
 
+      expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(current_template)
     end
 
     it "validates the nhs_number is a number" do
       post :submit, params: { nhs_number: "abc" }
 
+      expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(current_template)
     end
 
     it "validates the nhs_number is a ten digit number" do
       post :submit, params: { nhs_number: "123" }
 
+      expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(current_template)
     end
 
     it "validates the nhs_number is passes the checksum" do
       post :submit, params: { nhs_number: "1234567890" }
 
+      expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(current_template)
     end
 
