@@ -1,0 +1,41 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: governmentpaas/cf-cli
+    tag: latest
+inputs:
+  - name: govuk-coronavirus-vulnerable-people-form
+    path: src
+params:
+  CF_API: https://api.cloud.service.gov.uk
+  CF_USERNAME: ((paas-username))
+  CF_PASSWORD: ((paas-password))
+  CF_ORG: govuk_development
+  SENTRY_DSN: TODO
+  CF_SPACE:
+  HOSTNAME:
+  BASIC_AUTH_PASSWORD:
+  AWS_ACCESS_KEY_ID:
+  AWS_SECRET_ACCESS_KEY:
+run:
+  dir: src
+  path: sh
+  args:
+    - '-c'
+    - |
+      set -eu
+
+      cf api "$CF_API"
+      cf auth
+      cf t -o "$CF_ORG" -s "$CF_SPACE"
+      cf v3-create-app govuk-coronavirus-vulnerable-people-form || true
+      cf v3-apply-manifest -f manifest.yml
+
+      cf set-env govuk-coronavirus-vulnerable-people-form BASIC_AUTH_PASSWORD "$BASIC_AUTH_PASSWORD"
+      cf set-env govuk-coronavirus-vulnerable-people-form SENTRY_DSN "$SENTRY_DSN"
+      cf set-env govuk-coronavirus-vulnerable-people-form AWS_ACCESS_KEY_ID "$AWS_ACCESS_KEY_ID"
+      cf set-env govuk-coronavirus-vulnerable-people-form AWS_SECRET_ACCESS_KEY "$AWS_SECRET_ACCESS_KEY"
+
+      cf v3-zdt-push govuk-coronavirus-vulnerable-people-form --wait-for-deploy-complete --no-route
+      cf map-route govuk-coronavirus-vulnerable-people-form cloudapps.digital --hostname "$HOSTNAME"
