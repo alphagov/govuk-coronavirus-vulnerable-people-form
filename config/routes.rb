@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get "/healthcheck", to: proc { [200, {}, %w[OK]] }
 
-  # Start page
-  get "/", to: "coronavirus_form/start#show"
+  get "/" => redirect("https://www.gov.uk/coronavirus-extremely-vulnerable")
 
   get "/coronavirus-form/privacy", to: "coronavirus_form/privacy#show"
 

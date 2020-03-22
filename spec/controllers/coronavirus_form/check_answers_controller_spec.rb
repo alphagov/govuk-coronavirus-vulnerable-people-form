@@ -15,7 +15,7 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
 
     it "redirects to start if no session data" do
       get :show
-      expect(response).to redirect_to({ controller: "start", action: "show" })
+      expect(response).to redirect_to({ controller: "live_in_england", action: "show" })
     end
   end
 
