@@ -71,20 +71,4 @@ Rails.application.routes.draw do
 
   # Final page
   get "/coronavirus-form/confirmation" => "coronavirus_form/confirmation#show"
-
-  # Removed?
-  get "/coronavirus-form/addiction", to: "coronavirus_form/addiction#show"
-  post "/coronavirus-form/addiction", to: "coronavirus_form/addiction#submit"
-
-  #  Have you been tested for coronavirus?
-  get "/coronavirus-form/virus-test", to: "coronavirus_form/virus_test#show"
-  post "/coronavirus-form/virus-test", to: "coronavirus_form/virus_test#submit"
-
-  # Do you want us to share your details with supermarkets, if that becomes possible?
-  get "/coronavirus-form/supermarkets", to: "coronavirus_form/supermarkets#show"
-  post "coronavirus-form/supermarkets", to: "coronavirus_form/supermarkets#submit"
-
-  # Do you have a high temperature or a new, continuous cough?
-  get "/coronavirus-form/temperature-or-cough", to: "coronavirus_form/temperature_or_cough#show"
-  post "/coronavirus-form/temperature-or-cough", to: "coronavirus_form/temperature_or_cough#submit"
 end
