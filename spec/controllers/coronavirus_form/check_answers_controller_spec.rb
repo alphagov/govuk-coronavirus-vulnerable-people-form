@@ -21,15 +21,19 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
 
   describe "POST submit" do
     before do
+      @time = Time.zone.local(2020, 11, 1, 3, 3, 3)
       allow_any_instance_of(described_class).to receive(:reference_number).and_return("abc")
+      allow_any_instance_of(ActiveSupport::TimeZone).to receive(:now).and_return(@time)
     end
 
     it "saves the form response to the database" do
       session["attribute"] = "key"
       post :submit
 
-      expect(FormResponse.first.form_response).to eq(
-        [%w[attribute key], %w[reference_number abc]],
+      expect(FormResponse.first).to have_attributes(
+        reference_id: "abc",
+        unix_timestamp: @time,
+        form_response: { "attribute": "key", "reference_id": "abc" },
       )
     end
 
