@@ -31,7 +31,7 @@ class CoronavirusForm::NameController < ApplicationController
 private
 
   PAGE = "name"
-  NEXT_PAGE = "start" # TODO change to address
+  NEXT_PAGE = "date_of_birth"
 
   def validate_text_fields(mandatory_fields, page)
     mandatory_fields.each_with_object([]) do |field, invalid_fields|
