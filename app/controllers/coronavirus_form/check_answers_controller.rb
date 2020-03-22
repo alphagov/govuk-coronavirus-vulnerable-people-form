@@ -9,7 +9,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
       session[:check_answers_seen] = true
       render "coronavirus_form/check_answers"
     else
-      redirect_to controller: "coronavirus_form/start", action: "show"
+      redirect_to controller: "coronavirus_form/live_in_england", action: "show"
     end
   end
 
