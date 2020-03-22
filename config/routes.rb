@@ -23,9 +23,13 @@ Rails.application.routes.draw do
   get "/coronavirus-form/temperature-or-cough", to: "coronavirus_form/temperature_or_cough#show"
   post "/coronavirus-form/temperature-or-cough", to: "coronavirus_form/temperature_or_cough#submit"
 
-  # Question 4: Name
+  # Question 3: Name
   get "/coronavirus-form/name", to: "coronavirus_form/name#show"
   post "coronavirus-form/name", to: "coronavirus_form/name#submit"
+
+  # Question 4: Address where support is needed
+  get "/coronavirus-form/support-address" => "coronavirus_form/support_address#show"
+  post "/coronavirus-form/support-address" => "coronavirus_form/support_address#submit"
 
   # Question 9: Dietary requirements
   get "/coronavirus-form/dietary-requirements", to: "coronavirus_form/dietary_requirements#show"
