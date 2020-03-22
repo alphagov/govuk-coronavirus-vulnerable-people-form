@@ -2,7 +2,7 @@ en:
   check_your_answers:
     title: Check your answers before sending your application
     heading: Now send your application
-    confirmation: By submitting this application you're confirming that, to the best of your knowledge, the details you're providing are correct.
+    confirmation: By submitting this application you’re confirming that, to the best of your knowledge, the details you’re providing are correct.
     submit: Accept and send
   not_eligible_medical:
     title: Sorry, you’re not eligible for help through this service
@@ -15,13 +15,13 @@ en:
   not_eligible_england:
     title: Sorry, this service is only available in England
     description: |
-      <p class="govuk-body">There's guidance from:</p>
+      <p class="govuk-body">There’s guidance from:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li><a class="govuk-link" href="https://www.health-ni.gov.uk/news/latest-update-coronavirus-covid-19-12">Northern Ireland</a></li>
         <li><a class="govuk-link" href="https://www.gov.scot/coronavirus-covid-19/">Scotland</a></li>
         <li><a class="govuk-link" href="https://gov.wales/coronavirus">Wales</a></li>
       </ul>
-      <p class="govuk-body">There's also guidance on <a href="https://www.gov.uk/coronavirus" class="govuk-link">what you need to do<a/>.</p>
+      <p class="govuk-body">There’s also guidance on <a href="https://www.gov.uk/coronavirus" class="govuk-link">what you need to do<a/>.</p>
       <p class="govuk-body">We won’t store the information you entered into this service.</p>
   privacy_page:
     title: Privacy
@@ -85,7 +85,7 @@ en:
       <p class="govuk-body">The Data Protection Officer provides independent advice and monitoring of Cabinet Office’s use of personal information.</p>
       <p class="govuk-body">If you consider that your personal information has been misused or mishandled, you can make a complaint to the Information Commissioner, who is an independent regulator. The Information Commissioner can be contacted at:</p>
       <ul class="govuk-list">
-        <li>Information Commissioner's Office, <br>Wycliffe House,<br> Water Lane,<br> Wilmslow,<br> Cheshire, SK9 5AF</li>
+        <li>Information Commissioner’s Office, <br>Wycliffe House,<br> Water Lane,<br> Wilmslow,<br> Cheshire, SK9 5AF</li>
         <li><a class="govuk-link" href="tel:+443031231113">0303 123 1113</a></li>
         <li><a class="govuk-link" href="mailto:casework@ico.org.uk">casework@ico.org.uk</a></li>
       </ul>
@@ -112,7 +112,7 @@ en:
       title: "Registration complete"
       description: |
         <p class="govuk-body">If your support needs change, go to <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">www.gov.uk/coronavirus-extremely-vulnerable</a> and go through the questions again.</p>
-        <p class="govuk-body">There's <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">guidance on what else you should do as someone who's especially vulnerable to coronavirus</a>.</p>
+        <p class="govuk-body">There’s <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">guidance on what else you should do as someone who’s especially vulnerable to coronavirus</a>.</p>
         <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
     questions:
       # These should be in the order that they're asked
@@ -125,8 +125,8 @@ en:
             label: "No"
         custom_select_error: Select yes if you live in England
       nhs_letter:
-        title: Have you recently had a letter from the NHS about your situation as someone who's extremely vulnerable to coronavirus?
-        hint: The title of the letter is 'Important advice to keep you safe from coronavirus'.
+        title: Have you recently had a letter from the NHS about your situation as someone who’s extremely vulnerable to coronavirus?
+        hint: The title of the letter is ‘Important advice to keep you safe from coronavirus’.
         options:
           option_yes:
             label: "Yes"
@@ -137,7 +137,7 @@ en:
         custom_select_error: Select if you received the letter from the NHS
       name:
         title: What is your name?
-        hint: If you're applying for someone else, enter the name of the person who needs support.
+        hint: If you’re applying for someone else, enter the name of the person who needs support.
         first_name:
           label: First name
           custom_error: Enter your first name
@@ -168,7 +168,7 @@ en:
           custom_error: Enter a postcode
       contact_details:
         title: "Enter your contact details"
-        hint: "You can use someone else's contact details if that's easier."
+        hint: "You can use someone else’s contact details if that’s easier."
         phone_number_calls:
           label: "Phone number (for phone calls)"
         phone_number_texts:
@@ -204,7 +204,7 @@ en:
           <br /><br />
           You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
           <br /><br />
-          Don't worry if you cannot find it. You'll still be able to register.
+          Don’t worry if you cannot find it. You’ll still be able to register.
         options:
           option_yes:
             label: "Yes, I know my NHS number"
@@ -243,7 +243,7 @@ en:
       dietary_requirements:
         title: Do you have any special dietary requirements?
         hint: |
-          <p class="govuk-hint app-hint">For example, you're a vegetarian or you have a food allergy.</p>
+          <p class="govuk-hint app-hint">For example, you’re a vegetarian or you have a food allergy.</p>
           <div class="govuk-inset-text">
             <p class="govuk-body">For now, food supplies will be delivered in standard packages. Check the ingredients lists carefully if you have a food allergy or follow a special diet. If you have special dietary requirements, some of the food may not meet them.</p>
           </div>
@@ -254,7 +254,7 @@ en:
             label: "No"
         custom_select_error: Select yes if you have special dietary requirements
       carry_supplies:
-        title: Is there someone in the house who's able to carry a delivery of supplies inside?
+        title: Is there someone in the house who’s able to carry a delivery of supplies inside?
         options:
           option_yes:
             label: "Yes"
