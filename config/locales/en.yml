@@ -65,7 +65,7 @@ en:
         title: Do you have a medical condition that makes you vulnerable to coronavirus?
         description: |
           <p class="govuk-body">You’re vulnerable if you:</p>
-          <ul class="govuk-list govuk-list--bullet">
+          <ul class="govuk-list govuk-list--bullet app-list--spaced">
             <li>have had a solid organ transplant</li>
             <li>have lung cancer, and you’re getting active chemotherapy or radical radiotherapy</li>
             <li>have cancer of the blood or bone marrow, at any stage of treatment - for example, leukaemia, lymphoma or myeloma</li>

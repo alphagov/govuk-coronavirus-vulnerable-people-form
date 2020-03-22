@@ -1,1 +1,8 @@
 @import 'govuk_publishing_components/all_components';
+
+.app-list--spaced > li {
+    margin-bottom: govuk-spacing(3);
+}
+.app-list--spaced > li:last-child {
+    margin-bottom: govuk-spacing(0);
+}
