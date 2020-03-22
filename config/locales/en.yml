@@ -35,6 +35,9 @@ en:
       date_order: "The end date must be after the start date"
       email_format: "Enter email address in the correct format, like name@example.com"
       postcode_format: "Enter a real postcode"
+      missing_year: "%{field} must include a year"
+      missing_month: "%{field} must include a month"
+      missing_day: "%{field} must include a day"
     nhs_letter:
       title: Have you recently had a letter from the NHS about your situation as someone who's at high risk from coronavirus?
       options:
@@ -94,6 +97,9 @@ en:
         option_no:
           label: "No"
       custom_select_error: Please select Yes or No
+    date_of_birth:
+      title: What is your date of birth?
+      hint: For example, 31 3 1980
     dietary_requirements:
       title: Do you have any special dietary requirements?
       hint: For example, you're a vegetarian or you have a food allergy.
