@@ -109,7 +109,7 @@ en:
             label: "Yes"
           option_no:
             label: "No"
-        custom_select_error: Please select Yes or No
+        custom_select_error: Select yes if there is someone in the house who is able to carry a delivery of supplies inside
       date_of_birth:
         title: What is your date of birth?
         hint: For example, 31 3 1980
@@ -121,7 +121,7 @@ en:
             label: "Yes"
           option_no:
             label: "No"
-        custom_select_error: Please select Yes or No
+        custom_select_error: Select yes if you have special dietary requirements
       essential_supplies:
         title: Do you have a way of getting essential supplies delivered at the moment?
         hint: For example, friends or family who can make sure you have enough food.
@@ -139,7 +139,7 @@ en:
             label: "Yes"
           option_no:
             label: "No"
-        custom_select_error: Please select Yes or No
+        custom_select_error: Select yes if you have a way of getting essential supplies delivered at the moment
       addiction:
         title: "Do you have a history of addiction?"
         options:
@@ -203,6 +203,7 @@ en:
             label: "Yes"
           option_no:
             label: "No"
+        custom_select_error: Select yes if your basic care needs are being met at the moment
       nhs_number:
         title: What is your NHS number?
         hint_format: An NHS Number is a 10 digit number, like 485 777 3456
