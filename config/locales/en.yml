@@ -132,7 +132,7 @@ en:
             label: "Yes"
           option_no:
             label: "No"
-        custom_select_error: Please select Yes or No
+        custom_select_error: Select yes if you have a way of getting essential supplies delivered at the moment
       supermarkets:
         title: Do you want us to share your details with supermarkets, if that becomes possible?
         hint: This is in case it becomes possible for supermarkets to prioritise you if you place a 'click and collect' order.
