@@ -34,6 +34,7 @@
   type: "text",
   error_message: error_items('building_and_street_line_1'),
   value: session[:support_address]["building_and_street_line_1"],
+  autocomplete: "address-line1",
 } %>
 
 <label class="govuk-visually-hidden" for="building_and_street_line_2">
@@ -44,6 +45,7 @@
   name: "building_and_street_line_2",
   error_message: error_items('building_and_street_line_2'),
   value: session[:support_address]["building_and_street_line_2"],
+  autocomplete: "address-line2",
 } %>
 
 <%= render "govuk_publishing_components/components/input", {
@@ -56,6 +58,7 @@
   error_message: error_items('town_city'),
   value: session[:support_address]["town_city"],
   width: 20,
+  autocomplete: "address-level2",
 } %>
 
 <%= render "govuk_publishing_components/components/input", {
@@ -80,6 +83,7 @@
   error_message: error_items('postcode'),
   value: session[:support_address]["postcode"],
   width: 10,
+  autocomplete: "postal-code",
 } %>
 
 <%= render "govuk_publishing_components/components/button", text: "Save and continue", margin_bottom: true %>

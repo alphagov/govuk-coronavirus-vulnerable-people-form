@@ -29,6 +29,7 @@
   name: "first_name",
   error_message: error_items("first_name"),
   value: session["name"]["first_name"],
+  autocomplete: "given-name",
 } %>
 
 <%= render "govuk_publishing_components/components/input", {
@@ -49,6 +50,7 @@
   name: "last_name",
   error_message: error_items("last_name"),
   value: session["name"]["last_name"],
+  autocomplete: "family-name",
 } %>
 <%= render "govuk_publishing_components/components/button", text: "Continue", margin_bottom: true %>
 <% end %>
