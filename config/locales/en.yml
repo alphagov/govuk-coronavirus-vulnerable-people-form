@@ -52,6 +52,7 @@ en:
             label: "Yes"
           option_no:
             label: "No"
+        custom_select_error: Select yes if you live in England
       nhs_letter:
         title: Have you recently had a letter from the NHS about your situation as someone who's at high risk from coronavirus?
         options:
