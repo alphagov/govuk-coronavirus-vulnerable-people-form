@@ -249,7 +249,7 @@ en:
       dietary_requirements:
         title: Do you have any special dietary requirements?
         hint: |
-          <p class="govuk-hint app-hint">For example, you’re a vegetarian or you have a food allergy.</p>
+          <p class="govuk-hint">For example, you’re a vegetarian or you have a food allergy.</p>
           <p class="govuk-inset-text">For now, food supplies will be delivered in standard packages. Check the ingredients lists carefully if you have a food allergy or follow a special diet. If you have special dietary requirements, some of the food may not meet them.</p>
         options:
           option_yes:
