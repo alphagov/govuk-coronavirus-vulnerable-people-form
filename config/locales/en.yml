@@ -23,6 +23,7 @@ en:
       <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
   coronavirus_form:
     errors:
+      page_title_prefix: 'Error: '
       heading: "There is a problem"
       radio_field: "Select %{field}"
       checkbox_field: "Select at least one %{field}"
