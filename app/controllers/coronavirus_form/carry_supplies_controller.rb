@@ -31,9 +31,9 @@ class CoronavirusForm::CarrySuppliesController < ApplicationController
 private
 
   PAGE = "carry_supplies"
-  NEXT_PAGE = "start" # TODO
+  NEXT_PAGE = "check_answers"
 
   def previous_path
-    "/" # TODO
+    coronavirus_form_dietary_requirements_path
   end
 end
