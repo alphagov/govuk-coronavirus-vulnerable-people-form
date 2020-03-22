@@ -37,14 +37,27 @@ RSpec.describe CoronavirusForm::KnowNhsNumberController, type: :controller do
     end
 
     it "redirects to next step for a permitted response" do
-      post :submit, params: { know_nhs_number: "Yes, I do know my NHS number" }
+      post :submit, params: {
+        know_nhs_number: I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label"),
+      }
+
       expect(response).to redirect_to(coronavirus_form_nhs_number_path)
     end
 
-    it "redirects to check your answers if check your answers previously seen" do
+    it "redirects to what is your NHS number question if check your answers previously seen and answer to question is yes" do
       session[:check_answers_seen] = true
-      post :submit, params: { know_nhs_number: selected }
+      post :submit, params: {
+        know_nhs_number: I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label"),
+      }
 
+      expect(response).to redirect_to(coronavirus_form_nhs_number_path)
+    end
+
+    it "redirects to check your answers if check your answers previously seen and answer to question is no" do
+      session[:check_answers_seen] = true
+      post :submit, params: {
+        know_nhs_number: I18n.t("coronavirus_form.questions.know_nhs_number.options.option_no.label"),
+      }
       expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
     end
   end

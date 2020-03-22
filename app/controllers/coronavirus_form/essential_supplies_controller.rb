@@ -34,6 +34,6 @@ private
   NEXT_PAGE = "basic_care_needs"
 
   def previous_path
-    coronavirus_form_what_is_your_nhs_number_path
+    coronavirus_form_nhs_number_path
   end
 end
