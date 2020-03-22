@@ -48,9 +48,16 @@ RSpec.describe CoronavirusForm::MedicalConditionsController, type: :controller d
 
     it "redirects to check your answers if check your answers previously seen" do
       session[:check_answers_seen] = true
-      post :submit, params: { medical_conditions: selected }
+      post :submit, params: { medical_conditions: I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes.label") }
 
       expect(response).to redirect_to(check_your_answers_path)
+    end
+
+    it "redirects to ineligible page for a no response when check your answers previously seen" do
+      session[:check_answers_seen] = true
+      post :submit, params: { medical_conditions: I18n.t("coronavirus_form.questions.medical_conditions.options.option_no.label") }
+
+      expect(response).to redirect_to(not_eligible_medical_path)
     end
   end
 end
