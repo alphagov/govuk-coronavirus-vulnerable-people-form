@@ -36,9 +36,14 @@ RSpec.describe CoronavirusForm::LiveInEnglandController, type: :controller do
       expect(response).to render_template(current_template)
     end
 
-    it "redirects to next step for a permitted response" do
-      post :submit, params: { live_in_england: selected }
+    it "redirects to next step for a yes response" do
+      post :submit, params: { live_in_england: "Yes" }
       expect(response).to redirect_to(coronavirus_form_nhs_letter_path)
+    end
+
+    it "redirects to ineligible page for a no response" do
+      post :submit, params: { live_in_england: "No" }
+      expect(response).to redirect_to(coronavirus_form_not_eligible_england_path)
     end
 
     it "redirects to check your answers if check your answers previously seen" do
