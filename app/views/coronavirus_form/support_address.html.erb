@@ -22,7 +22,6 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulernable-people-support-address",
   "data-question-key": "support_address",
-  "id": "support_address",
   "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/input", {
@@ -86,5 +85,5 @@
   autocomplete: "postal-code",
 } %>
 
-<%= render "govuk_publishing_components/components/button", text: "Save and continue", margin_bottom: true %>
+<%= render "govuk_publishing_components/components/button", text: "Continue", margin_bottom: true %>
 <% end %>

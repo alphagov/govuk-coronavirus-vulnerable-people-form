@@ -15,7 +15,6 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-know_nhs_number",
   "data-question-key": "know_nhs_number",
-  "id": "know_nhs_number",
   "novalidate": "true"
 ) do %>
 
@@ -25,8 +24,9 @@
       name: "know_nhs_number",
       error_message: error_items("know_nhs_number"),
       hint: sanitize(t("coronavirus_form.questions.know_nhs_number.hint")),
-      items: t("coronavirus_form.questions.know_nhs_number.options").map do |_, item|
+      items: t("coronavirus_form.questions.know_nhs_number.options").map.with_index do |(_, item), index|
         {
+          id: ("know_nhs_number" if index == 0),
           value: item[:label],
           text: item[:label],
           checked: session[:know_nhs_number] == item[:label],

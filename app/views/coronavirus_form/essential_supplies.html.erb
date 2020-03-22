@@ -13,7 +13,6 @@
     <%= form_tag({},
       "data-module": "track-coronavirus-form-vulnerable-people-essential-supplies",
       "data-question-key": "essential_supplies",
-      "id": "essential_supplies",
       "novalidate": "true"
     ) do %>
     <%= render "govuk_publishing_components/components/radio", {
@@ -22,8 +21,9 @@
       name: "essential_supplies",
       description: t("coronavirus_form.questions.essential_supplies.hint"),
       error_message: error_items("essential_supplies"),
-      items: t("coronavirus_form.questions.essential_supplies.options").map do |_, item|
+      items: t("coronavirus_form.questions.essential_supplies.options").map.with_index do |(_, item), index|
         {
+          id: ("essential_supplies" if index == 0),
           value: item[:label],
           text: item[:label],
           checked: session[:essential_supplies] == item[:label],

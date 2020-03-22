@@ -13,7 +13,6 @@
     <%= form_tag({},
       "data-module": "track-coronavirus-form-vulnerable-people-carry-supplies",
       "data-question-key": "carry_supplies",
-      "id": "carry_supplies",
       "novalidate": "true"
     ) do %>
     <%= render "govuk_publishing_components/components/radio", {
@@ -21,8 +20,9 @@
       is_page_heading: true,
       name: "carry_supplies",
       error_message: error_items("carry_supplies"),
-      items: t("coronavirus_form.questions.carry_supplies.options").map do |_, item|
+      items: t("coronavirus_form.questions.carry_supplies.options").map.with_index do |(_, item), index|
         {
+          id: ("carry_supplies" if index == 0),
           value: item[:label],
           text: item[:label],
           checked: session[:carry_supplies] == item[:label],

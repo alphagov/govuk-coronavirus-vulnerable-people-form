@@ -13,7 +13,6 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-nhs_letter",
   "data-question-key": "nhs_letter",
-  "id": "nhs_letter",
   "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/radio", {
@@ -21,8 +20,9 @@
   is_page_heading: true,
   name: "nhs_letter",
   error_message: error_items("nhs_letter"),
-  items: t("coronavirus_form.questions.nhs_letter.options").map do |_, item|
+  items: t("coronavirus_form.questions.nhs_letter.options").map.with_index do |(_, item), index|
     {
+      id: ("nhs_letter" if index == 0),
       value: item[:label],
       text: item[:label],
       checked: session[:nhs_letter] == item[:label],
