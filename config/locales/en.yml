@@ -61,6 +61,45 @@ en:
           not_sure:
             label: "Not sure"
         custom_select_error: Select if you received the letter from the NHS
+      name:
+        title: What is your name?
+        first_name:
+          label: First name
+          custom_error: Enter your first name
+        middle_name:
+          label: Middle names (optional)
+        last_name:
+          label: Last name
+          custom_error: Enter your last name
+      date_of_birth:
+        title: What is your date of birth?
+        hint: For example, 31 3 1980
+      support_address:
+        title: What is the address where you need support?
+        hint: If you’re applying for someone else, enter the address of the person who needs support.
+        building_and_street:
+          label: Building and street
+        building_and_street_line_1:
+          label: Building and street (First line)
+          custom_error: Enter a building and street
+        town_city:
+          label: Town or city
+          custom_error: Enter a town or city
+        county:
+          label: County
+          custom_error: Enter a county
+        postcode:
+          label: Postcode
+          custom_error: Enter a postcode
+      contact_details:
+        title: "Enter your contact details"
+        hint: "You can use someone else's contact details if that's easier."
+        phone_number_calls:
+          label: "Phone number (for phone calls)"
+        phone_number_texts:
+          label: "Phone number (for text messages)"
+        email:
+          label: "Email address"
       medical_conditions:
         title: Do you have a medical condition that makes you vulnerable to coronavirus?
         description: |
@@ -83,6 +122,64 @@ en:
           option_no:
             label: "No, I do not have a medical condition that makes me vulnerable to coronavirus"
         custom_select_error: Select yes if you have one of the medical conditions on the list
+      know_nhs_number:
+        title: "Do you know your NHS number?"
+        hint: |
+          An NHS number is a 10 digit number, like 485 777 3456.
+          <br /><br />
+          You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
+        options:
+          option_yes:
+            label: "Yes, I know my NHS number"
+          option_no:
+            label: "No, I do not know my NHS number"
+        custom_select_error: Please select Yes or No
+      nhs_number:
+        title: What is your NHS number?
+        hint_format: An NHS Number is a 10 digit number, like 485 777 3456
+        hint_where_to_find: You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
+        nhs_number:
+          label: NHS Number
+          custom_errors:
+            missing: NHS number is required
+            must_be_a_number: NHS number must be a number
+            must_be_ten_digits: NHS number must be ten digits
+            must_have_checksum: NHS number must be valid
+      essential_supplies:
+        title: Do you have a way of getting essential supplies delivered at the moment?
+        hint: For example, friends or family who can make sure you have enough food.
+        options:
+          option_yes:
+            label: "Yes"
+          option_no:
+            label: "No"
+        custom_select_error: Please select Yes or No
+      basic_care_needs:
+        title: Are your basic care needs being met at the moment?
+        hint: For example, washing and bathing yourself and keeping your house clean, with the help of friends or family.
+        options:
+          option_yes:
+            label: "Yes"
+          option_no:
+            label: "No"
+        custom_select_error: Select yes if your basic care needs are being met at the moment
+      dietary_requirements:
+        title: Do you have any special dietary requirements?
+        hint: For example, you're a vegetarian or you have a food allergy.
+        options:
+          option_yes:
+            label: "Yes"
+          option_no:
+            label: "No"
+        custom_select_error: Select yes if you have special dietary requirements
+      carry_supplies:
+        title: Is there someone in the house who's able to carry a delivery of supplies inside?
+        options:
+          option_yes:
+            label: "Yes"
+          option_no:
+            label: "No"
+        custom_select_error: Select yes if there is someone in the house who is able to carry a delivery of supplies inside
       temperature_or_cough:
         title: Do you have a high temperature or a new, continuous cough?
         hint: A continuous cough means coughing a lot for more than an hour, or 3 or more coughing episodes in 24 hours
@@ -102,35 +199,6 @@ en:
           option_no:
             label: No, I have not been tested
         custom_select_error: Please select an option
-      carry_supplies:
-        title: Is there someone in the house who's able to carry a delivery of supplies inside?
-        options:
-          option_yes:
-            label: "Yes"
-          option_no:
-            label: "No"
-        custom_select_error: Select yes if there is someone in the house who is able to carry a delivery of supplies inside
-      date_of_birth:
-        title: What is your date of birth?
-        hint: For example, 31 3 1980
-      dietary_requirements:
-        title: Do you have any special dietary requirements?
-        hint: For example, you're a vegetarian or you have a food allergy.
-        options:
-          option_yes:
-            label: "Yes"
-          option_no:
-            label: "No"
-        custom_select_error: Select yes if you have special dietary requirements
-      essential_supplies:
-        title: Do you have a way of getting essential supplies delivered at the moment?
-        hint: For example, friends or family who can make sure you have enough food.
-        options:
-          option_yes:
-            label: "Yes"
-          option_no:
-            label: "No"
-        custom_select_error: Please select Yes or No
       supermarkets:
         title: Do you want us to share your details with supermarkets, if that becomes possible?
         hint: This is in case it becomes possible for supermarkets to prioritise you if you place a 'click and collect' order.
@@ -147,71 +215,3 @@ en:
             label: "Yes, I’ve had problems with drug addiction or alcohol addiction (alcoholism)"
           option_no:
             label: "No"
-      contact_details:
-        title: "Enter your contact details"
-        hint: "You can use someone else's contact details if that's easier."
-        phone_number_calls:
-          label: "Phone number (for phone calls)"
-        phone_number_texts:
-          label: "Phone number (for text messages)"
-        email:
-          label: "Email address"
-      know_nhs_number:
-        title: "Do you know your NHS number?"
-        hint: |
-          An NHS number is a 10 digit number, like 485 777 3456.
-          <br /><br />
-          You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
-        options:
-          option_yes:
-            label: "Yes, I know my NHS number"
-          option_no:
-            label: "No, I do not know my NHS number"
-        custom_select_error: Please select Yes or No
-      name:
-        title: What is your name?
-        first_name:
-          label: First name
-          custom_error: Enter your first name
-        middle_name:
-          label: Middle names (optional)
-        last_name:
-          label: Last name
-          custom_error: Enter your last name
-      support_address:
-        title: What is the address where you need support?
-        hint: If you’re applying for someone else, enter the address of the person who needs support.
-        building_and_street:
-          label: Building and street
-        building_and_street_line_1:
-          label: Building and street (First line)
-          custom_error: Enter a building and street
-        town_city:
-          label: Town or city
-          custom_error: Enter a town or city
-        county:
-          label: County
-          custom_error: Enter a county
-        postcode:
-          label: Postcode
-          custom_error: Enter a postcode
-      basic_care_needs:
-        title: Are your basic care needs being met at the moment?
-        hint: For example, washing and bathing yourself and keeping your house clean, with the help of friends or family.
-        options:
-          option_yes:
-            label: "Yes"
-          option_no:
-            label: "No"
-        custom_select_error: Select yes if your basic care needs are being met at the moment
-      nhs_number:
-        title: What is your NHS number?
-        hint_format: An NHS Number is a 10 digit number, like 485 777 3456
-        hint_where_to_find: You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
-        nhs_number:
-          label: NHS Number
-          custom_errors:
-            missing: NHS number is required
-            must_be_a_number: NHS number must be a number
-            must_be_ten_digits: NHS number must be ten digits
-            must_have_checksum: NHS number must be valid
