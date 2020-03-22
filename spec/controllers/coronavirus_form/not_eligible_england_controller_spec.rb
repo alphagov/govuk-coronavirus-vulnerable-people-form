@@ -2,8 +2,8 @@
 
 require "spec_helper"
 
-RSpec.describe CoronavirusForm::NotEligibleSuppliesController, type: :controller do
-  let(:current_template) { "coronavirus_form/not_eligible_supplies" }
+RSpec.describe CoronavirusForm::NotEligibleEnglandController, type: :controller do
+  let(:current_template) { "coronavirus_form/not_eligible_england" }
 
   describe "GET show" do
     it "renders the form" do
