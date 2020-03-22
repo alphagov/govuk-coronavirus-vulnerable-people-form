@@ -6,3 +6,10 @@
 .app-list--spaced > li:last-child {
     margin-bottom: govuk-spacing(0);
 }
+
+// The GOV.UK Design System team are aware of issues with lighter grey text for some disabled users
+// For example those with dyslexia or visual impairments.
+// Since this service is targetted at vulnerable people we're setting hint text to a darker colour to be safe.
+.gem-c-hint {
+    color: $govuk-text-colour
+}
