@@ -32,9 +32,9 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
 private
 
   PAGE = "contact_details"
-  NEXT_PAGE = "check_answers"
+  NEXT_PAGE = "medical_conditions"
 
   def previous_path
-    "/"
+    coronavirus_form_support_address_path
   end
 end
