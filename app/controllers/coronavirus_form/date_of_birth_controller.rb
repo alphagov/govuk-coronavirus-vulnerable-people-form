@@ -36,9 +36,9 @@ class CoronavirusForm::DateOfBirthController < ApplicationController
 private
 
   PAGE = "date_of_birth"
-  NEXT_PAGE = "start" # TODO changeme
+  NEXT_PAGE = "support_address"
 
   def previous_path
-    "/" # TODO
+    coronavirus_form_name_path
   end
 end
