@@ -31,9 +31,9 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       post :submit
 
       expect(FormResponse.first).to have_attributes(
-        reference_id: "abc",
-        unix_timestamp: @time,
-        form_response: { "attribute": "key", "reference_id": "abc" },
+        ReferenceId: "abc",
+        UnixTimestamp: @time,
+        FormResponse: { "attribute": "key", "reference_id": "abc" },
       )
     end
 

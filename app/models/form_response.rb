@@ -1,9 +1,9 @@
 class FormResponse
   include Dynamoid::Document
 
-  table name: Rails.configuration.submissions_db_table_name, key: :reference_id
-  field :reference_id, :string
-  range :unix_timestamp, :datetime
+  table name: Rails.configuration.submissions_db_table_name, key: :ReferenceId
+  field :ReferenceId, :string
+  range :UnixTimestamp, :datetime
 
-  field :form_response, :map
+  field :FormResponse, :map
 end
