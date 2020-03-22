@@ -52,5 +52,12 @@ RSpec.describe CoronavirusForm::LiveInEnglandController, type: :controller do
 
       expect(response).to redirect_to(check_your_answers_path)
     end
+
+    it "redirects to ineligible page for a no response when check your answers previously seen" do
+      session[:check_answers_seen] = true
+      post :submit, params: { live_in_england: "No" }
+
+      expect(response).to redirect_to(not_eligible_england_path)
+    end
   end
 end
