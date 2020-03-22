@@ -1,4 +1,33 @@
-@import 'govuk_publishing_components/all_components';
+// @import 'govuk_publishing_components/all_components';
+
+@import 'govuk_publishing_components/govuk_frontend_support';
+@import 'govuk_publishing_components/component_support';
+
+@import 'govuk_publishing_components/components/_skip-link';
+@import 'govuk_publishing_components/components/_layout-header';
+@import 'govuk_publishing_components/components/_phase-banner';
+@import 'govuk_publishing_components/components/_back-link';
+@import 'govuk_publishing_components/components/_breadcrumbs';
+
+@import 'govuk_publishing_components/components/_title';
+@import 'govuk_publishing_components/components/_heading';
+@import 'govuk_publishing_components/components/_inset-text';
+
+@import 'govuk_publishing_components/components/_error-message';
+@import 'govuk_publishing_components/components/_error-summary';
+
+@import 'govuk_publishing_components/components/_layout-footer';
+
+@import 'govuk_publishing_components/components/_summary-list';
+@import 'govuk_publishing_components/components/_panel';
+
+@import 'govuk_publishing_components/components/_fieldset';
+@import 'govuk_publishing_components/components/_hint';
+@import 'govuk_publishing_components/components/_input';
+@import 'govuk_publishing_components/components/_date-input';
+@import 'govuk_publishing_components/components/_label';
+@import 'govuk_publishing_components/components/_radio';
+@import 'govuk_publishing_components/components/_button';
 
 .app-list--spaced > li {
     margin-bottom: govuk-spacing(3);
