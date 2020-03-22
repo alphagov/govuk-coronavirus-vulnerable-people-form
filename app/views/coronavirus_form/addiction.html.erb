@@ -12,7 +12,8 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-addiction",
   "data-question-key": "addiction",
-  "id": "addiction"
+  "id": "addiction",
+  "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/radio", {
   heading: t("coronavirus_form.questions.addiction.title"),

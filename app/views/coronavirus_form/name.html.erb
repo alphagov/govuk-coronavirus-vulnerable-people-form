@@ -18,7 +18,8 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-name",
   "data-question-key": "name",
-  "id": "name"
+  "id": "name",
+  "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/input", {
   label: {

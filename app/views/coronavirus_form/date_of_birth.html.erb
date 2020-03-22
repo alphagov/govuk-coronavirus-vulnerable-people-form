@@ -12,7 +12,8 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-date-of-birth",
   "data-question-key": "date_of_birth",
-  "id": "date_of_birth"
+  "id": "date_of_birth",
+  "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/title", {
   title: t("coronavirus_form.questions.date_of_birth.title"),
