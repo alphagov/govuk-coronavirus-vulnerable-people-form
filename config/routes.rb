@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   post "/coronavirus-form/know-nhs-number", to: "coronavirus_form/know_nhs_number#submit"
 
   # (v3) Question 8: What is your NHS number
+  get "/coronavirus-form/what-is-your-nhs-number" => "coronavirus_form/nhs_number#show"
+  post "/coronavirus-form/what-is-your-nhs-number" => "coronavirus_form/nhs_number#submit"
 
   # (v3) Question 9: Do you have a way of getting essential supplies delivered?
   get "/coronavirus-form/essential-supplies", to: "coronavirus_form/essential_supplies#show"

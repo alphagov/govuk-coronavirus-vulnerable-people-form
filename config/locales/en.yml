@@ -184,3 +184,14 @@ en:
             label: "Yes"
           option_no:
             label: "No"
+      nhs_number:
+        title: What is your NHS number?
+        hint_format: An NHS Number is a 10 digit number, like 485 777 3456
+        hint_where_to_find: You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
+        nhs_number:
+          label: NHS Number
+          custom_errors:
+            missing: NHS number is required
+            must_be_a_number: NHS number must be a number
+            must_be_ten_digits: NHS number must be ten digits
+            must_have_checksum: NHS number must be valid
