@@ -1,5 +1,0 @@
-<% if flash[:validation]&.any? %>
-  <%= render "govuk_publishing_components/components/error_message", {
-    items: flash[:validation].map { |field| { text: field[:text] } }
-  } %>
-<% end %>
