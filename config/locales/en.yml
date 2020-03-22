@@ -174,3 +174,11 @@ en:
         label: County
       postcode:
         label: Postcode
+    basic_care_needs:
+      title: Are your basic care needs being met at the moment?
+      hint: For example, washing and bathing yourself and keeping your house clean, with the help of friends or family. 
+      options:
+        option_yes:
+          label: "Yes"
+        option_no:
+          label: "No"

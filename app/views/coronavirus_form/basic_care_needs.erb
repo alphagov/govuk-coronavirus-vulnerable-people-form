@@ -1,0 +1,30 @@
+<% content_for :title do %><%= t('coronavirus_form.basic_care_needs.title') %><% end %>
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('coronavirus_form.basic_care_needs.title') %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-vulnerable-people-basic-care-needs",
+  "data-question-key": "basic_care_needs",
+  "id": "basic_care_needs"
+) do %>
+<%= render "govuk_publishing_components/components/radio", {
+  heading: t('coronavirus_form.basic_care_needs.title'),
+  hint: t('coronavirus_form.basic_care_needs.hint'),
+  is_page_heading: true,
+  name: "basic_care_needs",
+  error_message: error_items('basic_care_needs'),
+  items: t('coronavirus_form.basic_care_needs.options').map do |_, item|
+    {
+      value: item[:label],
+      text: item[:label],
+      checked: session[:basic_care_needs] == item[:label],
+    }
+  end
+} %>
+<%= render "govuk_publishing_components/components/button", text: "Continue", margin_bottom: true %>
+<% end %>
