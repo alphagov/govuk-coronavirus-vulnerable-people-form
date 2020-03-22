@@ -39,6 +39,6 @@ private
   NEXT_PAGE = "support_address"
 
   def previous_path
-    coronavirus_form_name_path
+    name_path
   end
 end

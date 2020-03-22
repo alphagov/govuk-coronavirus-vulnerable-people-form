@@ -38,14 +38,14 @@ RSpec.describe CoronavirusForm::BasicCareNeedsController, type: :controller do
 
     it "redirects to next step for a permitted response" do
       post :submit, params: { basic_care_needs: selected }
-      expect(response).to redirect_to(coronavirus_form_dietary_requirements_path)
+      expect(response).to redirect_to(dietary_requirements_path)
     end
 
     it "redirects to check your answers if check your answers previously seen" do
       session[:check_answers_seen] = true
       post :submit, params: { basic_care_needs: "Yes" }
 
-      expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
+      expect(response).to redirect_to(check_your_answers_path)
     end
   end
 end

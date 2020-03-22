@@ -32,7 +32,7 @@ RSpec.describe CoronavirusForm::EssentialSuppliesController, type: :controller d
 
     it "redirects to next step for a permitted response" do
       post :submit, params: { essential_supplies: selected }
-      expect(response).to redirect_to(coronavirus_form_basic_care_needs_path)
+      expect(response).to redirect_to(basic_care_needs_path)
     end
 
     it "validates a valid option is chosen" do
@@ -45,7 +45,7 @@ RSpec.describe CoronavirusForm::EssentialSuppliesController, type: :controller d
       session[:check_answers_seen] = true
       post :submit, params: { essential_supplies: selected }
 
-      expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
+      expect(response).to redirect_to(check_your_answers_path)
     end
   end
 end

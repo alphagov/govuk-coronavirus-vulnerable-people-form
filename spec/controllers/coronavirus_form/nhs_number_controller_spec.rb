@@ -50,14 +50,14 @@ RSpec.describe CoronavirusForm::NhsNumberController, type: :controller do
 
     it "redirects to next step for a valid NHS number" do
       post :submit, params: { nhs_number: valid_nhs_number }
-      expect(response).to redirect_to(coronavirus_form_essential_supplies_path)
+      expect(response).to redirect_to(essential_supplies_path)
     end
 
     it "redirects to check your answers if check your answers previously seen" do
       session[:check_answers_seen] = true
       post :submit, params: { nhs_number: valid_nhs_number }
 
-      expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
+      expect(response).to redirect_to(check_your_answers_path)
     end
   end
 end

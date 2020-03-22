@@ -35,6 +35,6 @@ private
   NEXT_PAGE = "medical_conditions"
 
   def previous_path
-    coronavirus_form_support_address_path
+    support_address_path
   end
 end

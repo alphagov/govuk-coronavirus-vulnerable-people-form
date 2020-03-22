@@ -34,6 +34,6 @@ private
   NEXT_PAGE = "check_answers"
 
   def previous_path
-    coronavirus_form_dietary_requirements_path
+    dietary_requirements_path
   end
 end

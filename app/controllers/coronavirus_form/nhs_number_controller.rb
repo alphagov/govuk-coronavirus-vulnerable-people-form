@@ -48,6 +48,6 @@ private
   NEXT_PAGE = "essential_supplies"
 
   def previous_path
-    coronavirus_form_know_nhs_number_path
+    know_nhs_number_path
   end
 end

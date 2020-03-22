@@ -34,6 +34,6 @@ private
   NEXT_PAGE = "name"
 
   def previous_path
-    coronavirus_form_live_in_england_path
+    live_in_england_path
   end
 end
