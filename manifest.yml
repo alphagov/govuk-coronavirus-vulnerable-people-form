@@ -2,8 +2,6 @@
 applications:
 - name: govuk-coronavirus-vulnerable-people-form
   buildpack: ruby_buildpack
-  memory: 1G
-  instances: 5
   services:
   - govuk-coronavirus-vulnerable-people-form-db
   - logit-ssl-drain
