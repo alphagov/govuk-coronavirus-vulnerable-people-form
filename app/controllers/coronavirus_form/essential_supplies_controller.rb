@@ -31,9 +31,9 @@ class CoronavirusForm::EssentialSuppliesController < ApplicationController
 private
 
   PAGE = "essential_supplies"
-  NEXT_PAGE = "start" # TODO change to q11
+  NEXT_PAGE = "start" # change to supermarkets when it's available
 
   def previous_path
-    "/" # TODO
+    coronavirus_form_nhs_number_path
   end
 end
