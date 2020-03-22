@@ -4,6 +4,8 @@
 
 <% content_for :meta_tags do %>
   <meta name="description" content="<%= t("coronavirus_form.questions.know_nhs_number.title") %>" />
+  <%# stop iOS treating the NHS number as a phone number %>
+  <meta name="format-detection" content="telephone=no" />
 <% end %>
 
 <% content_for :back_link do %>
@@ -33,4 +35,3 @@
     } %>
     <%= render "govuk_publishing_components/components/button", text: "Continue", margin_bottom: true %>
     <% end %>
-    
