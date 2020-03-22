@@ -13,6 +13,7 @@ params:
   CF_PASSWORD: ((paas-password))
   CF_ORG: govuk_development
   SENTRY_DSN: https://((sentry-dsn))
+  SECRET_KEY_BASE:
   CF_STARTUP_TIMEOUT:
   CF_SPACE:
   HOSTNAME:
@@ -42,6 +43,7 @@ run:
       cf set-env govuk-coronavirus-vulnerable-people-form SENTRY_DSN "$SENTRY_DSN"
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_ACCESS_KEY_ID "$AWS_ACCESS_KEY_ID"
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_SECRET_ACCESS_KEY "$AWS_SECRET_ACCESS_KEY"
+      cf set-env govuk-coronavirus-vulnerable-people-form SECRET_KEY_BASE "$SECRET_KEY_BASE"
 
       cf v3-zdt-push govuk-coronavirus-vulnerable-people-form --wait-for-deploy-complete --no-route
       cf map-route govuk-coronavirus-vulnerable-people-form cloudapps.digital --hostname "$HOSTNAME"
