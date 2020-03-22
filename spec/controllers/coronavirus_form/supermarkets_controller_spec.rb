@@ -2,9 +2,9 @@
 
 require "spec_helper"
 
-RSpec.describe CoronavirusForm::EssentialSuppliesController, type: :controller do
-  let(:current_template) { "coronavirus_form/essential_supplies" }
-  let(:session_key) { :essential_supplies }
+RSpec.describe CoronavirusForm::SupermarketsController, type: :controller do
+  let(:current_template) { "coronavirus_form/supermarkets" }
+  let(:session_key) { :supermarkets }
 
   describe "GET show" do
     it "renders the form" do
@@ -16,34 +16,34 @@ RSpec.describe CoronavirusForm::EssentialSuppliesController, type: :controller d
   describe "POST submit" do
     let(:selected) { permitted_values.sample }
     let(:permitted_values) do
-      I18n.t("coronavirus_form.questions.essential_supplies.options").map { |_, item| item[:label] }
+      I18n.t("coronavirus_form.questions.supermarkets.options").map { |_, item| item[:label] }
     end
 
     it "sets session variables" do
-      post :submit, params: { essential_supplies: selected }
+      post :submit, params: { supermarkets: selected }
       expect(session[session_key]).to eq selected
     end
 
     it "validates any option is chosen" do
-      post :submit, params: { essential_supplies: "" }
+      post :submit, params: { supermarkets: "" }
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to render_template(current_template)
+    end
+
+    it "validates a valid option is chosen" do
+      post :submit, params: { supermarkets: "<script></script>" }
       expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(current_template)
     end
 
     it "redirects to next step for a permitted response" do
-      post :submit, params: { essential_supplies: selected }
-      expect(response).to redirect_to(coronavirus_form_supermarkets_path)
-    end
-
-    it "validates a valid option is chosen" do
-      post :submit, params: { essential_supplies: "<script></script>" }
-      expect(response).to have_http_status(:unprocessable_entity)
-      expect(response).to render_template(current_template)
+      post :submit, params: { supermarkets: selected }
+      expect(response).to redirect_to(coronavirus_form_basic_care_needs_path)
     end
 
     it "redirects to check your answers if check your answers previously seen" do
       session[:check_answers_seen] = true
-      post :submit, params: { essential_supplies: selected }
+      post :submit, params: { supermarkets: "Yes" }
 
       expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
     end

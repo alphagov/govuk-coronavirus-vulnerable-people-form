@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   post "coronavirus-form/essential-supplies", to: "coronavirus_form/essential_supplies#submit"
 
   # (v4[sunday]) Question 10: Do you want us to share your details with supermarkets, if that becomes possible?
+  get "/coronavirus-form/supermarkets", to: "coronavirus_form/supermarkets#show"
+  post "coronavirus-form/supermarkets", to: "coronavirus_form/supermarkets#submit"
 
   # (v4[sunday]) Question 11: Are your basic care needs being met at the moment?
   get "/coronavirus-form/basic-care-needs", to: "coronavirus_form/basic_care_needs#show"

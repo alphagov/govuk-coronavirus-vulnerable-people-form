@@ -129,6 +129,15 @@ en:
           option_no:
             label: "No"
         custom_select_error: Please select Yes or No
+      supermarkets:
+        title: Do you want us to share your details with supermarkets, if that becomes possible?
+        hint: This is in case it becomes possible for supermarkets to prioritise you if you place a 'click and collect' order.
+        options:
+          option_yes:
+            label: "Yes"
+          option_no:
+            label: "No"
+        custom_select_error: Please select Yes or No
       addiction:
         title: "Do you have a history of addiction?"
         options:
