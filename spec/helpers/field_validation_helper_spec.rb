@@ -48,5 +48,12 @@ RSpec.describe FieldValidationHelper, type: :helper do
       invalid_fields = validate_date_fields("2019", "02", "30", "date")
       expect(invalid_fields).to eq [{ field: "date-day", text: "Enter a real date of birth" }]
     end
+
+    it "returns an error if date is in the future" do
+      Timecop.freeze("2019-03-22") do
+        invalid_fields = validate_date_fields("2020", "02", "01", "date")
+        expect(invalid_fields).to eq [{ field: "date-day", text: "Date of birth must be in the past" }]
+      end
+    end
   end
 end

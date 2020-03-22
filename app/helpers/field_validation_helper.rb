@@ -73,8 +73,13 @@ module FieldValidationHelper
     elsif year.to_i.negative?
       invalid_fields << { field: "#{field}-year", text: t("coronavirus_form.errors.negative_date", field: "year") }
     end
+    # Check for an invalid date (e.g. 30th February, or an invalid month number)
     unless(invalid_fields != [] || Date.valid_date?(year.to_i, month.to_i, day.to_i))
       invalid_fields << { field: "#{field}-day", text: t("coronavirus_form.errors.invalid_date") }
+    end
+    # Check for date being after the current date
+    unless(invalid_fields != [] || DateTime.new(year.to_i, month.to_i, day.to_i) < Time.zone.now)
+      invalid_fields << { field: "#{field}-day", text: t("coronavirus_form.errors.date_order") }
     end
     invalid_fields
   end
