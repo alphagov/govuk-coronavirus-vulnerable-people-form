@@ -1,6 +1,9 @@
-<% content_for :title do %><%= t('coronavirus_form.contact_details.title') %><% end %>
+<% content_for :title do %>
+  <%= t("coronavirus_form.questions.contact_details.title") %>
+<% end %>
+
 <% content_for :meta_tags do %>
-  <meta name="description" content="<%= t('coronavirus_form.contact_details.title') %>" />
+  <meta name="description" content="<%= t('coronavirus_form.questions.contact_details.title') %>" />
 <% end %>
 
 <% content_for :back_link do %>
@@ -10,22 +13,22 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-contact_details",
   "data-question-key": "contact_details",
-  "id": "contact_details"
+  "id": "contact_details",
 ) do %>
 
 <%= render "govuk_publishing_components/components/title", {
-  title: t('coronavirus_form.contact_details.title'),
+  title: t("coronavirus_form.questions.contact_details.title"),
   margin_top: 0,
 } %>
 
 <%= render "govuk_publishing_components/components/hint", {
-  text: t('coronavirus_form.contact_details.hint'),
+  text: t("coronavirus_form.questions.contact_details.hint"),
 } %>
 
 <%= render "govuk_publishing_components/components/input", {
   name: "phone_number_calls",
   label: {
-    text: t('coronavirus_form.contact_details.phone_number_calls.label'),
+    text: t("coronavirus_form.questions.contact_details.phone_number_calls.label"),
   },
   value: session.dig("contact_details", "phone_number_calls"),
   width: 20,
@@ -34,7 +37,7 @@
 <%= render "govuk_publishing_components/components/input", {
   name: "phone_number_texts",
   label: {
-    text: t('coronavirus_form.contact_details.phone_number_texts.label'),
+    text: t("coronavirus_form.questions.contact_details.phone_number_texts.label"),
   },
   value: session.dig("contact_details", "phone_number_texts"),
   width: 20,
@@ -43,7 +46,7 @@
 <%= render "govuk_publishing_components/components/input", {
   name: "email",
   label: {
-    text: t('coronavirus_form.contact_details.email.label'),
+    text: t("coronavirus_form.questions.contact_details.email.label"),
   },
   value: session.dig("contact_details", "email"),
 } %>

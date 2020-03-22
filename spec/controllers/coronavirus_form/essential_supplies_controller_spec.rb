@@ -16,7 +16,7 @@ RSpec.describe CoronavirusForm::EssentialSuppliesController, type: :controller d
   describe "POST submit" do
     let(:selected) { permitted_values.sample }
     let(:permitted_values) do
-      I18n.t("coronavirus_form.essential_supplies.options").map { |_, item| item[:label] }
+      I18n.t("coronavirus_form.questions.essential_supplies.options").map { |_, item| item[:label] }
     end
 
     it "sets session variables" do

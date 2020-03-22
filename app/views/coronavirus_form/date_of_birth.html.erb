@@ -1,6 +1,8 @@
-<% content_for :title do %><%= t('coronavirus_form.date_of_birth.title') %><% end %>
+<% content_for :title do %>
+  <%= t("coronavirus_form.questions.date_of_birth.title") %>
+<% end %>
 <% content_for :meta_tags do %>
-  <meta name="description" content="<%= t('coronavirus_form.date_of_birth.title') %>" />
+  <meta name="description" content="<%= t('coronavirus_form.questions.date_of_birth.title') %>" />
 <% end %>
 
 <% content_for :back_link do %>
@@ -13,13 +15,13 @@
   "id": "date_of_birth"
 ) do %>
 <%= render "govuk_publishing_components/components/title", {
-  title: t('coronavirus_form.date_of_birth.title'),
+  title: t("coronavirus_form.questions.date_of_birth.title"),
   margin_top: 0,
 } %>
 
 <%= render "govuk_publishing_components/components/date_input", {
   name: "date_of_birth",
-  legend_text: t('coronavirus_form.date_of_birth.hint'),
+  legend_text: t("coronavirus_form.questions.date_of_birth.hint"),
   error_message: error_items('date_of_birth'),
   items: [
     {

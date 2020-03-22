@@ -23,7 +23,7 @@ class CoronavirusForm::KnowNhsNumberController < ApplicationController
       render "coronavirus_form/#{PAGE}", status: :unprocessable_entity
     elsif session["check_answers_seen"]
       redirect_to controller: "coronavirus_form/check_answers", action: "show"
-    elsif session[:know_nhs_number] == I18n.t("coronavirus_form.know_nhs_number.options.option_no.label")
+    elsif session[:know_nhs_number] == I18n.t("coronavirus_form.questions.know_nhs_number.options.option_no.label")
       redirect_to controller: "coronavirus_form/essential_supplies", action: "show"
     else
       redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
