@@ -73,6 +73,8 @@ jobs:
                 cf set-env govuk-coronavirus-vulnerable-people-form AWS_ACCESS_KEY_ID "$AWS_ACCESS_KEY_ID"
                 cf set-env govuk-coronavirus-vulnerable-people-form AWS_SECRET_ACCESS_KEY "$AWS_SECRET_ACCESS_KEY"
 
+                cf set-env govuk-coronavirus-vulnerable-people-form SENTRY_DSN "$SENTRY_DSN"
+
                 cf v3-zdt-push govuk-coronavirus-vulnerable-people-form --wait-for-deploy-complete --no-route
                 cf map-route govuk-coronavirus-vulnerable-people-form cloudapps.digital --hostname govuk-coronavirus-vulnerable-people-form-stg
 
@@ -92,4 +94,3 @@ jobs:
             # TODO we can come up with a more thorough test than this
             path: curl
             args: ['--fail', '--silent', '--verbose', '--user', 'gds:((basic-auth-password))', 'https://govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital/']
-
