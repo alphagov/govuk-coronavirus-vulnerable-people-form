@@ -19,9 +19,9 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
     session[:reference_id] = submission_reference
 
     FormResponse.create(
-      reference_id: submission_reference,
-      unix_timestamp: Time.zone.now,
-      form_response: session,
+      ReferenceId: submission_reference,
+      UnixTimestamp: Time.zone.now,
+      FormResponse: session,
     )
 
     reset_session
