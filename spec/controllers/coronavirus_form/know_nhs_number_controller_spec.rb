@@ -38,7 +38,7 @@ RSpec.describe CoronavirusForm::KnowNhsNumberController, type: :controller do
 
     it "redirects to next step for a permitted response" do
       post :submit, params: { know_nhs_number: "Yes, I do know my NHS number" }
-      expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
+      expect(response).to redirect_to(coronavirus_form_what_is_your_nhs_number_path)
     end
 
     it "redirects to check your answers if check your answers previously seen" do

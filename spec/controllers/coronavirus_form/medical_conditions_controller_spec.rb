@@ -32,7 +32,7 @@ RSpec.describe CoronavirusForm::MedicalConditionsController, type: :controller d
 
     it "redirects to next step for a permitted response" do
       post :submit, params: { medical_conditions: selected }
-      expect(response).to redirect_to(coronavirus_form_virus_test_path)
+      expect(response).to redirect_to(coronavirus_form_know_nhs_number_path)
     end
 
     it "validates a valid option is chosen" do
