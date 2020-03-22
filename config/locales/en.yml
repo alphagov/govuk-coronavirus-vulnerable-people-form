@@ -1,4 +1,6 @@
 en:
+  privacy_notice:
+    label: Privacy notice
   check_your_answers:
     title: Check your answers before sending your application
     heading: Now send your application
