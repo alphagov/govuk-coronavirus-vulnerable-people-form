@@ -57,6 +57,7 @@ jobs:
           URL: 'https://govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital/'
 
   - name: deploy-to-prod
+    serial: true
     plan:
       - get: govuk-coronavirus-vulnerable-people-form
         trigger: true
