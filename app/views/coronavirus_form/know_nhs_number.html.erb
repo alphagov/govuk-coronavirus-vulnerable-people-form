@@ -16,6 +16,7 @@
       heading: t('coronavirus_form.know_nhs_number.title'),
       is_page_heading: true,
       name: "know_nhs_number",
+      error_message: error_items('know_nhs_number'),
       hint: sanitize(t('coronavirus_form.know_nhs_number.hint')),
       items: t('coronavirus_form.know_nhs_number.options').map do |_, item|
         {

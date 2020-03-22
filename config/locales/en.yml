@@ -42,6 +42,7 @@ en:
           label: "No"
         not_sure:
           label: "Not sure"
+      custom_select_error: Please select Yes or No
     medical_conditions:
       title: Do you have a medical condition that makes you vulnerable to coronavirus?
       description: |
@@ -63,6 +64,7 @@ en:
           label: "Yes, I have a medical condition that makes me vulnerable to coronavirus"
         option_no:
           label: "No, I do not have a medical condition that makes me vulnerable to coronavirus"
+      custom_select_error: Please select Yes or No
     temperature_or_cough:
       title: Do you have a high temperature or a new, continuous cough?
       hint: A continuous cough means coughing a lot for more than an hour, or 3 or more coughing episodes in 24 hours
@@ -71,6 +73,7 @@ en:
           label: "Yes"
         option_no:
           label: "No"
+      custom_select_error: Please select Yes or No
     virus_test:
       title: Have you been tested for coronavirus?
       options:
@@ -80,6 +83,7 @@ en:
           label: Yes, I've been tested and I do not have coronavirus
         option_no:
           label: No, I have not been tested
+      custom_select_error: Please select an option
     carry_supplies:
       title: Is there someone in the house who's able to carry a delivery of supplies inside?
       options:
@@ -133,6 +137,7 @@ en:
           label: "Yes, I know my NHS number"
         option_no:
           label: "No, I do not know my NHS number"
+      custom_select_error: Please select Yes or No
     confirmation:
       title: "Registration complete."
       description: |

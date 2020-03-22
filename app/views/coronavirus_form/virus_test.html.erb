@@ -16,6 +16,7 @@
   heading: t('coronavirus_form.virus_test.title'),
   is_page_heading: true,
   name: "virus_test",
+  error_message: error_items('virus_test'),
   items: t('coronavirus_form.virus_test.options').map do |_, item|
     {
       value: item[:label],
