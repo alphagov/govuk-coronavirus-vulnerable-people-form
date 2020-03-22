@@ -65,6 +65,13 @@ module FieldValidationHelper
       invalid_fields << { field: "#{field}-month", text: t("coronavirus_form.errors.missing_fields") }
     elsif year.blank?
       invalid_fields << { field: "#{field}-year", text: t("coronavirus_form.errors.missing_fields") }
+    # Check if any of the dates are negative
+    elsif day.to_i.negative?
+      invalid_fields << { field: "#{field}-day", text: t("coronavirus_form.errors.negative_date", field: "day") }
+    elsif month.to_i.negative?
+      invalid_fields << { field: "#{field}-month", text: t("coronavirus_form.errors.negative_date", field: "month") }
+    elsif year.to_i.negative?
+      invalid_fields << { field: "#{field}-year", text: t("coronavirus_form.errors.negative_date", field: "year") }
     end
     unless(invalid_fields != [] || Date.valid_date?(year.to_i, month.to_i, day.to_i))
       invalid_fields << { field: "#{field}-day", text: t("coronavirus_form.errors.invalid_date") }

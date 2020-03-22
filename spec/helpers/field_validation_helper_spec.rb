@@ -17,6 +17,21 @@ RSpec.describe FieldValidationHelper, type: :helper do
       expect(invalid_fields).to eq [{ field: "date-day", text: "Enter your date of birth and include a day, month and year" }]
     end
 
+    it "returns an error if year is negative" do
+      invalid_fields = validate_date_fields("-1990", "6", "25", "date")
+      expect(invalid_fields).to eq [{ field: "date-year", text: "Enter a real year" }]
+    end
+
+    it "returns an error if month is negative" do
+      invalid_fields = validate_date_fields("1990", "-6", "25", "date")
+      expect(invalid_fields).to eq [{ field: "date-month", text: "Enter a real month" }]
+    end
+
+    it "returns an error if day is negative" do
+      invalid_fields = validate_date_fields("1990", "6", "-25", "date")
+      expect(invalid_fields).to eq [{ field: "date-day", text: "Enter a real day" }]
+    end
+
     it "returns an error if no date is entered" do
       invalid_fields = validate_date_fields("", "", "", "date")
       expect(invalid_fields).to eq [{ field: "date-day", text: "Enter your date of birth" }]
