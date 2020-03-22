@@ -1,7 +1,10 @@
-<% content_for :title do %><%= t('coronavirus_form.carry_supplies.title') %><% end %>
-    <% content_for :meta_tags do %>
-      <meta name="description" content="<%= t('coronavirus_form.carry_supplies.title') %>" />
-    <% end %>
+<% content_for :title do %>
+  <%= t("coronavirus_form.questions.carry_supplies.title") %>
+<% end %>
+
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('coronavirus_form.questions.carry_supplies.title') %>" />
+<% end %>
 
     <% content_for :back_link do %>
       <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
@@ -13,11 +16,11 @@
       "id": "carry_supplies"
     ) do %>
     <%= render "govuk_publishing_components/components/radio", {
-      heading: t('coronavirus_form.carry_supplies.title'),
+      heading: t("coronavirus_form.questions.carry_supplies.title"),
       is_page_heading: true,
       name: "carry_supplies",
-      error_message: error_items('carry_supplies'),
-      items: t('coronavirus_form.carry_supplies.options').map do |_, item|
+      error_message: error_items("carry_supplies"),
+      items: t("coronavirus_form.questions.carry_supplies.options").map do |_, item|
         {
           value: item[:label],
           text: item[:label],
