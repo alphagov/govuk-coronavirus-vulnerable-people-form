@@ -31,7 +31,7 @@ class CoronavirusForm::NhsLetterController < ApplicationController
 private
 
   PAGE = "nhs_letter"
-  NEXT_PAGE = "medical_conditions"
+  NEXT_PAGE = "name"
 
   def previous_path
     "/"
