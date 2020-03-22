@@ -224,7 +224,7 @@ en:
             label: "Yes"
           option_no:
             label: "No"
-        custom_select_error: Please select Yes or No
+        custom_select_error: Select yes if you have a way of getting essential supplies delivered at the moment
       basic_care_needs:
         title: Are your basic care needs being met at the moment?
         hint: For example, washing and bathing yourself and keeping your house clean, with the help of friends or family.
