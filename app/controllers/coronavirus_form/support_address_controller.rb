@@ -44,6 +44,7 @@ private
     [
       validate_missing_fields(support_address),
       validate_conditionally_present_fields(support_address),
+      validate_postcode("postcode", support_address["postcode"]),
     ].flatten.uniq
   end
 
