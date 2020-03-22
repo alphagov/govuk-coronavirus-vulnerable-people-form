@@ -16,7 +16,6 @@ params:
   CF_SPACE:
   HOSTNAME:
   INSTANCES:
-  MEMORY:
   BASIC_AUTH_PASSWORD:
   AWS_ACCESS_KEY_ID:
   AWS_SECRET_ACCESS_KEY:
@@ -35,7 +34,6 @@ run:
       cf v3-apply-manifest -f manifest.yml
 
       cf scale -i "$INSTANCES" govuk-coronavirus-vulnerable-people-form
-      cf scale -m "$MEMORY" govuk-coronavirus-vulnerable-people-form
 
       cf set-env govuk-coronavirus-vulnerable-people-form BASIC_AUTH_PASSWORD "$BASIC_AUTH_PASSWORD"
       cf set-env govuk-coronavirus-vulnerable-people-form SENTRY_DSN "$SENTRY_DSN"

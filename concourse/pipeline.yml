@@ -41,7 +41,6 @@ jobs:
         params:
           CF_SPACE: staging
           INSTANCES: 5
-          MEMORY: 1G
           BASIC_AUTH_PASSWORD: ((basic-auth-password))
           AWS_ACCESS_KEY_ID: ((aws-access-key-id))
           AWS_SECRET_ACCESS_KEY: ((aws-secret-access-key))
@@ -69,7 +68,6 @@ jobs:
         params:
           CF_SPACE: production
           INSTANCES: 30
-          MEMORY: 2G
           BASIC_AUTH_PASSWORD: ((basic-auth-password))
           AWS_ACCESS_KEY_ID: ((aws-access-key-id-prod))
           AWS_SECRET_ACCESS_KEY: ((aws-secret-access-key-prod))
