@@ -1,0 +1,38 @@
+<% content_for :title do %><%= t('coronavirus_form.nhs_number.title') %><% end %>
+    <% content_for :meta_tags do %>
+      <meta name="description" content="<%= t('coronavirus_form.nhs_number.title') %>" />
+    <% end %>
+
+    <% content_for :back_link do %>
+      <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+    <% end %>
+
+    <%= form_tag({},
+      "data-module": "track-coronavirus-form-vulnerable-people-nhs-number",
+      "data-question-key": "nhs_number",
+      "id": "nhs_number"
+    ) do %>
+
+    <%= render "govuk_publishing_components/components/title", {
+      title: t('coronavirus_form.nhs_number.title'),
+    } %>
+    <%= render "govuk_publishing_components/components/hint", {
+      text: t('coronavirus_form.nhs_number.hint_format'),
+    } %>
+
+    <%= render "govuk_publishing_components/components/hint", {
+      text: t('coronavirus_form.nhs_number.hint_where_to_find'),
+    } %>
+
+    <%= render "govuk_publishing_components/components/input", {
+      name: "nhs_number",
+      label: {
+        text: t('coronavirus_form.nhs_number.nhs_number.label'),
+      },
+      error_message: error_items('nhs_number'),
+      value: session.dig("nhs_number", "nhs_number"),
+      width: 20,
+    } %>
+
+    <%= render "govuk_publishing_components/components/button", text: "Continue", margin_bottom: true %>
+<% end %>
