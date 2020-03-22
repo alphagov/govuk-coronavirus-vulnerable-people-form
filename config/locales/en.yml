@@ -121,6 +121,7 @@ en:
             label: "Yes"
           option_no:
             label: "No"
+        custom_select_error: Select yes if you live in England
       nhs_letter:
         title: Have you recently had a letter from the NHS about your situation as someone who's at high risk from coronavirus?
         options:
@@ -203,7 +204,7 @@ en:
             label: "Yes, I know my NHS number"
           option_no:
             label: "No, I do not know my NHS number"
-        custom_select_error: Please select Yes or No
+        custom_select_error: Select yes if you know your NHS number
       nhs_number:
         title: What is your NHS number?
         hint_format: An NHS Number is a 10 digit number, like 485 777 3456
@@ -211,10 +212,10 @@ en:
         nhs_number:
           label: NHS Number
           custom_errors:
-            missing: NHS number is required
+            missing: Enter your 10-digit NHS number
             must_be_a_number: NHS number must be a number
-            must_be_ten_digits: NHS number must be ten digits
-            must_have_checksum: NHS number must be valid
+            must_be_ten_digits: NHS number must be 10 digits
+            must_have_checksum: Enter a real NHS number
       essential_supplies:
         title: Do you have a way of getting essential supplies delivered at the moment?
         hint: For example, friends or family who can make sure you have enough food.
@@ -223,7 +224,7 @@ en:
             label: "Yes"
           option_no:
             label: "No"
-        custom_select_error: Please select Yes or No
+        custom_select_error: Select yes if you have a way of getting essential supplies delivered at the moment
       basic_care_needs:
         title: Are your basic care needs being met at the moment?
         hint: For example, washing and bathing yourself and keeping your house clean, with the help of friends or family.
