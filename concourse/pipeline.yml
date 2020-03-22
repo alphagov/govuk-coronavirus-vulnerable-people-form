@@ -5,11 +5,11 @@ resource_types:
     source:
       repository: nulldriver/cf-cli-resource
 
-  #- name: travis
-  #  type: docker-image
-  #  source:
-  #    repository: rbakergds/travis-resource
-  #    tag: latest
+  - name: travis
+    type: docker-image
+    source:
+      repository: rbakergds/travis-resource
+      tag: latest
 
 resources:
   - name: govuk-coronavirus-vulnerable-people-form
@@ -19,22 +19,22 @@ resources:
       uri: https://github.com/alphagov/govuk-coronavirus-vulnerable-people-form
       branch: master
 
-  #- name: govuk-coronavirus-vulnerable-people-form-travis-build
-  #  type: travis
-  #  icon: sync
-  #  source:
-  #    repository: alphagov/govuk-coronavirus-vulnerable-people-form
-  #    travis-token: ((travis-api-token))
-  #    branch: master
-  #    pro: true
+  - name: govuk-coronavirus-vulnerable-people-form-travis-build
+    type: travis
+    icon: sync
+    source:
+      repository: alphagov/govuk-coronavirus-vulnerable-people-form
+      travis-token: ((travis-api-token))
+      branch: master
+      pro: true
 
 jobs:
   - name: deploy-to-staging
     serial: true
     plan:
-      # - get: govuk-coronavirus-vulnerable-people-form-travis-build
-      - get: govuk-coronavirus-vulnerable-people-form
+      - get: govuk-coronavirus-vulnerable-people-form-travis-build
         trigger: true
+      - get: govuk-coronavirus-vulnerable-people-form
       - task: paas-staging
         config:
           platform: linux
