@@ -19,6 +19,8 @@ group :development do
 end
 
 group :test do
+  gem "cucumber-rails", "~> 2.0", require: false
+  gem "database_cleaner", "~> 1.8"
   gem "scss-lint", "~> 0.7.0", require: false
   gem "simplecov", "~> 0.16"
   gem "therubyracer", "~> 0.12"
