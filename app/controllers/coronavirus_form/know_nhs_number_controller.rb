@@ -36,6 +36,6 @@ private
   NEXT_PAGE = "nhs_number"
 
   def previous_path
-    coronavirus_form_medical_conditions_path
+    medical_conditions_path
   end
 end

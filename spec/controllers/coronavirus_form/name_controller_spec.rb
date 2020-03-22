@@ -53,7 +53,7 @@ RSpec.describe CoronavirusForm::NameController, type: :controller do
       post :submit, params: params.except("middle_name")
 
       expect(session[session_key]).to eq person.merge("middle_name" => nil)
-      expect(response).to redirect_to(coronavirus_form_date_of_birth_path)
+      expect(response).to redirect_to(date_of_birth_path)
     end
 
     it "validates a valid option is chosen" do
@@ -64,14 +64,14 @@ RSpec.describe CoronavirusForm::NameController, type: :controller do
 
     it "redirects to next step for a permitted response" do
       post :submit, params: params
-      expect(response).to redirect_to(coronavirus_form_date_of_birth_path)
+      expect(response).to redirect_to(date_of_birth_path)
     end
 
     it "redirects to check your answers if check your answers previously seen" do
       session[:check_answers_seen] = true
       post :submit, params: params
 
-      expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
+      expect(response).to redirect_to(check_your_answers_path)
     end
   end
 end

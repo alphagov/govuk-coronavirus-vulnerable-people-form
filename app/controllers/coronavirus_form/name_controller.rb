@@ -44,6 +44,6 @@ private
   end
 
   def previous_path
-    coronavirus_form_nhs_letter_path
+    nhs_letter_path
   end
 end

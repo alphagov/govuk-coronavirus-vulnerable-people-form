@@ -32,12 +32,12 @@ RSpec.describe CoronavirusForm::MedicalConditionsController, type: :controller d
 
     it "redirects to next step for a yes response" do
       post :submit, params: { medical_conditions: I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes.label") }
-      expect(response).to redirect_to(coronavirus_form_know_nhs_number_path)
+      expect(response).to redirect_to(know_nhs_number_path)
     end
 
     it "redirects to ineligible page for a no response" do
       post :submit, params: { medical_conditions: I18n.t("coronavirus_form.questions.medical_conditions.options.option_no.label") }
-      expect(response).to redirect_to(coronavirus_form_not_eligible_medical_path)
+      expect(response).to redirect_to(not_eligible_medical_path)
     end
 
     it "validates a valid option is chosen" do
@@ -50,7 +50,7 @@ RSpec.describe CoronavirusForm::MedicalConditionsController, type: :controller d
       session[:check_answers_seen] = true
       post :submit, params: { medical_conditions: selected }
 
-      expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
+      expect(response).to redirect_to(check_your_answers_path)
     end
   end
 end

@@ -38,19 +38,19 @@ RSpec.describe CoronavirusForm::LiveInEnglandController, type: :controller do
 
     it "redirects to next step for a yes response" do
       post :submit, params: { live_in_england: "Yes" }
-      expect(response).to redirect_to(coronavirus_form_nhs_letter_path)
+      expect(response).to redirect_to(nhs_letter_path)
     end
 
     it "redirects to ineligible page for a no response" do
       post :submit, params: { live_in_england: "No" }
-      expect(response).to redirect_to(coronavirus_form_not_eligible_england_path)
+      expect(response).to redirect_to(not_eligible_england_path)
     end
 
     it "redirects to check your answers if check your answers previously seen" do
       session[:check_answers_seen] = true
       post :submit, params: { live_in_england: "Yes" }
 
-      expect(response).to redirect_to(coronavirus_form_check_your_answers_path)
+      expect(response).to redirect_to(check_your_answers_path)
     end
   end
 end

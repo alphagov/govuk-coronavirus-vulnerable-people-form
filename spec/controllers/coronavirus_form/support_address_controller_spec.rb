@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
   let(:current_template) { "coronavirus_form/support_address" }
   let(:session_key) { :support_address }
-  let(:next_page) { coronavirus_form_contact_details_path }
+  let(:next_page) { contact_details_path }
 
   describe "GET show" do
     it "renders the form" do
