@@ -13,7 +13,8 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-supermarkets",
   "data-question-key": "supermarkets",
-  "id": "supermarkets"
+  "id": "supermarkets",
+  "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/radio", {
   heading: t("coronavirus_form.questions.supermarkets.title"),

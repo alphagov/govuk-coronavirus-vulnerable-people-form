@@ -10,7 +10,8 @@
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-live_in_england",
   "data-question-key": "live_in_england",
-  "id": "live_in_england"
+  "id": "live_in_england",
+  "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/radio", {
   heading: t('coronavirus_form.questions.live_in_england.title'),
