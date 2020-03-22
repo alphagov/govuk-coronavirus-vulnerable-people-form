@@ -6,12 +6,11 @@ class CoronavirusForm::NhsNumberController < ApplicationController
   include FieldValidationHelper
 
   def show
-    session[:nhs_number] ||= {}
     render "coronavirus_form/#{PAGE}"
   end
 
   def submit
-    session[:nhs_number] ||= {}
+    session[:nhs_number] ||= ""
     session[:nhs_number] = sanitize(clean_nhs_number(params["nhs_number"])).presence
 
     invalid_fields = validate_fields(session[:nhs_number])
