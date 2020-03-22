@@ -83,6 +83,6 @@ private
   end
 
   def previous_path
-    coronavirus_form_name_path
+    coronavirus_form_date_of_birth_path
   end
 end
