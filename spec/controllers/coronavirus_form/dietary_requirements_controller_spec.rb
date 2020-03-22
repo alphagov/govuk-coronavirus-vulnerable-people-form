@@ -32,7 +32,7 @@ RSpec.describe CoronavirusForm::DietaryRequirementsController, type: :controller
 
     it "redirects to next step for a permitted response" do
       post :submit, params: { dietary_requirements: selected }
-      expect(response).to redirect_to("/")
+      expect(response).to redirect_to(coronavirus_form_carry_supplies_path)
     end
 
     it "validates a valid option is chosen" do

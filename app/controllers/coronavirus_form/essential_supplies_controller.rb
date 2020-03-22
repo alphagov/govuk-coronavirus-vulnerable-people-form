@@ -31,7 +31,7 @@ class CoronavirusForm::EssentialSuppliesController < ApplicationController
 private
 
   PAGE = "essential_supplies"
-  NEXT_PAGE = "supermarkets"
+  NEXT_PAGE = "basic_care_needs"
 
   def previous_path
     coronavirus_form_what_is_your_nhs_number_path

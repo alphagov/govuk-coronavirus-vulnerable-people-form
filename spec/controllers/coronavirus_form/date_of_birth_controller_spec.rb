@@ -31,7 +31,7 @@ RSpec.describe CoronavirusForm::DateOfBirthController, type: :controller do
 
     it "redirects to next step for a permitted response" do
       post :submit, params: params
-      expect(response).to redirect_to("/")
+      expect(response).to redirect_to(coronavirus_form_support_address_path)
     end
 
     context "params unset" do
