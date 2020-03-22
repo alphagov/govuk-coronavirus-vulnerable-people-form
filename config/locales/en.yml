@@ -22,7 +22,7 @@ en:
         <li><a class="govuk-link" href="https://gov.wales/coronavirus">Wales</a></li>
       </ul>
       <p class="govuk-body">We won’t store the information you entered.</p>
-      <p class="govuk-body">There's also guidance on <a href="https://www.gov.uk/coronavirus">what you need to do<a/>.</p>
+      <p class="govuk-body">There's also guidance on <a href="https://www.gov.uk/coronavirus" class="govuk-link">what you need to do<a/>.</p>
   privacy_page:
     title: Privacy
     body_text: |
