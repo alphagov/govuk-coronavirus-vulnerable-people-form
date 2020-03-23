@@ -28,6 +28,7 @@ en:
   privacy_page:
     title: Privacy
     body_text: |
+      <p class="govuk-body">Last updated: 23 March 2020</p>
       <p class="govuk-body">We’ll use the personal information you provide through this service to help make sure you get the support you need, as someone with a medical condition that makes you vulnerable to coronavirus.</p>
       <p class="govuk-body">This privacy notice covers:</p>
       <ul class="govuk-list govuk-list--bullet">
