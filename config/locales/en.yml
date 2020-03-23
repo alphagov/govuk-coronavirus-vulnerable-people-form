@@ -1,6 +1,6 @@
 en:
   privacy_notice:
-    label: Privacy notice
+    label: Privacy
   check_your_answers:
     title: Check your answers before sending your application
     heading: Now send your application
@@ -19,7 +19,7 @@ en:
     description: |
       <p class="govuk-body">There’s guidance from:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a class="govuk-link" href="https://www.health-ni.gov.uk/news/latest-update-coronavirus-covid-19-12">Northern Ireland</a></li>
+        <li><a class="govuk-link" href="https://www.health-ni.gov.uk/coronavirus">Northern Ireland</a></li>
         <li><a class="govuk-link" href="https://www.gov.scot/coronavirus-covid-19/">Scotland</a></li>
         <li><a class="govuk-link" href="https://gov.wales/coronavirus">Wales</a></li>
       </ul>
@@ -28,6 +28,7 @@ en:
   privacy_page:
     title: Privacy
     body_text: |
+      <p class="govuk-body">Last updated: 23 March 2020</p>
       <p class="govuk-body">We’ll use the personal information you provide through this service to help make sure you get the support you need, as someone with a medical condition that makes you vulnerable to coronavirus.</p>
       <p class="govuk-body">This privacy notice covers:</p>
       <ul class="govuk-list govuk-list--bullet">
@@ -175,7 +176,7 @@ en:
           label: Postcode
           custom_error: Enter a postcode
       contact_details:
-        title: "Enter your contact details"
+        title: "What are your contact details?"
         hint: "You can use someone else’s contact details if that’s easier."
         phone_number_calls:
           label: "Phone number (for phone calls)"
@@ -196,8 +197,8 @@ en:
             <li>have had bone marrow or stem cell transplants in the last 6 months, or are still taking immunosuppression drugs</li>
             <li>have a severe respiratory condition - including cystic fibrosis, severe asthma or severe COPD (Chronic Obstructive Pulmonary Disease)</li>
             <li>have a rare disease or inborn error of metabolism that significantly increases your risk of infection - for example SCID or homozygous sickle cell</li>
-            <li>are getting an immunosuppression therapy</li>
-            <li>are pregnant and have a significant congenital heart disease</li>
+            <li>are getting an immunosuppression therapy that’s sufficient to significantly increase your risk of infection</li>
+            <li>are pregnant, and have a significant congenital or acquired heart disease</li>
           </ul>
         options:
           option_yes:
@@ -266,4 +267,4 @@ en:
             label: "Yes"
           option_no:
             label: "No"
-        custom_select_error: Select yes if there is someone in the house who is able to carry a delivery of supplies inside
+        custom_select_error: Select yes if there’s someone in the house who’s able to carry a delivery of supplies inside
