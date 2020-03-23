@@ -13,7 +13,6 @@
     <%= form_tag({},
       "data-module": "track-coronavirus-form-vulnerable-people-dietary-requirements",
       "data-question-key": "dietary_requirements",
-      "id": "dietary_requirements",
       "novalidate": "true"
     ) do %>
     <%= render "govuk_publishing_components/components/radio", {
@@ -22,8 +21,9 @@
       name: "dietary_requirements",
       description: sanitize(t("coronavirus_form.questions.dietary_requirements.hint")),
       error_message: error_items("dietary_requirements"),
-      items: t("coronavirus_form.questions.dietary_requirements.options").map do |_, item|
+      items: t("coronavirus_form.questions.dietary_requirements.options").map.with_index do |(_, item), index|
         {
+          id: ("dietary_requirements" if index == 0),
           value: item[:label],
           text: item[:label],
           checked: session[:dietary_requirements] == item[:label],

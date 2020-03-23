@@ -17,7 +17,6 @@
     <%= form_tag({},
       "data-module": "track-coronavirus-form-vulnerable-people-medical_conditions",
       "data-question-key": "medical_conditions",
-      "id": "medical_conditions",
       "novalidate": "true"
     ) do %>
     <%= render "govuk_publishing_components/components/radio", {
@@ -26,8 +25,9 @@
       name: "medical_conditions",
       error_message: error_items('medical_conditions'),
       description: description_html,
-      items: t('coronavirus_form.questions.medical_conditions.options').map do |_, item|
+      items: t('coronavirus_form.questions.medical_conditions.options').map.with_index do |(_, item), index|
         {
+          id: ("medical_conditions" if index == 0),
           value: item[:label],
           text: item[:label],
           checked: session[:medical_conditions] == item[:label],
@@ -36,4 +36,3 @@
     } %>
     <%= render "govuk_publishing_components/components/button", text: "Continue", margin_bottom: true %>
     <% end %>
-

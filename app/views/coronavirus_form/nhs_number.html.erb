@@ -12,7 +12,6 @@
     <%= form_tag({},
       "data-module": "track-coronavirus-form-vulnerable-people-nhs-number",
       "data-question-key": "nhs_number",
-      "id": "nhs_number",
       "novalidate": "true"
     ) do %>
 
@@ -30,6 +29,7 @@
     } %>
 
     <%= render "govuk_publishing_components/components/input", {
+      "id": "nhs_number",
       name: "nhs_number",
       label: {
         text: t('coronavirus_form.questions.nhs_number.nhs_number.label'),
