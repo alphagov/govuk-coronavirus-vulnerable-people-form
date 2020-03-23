@@ -15,6 +15,10 @@
   margin_top: 0
 } %>
 
+<%= render "govuk_publishing_components/components/hint", {
+  text: t("coronavirus_form.questions.name.hint"),
+} %>
+
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-name",
   "data-question-key": "name",
