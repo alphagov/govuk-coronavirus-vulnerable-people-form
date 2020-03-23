@@ -136,7 +136,7 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
 
     described_class::REQUIRED_FIELDS.each do |field|
       it "requires that key #{field} be provided" do
-        post :submit, params: params.except(field)
+        post :submit, params: params.except(field.to_s)
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response).to render_template(current_template)
       end
