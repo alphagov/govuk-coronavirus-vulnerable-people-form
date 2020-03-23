@@ -26,7 +26,7 @@ class CoronavirusForm::DateOfBirthController < ApplicationController
       respond_to do |format|
         format.html { render controller_path, status: :unprocessable_entity }
       end
-    elsif session["check_answers_seen"]
+    elsif session[:check_answers_seen]
       redirect_to check_your_answers_url
     else
       redirect_to support_address_url

@@ -21,7 +21,7 @@ class CoronavirusForm::LiveInEnglandController < ApplicationController
       end
     elsif session[:live_in_england] == I18n.t("coronavirus_form.questions.live_in_england.options.option_no.label")
       redirect_to not_eligible_england_url
-    elsif session["check_answers_seen"]
+    elsif session[:check_answers_seen]
       redirect_to check_your_answers_url
     else
       redirect_to nhs_letter_url
