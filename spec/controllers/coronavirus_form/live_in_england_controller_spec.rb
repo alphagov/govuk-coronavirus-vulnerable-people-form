@@ -26,13 +26,13 @@ RSpec.describe CoronavirusForm::LiveInEnglandController, type: :controller do
 
     it "validates any option is chosen" do
       post :submit, params: { live_in_england: "" }
-      expect(response).to have_http_status(:unprocessable_entity)
+
       expect(response).to render_template(current_template)
     end
 
     it "validates a valid option is chosen" do
       post :submit, params: { live_in_england: "<script></script>" }
-      expect(response).to have_http_status(:unprocessable_entity)
+
       expect(response).to render_template(current_template)
     end
 

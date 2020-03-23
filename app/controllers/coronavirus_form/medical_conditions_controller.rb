@@ -20,7 +20,7 @@ class CoronavirusForm::MedicalConditionsController < ApplicationController
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
       log_validation_error(invalid_fields)
-      render "coronavirus_form/#{PAGE}", status: :unprocessable_entity
+      render "coronavirus_form/#{PAGE}"
     elsif session[:medical_conditions] == I18n.t("coronavirus_form.questions.medical_conditions.options.option_no.label")
       redirect_to controller: "coronavirus_form/not_eligible_medical", action: "show"
     elsif session["check_answers_seen"]

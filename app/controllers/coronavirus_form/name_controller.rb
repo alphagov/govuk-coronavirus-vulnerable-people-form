@@ -20,7 +20,7 @@ class CoronavirusForm::NameController < ApplicationController
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
       log_validation_error(invalid_fields)
-      render "coronavirus_form/#{PAGE}", status: :unprocessable_entity
+      render "coronavirus_form/#{PAGE}"
     elsif session["check_answers_seen"]
       redirect_to controller: "coronavirus_form/check_answers", action: "show"
     else

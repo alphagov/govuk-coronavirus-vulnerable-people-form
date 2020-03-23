@@ -26,7 +26,7 @@ RSpec.describe CoronavirusForm::DietaryRequirementsController, type: :controller
 
     it "validates any option is chosen" do
       post :submit, params: { dietary_requirements: "" }
-      expect(response).to have_http_status(:unprocessable_entity)
+
       expect(response).to render_template(current_template)
     end
 
@@ -37,7 +37,7 @@ RSpec.describe CoronavirusForm::DietaryRequirementsController, type: :controller
 
     it "validates a valid option is chosen" do
       post :submit, params: { dietary_requirements: "<script></script>" }
-      expect(response).to have_http_status(:unprocessable_entity)
+
       expect(response).to render_template(current_template)
     end
 
