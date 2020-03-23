@@ -24,7 +24,7 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
     end
 
     it "saves the form response to the database" do
-      session["attribute"] = "key"
+      session[:attribute] = "key"
       post :submit
 
       expect(FormResponse.first).to have_attributes(
