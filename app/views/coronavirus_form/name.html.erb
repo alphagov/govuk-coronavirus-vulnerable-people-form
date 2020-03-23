@@ -33,7 +33,7 @@
   id: "first_name",
   name: "first_name",
   error_message: error_items("first_name"),
-  value: session["name"]["first_name"],
+  value: session[:name]["first_name"],
   autocomplete: "given-name",
 } %>
 
@@ -44,7 +44,7 @@
   id: "middle_name",
   name: "middle_name",
   error_message: error_items("middle_name"),
-  value: session["name"]["middle_name"],
+  value: session[:name]["middle_name"],
 } %>
 
 <%= render "govuk_publishing_components/components/input", {
@@ -54,7 +54,7 @@
   id: "last_name",
   name: "last_name",
   error_message: error_items("last_name"),
-  value: session["name"]["last_name"],
+  value: session[:name]["last_name"],
   autocomplete: "family-name",
 } %>
 <%= render "govuk_publishing_components/components/button", text: "Continue", margin_bottom: true %>
