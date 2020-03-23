@@ -16,9 +16,9 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
   describe "POST submit" do
     let(:params) do
       {
-        phone_number_calls: "1234",
-        phone_number_texts: "5678",
-        email: "somewhere@somewhere.com",
+        "phone_number_calls" => "1234",
+        "phone_number_texts" => "5678",
+        "email" => "somewhere@somewhere.com",
       }
     end
 
