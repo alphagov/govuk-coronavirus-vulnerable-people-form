@@ -9,7 +9,11 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
     }
     session[:contact_details] = contact_details
 
-    invalid_fields = contact_details[:email] ? validate_email_address("email", contact_details[:email]) : []
+    invalid_fields = if session[:contact_details].dig(:email)
+        validate_email_address("email", session[:contact_details].dig(:email))
+      else
+        []
+      end
 
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields

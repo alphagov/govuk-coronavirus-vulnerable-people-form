@@ -13,9 +13,9 @@ class CoronavirusForm::DateOfBirthController < ApplicationController
     session[:date_of_birth][:year] = strip_tags(params.dig("date_of_birth", "year")&.strip).presence
 
     invalid_fields = validate_date_of_birth(
-      session[:date_of_birth][:year],
-      session[:date_of_birth][:month],
-      session[:date_of_birth][:day],
+      session[:date_of_birth].dig(:year),
+      session[:date_of_birth].dig(:month),
+      session[:date_of_birth].dig(:day),
       "date_of_birth",
     )
 

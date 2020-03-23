@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::SupportAddressController < ApplicationController
-  REQUIRED_FIELDS = %w(
+
+  REQUIRED_FIELDS = %i[
       building_and_street_line_1
       town_city
-  ).freeze
+  ].freeze
 
   def show
     session[:support_address] ||= {}
@@ -41,21 +42,21 @@ private
     [
       validate_missing_fields(support_address),
       validate_conditionally_present_fields(support_address),
-      validate_postcode("postcode", support_address[:postcode]),
+      validate_postcode("postcode", support_address.dig(:postcode),
     ].flatten.uniq
   end
 
   def validate_conditionally_present_fields(product)
-    return [] if product[:postcode].present? || product[:county].present?
+    return [] if product.dig(:postcode).present? || product.dig(:county).present?
 
     invalid_fields = []
 
-    if product[:county].blank?
+    if product.dig(:county).blank?
       invalid_fields << {
         field: "county",
         text: t("coronavirus_form.errors.missing_county_or_postcode_field"),
       }
-    elsif product[:postcode].blank?
+    elsif product.dig(:postcode).blank?
       invalid_fields << {
         field: "postcode",
         text: t("coronavirus_form.errors.missing_county_or_postcode_field"),
@@ -67,7 +68,7 @@ private
 
   def validate_missing_fields(product)
     REQUIRED_FIELDS.each_with_object([]) do |field, invalid_fields|
-      next if product[field.to_sym].present?
+      next if product.dig(field).present?
 
       invalid_fields << {
         field: field.to_s,

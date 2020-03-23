@@ -12,7 +12,7 @@ class CoronavirusForm::NameController < ApplicationController
     session[:name][:middle_name] = strip_tags(params[:middle_name]&.strip).presence
     session[:name][:last_name] = strip_tags(params[:last_name]&.strip).presence
 
-    invalid_fields = validate_text_fields(%w[first_name last_name], controller_name)
+    invalid_fields = validate_text_fields(%i[first_name last_name], controller_name)
 
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
@@ -32,7 +32,7 @@ private
 
   def validate_text_fields(mandatory_fields, page)
     mandatory_fields.each_with_object([]) do |field, invalid_fields|
-      next if session[:name][field.to_sym].present?
+      next if session[:name].dig(field).present?
 
       invalid_fields << { field: field.to_s,
                           text: t("coronavirus_form.questions.#{page}.#{field}.custom_error",
