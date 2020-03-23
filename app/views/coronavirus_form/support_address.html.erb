@@ -33,7 +33,7 @@
   name: "building_and_street_line_1",
   type: "text",
   error_message: error_items('building_and_street_line_1'),
-  value: session[:support_address]["building_and_street_line_1"],
+  value: session[:support_address][:building_and_street_line_1],
   autocomplete: "address-line1",
 } %>
 
@@ -44,7 +44,7 @@
   id: "building_and_street_line_2",
   name: "building_and_street_line_2",
   error_message: error_items('building_and_street_line_2'),
-  value: session[:support_address]["building_and_street_line_2"],
+  value: session[:support_address][:building_and_street_line_2],
   autocomplete: "address-line2",
 } %>
 
@@ -56,7 +56,7 @@
   name: "town_city",
   type: "text",
   error_message: error_items('town_city'),
-  value: session[:support_address]["town_city"],
+  value: session[:support_address][:town_city],
   width: 20,
   autocomplete: "address-level2",
 } %>
@@ -69,7 +69,7 @@
   name: "county",
   type: "text",
   error_message: error_items('county'),
-  value: session[:support_address]["county"],
+  value: session[:support_address][:county],
   width: 20,
 } %>
 
@@ -81,7 +81,7 @@
   name: "postcode",
   type: "text",
   error_message: error_items('postcode'),
-  value: session[:support_address]["postcode"],
+  value: session[:support_address][:postcode],
   width: 10,
   autocomplete: "postal-code",
 } %>
