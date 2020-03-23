@@ -31,7 +31,6 @@ Rails.application.configure do
     config.public_file_server.enabled = true
     config.public_file_server.headers = {
       "Cache-Control" => "public, s-maxage=31536000, max-age=31536000",
-      "Expires" => 1.day.from_now.to_formatted_s(:rfc822),
     }
   else
     config.public_file_server.enabled = false
