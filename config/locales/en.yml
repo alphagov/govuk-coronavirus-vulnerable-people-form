@@ -19,7 +19,7 @@ en:
     description: |
       <p class="govuk-body">There’s guidance from:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a class="govuk-link" href="https://www.health-ni.gov.uk/news/latest-update-coronavirus-covid-19-12">Northern Ireland</a></li>
+        <li><a class="govuk-link" href="https://www.health-ni.gov.uk/coronavirus">Northern Ireland</a></li>
         <li><a class="govuk-link" href="https://www.gov.scot/coronavirus-covid-19/">Scotland</a></li>
         <li><a class="govuk-link" href="https://gov.wales/coronavirus">Wales</a></li>
       </ul>
@@ -142,7 +142,7 @@ en:
             label: "Not sure"
         custom_select_error: Select if you received the letter from the NHS
       name:
-        title: What is your name?
+        title: What's your name?
         hint: If you’re applying for someone else, enter the name of the person who needs support.
         first_name:
           label: First name
@@ -153,7 +153,7 @@ en:
           label: Last name
           custom_error: Enter your last name
       date_of_birth:
-        title: What is your date of birth?
+        title: What's your date of birth?
         hint: For example, 31 3 1980
       support_address:
         title: What is the address where you need support?
@@ -175,7 +175,7 @@ en:
           label: Postcode
           custom_error: Enter a postcode
       contact_details:
-        title: "Enter your contact details"
+        title: "What are your contact details?"
         hint: "You can use someone else’s contact details if that’s easier."
         phone_number_calls:
           label: "Phone number (for phone calls)"
@@ -220,7 +220,7 @@ en:
             label: "No, I do not know my NHS number"
         custom_select_error: Select yes if you know your NHS number
       nhs_number:
-        title: What is your NHS number?
+        title: What's your NHS number?
         hint_format: An NHS Number is a 10 digit number, like 485 777 3456.
         hint_where_to_find: You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
         nhs_number:
@@ -266,4 +266,4 @@ en:
             label: "Yes"
           option_no:
             label: "No"
-        custom_select_error: Select yes if there is someone in the house who is able to carry a delivery of supplies inside
+        custom_select_error: Select yes if there's someone in the house who is able to carry a delivery of supplies inside
