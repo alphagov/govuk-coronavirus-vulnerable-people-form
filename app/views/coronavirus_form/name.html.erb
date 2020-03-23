@@ -10,16 +10,21 @@
   <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
 <% end %>
 
-<%= render "govuk_publishing_components/components/title", {
-  title: t("coronavirus_form.questions.name.title"),
-  margin_top: 0
-} %>
-
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-name",
   "data-question-key": "name",
   "novalidate": "true"
 ) do %>
+
+  <%= render "govuk_publishing_components/components/title", {
+  title: t("coronavirus_form.questions.name.title"),
+  margin_top: 0
+} %>
+
+<%= render "govuk_publishing_components/components/hint", {
+  text: t("coronavirus_form.questions.name.hint"),
+} %>
+
 <%= render "govuk_publishing_components/components/input", {
   label: {
     text: t("coronavirus_form.questions.name.first_name.label")
