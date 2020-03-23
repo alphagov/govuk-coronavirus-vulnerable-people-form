@@ -196,8 +196,8 @@ en:
             <li>have had bone marrow or stem cell transplants in the last 6 months, or are still taking immunosuppression drugs</li>
             <li>have a severe respiratory condition - including cystic fibrosis, severe asthma or severe COPD (Chronic Obstructive Pulmonary Disease)</li>
             <li>have a rare disease or inborn error of metabolism that significantly increases your risk of infection - for example SCID or homozygous sickle cell</li>
-            <li>are getting an immunosuppression therapy</li>
-            <li>are pregnant and have a significant congenital heart disease</li>
+            <li>are getting an immunosuppression therapy that’s sufficient to significantly increase your risk of infection</li>
+            <li>are pregnant, and have a significant congenital or acquired heart disease</li>
           </ul>
         options:
           option_yes:
