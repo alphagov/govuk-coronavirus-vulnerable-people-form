@@ -7,7 +7,7 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
 
   describe "GET show" do
     it "renders the form" do
-      session["nhs_letter"] = "yes"
+      session[:live_in_england] = "Yes"
 
       get :show
       expect(response).to render_template(current_template)
@@ -15,7 +15,7 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
 
     it "redirects to start if no session data" do
       get :show
-      expect(response).to redirect_to({ controller: "live_in_england", action: "show" })
+      expect(response).to redirect_to(live_in_england_path)
     end
   end
 
