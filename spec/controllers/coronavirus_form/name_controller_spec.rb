@@ -20,21 +20,21 @@ RSpec.describe CoronavirusForm::NameController, type: :controller do
   describe "POST submit" do
     let(:params) do
       {
-        "first_name" => "Harry",
-        "middle_name" => "Snape",
-        "last_name" => "Potter",
+        "first_name" => "Harry<script></script>",
+        "middle_name" => "Snape<script></script>",
+        "last_name" => "<script></script>Potter",
       }
     end
     let(:person) do
       {
-        "first_name" => "Harry",
-        "middle_name" => "Snape",
-        "last_name" => "Potter",
+        first_name: "Harry",
+        middle_name: "Snape",
+        last_name: "Potter",
       }
     end
 
 
-    it "sets session variables" do
+    it "sets session variables as sanatized symbolized keys" do
       post :submit, params: params
       expect(session[session_key]).to eq person
     end
@@ -73,7 +73,7 @@ RSpec.describe CoronavirusForm::NameController, type: :controller do
     it "validates middle name is not required" do
       post :submit, params: params.except("middle_name")
 
-      expect(session[session_key]).to eq person.merge("middle_name" => nil)
+      expect(session[session_key]).to eq person.merge(middle_name: nil)
       expect(response).to redirect_to(date_of_birth_path)
     end
 
