@@ -267,4 +267,4 @@ en:
             label: "Yes"
           option_no:
             label: "No"
-        custom_select_error: Select yes if there's someone in the house who's able to carry a delivery of supplies inside
+        custom_select_error: Select yes if there’s someone in the house who’s able to carry a delivery of supplies inside
