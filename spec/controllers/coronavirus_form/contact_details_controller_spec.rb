@@ -34,7 +34,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       }
     end
 
-    it "sets session variables as sanatized symbolized keys" do
+    it "sets session variables as sanitize symbolized keys" do
       post :submit, params: params
       expect(session[session_key]).to eq contact_details
     end
