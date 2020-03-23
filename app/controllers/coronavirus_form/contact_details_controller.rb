@@ -3,13 +3,13 @@
 class CoronavirusForm::ContactDetailsController < ApplicationController
   def submit
     contact_details = {
-      "phone_number_calls" => strip_tags(params[:phone_number_calls]&.strip).presence,
-      "phone_number_texts" => strip_tags(params[:phone_number_texts]&.strip).presence,
-      "email" => strip_tags(params[:email]&.strip).presence,
+      phone_number_calls: strip_tags(params[:phone_number_calls]&.strip).presence,
+      phone_number_texts: strip_tags(params[:phone_number_texts]&.strip).presence,
+      email: strip_tags(params[:email]&.strip).presence,
     }
     session[:contact_details] = contact_details
 
-    invalid_fields = contact_details["email"] ? validate_email_address("email", contact_details["email"]) : []
+    invalid_fields = contact_details[:email] ? validate_email_address("email", contact_details[:email]) : []
 
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
