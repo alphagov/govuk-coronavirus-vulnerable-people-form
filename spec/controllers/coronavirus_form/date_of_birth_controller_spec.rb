@@ -28,9 +28,17 @@ RSpec.describe CoronavirusForm::DateOfBirthController, type: :controller do
       }
     end
 
-    it "sets session variables" do
+    let(:date_of_birth) do
+      {
+        day: "31",
+        month: "1",
+        year: "1980",
+      }
+    end
+
+    it "sets session variables as symbolized keys" do
       post :submit, params: params
-      expect(session[session_key]).to eq params["date_of_birth"]
+      expect(session[session_key]).to eq date_of_birth
     end
 
     it "redirects to next step for a permitted response" do
