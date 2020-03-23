@@ -31,7 +31,7 @@
   label: {
     text: t("coronavirus_form.questions.contact_details.phone_number_calls.label"),
   },
-  value: session.dig("contact_details", "phone_number_calls"),
+  value: session[:contact_details]["phone_number_calls"],
   error_message: error_items("phone_number_calls"),
   width: 20,
   type: "tel",
@@ -43,7 +43,7 @@
   label: {
     text: t("coronavirus_form.questions.contact_details.phone_number_texts.label"),
   },
-  value: session.dig("contact_details", "phone_number_texts"),
+  value: session[:contact_details]["phone_number_texts"],
   error_message: error_items("phone_number_texts"),
   width: 20,
   type: "tel",
@@ -56,7 +56,7 @@
   label: {
     text: t("coronavirus_form.questions.contact_details.email.label"),
   },
-  value: session.dig("contact_details", "email"),
+  value: session[:contact_details]["email"],
   error_message: error_items("email"),
   type: "email",
   autocomplete: "email",
