@@ -39,6 +39,24 @@
 // The GOV.UK Design System team are aware of issues with lighter grey text for some disabled users
 // For example those with dyslexia or visual impairments.
 // Since this service is targetted at vulnerable people we're setting hint text to a darker colour to be safe.
+
+// TODO: Try to allow passing through an app-hint class to the hint component
 .govuk-hint {
     color: $govuk-text-colour
+}
+
+// Make keys in Summary list easier to read on smaller screens.
+
+// TODO: Allow additional classes to be passed to the summary list component
+// We should be passing the .govuk-\!-width-two-thirds class instead of hardcoding it.
+.govuk-summary-list__key {
+    // https://github.com/alphagov/govuk-frontend/blob/v3.6.0/src/govuk/overrides/_width.scss#L18-L24
+    @include govuk-media-query($from: tablet) {
+        width: 66.66% !important;
+    }
+}
+
+// TODO: Allow additional classes to pass to summary list link, or perhaps option to turn off visited state.
+.govuk-summary-list__actions-list-item > .govuk-link {
+    @include govuk-link-style-no-visited-state;
 }
