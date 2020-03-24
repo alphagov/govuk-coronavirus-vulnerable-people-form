@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::DateOfBirthController < ApplicationController
-  include ActionView::Helpers::SanitizeHelper
-  include FieldValidationHelper
-
   def show
     session["date_of_birth"] ||= {}
     render "coronavirus_form/#{PAGE}"

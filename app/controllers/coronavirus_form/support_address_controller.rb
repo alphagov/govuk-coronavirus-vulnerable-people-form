@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::SupportAddressController < ApplicationController
-  include ActionView::Helpers::SanitizeHelper
-  include FieldValidationHelper
-
   REQUIRED_FIELDS = %w(
       building_and_street_line_1
       town_city
