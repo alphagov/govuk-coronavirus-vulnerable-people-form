@@ -8,9 +8,9 @@ class CoronavirusForm::DateOfBirthController < ApplicationController
 
   def submit
     session["date_of_birth"] ||= {}
-    session["date_of_birth"]["day"] = sanitize(params.dig("date_of_birth", "day")).presence
-    session["date_of_birth"]["month"] = sanitize(params.dig("date_of_birth", "month")).presence
-    session["date_of_birth"]["year"] = sanitize(params.dig("date_of_birth", "year")).presence
+    session["date_of_birth"]["day"] = sanitize(params.dig("date_of_birth", "day")&.strip).presence
+    session["date_of_birth"]["month"] = sanitize(params.dig("date_of_birth", "month")&.strip).presence
+    session["date_of_birth"]["year"] = sanitize(params.dig("date_of_birth", "year")&.strip).presence
 
     invalid_fields = validate_date_of_birth(
       session["date_of_birth"]["year"],

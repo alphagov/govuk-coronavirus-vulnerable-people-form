@@ -13,11 +13,11 @@ class CoronavirusForm::SupportAddressController < ApplicationController
 
   def submit
     session[:support_address] ||= {}
-    session[:support_address]["building_and_street_line_1"] = sanitize(params[:building_and_street_line_1]).presence
-    session[:support_address]["building_and_street_line_2"] = sanitize(params[:building_and_street_line_2]).presence
-    session[:support_address]["town_city"] = sanitize(params[:town_city]).presence
-    session[:support_address]["county"] = sanitize(params[:county]).presence
-    session[:support_address]["postcode"] = sanitize(params[:postcode]).presence
+    session[:support_address]["building_and_street_line_1"] = sanitize(params[:building_and_street_line_1]&.strip).presence
+    session[:support_address]["building_and_street_line_2"] = sanitize(params[:building_and_street_line_2]&.strip).presence
+    session[:support_address]["town_city"] = sanitize(params[:town_city]&.strip).presence
+    session[:support_address]["county"] = sanitize(params[:county]&.strip).presence
+    session[:support_address]["postcode"] = sanitize(params[:postcode]&.strip).presence
 
     invalid_fields = validate_fields(session[:support_address])
 

@@ -7,9 +7,9 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
 
   def submit
     contact_details = {
-      "phone_number_calls" => sanitize(params[:phone_number_calls]).presence,
-      "phone_number_texts" => sanitize(params[:phone_number_texts]).presence,
-      "email" => sanitize(params[:email]).presence,
+      "phone_number_calls" => sanitize(params[:phone_number_calls]&.strip).presence,
+      "phone_number_texts" => sanitize(params[:phone_number_texts]&.strip).presence,
+      "email" => sanitize(params[:email]&.strip).presence,
     }
     session[:contact_details] = contact_details
 
