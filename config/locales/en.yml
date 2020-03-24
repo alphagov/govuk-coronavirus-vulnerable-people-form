@@ -2,9 +2,10 @@ en:
   privacy_notice:
     label: Privacy
   check_your_answers:
-    title: Check your answers before sending your application
+    title: Are you ready to send your application?
+    hint: Check your answers first.
     heading: Now send your application
-    confirmation: By submitting this application you’re confirming that, to the best of your knowledge, the details you’re providing are correct.
+    confirmation: By submitting this application you’re confirming that, as far as you know, the details you’re providing are correct.
     submit: Accept and send
   not_eligible_medical:
     title: Sorry, you’re not eligible for help through this service
