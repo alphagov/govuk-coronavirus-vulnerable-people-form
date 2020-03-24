@@ -11,6 +11,10 @@
   margin_top: 0,
 } %>
 
+<%= render "govuk_publishing_components/components/hint", {
+  text: t('check_your_answers.hint'),
+} %>
+
 <%= render "govuk_publishing_components/components/summary_list", {
   items: @items,
 } %>
