@@ -42,6 +42,7 @@ jobs:
           CF_SPACE: staging
           INSTANCES: 5
           CF_STARTUP_TIMEOUT: 5 # minutes
+          REQUIRE_BASIC_AUTH: "true"
           BASIC_AUTH_PASSWORD: ((basic-auth-password))
           AWS_ACCESS_KEY_ID: ((aws-access-key-id))
           AWS_SECRET_ACCESS_KEY: ((aws-secret-access-key))
@@ -71,6 +72,7 @@ jobs:
           CF_SPACE: production
           INSTANCES: 30
           CF_STARTUP_TIMEOUT: 15 # minutes
+          REQUIRE_BASIC_AUTH:
           BASIC_AUTH_PASSWORD: ((basic-auth-password))
           AWS_ACCESS_KEY_ID: ((aws-access-key-id-prod))
           AWS_SECRET_ACCESS_KEY: ((aws-secret-access-key-prod))
