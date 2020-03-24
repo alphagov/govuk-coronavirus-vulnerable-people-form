@@ -59,6 +59,19 @@ jobs:
         file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/smoke-test.yml
         params:
           URL: 'https://govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital/'
+          MESSAGE:
+      - task: smoke-test-css
+        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/smoke-test.yml
+        params:
+          URL: 'https://govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital/assets/application-625e5a1280b6f7c5d39998a22c0d9a4339fde989a41584d7765dd2f291a148ba.css'
+          MESSAGE: |
+            This smoke test is here to check that the CSS file name does not change from the version we're currently using in production.
+
+            Deploying a change to the CSS would currently cause 404s on the CSS during the rolling deployment to production. This would cause users to see an unstyled version of the form.
+
+            See this trello card for more details - https://trello.com/c/cfGnjdZV/175-fix-issues-with-assets-404ing-during-rolling-deployments
+
+            If you urgently need to deploy a CSS change, and you can accept a few minutes of unstyled pages being served to users, you can disable this task with /fly set-pipeline/
 
   - name: deploy-to-prod
     serial: true

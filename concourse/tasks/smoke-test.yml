@@ -5,12 +5,15 @@ image_resource:
     repository: governmentpaas/curl-ssl
 params:
   URL:
+  MESSAGE:
 run:
   path: sh
   args:
     - '-c'
     - |
       set -eu
+
+      echo "$MESSAGE"
 
       # TODO we can come up with a more thorough test than this
       curl --fail --silent --verbose --user gds:((basic-auth-password)) "$URL"
