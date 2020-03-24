@@ -33,13 +33,11 @@ private
 
   def items
     questions.map do |question|
-      # We have answers as strings and hashes. The hashes need a little more
-      # work to make them readable.
-      value = session[question].is_a?(Hash) ? concat_answer(session[question], question) : session[question]
+      answer = concat_answer(session[question], question)
 
       {
         field: t("coronavirus_form.questions.#{question}.title"),
-        value: sanitize(value),
+        value: sanitize(answer),
         edit: {
           href: "#{question.dasherize}?change-answer",
         },
@@ -48,6 +46,8 @@ private
   end
 
   def concat_answer(answer, question)
+    return answer unless answer.is_a?(Hash)
+
     concatenated_answer = []
     joiner = " "
 
