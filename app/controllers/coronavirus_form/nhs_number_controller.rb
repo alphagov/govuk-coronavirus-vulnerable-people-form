@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::NhsNumberController < ApplicationController
-  include ActionView::Helpers::SanitizeHelper
   include NhsNumberValidatorHelper
-  include FieldValidationHelper
 
   def show
     render "coronavirus_form/#{PAGE}"

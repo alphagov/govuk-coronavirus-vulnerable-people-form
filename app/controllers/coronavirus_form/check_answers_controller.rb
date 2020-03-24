@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::CheckAnswersController < ApplicationController
-  include ActionView::Helpers::SanitizeHelper
-
   def show
     if session[:nhs_letter].present?
       @items = items

@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::CarrySuppliesController < ApplicationController
-  include ActionView::Helpers::SanitizeHelper
-  include FieldValidationHelper
-
   def show
     render "coronavirus_form/#{PAGE}"
   end

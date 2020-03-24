@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::NameController < ApplicationController
-  include ActionView::Helpers::SanitizeHelper
-  include FieldValidationHelper
-
   def show
     session["name"] ||= {}
     render "coronavirus_form/#{PAGE}"
@@ -11,9 +8,9 @@ class CoronavirusForm::NameController < ApplicationController
 
   def submit
     session["name"] ||= {}
-    session["name"]["first_name"] = sanitize(params[:first_name]).presence
-    session["name"]["middle_name"] = sanitize(params[:middle_name]).presence
-    session["name"]["last_name"] = sanitize(params[:last_name]).presence
+    session["name"]["first_name"] = sanitize(params[:first_name]&.strip).presence
+    session["name"]["middle_name"] = sanitize(params[:middle_name]&.strip).presence
+    session["name"]["last_name"] = sanitize(params[:last_name]&.strip).presence
 
     invalid_fields = validate_text_fields(%w[first_name last_name], "name")
 
