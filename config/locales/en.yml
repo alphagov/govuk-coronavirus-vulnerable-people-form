@@ -191,7 +191,8 @@ en:
           <p class="govuk-body">You’re extremely vulnerable if you:</p>
           <ul class="govuk-list govuk-list--bullet app-list--spaced">
             <li>have had a solid organ transplant</li>
-            <li>have lung cancer, and you’re getting active chemotherapy or radical radiotherapy</li>
+            <li>have any cancer and are getting chemotherapy</li>
+            <li>have lung cancer and are getting radical radiotherapy</li>
             <li>have cancer of the blood or bone marrow, at any stage of treatment - for example, leukaemia, lymphoma or myeloma</li>
             <li>have any cancer for which you’re getting immunotherapy or other continuing antibody treatments</li>
             <li>have any cancer for which you’re getting a targeted treatment which can affect the immune system - for example, protein kinase inhibitors or PARP inhibitors</li>
