@@ -36,7 +36,7 @@ Run the following to set up the local version of DynamoDB
 ## Deployment pipeline
 
 Every commit to master is deployed to GOV.UK PaaS by
-[this concourse pipeline](https://cd.gds-reliability.engineering/teams/govuk-tools/pipelines/govuk-coronavirus-business-volunteer-form),
+[this concourse pipeline](https://cd.gds-reliability.engineering/teams/govuk-tools/pipelines/govuk-corona-vulnerable-people-form),
 which is configured in [concourse/pipeline.yml](concourse/pipeline.yml).
 
 The concourse pipeline has credentials for the `govuk-forms-deployer` user in
