@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe CoronavirusForm::DateOfBirthController, type: :controller do
+  include_examples "redirections"
+
   let(:current_template) { "coronavirus_form/date_of_birth" }
   let(:session_key) { "date_of_birth" }
 
@@ -12,11 +14,6 @@ RSpec.describe CoronavirusForm::DateOfBirthController, type: :controller do
 
       get :show
       expect(response).to render_template(current_template)
-    end
-
-    it "redirects to start if no session data" do
-      get :show
-      expect(response).to redirect_to(live_in_england_path)
     end
   end
 

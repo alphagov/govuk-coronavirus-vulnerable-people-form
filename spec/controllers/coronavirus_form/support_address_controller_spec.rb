@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
+  include_examples "redirections"
+
   let(:current_template) { "coronavirus_form/support_address" }
   let(:session_key) { :support_address }
   let(:next_page) { contact_details_path }
@@ -13,11 +15,6 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
 
       get :show
       expect(response).to render_template(current_template)
-    end
-
-    it "redirects to start if no session data" do
-      get :show
-      expect(response).to redirect_to(live_in_england_path)
     end
   end
 

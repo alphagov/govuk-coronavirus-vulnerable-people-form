@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe CoronavirusForm::KnowNhsNumberController, type: :controller do
+  include_examples "redirections"
+
   let(:current_template) { "coronavirus_form/know_nhs_number" }
   let(:session_key) { :know_nhs_number }
 
@@ -12,11 +14,6 @@ RSpec.describe CoronavirusForm::KnowNhsNumberController, type: :controller do
 
       get :show
       expect(response).to render_template(current_template)
-    end
-
-    it "redirects to start if no session data" do
-      get :show
-      expect(response).to redirect_to(live_in_england_path)
     end
   end
 

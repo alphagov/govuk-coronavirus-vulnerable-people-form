@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe CoronavirusForm::BasicCareNeedsController, type: :controller do
+  include_examples "redirections"
+
   let(:current_template) { "coronavirus_form/basic_care_needs" }
   let(:session_key) { :basic_care_needs }
 
@@ -11,11 +13,6 @@ RSpec.describe CoronavirusForm::BasicCareNeedsController, type: :controller do
       session[:live_in_england] = "Yes"
       get :show
       expect(response).to render_template(current_template)
-    end
-
-    it "redirects to start if no session data" do
-      get :show
-      expect(response).to redirect_to(live_in_england_path)
     end
   end
 

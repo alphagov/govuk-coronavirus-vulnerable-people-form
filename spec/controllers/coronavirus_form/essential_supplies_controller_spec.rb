@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe CoronavirusForm::EssentialSuppliesController, type: :controller do
+  include_examples "redirections"
+
   let(:current_template) { "coronavirus_form/essential_supplies" }
   let(:session_key) { :essential_supplies }
 
@@ -12,11 +14,6 @@ RSpec.describe CoronavirusForm::EssentialSuppliesController, type: :controller d
 
       get :show
       expect(response).to render_template(current_template)
-    end
-
-    it "redirects to start if no session data" do
-      get :show
-      expect(response).to redirect_to(live_in_england_path)
     end
   end
 

@@ -1,5 +1,5 @@
 When("I visit the live in England page") do
-  visit basic_care_needs_path
+  visit live_in_england_path
 end
 
 Then("I will be redirected to the NHS letter page") do
