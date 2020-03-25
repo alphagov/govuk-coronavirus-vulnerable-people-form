@@ -203,9 +203,9 @@ en:
           </ul>
         options:
           option_yes:
-            label: "Yes, I have a medical condition that makes me extremely vulnerable to coronavirus"
+            label: "Yes, I have one of the medical conditions on the list"
           option_no:
-            label: "No, I do not have a medical condition that makes me vulnerable to coronavirus"
+            label: "No, I do not have one of the medical conditions on the list"
         custom_select_error: Select yes if you have one of the medical conditions on the list
       know_nhs_number:
         title: "Do you know your NHS number?"
