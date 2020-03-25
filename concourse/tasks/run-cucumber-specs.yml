@@ -1,0 +1,17 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: ruby
+    tag: 2.6.5
+params:
+  TEST_URL:
+run:
+  path: sh
+  args:
+    - '-c'
+    - |
+      set -eu
+
+      bundle install
+      rails cucumber

@@ -22,6 +22,9 @@ group :development do
 end
 
 group :test do
+  gem "apparition", "~> 0.5.0", require: false
+  gem "capybara", "~> 3.31.0", require: false
+  gem "cucumber", "~> 3.1.2", require: false
   gem "cucumber-rails", "~> 2.0", require: false
   gem "scss-lint", "~> 0.7.0", require: false
   gem "simplecov", "~> 0.16"
