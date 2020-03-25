@@ -1,5 +1,5 @@
 When "I visit the {string} path" do |path|
-  visit ENV.fetch("TEST_URL", "") + path
+  visit path
 end
 
 Then "I can see a {string} heading" do |heading|
