@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::LiveInEnglandController < ApplicationController
+  skip_before_action :check_first_question
+
   def show
     render "coronavirus_form/#{PAGE}"
   end

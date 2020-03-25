@@ -3,11 +3,14 @@
 require "spec_helper"
 
 RSpec.describe CoronavirusForm::BasicCareNeedsController, type: :controller do
+  include_examples "redirections"
+
   let(:current_template) { "coronavirus_form/basic_care_needs" }
   let(:session_key) { :basic_care_needs }
 
   describe "GET show" do
     it "renders the form" do
+      session[:live_in_england] = "Yes"
       get :show
       expect(response).to render_template(current_template)
     end

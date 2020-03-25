@@ -11,9 +11,6 @@ Feature: Filling in the form
     And I click the "Continue" button
     Then I will be redirected to the "/nhs-letter" path
 
-  Scenario: Answers "Have you recently had a letter from the NHS about your situation as someone who’s extremely vulnerable to coronavirus?"
-    When I visit the "/nhs-letter" path
-    Then I can see a "Have you recently had a letter from the NHS about your situation as someone who’s extremely vulnerable to coronavirus?" heading
-    And I choose "Not sure"
-    And I click the "Continue" button
-    Then I will be redirected to the "/name" path
+  Scenario: Visits an intermediate question
+      When I visit the "/essential-supplies" path
+      Then I will be redirected to the "/live-in-england" path

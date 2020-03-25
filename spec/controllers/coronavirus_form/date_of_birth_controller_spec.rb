@@ -3,11 +3,15 @@
 require "spec_helper"
 
 RSpec.describe CoronavirusForm::DateOfBirthController, type: :controller do
+  include_examples "redirections"
+
   let(:current_template) { "coronavirus_form/date_of_birth" }
   let(:session_key) { "date_of_birth" }
 
   describe "GET show" do
     it "renders the form" do
+      session[:live_in_england] = "Yes"
+
       get :show
       expect(response).to render_template(current_template)
     end

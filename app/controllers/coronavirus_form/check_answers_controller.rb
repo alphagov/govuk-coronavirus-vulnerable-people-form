@@ -2,13 +2,9 @@
 
 class CoronavirusForm::CheckAnswersController < ApplicationController
   def show
-    if session[:nhs_letter].present?
-      @items = items
-      session[:check_answers_seen] = true
-      render "coronavirus_form/check_answers"
-    else
-      redirect_to controller: "coronavirus_form/live_in_england", action: "show"
-    end
+    @items = items
+    session[:check_answers_seen] = true
+    render "coronavirus_form/check_answers"
   end
 
   def submit
