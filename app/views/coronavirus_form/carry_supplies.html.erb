@@ -19,6 +19,7 @@
       heading: t("coronavirus_form.questions.carry_supplies.title"),
       is_page_heading: true,
       name: "carry_supplies",
+      description: sanitize(t("coronavirus_form.questions.carry_supplies.description")),
       error_message: error_items("carry_supplies"),
       items: t("coronavirus_form.questions.carry_supplies.options").map.with_index do |(_, item), index|
         {

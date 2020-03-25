@@ -263,6 +263,8 @@ en:
         custom_select_error: Select yes if you have special dietary requirements
       carry_supplies:
         title: Is there someone in the house who’s able to carry a delivery of supplies inside?
+        description: |
+          <p class="govuk-inset-text">For now, we’ll need to leave deliveries on the doorstep.</p>
         options:
           option_yes:
             label: "Yes"
