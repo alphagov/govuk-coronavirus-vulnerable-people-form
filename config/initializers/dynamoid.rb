@@ -8,7 +8,6 @@ Dynamoid.configure do |config|
   config.access_key = ENV["AWS_ACCESS_KEY_ID"]
   config.secret_key = ENV["AWS_SECRET_ACCESS_KEY"]
   config.region = "eu-west-2"
-  config.logger.level = :error
 
   unless Rails.env.production?
     # [Optional]. If provided, it communicates with the DB listening at the endpoint - to communication with DynamoDB local.
