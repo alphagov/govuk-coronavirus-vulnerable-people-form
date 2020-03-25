@@ -269,7 +269,7 @@ GEM
     rspec-mocks (3.9.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
-    rspec-rails (4.0.0.rc1)
+    rspec-rails (4.0.0)
       actionpack (>= 4.2)
       activesupport (>= 4.2)
       railties (>= 4.2)
@@ -376,7 +376,7 @@ DEPENDENCIES
   puma (~> 4.3)
   rails (~> 6.0.2)
   rails-controller-testing (~> 1.0)
-  rspec-rails (~> 4.0.0.beta2)
+  rspec-rails (~> 4.0.0)
   rubocop-govuk
   sass-rails (< 6)
   scss-lint (~> 0.7.0)

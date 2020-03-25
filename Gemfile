@@ -35,6 +35,6 @@ group :development, :test do
   gem "pry", "~> 0.13.0"
   gem "pry-rails", "~> 0.3.9"
   gem "rails-controller-testing", "~> 1.0"
-  gem "rspec-rails", "~> 4.0.0.beta2"
+  gem "rspec-rails", "~> 4.0.0"
   gem "rubocop-govuk"
 end
