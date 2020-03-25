@@ -72,6 +72,10 @@ jobs:
             See this trello card for more details - https://trello.com/c/cfGnjdZV/175-fix-issues-with-assets-404ing-during-rolling-deployments
 
             If you urgently need to deploy a CSS change, and you can accept a few minutes of unstyled pages being served to users, you can disable this task with /fly set-pipeline/
+      - task: run-cucumber-specs
+        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/run-cucumber-specs.yml
+        params:
+          TEST_URL: 'https://gds:((basic-auth-password))@govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital'
 
   - name: deploy-to-prod
     serial: true
