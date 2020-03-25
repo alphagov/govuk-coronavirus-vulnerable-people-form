@@ -44,6 +44,7 @@ run:
       fi
       cf set-env govuk-coronavirus-vulnerable-people-form BASIC_AUTH_PASSWORD "$BASIC_AUTH_PASSWORD"
       cf set-env govuk-coronavirus-vulnerable-people-form SENTRY_DSN "$SENTRY_DSN"
+      cf set-env govuk-coronavirus-vulnerable-people-form SENTRY_CURRENT_ENV "$CF_SPACE"
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_ACCESS_KEY_ID "$AWS_ACCESS_KEY_ID"
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_SECRET_ACCESS_KEY "$AWS_SECRET_ACCESS_KEY"
       cf set-env govuk-coronavirus-vulnerable-people-form SECRET_KEY_BASE "$SECRET_KEY_BASE"
