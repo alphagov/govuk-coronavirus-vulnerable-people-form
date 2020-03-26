@@ -20,3 +20,29 @@ Feature: Filling in the form
     And I click the "Privacy" link
     Then I will be redirected to the "/privacy" path
     And I can see a "Privacy" heading
+
+  Scenario: Not eligible as lives outside England
+    When I visit the "/live-in-england" path
+    And I choose "No"
+    And I click the "Continue" button
+    Then I will be redirected to the "/not-eligible-england" path
+    And I can see a "Sorry, this service is only available in England" heading
+
+  Scenario: No eligible medical condition
+    When I visit the "/live-in-england" path
+    And I choose "Yes"
+    And I click the "Continue" button
+    And I choose "Yes"
+    And I click the "Continue" button
+    And I fill in my name
+    And I click the "Continue" button
+    And I fill in my date of birth
+    And I click the "Continue" button
+    And I fill in my address
+    And I click the "Continue" button
+    And I fill in my contact details
+    And I click the "Continue" button
+    And I choose "No, I do not have one of the medical conditions on the list"
+    And I click the "Continue" button
+    Then I will be redirected to the "/not-eligible-medical" path
+    And I can see a "Sorry, you’re not eligible for help through this service" heading
