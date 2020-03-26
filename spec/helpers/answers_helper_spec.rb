@@ -104,9 +104,9 @@ RSpec.describe AnswersHelper, type: :helper do
 
       it "concatenates date_of_birth as dd/mm/yyyy" do
         answer = {
-          "day" => "31",
-          "month" => "01",
           "year" => "1970",
+          "month" => "01",
+          "day" => "31",
         }
 
         expected_answer = "31/01/1970"
