@@ -112,6 +112,12 @@ RSpec.describe AnswersHelper, type: :helper do
         expected_answer = "31/01/1970"
         expect(helper.concat_answer(answer, question)).to eq(expected_answer)
       end
+
+      it "returns nothing if the support_address is empty" do
+        answer = {}
+
+        expect(helper.concat_answer(answer, question)).to be_nil
+      end
     end
 
     context "general multipart questions" do

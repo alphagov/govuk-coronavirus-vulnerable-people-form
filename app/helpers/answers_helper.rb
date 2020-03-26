@@ -33,7 +33,7 @@ module AnswersHelper
     elsif question.eql?("support_address")
       answer.values.compact.join(",<br>")
     elsif question.eql?("date_of_birth")
-      Time.zone.local(answer["year"], answer["month"], answer["day"]).strftime("%d/%m/%Y")
+      Time.zone.local(answer["year"], answer["month"], answer["day"]).strftime("%d/%m/%Y") if answer.present?
     else
       answer.values.compact.join(" ")
     end
