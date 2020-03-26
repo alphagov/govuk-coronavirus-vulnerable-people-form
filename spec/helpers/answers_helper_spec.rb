@@ -113,8 +113,27 @@ RSpec.describe AnswersHelper, type: :helper do
         expect(helper.concat_answer(answer, question)).to eq(expected_answer)
       end
 
-      it "returns nothing if the support_address is empty" do
+      it "returns nothing if the date_of_birth is empty" do
         answer = {}
+
+        expect(helper.concat_answer(answer, question)).to be_nil
+      end
+
+      it "returns nothing if part of the date is missing" do
+        answer = {
+          "month" => "01",
+          "day" => "31",
+        }
+
+        expect(helper.concat_answer(answer, question)).to be_nil
+      end
+
+      it "returns nothing if the date is nil" do
+        answer = {
+          "month" => nil,
+          "day" => nil,
+          "year" => nil,
+        }
 
         expect(helper.concat_answer(answer, question)).to be_nil
       end

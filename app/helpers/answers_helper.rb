@@ -33,10 +33,16 @@ module AnswersHelper
     elsif question.eql?("support_address")
       answer.values.compact.join(",<br>")
     elsif question.eql?("date_of_birth")
-      Time.zone.local(answer["year"], answer["month"], answer["day"]).strftime("%d/%m/%Y") if answer.present?
+      Time.zone.local(answer["year"], answer["month"], answer["day"]).strftime("%d/%m/%Y") if complete_date?(answer)
     else
       answer.values.compact.join(" ")
     end
+  end
+
+  def complete_date?(date)
+    date.present? &&
+      %w(day month year).all? { |required_key| date.key?(required_key) } &&
+      date.values.all?(&:present?)
   end
 
   def questions
