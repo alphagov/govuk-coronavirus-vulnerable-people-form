@@ -26,14 +26,14 @@ module AnswersHelper
 
     if question.eql?("contact_details")
       concatenated_answer = []
-      concatenated_answer << "Phone number: #{answer['phone_number_calls']}" if answer["phone_number_calls"]
-      concatenated_answer << "Text: #{answer['phone_number_texts']}" if answer["phone_number_texts"]
-      concatenated_answer << "Email: #{answer['email']}" if answer["email"]
+      concatenated_answer << "Phone number: #{answer[:phone_number_calls]}" if answer[:phone_number_calls]
+      concatenated_answer << "Text: #{answer[:phone_number_texts]}" if answer[:phone_number_texts]
+      concatenated_answer << "Email: #{answer[:email]}" if answer[:email]
       concatenated_answer.join("<br>")
     elsif question.eql?("support_address")
       answer.values.compact.join(",<br>")
     elsif question.eql?("date_of_birth")
-      Time.zone.local(answer["year"], answer["month"], answer["day"]).strftime("%d/%m/%-Y") if complete_date?(answer)
+      Time.zone.local(answer[:year], answer[:month], answer[:day]).strftime("%d/%m/%-Y") if complete_date?(answer)
     else
       answer.values.compact.join(" ")
     end
@@ -41,7 +41,7 @@ module AnswersHelper
 
   def complete_date?(date)
     date.present? &&
-      %w(day month year).all? { |required_key| date.key?(required_key) } &&
+      %i(day month year).all? { |required_key| date.key?(required_key) } &&
       date.values.all?(&:present?)
   end
 

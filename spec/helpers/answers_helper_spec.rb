@@ -36,13 +36,13 @@ RSpec.describe AnswersHelper, type: :helper do
 
       it "concatenates contact_details with a line break" do
         answer = {
-          "phone_number_calls" => "012101234567",
-          "phone_number_texts" => "0777001234567",
-          "email" => "me@example.com",
+          phone_number_calls: "012101234567",
+          phone_number_texts: "0777001234567",
+          email: "me@example.com",
         }
 
         expected_answer =
-          "Phone number: #{answer['phone_number_calls']}<br>Text: #{answer['phone_number_texts']}<br>Email: #{answer['email']}"
+          "Phone number: #{answer[:phone_number_calls]}<br>Text: #{answer[:phone_number_texts]}<br>Email: #{answer[:email]}"
 
         expect(helper.concat_answer(answer, question)).to eq(expected_answer)
       end
@@ -55,10 +55,10 @@ RSpec.describe AnswersHelper, type: :helper do
 
       it "only concatenates the fields that have a value" do
         answer = {
-          "email" => "me@example.com",
+          email: "me@example.com",
         }
 
-        expected_answer = "Email: #{answer['email']}"
+        expected_answer = "Email: #{answer[:email]}"
         expect(helper.concat_answer(answer, question)).to eq(expected_answer)
       end
     end
@@ -68,11 +68,11 @@ RSpec.describe AnswersHelper, type: :helper do
 
       it "concatenates support_address with a comma and a line break" do
         answer = {
-          "building_and_street_line_1" => "The building",
-          "building_and_street_line_2" => "1 High Street",
-          "town_city" => "Town",
-          "county" => "County",
-          "postcode" => "E1 8QS",
+          building_and_street_line_1: "The building",
+          building_and_street_line_2: "1 High Street",
+          town_city: "Town",
+          county: "County",
+          postcode: "E1 8QS",
         }
 
         expected_answer =
@@ -89,9 +89,9 @@ RSpec.describe AnswersHelper, type: :helper do
 
       it "only concatenates the fields that have a value" do
         answer = {
-          "building_and_street_line_1" => "The building",
-          "town_city" => "Town",
-          "postcode" => "E1 8QS",
+          building_and_street_line_1: "The building",
+          town_city: "Town",
+          postcode: "E1 8QS",
         }
 
         expected_answer = "The building,<br>Town,<br>E1 8QS"
@@ -104,9 +104,9 @@ RSpec.describe AnswersHelper, type: :helper do
 
       it "concatenates date_of_birth as dd/mm/yyyy" do
         answer = {
-          "year" => "1970",
-          "month" => "01",
-          "day" => "31",
+          year: "1970",
+          month: "01",
+          day: "31",
         }
 
         expected_answer = "31/01/1970"
@@ -115,9 +115,9 @@ RSpec.describe AnswersHelper, type: :helper do
 
       it "doesn't pad two character years" do
         answer = {
-          "year" => "70",
-          "month" => "01",
-          "day" => "31",
+          year: "70",
+          month: "01",
+          day: "31",
         }
 
         expected_answer = "31/01/70"
@@ -132,8 +132,8 @@ RSpec.describe AnswersHelper, type: :helper do
 
       it "returns nothing if part of the date is missing" do
         answer = {
-          "month" => "01",
-          "day" => "31",
+          month: "01",
+          day: "31",
         }
 
         expect(helper.concat_answer(answer, question)).to be_nil
@@ -141,9 +141,9 @@ RSpec.describe AnswersHelper, type: :helper do
 
       it "returns nothing if the date is nil" do
         answer = {
-          "month" => nil,
-          "day" => nil,
-          "year" => nil,
+          month: nil,
+          day: nil,
+          year: nil,
         }
 
         expect(helper.concat_answer(answer, question)).to be_nil
@@ -155,9 +155,9 @@ RSpec.describe AnswersHelper, type: :helper do
 
       it "concates other hash questions" do
         answer = {
-          "one" => "One",
-          "two" => "Two",
-          "three" => "Three",
+          one: "One",
+          two: "Two",
+          three: "Three",
         }
 
         expected_answer = "One Two Three"
