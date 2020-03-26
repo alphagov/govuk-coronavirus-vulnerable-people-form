@@ -11,6 +11,12 @@ Feature: Filling in the form
     And I click the "Continue" button
     Then I will be redirected to the "/nhs-letter" path
 
-  Scenario: Visits an intermediate question
-      When I visit the "/essential-supplies" path
-      Then I will be redirected to the "/live-in-england" path
+  Scenario: Visits an intermediate question without having previously visited the form
+    When I visit the "/essential-supplies" path
+    Then I will be redirected to the "/live-in-england" path
+
+  Scenario: Visits the privacy policy
+    When I visit the "/live-in-england" path
+    And I click the "Privacy" link
+    Then I will be redirected to the "/privacy" path
+    And I can see a "Privacy" heading
