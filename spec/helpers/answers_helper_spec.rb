@@ -39,5 +39,41 @@ RSpec.describe AnswersHelper, type: :helper do
         expect(helper.concat_answer(answer, question)).to eq(expected_answer)
       end
     end
+
+    context "support_address" do
+      let(:question) { "support_address" }
+
+      it "concatenates support_address with a comma and a line break" do
+        answer = {
+          "building_and_street_line_1" => "The building",
+          "building_and_street_line_2" => "1 High Street",
+          "town_city" => "Town",
+          "county" => "County",
+          "postcode" => "E1 8QS",
+        }
+
+        expected_answer =
+          "The building,<br>1 High Street,<br>Town,<br>County,<br>E1 8QS"
+
+        expect(helper.concat_answer(answer, question)).to eq(expected_answer)
+      end
+
+      it "returns nothing if the support_address is empty" do
+        answer = {}
+
+        expect(helper.concat_answer(answer, question)).to be_empty
+      end
+
+      it "only concatenates the fields that have a value" do
+        answer = {
+          "building_and_street_line_1" => "The building",
+          "town_city" => "Town",
+          "postcode" => "E1 8QS",
+        }
+
+        expected_answer = "The building,<br>Town,<br>E1 8QS"
+        expect(helper.concat_answer(answer, question)).to eq(expected_answer)
+      end
+    end
   end
 end
