@@ -127,11 +127,11 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
     end
 
     it "removes extra whitespace from the postcode" do
-      params["postcode"] = "E1 8QS "
+      params[:postcode] = "E1 8QS "
       post :submit, params: params
 
       expect(response).to redirect_to(next_page)
-      expect(session[session_key]["postcode"]).to eq("E1 8QS")
+      expect(session[session_key][:postcode]).to eq("E1 8QS")
     end
 
     described_class::REQUIRED_FIELDS.each do |field|
