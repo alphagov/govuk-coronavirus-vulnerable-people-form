@@ -7,6 +7,21 @@ RSpec.describe AnswersHelper, type: :helper do
         expect(item[:edit][:href]).to include("?change-answer")
       end
     end
+
+    context "nhs_number" do
+      it "includes the nhs_number question if it has a value" do
+        session[:nhs_number] = "1234567890"
+        expect(helper.answer_items.pluck(:field)).to include(
+          I18n.t("coronavirus_form.questions.nhs_number.title"),
+        )
+      end
+
+      it "skips the nhs_number question if the value is nil" do
+        expect(helper.answer_items.pluck(:field)).to_not include(
+          I18n.t("coronavirus_form.questions.nhs_number.title"),
+        )
+      end
+    end
   end
 
   describe "#concat_answer" do
