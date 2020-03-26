@@ -90,5 +90,20 @@ RSpec.describe AnswersHelper, type: :helper do
         expect(helper.concat_answer(answer, question)).to eq(expected_answer)
       end
     end
+
+    context "general multipart questions" do
+      let(:question) { "question" }
+
+      it "concates other hash questions" do
+        answer = {
+          "one" => "One",
+          "two" => "Two",
+          "three" => "Three",
+        }
+
+        expected_answer = "One Two Three"
+        expect(helper.concat_answer(answer, question)).to eq(expected_answer)
+      end
+    end
   end
 end
