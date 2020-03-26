@@ -75,5 +75,20 @@ RSpec.describe AnswersHelper, type: :helper do
         expect(helper.concat_answer(answer, question)).to eq(expected_answer)
       end
     end
+
+    context "date_of_birth" do
+      let(:question) { "date_of_birth" }
+
+      it "concatenates date_of_birth as dd/mm/yyyy" do
+        answer = {
+          "day" => "31",
+          "month" => "01",
+          "year" => "1970",
+        }
+
+        expected_answer = "31/01/1970"
+        expect(helper.concat_answer(answer, question)).to eq(expected_answer)
+      end
+    end
   end
 end
