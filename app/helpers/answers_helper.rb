@@ -1,16 +1,24 @@
 module AnswersHelper
   def answer_items
-    questions.map do |question|
+    answers = questions.map do |question|
       answer = concat_answer(session[question], question)
 
-      {
-        field: t("coronavirus_form.questions.#{question}.title"),
-        value: sanitize(answer),
-        edit: {
-          href: "#{question.dasherize}?change-answer",
-        },
-      }
+      unless skip_question?(question, answer)
+        {
+          field: t("coronavirus_form.questions.#{question}.title"),
+          value: sanitize(answer),
+          edit: {
+            href: "#{question.dasherize}?change-answer",
+          },
+        }
+      end
     end
+
+    answers.compact
+  end
+
+  def skip_question?(question, answer)
+    question == "nhs_number" && answer.nil?
   end
 
   def concat_answer(answer, question)
