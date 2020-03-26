@@ -1,6 +1,14 @@
 require "spec_helper"
 
 RSpec.describe AnswersHelper, type: :helper do
+  describe "#answer_items" do
+    it "adds a query string to the link for each item" do
+      helper.answer_items.each do |item|
+        expect(item[:edit][:href]).to include("?change-answer")
+      end
+    end
+  end
+
   describe "#concat_answer" do
     it "returns the answer if the answer is a string" do
       question = "questions"
