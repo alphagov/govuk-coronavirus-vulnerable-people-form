@@ -119,6 +119,7 @@ en:
     confirmation:
       title: "Registration complete"
       description: |
+        <p class="govuk-body">That's everything - you will not receive an email or text message to confirm your registration.</p>
         <p class="govuk-body">If your support needs change, go to <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">www.gov.uk/coronavirus-extremely-vulnerable</a> and go through the questions again.</p>
         <p class="govuk-body">There’s <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">guidance on what else you should do as someone who’s especially vulnerable to coronavirus</a>.</p>
         <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
