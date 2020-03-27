@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   scope module: "coronavirus_form" do
     get "/privacy", to: "privacy#show"
 
+    get "/session-expired", to: "session_expired#show"
+
     # (v4[sunday]) Question 1: Do you live in England?
     get "/live-in-england", to: "live_in_england#show"
     post "/live-in-england", to: "live_in_england#submit"

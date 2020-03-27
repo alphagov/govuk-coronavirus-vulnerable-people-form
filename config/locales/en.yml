@@ -99,6 +99,12 @@ en:
 
       <h2 class="govuk-heading-m">Changes to this notice</h2>
       <p class="govuk-body">We may change this privacy notice. When we make changes to this notice, the ‘last updated’ date at the top of this page will also change. Any changes to this privacy notice will apply to you and your information immediately. If these changes affect how your personal information is processed, the Cabinet Office will take reasonable steps to make sure you know.</p>
+  session_expired:
+    title: Your session has ended due to inactivity
+    body_text: |
+      <p class="govuk-body">Your session has ended because you have not done anything for 4 hours. You'll have to start again.</p>
+
+      <p class="govuk-body">We do this for your security. We've deleted all the details you entered to protect your data.</p>
   coronavirus_form:
     errors:
       page_title_prefix: 'Error: '
