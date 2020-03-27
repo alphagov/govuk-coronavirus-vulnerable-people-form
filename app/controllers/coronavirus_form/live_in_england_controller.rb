@@ -8,7 +8,7 @@ class CoronavirusForm::LiveInEnglandController < ApplicationController
   end
 
   def submit
-    live_in_england = sanitize(params[:live_in_england]).presence
+    live_in_england = strip_tags(params[:live_in_england]).presence
     session[:live_in_england] = live_in_england
 
     invalid_fields = validate_radio_field(

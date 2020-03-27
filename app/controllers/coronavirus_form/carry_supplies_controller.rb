@@ -6,7 +6,7 @@ class CoronavirusForm::CarrySuppliesController < ApplicationController
   end
 
   def submit
-    carry_supplies = sanitize(params[:carry_supplies]).presence
+    carry_supplies = strip_tags(params[:carry_supplies]).presence
     session[:carry_supplies] = carry_supplies
 
     invalid_fields = validate_radio_field(

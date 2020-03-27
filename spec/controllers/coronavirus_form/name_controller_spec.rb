@@ -39,6 +39,23 @@ RSpec.describe CoronavirusForm::NameController, type: :controller do
       expect(session[session_key]).to eq person
     end
 
+    it "strips html characters" do
+      params = {
+        "first_name" => '<a href="https://www.example.com">Link</a>',
+        "middle_name" => '<a href="https://www.example.com">Link</a>',
+        "last_name" => '<a href="https://www.example.com">Link</a>',
+      }
+
+      name = {
+        "first_name" => "Link",
+        "middle_name" => "Link",
+        "last_name" => "Link",
+      }
+
+      post :submit, params: params
+      expect(session[session_key]).to eq name
+    end
+
     %w(first_name last_name).each do |field|
       it "validates #{field} is required" do
         post :submit, params: params.except(field)

@@ -44,6 +44,26 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       expect(session[session_key]).to eq address
     end
 
+    it "strips html characters" do
+      params = {
+        "building_and_street_line_1" => '<a href="https://www.example.com">Link</a>',
+        "building_and_street_line_2" => '<a href="https://www.example.com">Link</a>',
+        "town_city" => '<a href="https://www.example.com">Link</a>',
+        "county" => '<a href="https://www.example.com">Link</a>',
+      }
+
+      address = {
+        "building_and_street_line_1" => "Link",
+        "building_and_street_line_2" => "Link",
+        "town_city" => "Link",
+        "county" => "Link",
+        "postcode" => nil,
+      }
+
+      post :submit, params: params
+      expect(session[session_key]).to eq address
+    end
+
     it "does not require address line 2" do
       post :submit, params: params.except("building_and_street_line_2")
 

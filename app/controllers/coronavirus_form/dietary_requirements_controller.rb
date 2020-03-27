@@ -6,7 +6,7 @@ class CoronavirusForm::DietaryRequirementsController < ApplicationController
   end
 
   def submit
-    dietary_requirements = sanitize(params[:dietary_requirements]).presence
+    dietary_requirements = strip_tags(params[:dietary_requirements]).presence
     session[:dietary_requirements] = dietary_requirements
 
     invalid_fields = validate_radio_field(

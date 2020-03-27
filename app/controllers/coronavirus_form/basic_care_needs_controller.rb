@@ -6,7 +6,7 @@ class CoronavirusForm::BasicCareNeedsController < ApplicationController
   end
 
   def submit
-    basic_care_needs = sanitize(params[:basic_care_needs]).presence
+    basic_care_needs = strip_tags(params[:basic_care_needs]).presence
     session[:basic_care_needs] = basic_care_needs
 
     invalid_fields = validate_radio_field(
