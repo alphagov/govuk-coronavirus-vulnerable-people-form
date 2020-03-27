@@ -21,14 +21,13 @@ class CoronavirusForm::NameController < ApplicationController
     elsif session["check_answers_seen"]
       redirect_to check_your_answers_path
     else
-      redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
+      redirect_to date_of_birth_path
     end
   end
 
 private
 
   PAGE = "name"
-  NEXT_PAGE = "date_of_birth"
 
   def validate_text_fields(mandatory_fields, page)
     mandatory_fields.each_with_object([]) do |field, invalid_fields|

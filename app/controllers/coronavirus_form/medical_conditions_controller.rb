@@ -19,18 +19,17 @@ class CoronavirusForm::MedicalConditionsController < ApplicationController
       log_validation_error(invalid_fields)
       render "coronavirus_form/#{PAGE}", status: :unprocessable_entity
     elsif session[:medical_conditions] == I18n.t("coronavirus_form.questions.medical_conditions.options.option_no.label")
-      redirect_to controller: "coronavirus_form/not_eligible_medical", action: "show"
+      redirect_to not_eligible_medical_path
     elsif session["check_answers_seen"]
       redirect_to check_your_answers_path
     else
-      redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
+      redirect_to know_nhs_number_path
     end
   end
 
 private
 
   PAGE = "medical_conditions"
-  NEXT_PAGE = "know_nhs_number"
 
   def previous_path
     contact_details_path

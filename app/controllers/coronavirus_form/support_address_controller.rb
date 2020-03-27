@@ -28,14 +28,13 @@ class CoronavirusForm::SupportAddressController < ApplicationController
     elsif session["check_answers_seen"]
       redirect_to check_your_answers_path
     else
-      redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
+      redirect_to contact_details_path
     end
   end
 
 private
 
   PAGE = "support_address"
-  NEXT_PAGE = "contact_details"
 
   def validate_fields(support_address)
     [

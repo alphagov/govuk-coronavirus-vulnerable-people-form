@@ -26,14 +26,13 @@ class CoronavirusForm::DateOfBirthController < ApplicationController
     elsif session["check_answers_seen"]
       redirect_to check_your_answers_path
     else
-      redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
+      redirect_to support_address_path
     end
   end
 
 private
 
   PAGE = "date_of_birth"
-  NEXT_PAGE = "support_address"
 
   def previous_path
     name_path

@@ -21,18 +21,17 @@ class CoronavirusForm::LiveInEnglandController < ApplicationController
       log_validation_error(invalid_fields)
       render "coronavirus_form/#{PAGE}", status: :unprocessable_entity
     elsif session[:live_in_england] == I18n.t("coronavirus_form.questions.live_in_england.options.option_no.label")
-      redirect_to controller: "coronavirus_form/not_eligible_england", action: "show"
+      redirect_to not_eligible_england_path
     elsif session["check_answers_seen"]
       redirect_to check_your_answers_path
     else
-      redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
+      redirect_to nhs_letter_path
     end
   end
 
 private
 
   PAGE = "live_in_england"
-  NEXT_PAGE = "nhs_letter"
 
   def previous_path
     "/"

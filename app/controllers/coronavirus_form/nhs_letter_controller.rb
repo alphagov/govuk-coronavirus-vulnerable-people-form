@@ -21,14 +21,13 @@ class CoronavirusForm::NhsLetterController < ApplicationController
     elsif session["check_answers_seen"]
       redirect_to check_your_answers_path
     else
-      redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
+      redirect_to name_path
     end
   end
 
 private
 
   PAGE = "nhs_letter"
-  NEXT_PAGE = "name"
 
   def previous_path
     live_in_england_path

@@ -20,7 +20,7 @@ class CoronavirusForm::NhsNumberController < ApplicationController
     elsif session["check_answers_seen"]
       redirect_to check_your_answers_path
     else
-      redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
+      redirect_to essential_supplies_path
     end
   end
 
@@ -43,7 +43,6 @@ private
   end
 
   PAGE = "nhs_number"
-  NEXT_PAGE = "essential_supplies"
 
   def previous_path
     know_nhs_number_path
