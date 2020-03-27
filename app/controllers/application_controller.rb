@@ -29,7 +29,7 @@ private
 
   def check_first_question
     if session[:live_in_england].blank?
-      redirect_to controller: "coronavirus_form/live_in_england", action: "show"
+      redirect_to live_in_england_path
     end
   end
 end
