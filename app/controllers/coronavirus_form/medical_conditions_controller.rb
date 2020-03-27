@@ -21,7 +21,7 @@ class CoronavirusForm::MedicalConditionsController < ApplicationController
     elsif session[:medical_conditions] == I18n.t("coronavirus_form.questions.medical_conditions.options.option_no.label")
       redirect_to controller: "coronavirus_form/not_eligible_medical", action: "show"
     elsif session["check_answers_seen"]
-      redirect_to controller: "coronavirus_form/check_answers", action: "show"
+      redirect_to check_your_answers_path
     else
       redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
     end
