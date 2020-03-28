@@ -5,7 +5,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
   def show
     session[:check_answers_seen] = true
-    render "coronavirus_form/check_answers"
+    super
   end
 
   def submit
@@ -21,7 +21,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
     reset_session
 
-    redirect_to controller: "coronavirus_form/confirmation", action: "show", reference_number: submission_reference
+    redirect_to confirmation_url(reference_number: submission_reference)
   end
 
 private
