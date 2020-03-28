@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   before_action :check_first_question, only: [:show]
 
   def show
-    render controller_path
+    respond_to do |format|
+      format.html { render controller_path }
+    end
   end
 
   if ENV["REQUIRE_BASIC_AUTH"]

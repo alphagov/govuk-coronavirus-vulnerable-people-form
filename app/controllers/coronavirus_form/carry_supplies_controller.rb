@@ -13,7 +13,10 @@ class CoronavirusForm::CarrySuppliesController < ApplicationController
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
       log_validation_error(invalid_fields)
-      render controller_path, status: :unprocessable_entity
+
+      respond_to do |format|
+        format.html { render controller_path, status: :unprocessable_entity }
+      end
     else
       redirect_to check_your_answers_url
     end

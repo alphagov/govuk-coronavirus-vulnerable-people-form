@@ -15,7 +15,10 @@ class CoronavirusForm::LiveInEnglandController < ApplicationController
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
       log_validation_error(invalid_fields)
-      render controller_path, status: :unprocessable_entity
+
+      respond_to do |format|
+        format.html { render controller_path, status: :unprocessable_entity }
+      end
     elsif session[:live_in_england] == I18n.t("coronavirus_form.questions.live_in_england.options.option_no.label")
       redirect_to not_eligible_england_url
     elsif session["check_answers_seen"]
