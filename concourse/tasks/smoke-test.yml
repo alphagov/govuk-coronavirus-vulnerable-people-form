@@ -16,4 +16,4 @@ run:
       echo "$MESSAGE"
 
       # TODO we can come up with a more thorough test than this
-      curl --fail --silent --verbose --user gds:((basic-auth-password)) "$URL"
+      curl --fail --silent --verbose --location --user gds:((basic-auth-password)) "$URL"
