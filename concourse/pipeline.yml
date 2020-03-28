@@ -106,6 +106,7 @@ jobs:
         passed: [deploy-to-prod]
       - task: smoke-test
         file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/smoke-test.yml
+        timeout: 5m
         params:
           URL: 'https://govuk-coronavirus-vulnerable-people-form-prod.cloudapps.digital/'
           MESSAGE: "Checks that the application deployed to production is not serving HTTP error codes. If this fails, you should investigate immediately."
