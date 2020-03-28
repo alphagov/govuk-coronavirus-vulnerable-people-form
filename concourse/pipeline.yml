@@ -28,7 +28,24 @@ resources:
       branch: master
       pro: true
 
+  - name: feature-tests-image
+    type: docker-image
+    icon: docker
+    source:
+      repository: ((readonly_private_ecr_repo_url))
+      tag: govuk-coronavirus-vulnerable-people-form-feature-tests
+
 jobs:
+  - name: build-feature-tests-image
+    serial: true
+    plan:
+      - get: govuk-coronavirus-vulnerable-people-form
+        trigger: true
+      - put: feature-tests-image
+        params:
+          build: govuk-coronavirus-vulnerable-people-form
+          dockerfile: govuk-coronavirus-vulnerable-people-form/features/Dockerfile
+
   - name: deploy-to-staging
     serial: true
     plan:
@@ -54,7 +71,7 @@ jobs:
     plan:
       - get: govuk-coronavirus-vulnerable-people-form
         trigger: true
-        passed: [deploy-to-staging]
+        passed: [deploy-to-staging, build-feature-tests-image]
       - task: smoke-test
         file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/smoke-test.yml
         params:
@@ -73,11 +90,10 @@ jobs:
 
             If you urgently need to deploy a CSS change, and you can accept a few minutes of unstyled pages being served to users, you can disable this task with /fly set-pipeline/
 
-      # TODO : This task needs a container that has chrome in it, otherwise it won't work
-      # - task: run-cucumber-specs
-      #   file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/run-cucumber-specs.yml
-      #   params:
-      #     TEST_URL: 'https://gds:((basic-auth-password))@govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital'
+      - task: run-cucumber-specs
+        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/run-cucumber-specs.yml
+        params:
+          TEST_URL: 'https://gds:((basic-auth-password))@govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital'
 
   - name: deploy-to-prod
     serial: true
