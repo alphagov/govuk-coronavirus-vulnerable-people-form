@@ -61,8 +61,8 @@ jobs:
         trigger: true
       - put: feature-tests-image
         params:
-          build: govuk-coronavirus-vulnerable-people-form
-          dockerfile: govuk-coronavirus-vulnerable-people-form/features/Dockerfile
+          build: govuk-coronavirus-vulnerable-people-form-feature-tests
+          dockerfile: govuk-coronavirus-vulnerable-people-form-feature-tests/features/Dockerfile
 
   - name: deploy-to-staging
     serial: true
@@ -89,7 +89,7 @@ jobs:
     plan:
       - get: govuk-coronavirus-vulnerable-people-form
         trigger: true
-        passed: [deploy-to-staging, build-feature-tests-image]
+        passed: [deploy-to-staging]
       - task: smoke-test
         file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/smoke-test.yml
         params:
