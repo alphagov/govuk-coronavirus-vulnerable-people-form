@@ -6,11 +6,6 @@ class CoronavirusForm::SupportAddressController < ApplicationController
       town_city
   ].freeze
 
-  def show
-    session[:support_address] ||= {}
-    super
-  end
-
   def submit
     session[:support_address] ||= {}
     session[:support_address][:building_and_street_line_1] = strip_tags(params[:building_and_street_line_1]&.strip).presence
