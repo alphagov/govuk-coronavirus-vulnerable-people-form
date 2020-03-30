@@ -47,9 +47,9 @@ RSpec.describe CoronavirusForm::NameController, type: :controller do
       }
 
       name = {
-        "first_name" => "Link",
-        "middle_name" => "Link",
-        "last_name" => "Link",
+        first_name: "Link",
+        middle_name: "Link",
+        last_name: "Link",
       }
 
       post :submit, params: params
