@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::NameController < ApplicationController
-  def show
-    session[:name] ||= {}
-    super
-  end
-
   def submit
     session[:name] ||= {}
     session[:name][:first_name] = strip_tags(params[:first_name]&.strip).presence
