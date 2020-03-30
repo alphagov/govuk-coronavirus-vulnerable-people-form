@@ -31,6 +31,22 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       expect(session[session_key]).to eq params
     end
 
+    it "strips html characters" do
+      params = {
+        "phone_number_calls" => '<a href="https://www.example.com">Link</a>',
+        "phone_number_texts" => '<a href="https://www.example.com">Link</a>',
+      }
+
+      contact_details = {
+        "phone_number_calls" => "Link",
+        "phone_number_texts" => "Link",
+        "email" => nil,
+      }
+
+      post :submit, params: params
+      expect(session[session_key]).to eq contact_details
+    end
+
     it "redirects to next step for a permitted response" do
       post :submit, params: params
       expect(response).to redirect_to(medical_conditions_path)

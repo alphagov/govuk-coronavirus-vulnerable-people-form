@@ -2,7 +2,7 @@
 
 class CoronavirusForm::EssentialSuppliesController < ApplicationController
   def submit
-    essential_supplies = sanitize(params[:essential_supplies]).presence
+    essential_supplies = strip_tags(params[:essential_supplies]).presence
     session[:essential_supplies] = essential_supplies
 
     invalid_fields = validate_radio_field(

@@ -2,7 +2,7 @@
 
 class CoronavirusForm::KnowNhsNumberController < ApplicationController
   def submit
-    know_nhs_number = sanitize(params[:know_nhs_number]).presence
+    know_nhs_number = strip_tags(params[:know_nhs_number]).presence
     session[:know_nhs_number] = know_nhs_number
 
     session[:nhs_number] = nil if I18n.t("coronavirus_form.questions.know_nhs_number.options.option_no.label")

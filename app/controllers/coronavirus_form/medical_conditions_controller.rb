@@ -2,7 +2,7 @@
 
 class CoronavirusForm::MedicalConditionsController < ApplicationController
   def submit
-    medical_conditions = sanitize(params[:medical_conditions]).presence
+    medical_conditions = strip_tags(params[:medical_conditions]).presence
     session[:medical_conditions] = medical_conditions
 
     invalid_fields = validate_radio_field(

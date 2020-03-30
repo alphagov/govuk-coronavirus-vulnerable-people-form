@@ -2,7 +2,7 @@
 
 class CoronavirusForm::NhsLetterController < ApplicationController
   def submit
-    nhs_letter = sanitize(params[:nhs_letter]).presence
+    nhs_letter = strip_tags(params[:nhs_letter]).presence
     session[:nhs_letter] = nhs_letter
 
     invalid_fields = validate_radio_field(
