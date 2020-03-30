@@ -53,11 +53,11 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       }
 
       address = {
-        "building_and_street_line_1" => "Link",
-        "building_and_street_line_2" => "Link",
-        "town_city" => "Link",
-        "county" => "Link",
-        "postcode" => nil,
+        building_and_street_line_1: "Link",
+        building_and_street_line_2: "Link",
+        town_city: "Link",
+        county: "Link",
+        postcode: nil,
       }
 
       post :submit, params: params
