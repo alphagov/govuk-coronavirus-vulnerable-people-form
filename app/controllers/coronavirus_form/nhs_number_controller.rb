@@ -5,7 +5,7 @@ class CoronavirusForm::NhsNumberController < ApplicationController
 
   def submit
     session[:nhs_number] ||= ""
-    session[:nhs_number] = strip_tags(clean_nhs_number(params["nhs_number"])).presence
+    session[:nhs_number] = strip_tags(clean_nhs_number(params[:nhs_number])).presence
 
     invalid_fields = validate_fields(session[:nhs_number])
 
