@@ -113,6 +113,17 @@ RSpec.describe AnswersHelper, type: :helper do
         expect(helper.concat_answer(answer, question)).to eq(expected_answer)
       end
 
+      it "doesn't pad two character years" do
+        answer = {
+          "year" => "70",
+          "month" => "01",
+          "day" => "31",
+        }
+
+        expected_answer = "31/01/70"
+        expect(helper.concat_answer(answer, question)).to eq(expected_answer)
+      end
+
       it "returns nothing if the date_of_birth is empty" do
         answer = {}
 
