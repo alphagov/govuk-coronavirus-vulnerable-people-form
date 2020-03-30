@@ -46,9 +46,9 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       }
 
       contact_details = {
-        "phone_number_calls" => "Link",
-        "phone_number_texts" => "Link",
-        "email" => nil,
+        phone_number_calls: "Link",
+        phone_number_texts: "Link",
+        email: nil,
       }
 
       post :submit, params: params
