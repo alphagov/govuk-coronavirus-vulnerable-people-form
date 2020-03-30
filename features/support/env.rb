@@ -8,6 +8,15 @@ else
   require "capybara/apparition"
   require "capybara/cucumber"
   require "capybara/rspec"
+
+  Capybara.register_driver :apparition do |app|
+    options = { browser_options: {} }
+    if ENV.key? "CHROME_NO_SANDBOX"
+      options[:browser_options]["no-sandbox"] = true
+    end
+    Capybara::Apparition::Driver.new(app, options)
+  end
+
   Capybara.default_driver = :apparition
   Capybara.app_host = test_url
 end

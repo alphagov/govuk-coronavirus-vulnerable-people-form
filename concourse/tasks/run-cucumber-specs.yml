@@ -2,23 +2,13 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    # TODO: This container needs to include Chrome, otherwise capybara/apparition won't work
-    repository: ruby
-    tag: 2.6.5
+    repository: ((readonly_private_ecr_repo_url))
+    tag: govuk-coronavirus-vulnerable-people-form-feature-tests
 params:
   TEST_URL:
 inputs:
   - name: govuk-coronavirus-vulnerable-people-form
-    path: src
-caches:
-  - path: vendor/bundle
 run:
-  path: sh
-  dir: src
-  args:
-    - '-c'
-    - |
-      set -eu
-
-      bundle install --path ../vendor/bundle
-      bundle exec rails cucumber
+  path: rails
+  dir: govuk-coronavirus-vulnerable-people-form
+  args: ['cucumber']
