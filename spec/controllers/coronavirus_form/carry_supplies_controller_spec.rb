@@ -4,6 +4,7 @@ require "spec_helper"
 
 RSpec.describe CoronavirusForm::CarrySuppliesController, type: :controller do
   include_examples "redirections"
+  include_examples "session expiry"
 
   let(:current_template) { "coronavirus_form/carry_supplies" }
   let(:session_key) { :carry_supplies }

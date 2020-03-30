@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   include ActionView::Helpers::SanitizeHelper
   include FieldValidationHelper
 
+  rescue_from ActionController::InvalidAuthenticityToken, with: :session_expired
+
   before_action :check_first_question, only: [:show]
 
   def show
@@ -29,6 +31,11 @@ private
 
   def log_validation_error(invalid_fields)
     logger.info "validation error - #{invalid_fields.pluck(:text).to_sentence}"
+  end
+
+  def session_expired
+    reset_session
+    redirect_to session_expired_path
   end
 
   def check_first_question

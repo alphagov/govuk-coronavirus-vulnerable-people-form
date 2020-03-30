@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe CoronavirusForm::LiveInEnglandController, type: :controller do
+  include_examples "session expiry"
+
   let(:current_template) { "coronavirus_form/live_in_england" }
   let(:session_key) { :live_in_england }
 
