@@ -3,7 +3,7 @@
 class CoronavirusForm::DateOfBirthController < ApplicationController
   def show
     session["date_of_birth"] ||= {}
-    render "coronavirus_form/#{PAGE}"
+    super
   end
 
   def submit
@@ -22,18 +22,18 @@ class CoronavirusForm::DateOfBirthController < ApplicationController
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
       log_validation_error(invalid_fields)
-      render "coronavirus_form/#{PAGE}", status: :unprocessable_entity
+
+      respond_to do |format|
+        format.html { render controller_path, status: :unprocessable_entity }
+      end
     elsif session["check_answers_seen"]
-      redirect_to controller: "coronavirus_form/check_answers", action: "show"
+      redirect_to check_your_answers_url
     else
-      redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
+      redirect_to support_address_url
     end
   end
 
 private
-
-  PAGE = "date_of_birth"
-  NEXT_PAGE = "support_address"
 
   def previous_path
     name_path

@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::ContactDetailsController < ApplicationController
-  def show
-    render "coronavirus_form/#{PAGE}"
-  end
-
   def submit
     contact_details = {
       "phone_number_calls" => sanitize(params[:phone_number_calls]&.strip).presence,
@@ -18,18 +14,18 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
       log_validation_error(invalid_fields)
-      render "coronavirus_form/#{PAGE}", status: :unprocessable_entity
+
+      respond_to do |format|
+        format.html { render controller_path, status: :unprocessable_entity }
+      end
     elsif session["check_answers_seen"]
-      redirect_to controller: "coronavirus_form/check_answers", action: "show"
+      redirect_to check_your_answers_url
     else
-      redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
+      redirect_to medical_conditions_url
     end
   end
 
 private
-
-  PAGE = "contact_details"
-  NEXT_PAGE = "medical_conditions"
 
   def previous_path
     support_address_path

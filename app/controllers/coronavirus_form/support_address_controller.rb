@@ -8,7 +8,7 @@ class CoronavirusForm::SupportAddressController < ApplicationController
 
   def show
     session[:support_address] ||= {}
-    render "coronavirus_form/#{PAGE}"
+    super
   end
 
   def submit
@@ -24,18 +24,18 @@ class CoronavirusForm::SupportAddressController < ApplicationController
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
       log_validation_error(invalid_fields)
-      render "coronavirus_form/#{PAGE}", status: :unprocessable_entity
+
+      respond_to do |format|
+        format.html { render controller_path, status: :unprocessable_entity }
+      end
     elsif session["check_answers_seen"]
-      redirect_to controller: "coronavirus_form/check_answers", action: "show"
+      redirect_to check_your_answers_url
     else
-      redirect_to controller: "coronavirus_form/#{NEXT_PAGE}", action: "show"
+      redirect_to contact_details_url
     end
   end
 
 private
-
-  PAGE = "support_address"
-  NEXT_PAGE = "contact_details"
 
   def validate_fields(support_address)
     [
@@ -71,9 +71,9 @@ private
 
       invalid_fields << {
         field: field.to_s,
-        text: t("coronavirus_form.questions.#{PAGE}.#{field}.custom_error",
+        text: t("coronavirus_form.questions.#{controller_name}.#{field}.custom_error",
                 default: t("coronavirus_form.errors.missing_mandatory_text_field",
-                           field: t("coronavirus_form.questions.#{PAGE}.#{field}.label")).humanize),
+                           field: t("coronavirus_form.questions.#{controller_name}.#{field}.label")).humanize),
       }
     end
   end
