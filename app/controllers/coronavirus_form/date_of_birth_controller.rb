@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::DateOfBirthController < ApplicationController
-  def show
-    session[:date_of_birth] ||= {}
-    super
-  end
-
   def submit
     session[:date_of_birth] ||= {}
     session[:date_of_birth][:day] = strip_tags(params.dig(:date_of_birth, :day)&.strip).presence
