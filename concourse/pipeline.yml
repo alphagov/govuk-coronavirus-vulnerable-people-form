@@ -58,7 +58,7 @@ jobs:
       - task: smoke-test
         file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/smoke-test.yml
         params:
-          URL: 'https://govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital/'
+          URL: 'https://govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital/live-in-england'
           MESSAGE: "Checks that the application deployed to staging is not serving HTTP error codes"
       - task: smoke-test-css
         file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/smoke-test.yml
@@ -109,6 +109,6 @@ jobs:
         file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/smoke-test.yml
         timeout: 5m
         params:
-          URL: 'https://govuk-coronavirus-vulnerable-people-form-prod.cloudapps.digital/'
+          URL: 'https://coronavirus-vulnerable-people.service.gov.uk/live-in-england'
           MESSAGE: "Checks that the application deployed to production is not serving HTTP error codes. If this fails, you should investigate immediately."
 
