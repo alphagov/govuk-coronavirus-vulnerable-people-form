@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   scope module: "coronavirus_form" do
     get "/privacy", to: "privacy#show"
+    get "/accessibility-statement", to: "accessibility_statement#show"
 
     # (v4[sunday]) Question 1: Do you live in England?
     get "/live-in-england", to: "live_in_england#show"

@@ -1,0 +1,8 @@
+<% content_for :title do %><%= t('accessibility_statement.title') %><% end %>
+
+<%= render "govuk_publishing_components/components/title", {
+  title:t("accessibility_statement.title"),
+  margin_top: 0
+} %>
+
+<%= sanitize(t('accessibility_statement.body_text')) %>
