@@ -19,6 +19,22 @@ resources:
       uri: https://github.com/alphagov/govuk-coronavirus-vulnerable-people-form
       branch: master
 
+  - name: govuk-coronavirus-vulnerable-people-form-feature-tests
+    type: git
+    icon: github-circle
+    source:
+      uri: https://github.com/alphagov/govuk-coronavirus-vulnerable-people-form
+      branch: master
+      paths:
+        - Gemfile*
+        - .ruby-version
+        - features/
+
+  - name: every-day
+    type: time
+    source:
+      interval: 24h
+
   - name: govuk-coronavirus-vulnerable-people-form-travis-build
     type: travis
     icon: sync
@@ -39,7 +55,9 @@ jobs:
   - name: build-feature-tests-image
     serial: true
     plan:
-      - get: govuk-coronavirus-vulnerable-people-form
+      - get: every-day
+        trigger: true
+      - get: govuk-coronavirus-vulnerable-people-form-feature-tests
         trigger: true
       - put: feature-tests-image
         params:
