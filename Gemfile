@@ -25,7 +25,7 @@ end
 
 group :test do
   gem "apparition", "~> 0.5.0", require: false
-  gem "capybara", "~> 3.31.0", require: false
+  gem "capybara", "~> 3.32.0", require: false
   gem "cucumber", "~> 3.1.2", require: false
   gem "cucumber-rails", "~> 2.0", require: false
   gem "mini_racer", "~> 0.2"
