@@ -149,7 +149,7 @@ en:
       title: "Registration complete"
       description: |
         <p class="govuk-body">You will not receive an email or text message to confirm that you’ve registered.</p>
-        <p class="govuk-body">If you have not received a letter from the NHS or been contacted by your GP or hospital clinician by Monday 30 March, you should contact them to confirm that you’re considered extremely vulnerable. You may not get the support you need if you do not contact them.</p>
+        <p class="govuk-body">If you have not received a letter from the NHS or been contacted by your GP or hospital clinician, you should contact them to confirm that you’re considered extremely vulnerable. You may not get the support you need if you do not contact them.</p>
 
         <h2 class="govuk-heading-m">What happens next</h2>
         <p class="govuk-body">You’ll only get support if you asked for it and you have a medical condition which makes you extremely vulnerable to coronavirus.</p>
