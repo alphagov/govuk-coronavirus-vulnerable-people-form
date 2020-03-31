@@ -31,15 +31,15 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
     end
     let(:address) do
       {
-        "building_and_street_line_1" => "Ministry of Magic",
-        "building_and_street_line_2" => "1 Horse Guards Road",
-        "town_city" => "London",
-        "county" => "United Kingdom",
-        "postcode" => "SW1A 2HQ",
+        building_and_street_line_1: "Ministry of Magic",
+        building_and_street_line_2: "1 Horse Guards Road",
+        town_city: "London",
+        county: "United Kingdom",
+        postcode: "SW1A 2HQ",
       }
     end
 
-    it "sets session variables" do
+    it "sets session variables as symbolized keys" do
       post :submit, params: params
 
       expect(session[session_key]).to eq address
@@ -54,11 +54,11 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       }
 
       address = {
-        "building_and_street_line_1" => "Link",
-        "building_and_street_line_2" => "Link",
-        "town_city" => "Link",
-        "county" => "Link",
-        "postcode" => nil,
+        building_and_street_line_1: "Link",
+        building_and_street_line_2: "Link",
+        town_city: "Link",
+        county: "Link",
+        postcode: nil,
       }
 
       post :submit, params: params
@@ -68,7 +68,7 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
     it "does not require address line 2" do
       post :submit, params: params.except("building_and_street_line_2")
 
-      expect(session[session_key]).to eq address.merge("building_and_street_line_2" => nil)
+      expect(session[session_key]).to eq address.merge(building_and_street_line_2: nil)
       expect(response).to redirect_to(next_page)
     end
 
@@ -76,8 +76,8 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       post :submit, params: params.except("building_and_street_line_2", "county")
 
       expect(session[session_key]).to eq address.merge({
-        "building_and_street_line_2" => nil,
-        "county" => nil,
+        building_and_street_line_2: nil,
+        county: nil,
         })
 
       expect(response).to redirect_to(next_page)
@@ -87,8 +87,8 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       post :submit, params: params.except("building_and_street_line_2", "postcode")
 
       expect(session[session_key]).to eq address.merge({
-        "building_and_street_line_2" => nil,
-        "postcode" => nil,
+        building_and_street_line_2: nil,
+        postcode: nil,
         })
 
       expect(response).to redirect_to(next_page)
@@ -113,7 +113,7 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       ]
 
       valid_postcodes.each do |postcode|
-        params["postcode"] = postcode
+        params[:postcode] = postcode
         post :submit, params: params
 
         expect(response).to redirect_to(next_page)
@@ -121,23 +121,23 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
     end
 
     it "does not redirect to next step when postcode is invalid" do
-      params["postcode"] = "AAA1 1AA"
+      params[:postcode] = "AAA1 1AA"
       post :submit, params: params
 
       expect(response).to render_template(current_template)
     end
 
     it "removes extra whitespace from the postcode" do
-      params["postcode"] = "E1 8QS "
+      params[:postcode] = "E1 8QS "
       post :submit, params: params
 
       expect(response).to redirect_to(next_page)
-      expect(session[session_key]["postcode"]).to eq("E1 8QS")
+      expect(session[session_key][:postcode]).to eq("E1 8QS")
     end
 
     described_class::REQUIRED_FIELDS.each do |field|
       it "requires that key #{field} be provided" do
-        post :submit, params: params.except(field)
+        post :submit, params: params.except(field.to_s)
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response).to render_template(current_template)
       end

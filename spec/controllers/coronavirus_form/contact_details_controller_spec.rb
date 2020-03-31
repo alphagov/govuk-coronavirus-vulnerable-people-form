@@ -21,15 +21,23 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
   describe "POST submit" do
     let(:params) do
       {
-        "phone_number_calls" => "1234",
+        "phone_number_calls" => "1234<script></script>",
         "phone_number_texts" => "5678",
-        "email" => "somewhere@somewhere.com",
+        "email" => "<script></script>somewhere@somewhere.com",
       }
     end
 
-    it "sets session variables" do
+    let(:contact_details) do
+      {
+        phone_number_calls: "1234",
+        phone_number_texts: "5678",
+        email: "somewhere@somewhere.com",
+      }
+    end
+
+    it "sets session variables as sanitize symbolized keys" do
       post :submit, params: params
-      expect(session[session_key]).to eq params
+      expect(session[session_key]).to eq contact_details
     end
 
     it "strips html characters" do
@@ -39,9 +47,9 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       }
 
       contact_details = {
-        "phone_number_calls" => "Link",
-        "phone_number_texts" => "Link",
-        "email" => nil,
+        phone_number_calls: "Link",
+        phone_number_texts: "Link",
+        email: nil,
       }
 
       post :submit, params: params
@@ -54,7 +62,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
     end
 
     it "does not move to next step with an invalid email address" do
-      post :submit, params: { email: "not-a-valid-email" }
+      post :submit, params: { "email": "not-a-valid-email" }
       expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(current_template)
     end

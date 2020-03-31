@@ -21,7 +21,7 @@ class CoronavirusForm::KnowNhsNumberController < ApplicationController
       end
     elsif session[:know_nhs_number] == I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label")
       redirect_to nhs_number_url
-    elsif session["check_answers_seen"]
+    elsif session[:check_answers_seen]
       redirect_to check_your_answers_url
     elsif session[:know_nhs_number] == I18n.t("coronavirus_form.questions.know_nhs_number.options.option_no.label")
       redirect_to essential_supplies_url

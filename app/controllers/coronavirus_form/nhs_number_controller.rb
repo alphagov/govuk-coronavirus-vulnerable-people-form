@@ -5,7 +5,7 @@ class CoronavirusForm::NhsNumberController < ApplicationController
 
   def submit
     session[:nhs_number] ||= ""
-    session[:nhs_number] = strip_tags(clean_nhs_number(params["nhs_number"])).presence
+    session[:nhs_number] = strip_tags(clean_nhs_number(params[:nhs_number])).presence
 
     invalid_fields = validate_fields(session[:nhs_number])
 
@@ -16,7 +16,7 @@ class CoronavirusForm::NhsNumberController < ApplicationController
       respond_to do |format|
         format.html { render controller_path, status: :unprocessable_entity }
       end
-    elsif session["check_answers_seen"]
+    elsif session[:check_answers_seen]
       redirect_to check_your_answers_url
     else
       redirect_to essential_supplies_url

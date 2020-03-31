@@ -1,23 +1,18 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::SupportAddressController < ApplicationController
-  REQUIRED_FIELDS = %w(
+  REQUIRED_FIELDS = %i[
       building_and_street_line_1
       town_city
-  ).freeze
-
-  def show
-    session[:support_address] ||= {}
-    super
-  end
+  ].freeze
 
   def submit
     session[:support_address] ||= {}
-    session[:support_address]["building_and_street_line_1"] = strip_tags(params[:building_and_street_line_1]&.strip).presence
-    session[:support_address]["building_and_street_line_2"] = strip_tags(params[:building_and_street_line_2]&.strip).presence
-    session[:support_address]["town_city"] = strip_tags(params[:town_city]&.strip).presence
-    session[:support_address]["county"] = strip_tags(params[:county]&.strip).presence
-    session[:support_address]["postcode"] = strip_tags(params[:postcode]&.strip).presence
+    session[:support_address][:building_and_street_line_1] = strip_tags(params[:building_and_street_line_1]&.strip).presence
+    session[:support_address][:building_and_street_line_2] = strip_tags(params[:building_and_street_line_2]&.strip).presence
+    session[:support_address][:town_city] = strip_tags(params[:town_city]&.strip).presence
+    session[:support_address][:county] = strip_tags(params[:county]&.strip).presence
+    session[:support_address][:postcode] = strip_tags(params[:postcode]&.strip).presence
 
     invalid_fields = validate_fields(session[:support_address])
 
@@ -28,7 +23,7 @@ class CoronavirusForm::SupportAddressController < ApplicationController
       respond_to do |format|
         format.html { render controller_path, status: :unprocessable_entity }
       end
-    elsif session["check_answers_seen"]
+    elsif session[:check_answers_seen]
       redirect_to check_your_answers_url
     else
       redirect_to contact_details_url
@@ -41,21 +36,21 @@ private
     [
       validate_missing_fields(support_address),
       validate_conditionally_present_fields(support_address),
-      validate_postcode("postcode", support_address["postcode"]),
+      validate_postcode("postcode", support_address.dig(:postcode)),
     ].flatten.uniq
   end
 
   def validate_conditionally_present_fields(product)
-    return [] if product["postcode"].present? || product["county"].present?
+    return [] if product.dig(:postcode).present? || product.dig(:county).present?
 
     invalid_fields = []
 
-    if product["county"].blank?
+    if product.dig(:county).blank?
       invalid_fields << {
         field: "county",
         text: t("coronavirus_form.errors.missing_county_or_postcode_field"),
       }
-    elsif product["postcode"].blank?
+    elsif product.dig(:postcode).blank?
       invalid_fields << {
         field: "postcode",
         text: t("coronavirus_form.errors.missing_county_or_postcode_field"),
@@ -67,7 +62,7 @@ private
 
   def validate_missing_fields(product)
     REQUIRED_FIELDS.each_with_object([]) do |field, invalid_fields|
-      next if product[field].present?
+      next if product.dig(field).present?
 
       invalid_fields << {
         field: field.to_s,
