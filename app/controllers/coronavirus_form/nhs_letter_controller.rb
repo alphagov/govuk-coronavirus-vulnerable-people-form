@@ -20,7 +20,7 @@ class CoronavirusForm::NhsLetterController < ApplicationController
     elsif session[:check_answers_seen]
       redirect_to check_your_answers_url
     else
-      redirect_to name_url
+      redirect_to medical_conditions_url
     end
   end
 

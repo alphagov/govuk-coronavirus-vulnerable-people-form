@@ -31,6 +31,6 @@ class CoronavirusForm::KnowNhsNumberController < ApplicationController
 private
 
   def previous_path
-    medical_conditions_path
+    contact_details_path
   end
 end
