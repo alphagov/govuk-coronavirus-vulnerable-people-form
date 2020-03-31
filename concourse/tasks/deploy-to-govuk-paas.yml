@@ -39,6 +39,7 @@ run:
       cf scale -i "$INSTANCES" govuk-coronavirus-vulnerable-people-form
 
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME "$AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME"
+      cf set-env govuk-coronavirus-vulnerable-people-form AWS_ASSETS_BUCKET_NAME "$AWS_ASSETS_BUCKET_NAME"
       if [[ "${REQUIRE_BASIC_AUTH:-}" = "true" ]]; then
         cf set-env govuk-coronavirus-vulnerable-people-form REQUIRE_BASIC_AUTH "$REQUIRE_BASIC_AUTH"
       fi
