@@ -10,6 +10,8 @@ Feature: Filling in the form
     When I answer "Yes"
     Then I can see "Have you recently had a letter from the NHS" in the heading
     When I answer "Yes"
+    Then I can see "Do you have a medical condition" in the heading
+    When I answer "Yes"
     Then I can see "What is your name?" in the heading
     When I fill in my name
     Then I can see "What is your date of birth?" in the heading
@@ -18,8 +20,6 @@ Feature: Filling in the form
     When I fill in my address
     Then I can see "What are your contact details?" in the heading
     When I fill in my contact details
-    Then I can see "Do you have a medical condition" in the heading
-    When I answer "Yes"
     Then I can see "Do you know your NHS number?" in the heading
     When I answer "Yes"
     Then I can see "What is your NHS number?" in the heading
@@ -56,10 +56,6 @@ Feature: Filling in the form
     When I visit the "/live-in-england" path
     And I answer "Yes"
     And I answer "Yes"
-    And I fill in my name
-    And I fill in my date of birth
-    And I fill in my address
-    And I fill in my contact details
     And I answer "No, I do not have one of the medical conditions on the list"
     Then I will be redirected to the "/not-eligible-medical" path
     And I can see "Sorry, you’re not eligible for help through this service" in the heading

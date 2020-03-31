@@ -36,6 +36,6 @@ private
   end
 
   def previous_path
-    nhs_letter_path
+    medical_conditions_path
   end
 end

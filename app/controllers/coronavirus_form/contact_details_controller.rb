@@ -25,7 +25,7 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
     elsif session[:check_answers_seen]
       redirect_to check_your_answers_url
     else
-      redirect_to medical_conditions_url
+      redirect_to know_nhs_number_url
     end
   end
 

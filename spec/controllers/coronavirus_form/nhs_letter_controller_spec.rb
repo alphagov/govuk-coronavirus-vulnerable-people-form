@@ -43,7 +43,7 @@ RSpec.describe CoronavirusForm::NhsLetterController, type: :controller do
 
     it "redirects to next step for a permitted response" do
       post :submit, params: { nhs_letter: selected }
-      expect(response).to redirect_to(name_path)
+      expect(response).to redirect_to(medical_conditions_path)
     end
 
     it "redirects to check your answers if check your answers previously seen" do
