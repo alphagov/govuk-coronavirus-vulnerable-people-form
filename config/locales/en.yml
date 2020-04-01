@@ -1,7 +1,7 @@
 en:
   check_your_answers:
     title: Are you ready to send your application?
-    hint: Check your answers first.
+    description: Check your answers first.
     heading: Now send your application
     confirmation: By submitting this application you’re confirming that, as far as you know, the details you’re providing are correct.
     submit: Accept and send
@@ -57,7 +57,7 @@ en:
         <li>the National Health Service (NHS)</li>
       </ul>
       <p class="govuk-body">We’ll use the personal information you provide through this service to help make sure that people with a medical condition that makes them extremely vulnerable to coronavirus get the support they need.</p>
-      <p class="govuk-body">We’ll also use it to check your needs against data provided to us by the NHS, and to contact you with further advice or information.</p>    
+      <p class="govuk-body">We’ll also use it to check your needs against data provided to us by the NHS, and to contact you with further advice or information.</p>
       <p class="govuk-body">This privacy notice covers:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>the online service, where you can enter the information that we need to get support to you where you live</li>
@@ -69,7 +69,7 @@ en:
       <ul class="govuk-list govuk-list--bullet">
       <li>information shared with us by the NHS</li>
       <li> provided to us through the online service or the automated telephone service</li>
-      </ul> 
+      </ul>
       <p class="govuk-body">Some of the information we hold is sensitive health and care information. This is classed as ‘special category’ personal data within the meaning of Schedule 1 to the Data Protection Act 2018, meaning we must state a further lawful basis for processing it. We’re also relying on substantial public interest and governmental purpose to process this information.</p>
       <h2 class="govuk-heading-m">What we do with your information</h2>
       <p class="govuk-body">When you submit information through the online service or the automated telephone service, we will compare your information to information shared with us by the NHS.</p>
@@ -85,11 +85,11 @@ en:
         <li>to help with the overall government response to coronavirus</li>
       </ul>
       <h2 class="govuk-heading-m">Where your data is processed and stored</h2>
-      
+
       <p class="govuk-body">Your personal data may be transferred outside the UK while being processed by the Cabinet Office. If this happens, we’ll make sure you’re given the same level of technical and legal data protection as you are within the UK.</p>
       <h2 class="govuk-heading-m">How we protect your information</h2>
       <p class="govuk-body">We’re committed to doing all that we can to keep your information secure. We have set up systems and processes to prevent unauthorised access to or disclosure of the data we collect about you – for example, we protect your data using varying levels of encryption. All third parties that process personal data as part of this online service and the automated telephone service are required to keep that data secure. Our data processor is Amazon Web Services, who provide cloud hosting services.</p>
-      
+
       <h2 class="govuk-heading-m">Your rights</h2>
       <p class="govuk-body">In certain circumstances you have the right to ask for your information to be deleted by contacting the data controller. We may need to refuse your request if the information is needed as part of the emergency response to coronavirus.</p>
       <p class="govuk-body">You also have the right to request:</p>
