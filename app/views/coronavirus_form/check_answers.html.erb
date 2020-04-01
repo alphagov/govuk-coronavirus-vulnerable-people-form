@@ -1,7 +1,4 @@
-<% content_for :title do %>
-  <%= t('check_your_answers.title') %>
-<% end %>
-
+<% content_for :title do %><%= t('check_your_answers.title') %><% end %>
 <% content_for :meta_tags do %>
   <meta name="description" content="<%= t('check_your_answers.title') %>" />
 <% end %>
@@ -9,11 +6,10 @@
 <%= render "govuk_publishing_components/components/title", {
   title: t('check_your_answers.title'),
   margin_top: 0,
+  margin_bottom: 3,
 } %>
 
-<%= render "govuk_publishing_components/components/hint", {
-  text: t('check_your_answers.hint'),
-} %>
+<%= tag.p t('check_your_answers.description'), class: "govuk-body" %>
 
 <%= render "govuk_publishing_components/components/summary_list", {
   items: answer_items,
@@ -22,18 +18,17 @@
 <%= render "govuk_publishing_components/components/heading", {
   text: t('check_your_answers.heading'),
   heading_level: 2,
-  margin_bottom: 2,
+  margin_bottom: 3,
 } %>
 
-<p class="govuk-body">
-  <%= t('check_your_answers.confirmation') %>
-</p>
+<%= tag.p t('check_your_answers.confirmation'), class: "govuk-body" %>
 
 <%= form_tag({},
   "data-module": "track-coronavirus-form-vulnerable-people-check_your_answers",
   "id": "check_your_answers",
   "novalidate": "true"
 ) do %>
-
-  <%= render "govuk_publishing_components/components/button", text: t('check_your_answers.submit'), margin_bottom: true %>
+  <%= render "govuk_publishing_components/components/button",
+    text: t('check_your_answers.submit'),
+    margin_bottom: true %>
 <% end %>
