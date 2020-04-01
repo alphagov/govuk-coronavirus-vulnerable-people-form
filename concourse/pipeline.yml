@@ -56,7 +56,7 @@ jobs:
     plan:
       - get: govuk-coronavirus-vulnerable-people-form
         trigger: true
-      - set-pipeline: govuk-corona-vulnerable-people-form
+      - set_pipeline: govuk-corona-vulnerable-people-form
         file: govuk-coronavirus-vulnerable-people-form/concourse/pipeline.yml
 
   - name: build-feature-tests-image
