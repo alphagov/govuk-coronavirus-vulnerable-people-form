@@ -8,6 +8,7 @@ Dynamoid.configure do |config|
   config.access_key = ENV["AWS_ACCESS_KEY_ID"]
   config.secret_key = ENV["AWS_SECRET_ACCESS_KEY"]
   config.region = "eu-west-2"
+  config.logger = ActiveSupport::Logger.new(STDOUT)
   config.logger.level = :error
 
   unless Rails.env.production?
