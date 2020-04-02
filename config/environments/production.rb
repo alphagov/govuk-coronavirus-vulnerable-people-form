@@ -4,6 +4,13 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in
   # config/application.rb.
 
+  config.hosts = [
+    "coronavirus-vulnerable-people.service.gov.uk",
+    "d18j9d8kwes7fb.cloudfront.net",
+    "govuk-coronavirus-vulnerable-people-form-prod.cloudapps.digital",
+    "govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital",
+  ]
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
