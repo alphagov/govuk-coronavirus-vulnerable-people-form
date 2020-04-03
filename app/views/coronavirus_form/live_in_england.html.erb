@@ -22,7 +22,7 @@
       id: ("live_in_england" if index == 0),
       value: item[:label],
       text: item[:label],
-      checked: session[:live_in_england] == item[:label],
+      checked: @form_responses[:live_in_england] == item[:label],
     }
   end
 } %>

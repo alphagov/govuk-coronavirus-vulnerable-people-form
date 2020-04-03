@@ -2,7 +2,7 @@
     <% content_for :meta_tags do %>
       <meta name="description" content="<%= t('coronavirus_form.questions.medical_conditions.title') %>" />
     <% end %>
-    
+
     <% content_for :back_link do %>
       <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
     <% end %>
@@ -13,7 +13,7 @@
       <% end %>
     <% end %>
 
-    
+
     <%= form_tag({},
       "data-module": "track-coronavirus-form-vulnerable-people-medical_conditions",
       "data-question-key": "medical_conditions",
@@ -30,7 +30,7 @@
           id: ("medical_conditions" if index == 0),
           value: item[:label],
           text: item[:label],
-          checked: session[:medical_conditions] == item[:label],
+          checked: @form_responses[:medical_conditions] == item[:label],
         }
       end
     } %>

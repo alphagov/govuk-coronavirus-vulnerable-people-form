@@ -2,12 +2,13 @@
 
 class CoronavirusForm::DietaryRequirementsController < ApplicationController
   def submit
-    dietary_requirements = strip_tags(params[:dietary_requirements]).presence
-    session[:dietary_requirements] = dietary_requirements
+    @form_responses = {
+      dietary_requirements: strip_tags(params[:dietary_requirements]).presence,
+    }
 
     invalid_fields = validate_radio_field(
       controller_name,
-      radio: dietary_requirements,
+      radio: @form_responses[:dietary_requirements],
     )
 
     if invalid_fields.any?
@@ -18,8 +19,10 @@ class CoronavirusForm::DietaryRequirementsController < ApplicationController
         format.html { render controller_path, status: :unprocessable_entity }
       end
     elsif session[:check_answers_seen]
+      session[:dietary_requirements] = @form_responses[:dietary_requirements]
       redirect_to check_your_answers_url
     else
+      session[:dietary_requirements] = @form_responses[:dietary_requirements]
       redirect_to carry_supplies_url
     end
   end

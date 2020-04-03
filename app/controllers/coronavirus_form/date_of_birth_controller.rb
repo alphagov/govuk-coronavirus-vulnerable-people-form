@@ -2,15 +2,18 @@
 
 class CoronavirusForm::DateOfBirthController < ApplicationController
   def submit
-    session[:date_of_birth] ||= {}
-    session[:date_of_birth][:day] = strip_tags(params.dig(:date_of_birth, :day)&.strip).presence
-    session[:date_of_birth][:month] = strip_tags(params.dig(:date_of_birth, :month)&.strip).presence
-    session[:date_of_birth][:year] = strip_tags(params.dig(:date_of_birth, :year)&.strip).presence
+    @form_responses = {
+      date_of_birth: {
+        day: strip_tags(params.dig(:date_of_birth, :day)&.strip).presence,
+        month: strip_tags(params.dig(:date_of_birth, :month)&.strip).presence,
+        year: strip_tags(params.dig(:date_of_birth, :year)&.strip).presence,
+      },
+    }
 
     invalid_fields = validate_date_of_birth(
-      session[:date_of_birth].dig(:year),
-      session[:date_of_birth].dig(:month),
-      session[:date_of_birth].dig(:day),
+      @form_responses[:date_of_birth].dig(:year),
+      @form_responses[:date_of_birth].dig(:month),
+      @form_responses[:date_of_birth].dig(:day),
       "date_of_birth",
     )
 
@@ -22,8 +25,10 @@ class CoronavirusForm::DateOfBirthController < ApplicationController
         format.html { render controller_path, status: :unprocessable_entity }
       end
     elsif session[:check_answers_seen]
+      session[:date_of_birth] = @form_responses[:date_of_birth]
       redirect_to check_your_answers_url
     else
+      session[:date_of_birth] = @form_responses[:date_of_birth]
       redirect_to support_address_url
     end
   end

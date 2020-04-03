@@ -26,7 +26,7 @@
       hint: sanitize(t("coronavirus_form.questions.nhs_number.hint")),
       type: "number",
       error_message: error_items('nhs_number'),
-      value: session[:nhs_number],
+      value: @form_responses[:nhs_number],
       width: 10,
     } %>
 

@@ -29,7 +29,7 @@
           id: ("know_nhs_number" if index == 0),
           value: item[:label],
           text: item[:label],
-          checked: session[:know_nhs_number] == item[:label],
+          checked: @form_responses[:know_nhs_number] == item[:label],
         }
       end
     } %>

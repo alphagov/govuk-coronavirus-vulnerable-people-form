@@ -2,15 +2,16 @@
 
 class CoronavirusForm::ContactDetailsController < ApplicationController
   def submit
-    contact_details = {
-      phone_number_calls: strip_tags(params[:phone_number_calls]&.strip).presence,
-      phone_number_texts: strip_tags(params[:phone_number_texts]&.strip).presence,
-      email: strip_tags(params[:email]&.strip).presence,
+    @form_responses = {
+      contact_details: {
+        phone_number_calls: strip_tags(params[:phone_number_calls]&.strip).presence,
+        phone_number_texts: strip_tags(params[:phone_number_texts]&.strip).presence,
+        email: strip_tags(params[:email]&.strip).presence,
+      },
     }
-    session[:contact_details] = contact_details
 
-    invalid_fields = if session[:contact_details].dig(:email)
-                       validate_email_address("email", session[:contact_details].dig(:email))
+    invalid_fields = if @form_responses[:contact_details].dig(:email)
+                       validate_email_address("email", @form_responses.dig(:contact_details, :email))
                      else
                        []
                      end
@@ -23,8 +24,10 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
         format.html { render controller_path, status: :unprocessable_entity }
       end
     elsif session[:check_answers_seen]
+      session[:contact_details] = @form_responses[:contact_details]
       redirect_to check_your_answers_url
     else
+      session[:contact_details] = @form_responses[:contact_details]
       redirect_to know_nhs_number_url
     end
   end
