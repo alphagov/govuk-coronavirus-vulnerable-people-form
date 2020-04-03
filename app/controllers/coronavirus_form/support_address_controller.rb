@@ -4,6 +4,7 @@ class CoronavirusForm::SupportAddressController < ApplicationController
   REQUIRED_FIELDS = %i[
       building_and_street_line_1
       town_city
+      postcode
   ].freeze
 
   def submit
@@ -35,29 +36,8 @@ private
   def validate_fields(support_address)
     [
       validate_missing_fields(support_address),
-      validate_conditionally_present_fields(support_address),
       validate_postcode("postcode", support_address.dig(:postcode)),
     ].flatten.uniq
-  end
-
-  def validate_conditionally_present_fields(product)
-    return [] if product.dig(:postcode).present? || product.dig(:county).present?
-
-    invalid_fields = []
-
-    if product.dig(:county).blank?
-      invalid_fields << {
-        field: "county",
-        text: t("coronavirus_form.errors.missing_county_or_postcode_field"),
-      }
-    elsif product.dig(:postcode).blank?
-      invalid_fields << {
-        field: "postcode",
-        text: t("coronavirus_form.errors.missing_county_or_postcode_field"),
-      }
-    end
-
-    invalid_fields
   end
 
   def validate_missing_fields(product)

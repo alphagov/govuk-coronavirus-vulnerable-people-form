@@ -83,17 +83,6 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       expect(response).to redirect_to(next_page)
     end
 
-    it "redirects to next page when provided address line 1, town and county" do
-      post :submit, params: params.except("building_and_street_line_2", "postcode")
-
-      expect(session[session_key]).to eq address.merge({
-        building_and_street_line_2: nil,
-        postcode: nil,
-        })
-
-      expect(response).to redirect_to(next_page)
-    end
-
     it "redirects to next step when all fields are provided" do
       post :submit, params: params
 
