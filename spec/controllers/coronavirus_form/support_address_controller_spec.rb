@@ -51,6 +51,7 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
         "building_and_street_line_2" => '<a href="https://www.example.com">Link</a>',
         "town_city" => '<a href="https://www.example.com">Link</a>',
         "county" => '<a href="https://www.example.com">Link</a>',
+        "postcode" => '<a href="https://www.example.com">E1 8QS</a>',
       }
 
       address = {
@@ -58,7 +59,7 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
         building_and_street_line_2: "Link",
         town_city: "Link",
         county: "Link",
-        postcode: nil,
+        postcode: "E1 8QS",
       }
 
       post :submit, params: params
