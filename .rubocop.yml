@@ -10,3 +10,7 @@ inherit_mode:
 Metrics/BlockLength:
   Exclude:
     - config/**/*
+
+Style/WordArray:
+  Exclude:
+    - config/**/*.rb
