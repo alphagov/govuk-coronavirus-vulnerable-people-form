@@ -150,7 +150,7 @@ GEM
     fog-xml (0.1.3)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
-    foreman (0.87.0)
+    foreman (0.87.1)
     formatador (0.2.5)
     gds-api-adapters (63.5.1)
       addressable
@@ -401,7 +401,7 @@ DEPENDENCIES
   cucumber-rails (~> 2.0)
   dynamoid
   fog-aws
-  foreman (~> 0.87.0)
+  foreman (~> 0.87.1)
   govuk_app_config (~> 2.1.1)
   govuk_publishing_components (~> 21.37.0)
   listen (~> 3)
