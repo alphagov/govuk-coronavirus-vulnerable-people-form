@@ -135,7 +135,6 @@ en:
       radio_field: "Select %{field}"
       checkbox_field: "Select at least one %{field}"
       missing_mandatory_text_field: "Enter %{field}"
-      missing_county_or_postcode_field: "Enter either a postcode or a county"
       invalid_money: "%{field} must be an amount of money, like 15000"
       missing_date: "Enter your date of birth"
       missing_fields: "Enter your date of birth and include a day, month and year"
