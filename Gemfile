@@ -36,7 +36,7 @@ end
 group :development, :test do
   gem "awesome_print", "~> 1.8"
   gem "byebug", "~> 11"
-  gem "foreman", "~> 0.87.0"
+  gem "foreman", "~> 0.87.1"
   gem "pry", "~> 0.13.0"
   gem "pry-rails", "~> 0.3.9"
   gem "rails-controller-testing", "~> 1.0"
