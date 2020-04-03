@@ -26,3 +26,14 @@
 
 coverage
 tmp
+
+# ignore generated assets
+public/assets/component_guide
+public/assets/govuk_publishing_components
+public/assets/*.css
+public/assets/*.gz
+public/assets/*.js
+public/assets/*.json
+public/assets/*.png
+public/assets/*.woff
+public/assets/*.woff2
