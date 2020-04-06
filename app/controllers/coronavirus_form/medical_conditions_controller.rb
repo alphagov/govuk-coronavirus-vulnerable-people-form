@@ -3,8 +3,8 @@
 class CoronavirusForm::MedicalConditionsController < ApplicationController
   def submit
     @form_responses = {
-    medical_conditions: strip_tags(params[:medical_conditions]).presence,
-  }
+      medical_conditions: strip_tags(params[:medical_conditions]).presence,
+    }
 
     invalid_fields = validate_radio_field(
       controller_name,

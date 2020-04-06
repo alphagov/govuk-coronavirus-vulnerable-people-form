@@ -5,8 +5,8 @@ class CoronavirusForm::LiveInEnglandController < ApplicationController
 
   def submit
     @form_responses = {
-    live_in_england: strip_tags(params[:live_in_england]).presence,
-  }
+      live_in_england: strip_tags(params[:live_in_england]).presence,
+    }
 
     invalid_fields = validate_radio_field(
       controller_name,
