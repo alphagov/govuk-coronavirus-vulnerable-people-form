@@ -269,10 +269,11 @@ en:
         custom_select_error: Select yes if you know your NHS number
       nhs_number:
         title: What is your NHS number?
-        hint_format: An NHS Number is a 10 digit number, like 485 777 3456.
-        hint_where_to_find: You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
+        hint: |
+          An NHS Number is a 10 digit number, like 485 777 3456.
+          <br /><br />
+          You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
         nhs_number:
-          label: NHS Number
           custom_errors:
             missing: Enter your 10-digit NHS number
             must_be_a_number: NHS number must be a number
