@@ -131,7 +131,7 @@ GEM
     erubi (1.9.0)
     excon (0.73.0)
     execjs (2.7.0)
-    faraday (1.0.0)
+    faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
     fog-aws (3.6.2)
@@ -167,7 +167,7 @@ GEM
       sentry-raven (>= 2.7.1, < 3.1.0)
       statsd-ruby (~> 1.4.0)
       unicorn (>= 5.4, < 5.6)
-    govuk_publishing_components (21.37.0)
+    govuk_publishing_components (21.38.3)
       gds-api-adapters
       govuk_app_config
       kramdown
@@ -203,7 +203,7 @@ GEM
       activesupport (>= 4.0)
       logstash-event (~> 1.2.0)
       request_store
-    loofah (2.4.0)
+    loofah (2.5.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -239,7 +239,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (4.0.3)
+    public_suffix (4.0.4)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -369,15 +369,15 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     timecop (0.9.1)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.6)
+    unf_ext (0.0.7.7)
     unicode-display_width (1.6.1)
-    unicorn (5.5.3)
+    unicorn (5.5.4)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     websocket-driver (0.7.1)
@@ -403,7 +403,7 @@ DEPENDENCIES
   fog-aws
   foreman (~> 0.87.1)
   govuk_app_config (~> 2.1.1)
-  govuk_publishing_components (~> 21.37.0)
+  govuk_publishing_components (~> 21.38.3)
   listen (~> 3)
   lograge
   mini_racer (~> 0.2)
