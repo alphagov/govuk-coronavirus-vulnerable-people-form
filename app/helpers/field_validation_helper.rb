@@ -1,18 +1,6 @@
 # frozen_string_literal: true
 
 module FieldValidationHelper
-  def validate_mandatory_text_fields(mandatory_fields, page, form_responses)
-    invalid_fields = []
-    mandatory_fields.each do |field|
-      next if form_responses[field].present?
-
-      invalid_fields << { field: field.to_s,
-                          text: t("coronavirus_form.questions.#{page}.#{field}.custom_error",
-                                  default: t("coronavirus_form.errors.missing_mandatory_text_field", field: t("coronavirus_form.#{page}.#{field}.label")).humanize) }
-    end
-    invalid_fields
-  end
-
   def validate_radio_field(page, radio:, other: false)
     if radio.blank?
       return [{ field: page.to_s,
