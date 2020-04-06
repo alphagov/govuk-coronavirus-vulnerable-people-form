@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :check_first_question, only: [:show]
 
   def show
+    @form_responses = session.to_hash.with_indifferent_access
     respond_to do |format|
       format.html { render controller_path }
     end

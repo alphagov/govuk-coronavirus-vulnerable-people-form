@@ -25,7 +25,7 @@
       id: ("basic_care_needs" if index == 0),
       value: item[:label],
       text: item[:label],
-      checked: session[:basic_care_needs] == item[:label],
+      checked: @form_responses[:basic_care_needs] == item[:label],
     }
   end
 } %>

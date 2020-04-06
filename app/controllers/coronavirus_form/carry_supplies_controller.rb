@@ -2,12 +2,13 @@
 
 class CoronavirusForm::CarrySuppliesController < ApplicationController
   def submit
-    carry_supplies = strip_tags(params[:carry_supplies]).presence
-    session[:carry_supplies] = carry_supplies
+    @form_responses = {
+      carry_supplies: strip_tags(params[:carry_supplies]).presence,
+    }
 
     invalid_fields = validate_radio_field(
       controller_name,
-      radio: carry_supplies,
+      radio: @form_responses[:carry_supplies],
     )
 
     if invalid_fields.any?
@@ -18,6 +19,7 @@ class CoronavirusForm::CarrySuppliesController < ApplicationController
         format.html { render controller_path, status: :unprocessable_entity }
       end
     else
+      session[:carry_supplies] = @form_responses[:carry_supplies]
       redirect_to check_your_answers_url
     end
   end

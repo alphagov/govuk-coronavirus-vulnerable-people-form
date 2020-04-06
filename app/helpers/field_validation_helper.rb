@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module FieldValidationHelper
-  def validate_mandatory_text_fields(mandatory_fields, page)
+  def validate_mandatory_text_fields(mandatory_fields, page, form_responses)
     invalid_fields = []
     mandatory_fields.each do |field|
-      next if session[field].present?
+      next if form_responses[field].present?
 
       invalid_fields << { field: field.to_s,
                           text: t("coronavirus_form.questions.#{page}.#{field}.custom_error",

@@ -26,7 +26,7 @@
       id: ("nhs_letter" if index == 0),
       value: item[:label],
       text: item[:label],
-      checked: session[:nhs_letter] == item[:label],
+      checked: @form_responses[:nhs_letter] == item[:label],
     }
   end
 } %>

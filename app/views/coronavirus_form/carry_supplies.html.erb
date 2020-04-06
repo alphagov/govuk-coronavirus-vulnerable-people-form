@@ -26,7 +26,7 @@
           id: ("carry_supplies" if index == 0),
           value: item[:label],
           text: item[:label],
-          checked: session[:carry_supplies] == item[:label],
+          checked: @form_responses[:carry_supplies] == item[:label],
         }
       end
     } %>

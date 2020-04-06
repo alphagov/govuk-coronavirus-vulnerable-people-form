@@ -2,12 +2,13 @@
 
 class CoronavirusForm::MedicalConditionsController < ApplicationController
   def submit
-    medical_conditions = strip_tags(params[:medical_conditions]).presence
-    session[:medical_conditions] = medical_conditions
+    @form_responses = {
+    medical_conditions: strip_tags(params[:medical_conditions]).presence,
+  }
 
     invalid_fields = validate_radio_field(
       controller_name,
-      radio: medical_conditions,
+      radio: @form_responses[:medical_conditions],
     )
 
     if invalid_fields.any?
@@ -17,11 +18,14 @@ class CoronavirusForm::MedicalConditionsController < ApplicationController
       respond_to do |format|
         format.html { render controller_path, status: :unprocessable_entity }
       end
-    elsif session[:medical_conditions] == I18n.t("coronavirus_form.questions.medical_conditions.options.option_no.label")
+    elsif @form_responses[:medical_conditions] == I18n.t("coronavirus_form.questions.medical_conditions.options.option_no.label")
+      session[:medical_conditions] = @form_responses[:medical_conditions]
       redirect_to not_eligible_medical_url
     elsif session[:check_answers_seen]
+      session[:medical_conditions] = @form_responses[:medical_conditions]
       redirect_to check_your_answers_url
     else
+      session[:medical_conditions] = @form_responses[:medical_conditions]
       redirect_to name_url
     end
   end
