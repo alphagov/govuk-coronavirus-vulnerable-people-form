@@ -118,7 +118,7 @@ jobs:
         file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/deploy-to-govuk-paas.yml
         params:
           CF_SPACE: production
-          INSTANCES: 30
+          INSTANCES: 20
           CF_STARTUP_TIMEOUT: 15 # minutes
           REQUIRE_BASIC_AUTH:
           BASIC_AUTH_PASSWORD: ((basic-auth-password))
@@ -141,4 +141,3 @@ jobs:
         params:
           URL: 'https://coronavirus-vulnerable-people.service.gov.uk/live-in-england'
           MESSAGE: "Checks that the application deployed to production is not serving HTTP error codes. If this fails, you should investigate immediately."
-
