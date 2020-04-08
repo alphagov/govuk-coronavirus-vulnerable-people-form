@@ -19,7 +19,7 @@ en:
       <p class="govuk-body">There’s guidance from:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li><a class="govuk-link" href="https://www.health-ni.gov.uk/coronavirus">Northern Ireland</a></li>
-        <li><a class="govuk-link" href="https://www.gov.scot/coronavirus-covid-19/">Scotland</a></li>
+        <li><a class="govuk-link" href="https://www.gov.scot/publications/covid-shielding-contacts/">Scotland</a></li>
         <li><a class="govuk-link" href="https://gov.wales/get-coronavirus-support-extremely-vulnerable-person">Wales</a></li>
       </ul>
       <p class="govuk-body">There’s also guidance on <a href="https://www.gov.uk/coronavirus" class="govuk-link">what you need to do<a/>.</p>
