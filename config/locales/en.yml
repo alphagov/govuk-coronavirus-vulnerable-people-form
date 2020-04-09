@@ -148,7 +148,7 @@ en:
       title: Registration complete
       description: |
         <p class="govuk-body">You won’t receive an email or text message confirming that you've registered.</p>
-        <p class="govuk-body">You do not need to do anything else if:</p>
+        <p class="govuk-body">You do not need to do anything else if either:</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>you’ve had one of the letters the NHS sent to people classed as clinically extremely vulnerable (the letter was headed ‘Important advice to keep you safe from coronavirus’)</li>
           <li>your GP or hospital clinician has been in touch to confirm that you’re classed as clinically extremely vulnerable</li>
