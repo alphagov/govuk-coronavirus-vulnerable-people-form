@@ -125,9 +125,9 @@ en:
   session_expired:
     title: Your session has ended due to inactivity
     body_text: |
-      <p class="govuk-body">Your session has ended because you have not done anything for 4 hours. You'll have to start again.</p>
+      <p class="govuk-body">Your session has ended because you have not done anything for 4 hours. You’ll have to start again.</p>
 
-      <p class="govuk-body">We do this for your security. We've deleted all the details you entered to protect your data.</p>
+      <p class="govuk-body">We do this for your security. We’ve deleted all the details you entered to protect your data.</p>
   coronavirus_form:
     errors:
       page_title_prefix: 'Error: '
@@ -147,7 +147,7 @@ en:
     confirmation:
       title: Registration complete
       description: |
-        <p class="govuk-body">You won’t receive an email or text message confirming that you've registered.</p>
+        <p class="govuk-body">You won’t receive an email or text message confirming that you’ve registered.</p>
         <p class="govuk-body">You do not need to do anything else if either:</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>you’ve had one of the letters the NHS sent to people classed as clinically extremely vulnerable (the letter was headed ‘Important advice to keep you safe from coronavirus’)</li>
@@ -155,9 +155,9 @@ en:
         </ul>
         <p class="govuk-body">If you haven’t had the letter or been contacted by your GP or hospital clinician, contact them as soon as possible and ask them to confirm that you’re classed as clinically extremely vulnerable. You may not get the support you need if you do not contact them.</p>
         <h2 class="govuk-heading-m">What happens next</h2>
-        <p class="govuk-body">We'll check your details and if you're eligible to get support, we'll send you a letter confirming that. The letter may take a few days to come.</p>
+        <p class="govuk-body">We’ll check your details and if you’re eligible to get support, we’ll send you a letter confirming that. The letter may take a few days to come.</p>
         <h2 class="govuk-heading-m">Getting support</h2>
-        <p class="govuk-body">You'll only get support if you asked for it.</p>
+        <p class="govuk-body">You’ll only get support if you asked for it.</p>
         <p class="govuk-body">It may take time for you to get support. If you have urgent care or support needs then contact your local authority.</p>
         <p class="govuk-body">Wherever possible you should continue to rely on friends, family and wider support to help you meet your needs.</p>
         <p class="govuk-body">Contact your GP or hospital clinician directly if you have urgent medical needs.</p>
