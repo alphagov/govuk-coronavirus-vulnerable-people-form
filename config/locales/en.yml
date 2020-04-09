@@ -147,23 +147,21 @@ en:
     confirmation:
       title: "Registration complete"
       description: |
-        <p class="govuk-body">You will not receive an email or text message to confirm that you’ve registered.</p>
-        <p class="govuk-body">If you have not received a letter from the NHS or been contacted by your GP or hospital clinician, you should contact them to confirm that you’re considered extremely vulnerable. You may not get the support you need if you do not contact them.</p>
-
-        <h2 class="govuk-heading-m">What happens next</h2>
-        <p class="govuk-body">You’ll only get support if you asked for it and you have a medical condition which makes you extremely vulnerable to coronavirus.</p>
-        <p class="govuk-body">It may take time for you to get support. If you have urgent care or support needs then contact your local authority. Contact your GP or hospital clinician directly if you have urgent medical needs.</p>
-        <p class="govuk-body">Wherever possible you should continue to rely on friends, family and wider support to help you meet your needs.</p>
-        <p class="govuk-body">There’s also guidance on <a class="govuk-link" href="https://www.gov.uk/government/publications/guidance-on-shielding-and-protecting-extremely-vulnerable-persons-from-covid-19/guidance-on-shielding-and-protecting-extremely-vulnerable-persons-from-covid-19#what-is-shielding">shielding</a> and <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">things you should do if you’re extremely vulnerable to coronavirus</a>.
-
-        <h2 class="govuk-heading-m">If you get coronavirus symptoms</h2>
-        <p class="govuk-body">Seek clinical advice using the <a class="govuk-link" href="https://111.nhs.uk/covid-19/">NHS 111 online coronavirus service</a> as soon as you get coronavirus symptoms such as:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>a new, continuous cough</li>
-          <li>a high temperature (above 37.8°C)</li>
+         <p class="govuk-body">You won’t receive an email or text message confirming that you've registered.</p>
+         <p class="govuk-body">You do not need to do anything else if:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>you’ve had one of the letters the NHS sent to people classed as clinically extremely vulnerable (the letter was headed ‘Important advice to keep you safe from coronavirus’)</li>
+            <li>your GP or hospital clinician has been in touch to confirm that you’re classed as clinically extremely vulnerable</li>
         </ul>
-        <p class="govuk-body">If you do not have access to the internet, call NHS 111.</p>
-
+        <p class="govuk-body">If you haven’t had the letter or been contacted by your GP or hospital clinician, contact them as soon as possible and ask them to confirm that you’re classed as clinically extremely vulnerable. You may not get the support you need if you do not contact them.</p>
+        <h2 class="govuk-heading-m">What happens next</h2>
+        <p class="govuk-body">We'll check your details and if you're eligible to get support, we'll send you a letter confirming that. The letter may take a few days to come.</p>
+        <h2 class="govuk-heading-m">Getting support</h2> 
+        <p class="govuk-body">You'll only get support if you asked for it.</p>
+        <p class="govuk-body">It may take time for you to get support. If you have urgent care or support needs then contact your local authority.</p>
+        <p class="govuk-body">Wherever possible you should continue to rely on friends, family and wider support to help you meet your needs.</p>
+        <p class="govuk-body">Contact your GP or hospital clinician directly if you have urgent medical needs.</p>       
+        <p class="govuk-body">There’s guidance on <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">things you should do if you’re extremely vulnerable to coronavirus</a>.
         <h2 class="govuk-heading-m">If your support needs change</h2>
         <p class="govuk-body">You should <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">go through the questions in this service again</a> if your support needs change.</p>
         <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
