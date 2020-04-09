@@ -4,7 +4,6 @@ applications:
   buildpack: ruby_buildpack
   memory: 2G
   services:
-  - govuk-coronavirus-vulnerable-people-form-db
   - logit-ssl-drain
   - splunk-ssl-drain
   env:
