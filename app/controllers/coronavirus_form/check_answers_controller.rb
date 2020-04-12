@@ -11,6 +11,12 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
   def submit
     submission_reference = reference_number
 
+    # TODO: remove this once data export has been updated to allow new answers to medical conditions question
+    if session[:medical_conditions] == I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes_medical.label") ||
+        session[:medical_conditions] == I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes_gp.label")
+      session[:medical_conditions] = "Yes, I have one of the medical conditions on the list"
+    end
+
     session[:reference_id] = submission_reference
 
     FormResponse.create(
