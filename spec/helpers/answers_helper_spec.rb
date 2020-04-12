@@ -22,6 +22,21 @@ RSpec.describe AnswersHelper, type: :helper do
         )
       end
     end
+
+    context "medical_conditions" do
+      it "includes the medical conditions question if it has a value" do
+        session[:medical_conditions] = "Yes"
+        expect(helper.answer_items.pluck(:field)).to include(
+          I18n.t("coronavirus_form.questions.medical_conditions.title"),
+        )
+      end
+
+      it "skips the medical conditions question if the value is nil" do
+        expect(helper.answer_items.pluck(:field)).to_not include(
+          I18n.t("coronavirus_form.questions.medical_conditions.title"),
+        )
+      end
+    end
   end
 
   describe "#concat_answer" do
