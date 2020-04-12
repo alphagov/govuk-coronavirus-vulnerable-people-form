@@ -41,6 +41,6 @@ private
   end
 
   def previous_path
-    medical_conditions_path
+    session[:medical_conditions].blank? ? nhs_letter_path : medical_conditions_path
   end
 end
