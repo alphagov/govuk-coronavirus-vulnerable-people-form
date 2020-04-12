@@ -9,7 +9,7 @@ Feature: Filling in the form
     Then I can see "Do you live in England?" in the heading
     When I answer "Yes"
     Then I can see "Have you recently had a letter from the NHS" in the heading
-    When I answer "Yes"
+    When I answer "No"
     Then I can see "Do you have one of the listed medical conditions" in the heading
     When I answer "Yes, I have one of the listed medical conditions"
     Then I can see "What is your name?" in the heading
@@ -55,7 +55,13 @@ Feature: Filling in the form
   Scenario: No eligible medical condition
     When I visit the "/live-in-england" path
     And I answer "Yes"
-    And I answer "Yes"
+    And I answer "No"
     And I answer "No, I do not have one of the listed medical conditions - and I have not been told to ‘shield’"
     Then I will be redirected to the "/not-eligible-medical" path
     And I can see "Sorry, you’re not eligible for help through this service" in the heading
+
+    Scenario: Received NHS letter skips medical conditions question
+      When I visit the "/live-in-england" path
+      And I answer "Yes"
+      And I answer "Yes"
+      Then I will be redirected to the "/name" path
