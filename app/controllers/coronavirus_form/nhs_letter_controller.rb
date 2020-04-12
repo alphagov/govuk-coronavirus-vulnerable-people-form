@@ -19,22 +19,15 @@ class CoronavirusForm::NhsLetterController < ApplicationController
         format.html { render controller_path, status: :unprocessable_entity }
       end
     elsif session[:check_answers_seen]
-      update_session_store
+      session[:nhs_letter] = @form_responses[:nhs_letter]
       redirect_to check_your_answers_url
-    elsif @form_responses[:nhs_letter] == I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
-      update_session_store
-      redirect_to name_url
     else
-      update_session_store
+      session[:nhs_letter] = @form_responses[:nhs_letter]
       redirect_to medical_conditions_url
     end
   end
 
 private
-
-  def update_session_store
-    session[:nhs_letter] = @form_responses[:nhs_letter]
-  end
 
   def previous_path
     live_in_england_path

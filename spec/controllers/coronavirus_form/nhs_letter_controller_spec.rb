@@ -41,18 +41,8 @@ RSpec.describe CoronavirusForm::NhsLetterController, type: :controller do
       expect(response).to render_template(current_template)
     end
 
-    it "redirects to name question for a yes response" do
-      post :submit, params: { nhs_letter: I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label") }
-      expect(response).to redirect_to(name_path)
-    end
-
-    it "redirects to medical conditions question for a no response" do
-      post :submit, params: { nhs_letter: I18n.t("coronavirus_form.questions.nhs_letter.options.option_no.label") }
-      expect(response).to redirect_to(medical_conditions_path)
-    end
-
-    it "redirects to medical conditions question for a not sure response" do
-      post :submit, params: { nhs_letter: I18n.t("coronavirus_form.questions.nhs_letter.options.option_not_sure.label") }
+    it "redirects to next step for a permitted response" do
+      post :submit, params: { nhs_letter: selected }
       expect(response).to redirect_to(medical_conditions_path)
     end
 
