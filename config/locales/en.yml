@@ -186,6 +186,32 @@ en:
           not_sure:
             label: "Not sure"
         custom_select_error: Select if you received the letter from the NHS
+      medical_conditions:
+        title: Do you have one of the listed medical conditions, or have you been told to ‘shield’ by your GP or hospital clinician?
+        description: |
+          <p class="govuk-body">‘Shielding’ means not leaving your home and minimising contact with other members of your household.</p>
+          <p class="govuk-body">You have one of the listed medical conditions if you:</p>
+          <ul class="govuk-list govuk-list--bullet app-list--spaced">
+            <li>have had a solid organ transplant</li>
+            <li>have any cancer and are getting chemotherapy</li>
+            <li>have lung cancer and are getting radical radiotherapy</li>
+            <li>have cancer of the blood or bone marrow, at any stage of treatment - for example, leukaemia, lymphoma or myeloma</li>
+            <li>have any cancer for which you’re getting immunotherapy or other continuing antibody treatments</li>
+            <li>have any cancer for which you’re getting a targeted treatment which can affect the immune system - for example, protein kinase inhibitors or PARP inhibitors</li>
+            <li>have had bone marrow or stem cell transplants in the last 6 months, or are still taking immunosuppression drugs</li>
+            <li>have a severe respiratory condition - including cystic fibrosis, severe asthma or severe COPD (Chronic Obstructive Pulmonary Disease)</li>
+            <li>have a rare disease or inborn error of metabolism that significantly increases your risk of infection - for example SCID or homozygous sickle cell</li>
+            <li>are getting an immunosuppression therapy that’s sufficient to significantly increase your risk of infection</li>
+            <li>are pregnant, and have a significant congenital or acquired heart disease</li>
+          </ul>
+        options:
+          option_yes_medical:
+            label: "Yes, I have one of the listed medical conditions"
+          option_yes_gp:
+            label: "Yes, my GP or hospital clinician has told me to ‘shield’"
+          option_no:
+            label: "No, I do not have one of the listed medical conditions - and I have not been told to ‘shield’"
+        custom_select_error: Select yes if you have one of the medical conditions on the list
       name:
         title: What is your name?
         hint: If you’re applying for someone else, enter the name of the person who needs support.
@@ -228,32 +254,6 @@ en:
           label: "Phone number (for text messages)"
         email:
           label: "Email address"
-      medical_conditions:
-        title: Do you have one of the listed medical conditions, or have you been told to ‘shield’ by your GP or hospital clinician?
-        description: |
-          <p class="govuk-body">‘Shielding’ means not leaving your home and minimising contact with other members of your household.</p>
-          <p class="govuk-body">You have one of the listed medical conditions if you:</p>
-          <ul class="govuk-list govuk-list--bullet app-list--spaced">
-            <li>have had a solid organ transplant</li>
-            <li>have any cancer and are getting chemotherapy</li>
-            <li>have lung cancer and are getting radical radiotherapy</li>
-            <li>have cancer of the blood or bone marrow, at any stage of treatment - for example, leukaemia, lymphoma or myeloma</li>
-            <li>have any cancer for which you’re getting immunotherapy or other continuing antibody treatments</li>
-            <li>have any cancer for which you’re getting a targeted treatment which can affect the immune system - for example, protein kinase inhibitors or PARP inhibitors</li>
-            <li>have had bone marrow or stem cell transplants in the last 6 months, or are still taking immunosuppression drugs</li>
-            <li>have a severe respiratory condition - including cystic fibrosis, severe asthma or severe COPD (Chronic Obstructive Pulmonary Disease)</li>
-            <li>have a rare disease or inborn error of metabolism that significantly increases your risk of infection - for example SCID or homozygous sickle cell</li>
-            <li>are getting an immunosuppression therapy that’s sufficient to significantly increase your risk of infection</li>
-            <li>are pregnant, and have a significant congenital or acquired heart disease</li>
-          </ul>
-        options:
-          option_yes_medical:
-            label: "Yes, I have one of the listed medical conditions"
-          option_yes_gp:
-            label: "Yes, my GP or hospital clinician has told me to ‘shield’"
-          option_no:
-            label: "No, I do not have one of the listed medical conditions - and I have not been told to ‘shield’"
-        custom_select_error: Select yes if you have one of the medical conditions on the list
       know_nhs_number:
         title: "Do you know your NHS number?"
         hint: |
