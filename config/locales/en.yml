@@ -8,9 +8,9 @@ en:
   not_eligible_medical:
     title: Sorry, you’re not eligible for help through this service
     description: |
-      <p class="govuk-body">This service is for people who have a medical condition that makes them extremely vulnerable to coronavirus.</p>
-      <p class="govuk-body">You can read guidance on <a class="govuk-link" href="https://www.gov.uk/coronavirus">what you need to do</a>.</p>
-      <p class="govuk-body">If your medical condition changes, go to <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">www.gov.uk/coronavirus-extremely-vulnerable</a> and go through the questions again.</p>
+      <p class="govuk-body">This service is for people with one of the listed medical conditions or have been told by their GP or hospital clinician that they need to ‘shield’.</p>
+      <p class="govuk-body">You can read <a class="govuk-link" href="https://www.gov.uk/coronavirus">general guidance on what you need to do</a>.</p>
+      <p class="govuk-body">If your medical condition changes or your GP or hospital clinician tells you that you need to start ‘shielding’, go to <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">www.gov.uk/coronavirus-extremely-vulnerable</a> and go through the questions again.</p>
       <p class="govuk-body">We won’t store the information you entered into this service.</p>
       <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
   not_eligible_england:
