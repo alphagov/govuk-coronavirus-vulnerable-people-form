@@ -14,7 +14,7 @@ class CoronavirusForm::SupportAddressController < ApplicationController
         building_and_street_line_2: strip_tags(params[:building_and_street_line_2]&.strip).presence,
         town_city: strip_tags(params[:town_city]&.strip).presence,
         county: strip_tags(params[:county]&.strip).presence,
-        postcode: strip_tags(params[:postcode]&.strip).presence,
+        postcode: strip_tags(params[:postcode]&.gsub(/[[:space:]]+/, "")).presence,
       },
     }
 
