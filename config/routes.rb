@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   scope module: "coronavirus_form" do
     get "/privacy", to: "privacy#show"
     get "/accessibility-statement", to: "accessibility_statement#show"
+    get "/cookies", to: "cookies#show"
 
     get "/session-expired", to: "session_expired#show"
 

@@ -1,0 +1,25 @@
+// Start cookie banner (display settings controlled internally by cookies)
+var element = document.querySelector('[data-module="cookie-banner"]')
+new GOVUK.Modules.CookieBanner().start($(element))
+
+var analyticsInit = function() {
+  <% if Rails.application.config.analytics_tracking_id.present? %>
+    var trackingId = "<%= Rails.application.config.analytics_tracking_id %>"
+
+    // Start analytics only if we have user consent
+    var consentCookie = window.GOVUK.getConsentCookie();
+    if (consentCookie && consentCookie["usage"]) {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga')
+
+      ga('create', trackingId, 'auto')
+      ga('set', 'allowAdFeatures', false);
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    }
+  <% end %>
+}
+
+window.GOVUK.analyticsInit = analyticsInit

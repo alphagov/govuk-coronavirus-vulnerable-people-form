@@ -3,10 +3,12 @@
 class ApplicationController < ActionController::Base
   include ActionView::Helpers::SanitizeHelper
   include FieldValidationHelper
+  include FormFlowHelper
 
   rescue_from ActionController::InvalidAuthenticityToken, with: :session_expired
 
   before_action :check_first_question, only: [:show]
+  before_action :set_session_history, only: :show
 
   def show
     @form_responses = session.to_hash.with_indifferent_access
@@ -26,6 +28,13 @@ private
 
   helper_method :previous_path
 
+  def set_session_history
+    if session[:current_path] != request.path
+      session[:previous_path] = session[:current_path]
+    end
+    session[:current_path] = request.path
+  end
+
   def previous_path
     raise NotImplementedError, "Define a previous path"
   end
@@ -41,11 +50,5 @@ private
   def session_expired
     reset_session
     redirect_to session_expired_path
-  end
-
-  def check_first_question
-    if session[:live_in_england].blank?
-      redirect_to controller: "coronavirus_form/live_in_england", action: "show"
-    end
   end
 end

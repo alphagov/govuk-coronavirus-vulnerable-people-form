@@ -1,0 +1,29 @@
+.cookie-settings__form-wrapper {
+  display: none;
+
+  .js-enabled & {
+    display: block;
+  }
+}
+
+.cookie-settings__no-js {
+  .js-enabled & {
+    display: none;
+  }
+}
+
+.cookie-settings__list {
+  list-style-type: initial;
+  margin: govuk-spacing(4);
+  padding-left: govuk-spacing(6);
+}
+
+.cookie-settings__confirmation {
+  @include govuk-font(19);
+  display: none;
+  margin-top: govuk-spacing(3);
+}
+
+.cookies-content {
+  @include govuk-font(19);
+}

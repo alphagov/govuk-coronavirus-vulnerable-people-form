@@ -45,6 +45,62 @@ en:
       <h2 class="govuk-heading-m">How we tested this website</h2>
       <p class="govuk-body">This website was last tested on 27 March 2020. The test was carried out by the Government Digital Service, based on the <a class="govuk-link" href="https://design-system.service.gov.uk/accessibility/">accessibility statement for the GOV.UK Design System</a>.</p>
       <p class="govuk-body">This statement was prepared on 27 March 2020. It was last updated on 27 March 2020.</p>
+  cookies:
+    title: Cookies
+    banner:
+      title: "Can we store analytics cookies on your device?"
+      text: "Analytics cookies help us understand how our website is being used."
+      confirmation_message: "You’ve accepted all cookies. You can <a class='govuk-link' href='/cookies'>change your cookie settings</a> at any time."
+    settings_page:
+      intro_html: |
+        This service puts small files (known as 'cookies') onto your computer.
+        <br><br>
+        Cookies are used to:
+        <ul class="govuk-list govuk-list--bullet">
+          <li>keep which question you’re up to and how you’ve answered previous questions</li>
+          <li>measure how you use the website so it can be updated and improved based on your needs.</li>
+        </ul>
+        <a class="govuk-link" href="https://ico.org.uk/your-data-matters/online/cookies/">Find out how to manage cookies</a>
+      cookies:
+        - header: Essential cookies
+          text_html: These cookies are required for this service to operate. We do not need to ask permission to use them.
+          cookies:
+            - - text: cookie_preferences_set
+              - text: Lets us know whether you've already set your cookies preferences.
+              - text: 1 year
+            - - text: cookie_preferences
+              - text: Let us know what your cookie preferences are.
+              - text: 1 year
+            - - text: _sessions_store
+              - text: Remembers which question you’re up to and how you answered previous questions.
+              - text: 4 hours
+        - header: Measuring website usage with Google Analytics (analytics cookies)
+          text_html: |
+            We use Google Analytics software to collect anonymised information about how you use the service. We do this to help make sure the site is meeting the needs of its users and to help us make improvements.
+            Google Analytics stores information about:
+            <ul class="cookie-settings__list">
+              <li>the pages you visit</li>
+              <li>how long you spend on each page</li>
+              <li>how you arrived at the site</li>
+              <li>what you click on while you’re visiting the site</li>
+              <li>the device and browser you’re using</li>
+            </ul>
+            We don’t collect or store your personal information (for example your name or address) so this information can’t be used to identify who you are.
+            We don’t allow Google to use or share our analytics data.
+            Google Analytics sets the following cookies:
+          cookie_options_name: "cookies-usage"
+          cookie_options:
+            - value: "on"
+              text: Use cookies that measure my website use
+            - value: "off"
+              text: Do not use cookies that measure my website use
+          cookies:
+            - - text: _ga
+              - text: This helps us count how many people visit the service by tracking if you’ve visited before
+              - text: 2 years
+            - - text: _gid
+              - text: This helps us count how many people visit the service by tracking if you’ve visited before
+              - text: 3 years
   privacy_page:
     title: Privacy
     body_text: |
