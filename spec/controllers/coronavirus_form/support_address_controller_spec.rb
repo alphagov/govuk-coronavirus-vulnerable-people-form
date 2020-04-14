@@ -35,7 +35,7 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
         building_and_street_line_2: "1 Horse Guards Road",
         town_city: "London",
         county: "United Kingdom",
-        postcode: "SW1A 2HQ",
+        postcode: "SW1A2HQ",
       }
     end
 
@@ -51,7 +51,7 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
         "building_and_street_line_2" => '<a href="https://www.example.com">Link</a>',
         "town_city" => '<a href="https://www.example.com">Link</a>',
         "county" => '<a href="https://www.example.com">Link</a>',
-        "postcode" => '<a href="https://www.example.com">E1 8QS</a>',
+        "postcode" => '<a href="https://www.example.com">E18QS</a>',
       }
 
       address = {
@@ -59,7 +59,7 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
         building_and_street_line_2: "Link",
         town_city: "Link",
         county: "Link",
-        postcode: "E1 8QS",
+        postcode: "E18QS",
       }
 
       post :submit, params: params
@@ -117,12 +117,12 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       expect(response).to render_template(current_template)
     end
 
-    it "removes extra whitespace from the postcode" do
+    it "removes all whitespace from the postcode" do
       params[:postcode] = "E1 8QS "
       post :submit, params: params
 
       expect(response).to redirect_to(next_page)
-      expect(session[session_key][:postcode]).to eq("E1 8QS")
+      expect(session[session_key][:postcode]).to eq("E18QS")
     end
 
     described_class::REQUIRED_FIELDS.each do |field|
