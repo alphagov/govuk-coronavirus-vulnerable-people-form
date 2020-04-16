@@ -19,11 +19,13 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
     session[:reference_id] = submission_reference
 
-    FormResponse.create(
-      ReferenceId: submission_reference,
-      UnixTimestamp: Time.zone.now,
-      FormResponse: session,
-    )
+    unless smoke_tester?
+      FormResponse.create(
+        ReferenceId: submission_reference,
+        UnixTimestamp: Time.zone.now,
+        FormResponse: session,
+      )
+    end
 
     reset_session
 
@@ -31,6 +33,11 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
   end
 
 private
+
+  def smoke_tester?
+    email = session.dig(:contact_details, :email)
+    email.present? && email == Rails.application.config.courtesy_copy_email
+  end
 
   def reference_number
     timestamp = Time.zone.now.strftime("%Y%m%d-%H%M%S")

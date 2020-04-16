@@ -65,5 +65,14 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
 
       expect(FormResponse.last.attributes.dig(:FormResponse, :medical_conditions)).to eq("Yes, I have one of the medical conditions on the list")
     end
+
+    it "doesn't create a FormResponse if the user is the smoke tester" do
+      session[:contact_details] = { email: Rails.application.config.courtesy_copy_email }
+      session[:medical_conditions] = I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes_gp.label")
+
+      expect {
+        post :submit
+      }.to_not(change { FormResponse.count })
+    end
   end
 end
