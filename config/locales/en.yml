@@ -185,6 +185,7 @@ en:
 
       <p class="govuk-body">We do this for your security. We’ve deleted all the details you entered to protect your data.</p>
   coronavirus_form:
+    submit_and_next: "Continue"
     errors:
       page_title_prefix: 'Error: '
       heading: "There is a problem"
