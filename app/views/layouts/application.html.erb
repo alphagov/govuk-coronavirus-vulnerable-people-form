@@ -16,6 +16,30 @@
     <script>
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
+    <%= render "govuk_publishing_components/components/cookie_banner", {
+      title: t("cookies.banner.title"),
+      text: t("cookies.banner.text"),
+      confirmation_message: sanitize(t("cookies.banner.confirmation_message")),
+      cookie_preferences_href: cookies_path,
+      services_cookies: {
+        yes: {
+          text: "Yes",
+          data_attributes: {
+            "track-category": "cookieBanner"
+          }
+        },
+        no: {
+          text: "No",
+          data_attributes: {
+            "track-category": "cookieBanner"
+          }
+        },
+        cookie_preferences: {
+          text: "How we use cookies",
+          href: cookies_path
+        }
+      }
+    } %>
     <%= render "govuk_publishing_components/components/skip_link" %>
     <%= render "govuk_publishing_components/components/layout_header", { environment: "public" } %>
     <div class="govuk-width-container">
@@ -39,6 +63,10 @@
           {
             href: "/privacy",
             text: t("privacy_page.title")
+          },
+          {
+            href: "/cookies",
+            text: t("cookies.title")
           },
           {
             href: "/accessibility-statement",
