@@ -50,7 +50,7 @@ run:
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_ACCESS_KEY_ID "$AWS_ACCESS_KEY_ID"
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_SECRET_ACCESS_KEY "$AWS_SECRET_ACCESS_KEY"
       cf set-env govuk-coronavirus-vulnerable-people-form SECRET_KEY_BASE "$SECRET_KEY_BASE"
-      cf set-env govuk-coronavirus-business-volunteer-form GA_VIEW_ID "$GA_VIEW_ID"
+      cf set-env govuk-coronavirus-vulnerable-people-form GA_VIEW_ID "$GA_VIEW_ID"
 
       cf v3-zdt-push govuk-coronavirus-vulnerable-people-form --wait-for-deploy-complete --no-route
       cf map-route govuk-coronavirus-vulnerable-people-form cloudapps.digital --hostname "$HOSTNAME"
