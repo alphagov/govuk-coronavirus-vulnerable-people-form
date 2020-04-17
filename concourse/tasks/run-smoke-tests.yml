@@ -3,13 +3,13 @@ image_resource:
   type: docker-image
   source:
     repository: ((readonly_private_ecr_repo_url))
-    tag: govuk-coronavirus-vulnerable-people-form-feature-tests
+    tag: govuk-coronavirus-vulnerable-people-tests-image
 params:
   TEST_URL:
   RAILS_ENV: smoke_test
 inputs:
-  - name: govuk-coronavirus-vulnerable-people-form
+  - name: git-master
 run:
   path: bundle
-  dir: govuk-coronavirus-vulnerable-people-form
+  dir: git-master
   args: ['exec', 'rspec', 'spec/features']

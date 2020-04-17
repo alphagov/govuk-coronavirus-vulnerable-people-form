@@ -5,81 +5,65 @@ resource_types:
     source:
       repository: nulldriver/cf-cli-resource
 
-  - name: travis
-    type: docker-image
-    source:
-      repository: rbakergds/travis-resource
-      tag: latest
-
 resources:
-  - name: govuk-coronavirus-vulnerable-people-form
+  - name: git-master
     type: git
     icon: github-circle
     source:
       uri: https://github.com/alphagov/govuk-coronavirus-vulnerable-people-form
       branch: master
 
-  - name: govuk-coronavirus-vulnerable-people-form-feature-tests
+  - name: git-master-gems-dockerfile
     type: git
     icon: github-circle
     source:
       uri: https://github.com/alphagov/govuk-coronavirus-vulnerable-people-form
       branch: master
       paths:
+        - concourse/Dockerfile
         - Gemfile*
-        - .ruby-version
-        - spec/
 
   - name: every-day
     type: time
     source:
       interval: 24h
 
-  - name: govuk-coronavirus-vulnerable-people-form-travis-build
-    type: travis
-    icon: sync
-    source:
-      repository: alphagov/govuk-coronavirus-vulnerable-people-form
-      travis-token: ((travis-api-token))
-      branch: master
-      pro: true
-
-  - name: feature-tests-image
+  - name: tests-image
     type: docker-image
     icon: docker
     source:
       repository: ((readonly_private_ecr_repo_url))
-      tag: govuk-coronavirus-vulnerable-people-form-feature-tests
+      tag: govuk-coronavirus-vulnerable-people-tests-image
 
 jobs:
   - name: update-pipeline
     plan:
-      - get: govuk-coronavirus-vulnerable-people-form
+      - get: git-master
         trigger: true
       - set_pipeline: govuk-corona-vulnerable-people-form
-        file: govuk-coronavirus-vulnerable-people-form/concourse/pipeline.yml
+        file: git-master/concourse/pipeline.yml
 
   - name: build-feature-tests-image
     serial: true
     plan:
       - get: every-day
         trigger: true
-      - get: govuk-coronavirus-vulnerable-people-form-feature-tests
+      - get: git-master-gems-dockerfile
         trigger: true
       - put: feature-tests-image
         params:
-          build: govuk-coronavirus-vulnerable-people-form-feature-tests
-          dockerfile: govuk-coronavirus-vulnerable-people-form-feature-tests/concourse/Dockerfile
+          build: git-master-gems-dockerfile
+          dockerfile: git-master-gems-dockerfile/concourse/Dockerfile
 
   - name: deploy-to-staging
     serial: true
     plan:
       - get: govuk-coronavirus-vulnerable-people-form-travis-build
         trigger: true
-      - get: govuk-coronavirus-vulnerable-people-form
+      - get: git-master
       - task: deploy-to-paas
         config:
-        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/deploy-to-govuk-paas.yml
+        file: git-master/concourse/tasks/deploy-to-govuk-paas.yml
         params:
           CF_SPACE: staging
           INSTANCES: 5
@@ -95,27 +79,27 @@ jobs:
 
   - name: smoke-test-staging
     plan:
-      - get: govuk-coronavirus-vulnerable-people-form
+      - get: git-master
         trigger: true
         passed: [deploy-to-staging]
       - task: smoke-test
-        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/smoke-test.yml
+        file: git-master/concourse/tasks/smoke-test.yml
         params:
           URL: 'https://govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital/live-in-england'
           MESSAGE: "Checks that the application deployed to staging is not serving HTTP error codes"
       - task: run-smoke-tests
-        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/run-smoke-tests.yml
+        file: git-master/concourse/tasks/run-smoke-tests.yml
         params:
           TEST_URL: 'https://gds:((basic-auth-password))@govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital'
 
   - name: deploy-to-prod
     serial: true
     plan:
-      - get: govuk-coronavirus-vulnerable-people-form
+      - get: git-master
         trigger: true
         passed: [smoke-test-staging]
       - task: deploy-to-paas
-        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/deploy-to-govuk-paas.yml
+        file: git-master/concourse/tasks/deploy-to-govuk-paas.yml
         params:
           CF_SPACE: production
           INSTANCES: 20
@@ -132,16 +116,16 @@ jobs:
   - name: smoke-test-prod
     serial: true
     plan:
-      - get: govuk-coronavirus-vulnerable-people-form
+      - get: git-master
         trigger: true
         passed: [deploy-to-prod]
       - task: smoke-test
-        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/smoke-test.yml
+        file: git-master/concourse/tasks/smoke-test.yml
         timeout: 5m
         params:
           URL: 'https://coronavirus-vulnerable-people.service.gov.uk/live-in-england'
           MESSAGE: "Checks that the application deployed to production is not serving HTTP error codes. If this fails, you should investigate immediately."
       - task: run-smoke-tests
-        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/run-smoke-tests.yml
+        file: git-master/concourse/tasks/run-smoke-tests.yml
         params:
           TEST_URL: 'https://coronavirus-vulnerable-people.service.gov.uk'
