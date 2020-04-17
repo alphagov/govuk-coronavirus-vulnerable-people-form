@@ -43,45 +43,77 @@ jobs:
       - set_pipeline: govuk-corona-vulnerable-people-form
         file: git-master/concourse/pipeline.yml
 
-  - name: build-feature-tests-image
+  - name: build-tests-image
     serial: true
+    build_logs_to_retain: 100
     plan:
       - get: every-day
         trigger: true
       - get: git-master-gems-dockerfile
         trigger: true
-      - put: feature-tests-image
+      - put: tests-image
         params:
           build: git-master-gems-dockerfile
           dockerfile: git-master-gems-dockerfile/concourse/Dockerfile
 
+  - name: run-quality-checks
+    serial: true
+    plan:
+      - get: tests-image
+        passed: [build-tests-image]
+        trigger: true
+      - get: git-master
+        trigger: true
+      - task: run-tests-task
+        image: tests-image
+        config:
+          inputs:
+            - name: git-master
+          platform: linux
+          run:
+            dir: git-master
+            path: bash
+            args:
+              - -c
+              - |
+                set -eu
+                wget https://s3.eu-central-1.amazonaws.com/dynamodb-local-frankfurt/dynamodb_local_latest.tar.gz
+                sha256sum -c <<< "d77f5371c21868dd489b53782619b7f2e418d4b1068947a28d80082052ca1d64 dynamodb_local_latest.tar.gz"
+                tar -xzf dynamodb_local_latest.tar.gz
+                java -jar DynamoDBLocal.jar>&1 &
+                export RAILS_ENV=test
+                bundle install
+                bundle exec rake
+
   - name: deploy-to-staging
     serial: true
     plan:
-      - get: govuk-coronavirus-vulnerable-people-form-travis-build
-        trigger: true
       - get: git-master
+        trigger: true
+        passed: [run-quality-checks]
       - task: deploy-to-paas
         config:
-        file: git-master/concourse/tasks/deploy-to-govuk-paas.yml
-        params:
-          CF_SPACE: staging
-          INSTANCES: 5
-          CF_STARTUP_TIMEOUT: 5 # minutes
-          REQUIRE_BASIC_AUTH: "true"
-          BASIC_AUTH_PASSWORD: ((basic-auth-password))
-          AWS_ACCESS_KEY_ID: ((aws-access-key-id))
-          AWS_SECRET_ACCESS_KEY: ((aws-secret-access-key))
-          SECRET_KEY_BASE: ((secret-key-base-staging))
-          AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME: coronavirus-vulnerable-people-staging
-          AWS_ASSETS_BUCKET_NAME: govuk-coronavirus-vulnerable-people-assets-staging
-          HOSTNAME: govuk-coronavirus-vulnerable-people-form-stg
+          file: git-master/concourse/tasks/deploy-to-govuk-paas.yml
+          params:
+            CF_SPACE: staging
+            INSTANCES: 5
+            CF_STARTUP_TIMEOUT: 5 # minutes
+            REQUIRE_BASIC_AUTH: "true"
+            BASIC_AUTH_PASSWORD: ((basic-auth-password))
+            AWS_ACCESS_KEY_ID: ((aws-access-key-id))
+            AWS_SECRET_ACCESS_KEY: ((aws-secret-access-key))
+            SECRET_KEY_BASE: ((secret-key-base-staging))
+            AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME: coronavirus-vulnerable-people-staging
+            AWS_ASSETS_BUCKET_NAME: govuk-coronavirus-vulnerable-people-assets-staging
+            HOSTNAME: govuk-coronavirus-vulnerable-people-form-stg
 
   - name: smoke-test-staging
     plan:
       - get: git-master
         trigger: true
         passed: [deploy-to-staging]
+      - get: tests-image
+        passed: [build-tests-image]
       - task: smoke-test
         file: git-master/concourse/tasks/smoke-test.yml
         params:
@@ -119,6 +151,8 @@ jobs:
       - get: git-master
         trigger: true
         passed: [deploy-to-prod]
+      - get: tests-image
+        passed: [build-tests-image]
       - task: smoke-test
         file: git-master/concourse/tasks/smoke-test.yml
         timeout: 5m
