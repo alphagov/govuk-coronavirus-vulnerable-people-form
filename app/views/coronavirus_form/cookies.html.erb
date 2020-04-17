@@ -38,36 +38,34 @@
     <% end %>
   </div>
 
+  <% t('cookies.settings_page.tables').map do |table| %>
+    <div class="cookie-settings__table-wrapper">
+      <%= render "govuk_publishing_components/components/heading", {
+        text: sanitize(table.dig(:header)),
+        margin_bottom: 3,
+      } %>
+      <p class="govuk-body"><%= sanitize(table.dig(:text_html)) %></p>
+      <%= render "govuk_publishing_components/components/table", {
+        head: [
+          { text: "Name" },
+          { text: "Purpose" },
+          { text: "Expires" },
+        ],
+        rows: table.dig(:cookies),
+      } %>
+    </div>
+  <% end %>
+
   <div class="cookie-settings__form-wrapper">
-    <p>
-      We use <%= t('cookies.settings_page.cookies').count %> types of cookie.
-      You can choose which cookies you're happy for us to use.
-    </p>
-
     <form data-module="cookie-settings">
-      <% t('cookies.settings_page.cookies').map do |cookie_item| %>
-        <% cookies_usage_hint = capture do %>
-          <div class="govuk-body">
-            <p><%= sanitize(cookie_item.dig(:text_html)) %></p>
-            <%= render "govuk_publishing_components/components/table", {
-              head: [
-                { text: "Name" },
-                { text: "Purpose" },
-                { text: "Expires" },
-              ],
-              rows: cookie_item.dig(:cookies),
-            } %>
-          </div>
-        <% end %>
-
-        <%= render "govuk_publishing_components/components/radio", {
-          name: cookie_item.dig(:cookie_options_name),
-          inline: false,
-          heading: cookie_item.dig(:header),
-          hint: (cookies_usage_hint),
-          items: cookie_item.fetch(:cookie_options, []),
-        } %>
-      <% end %>
+      <%= render "govuk_publishing_components/components/radio", {
+        name: t("cookies.settings_page.cookie_options.name"),
+        inline: false,
+        heading: t("cookies.settings_page.cookie_options.header"),
+        # hint: (cookies_usage_hint),
+        items: t('cookies.settings_page.cookie_options').fetch(:options, []),
+        margin_top: 0,
+      } %>
 
       <%= render "govuk_publishing_components/components/button", {
         text: "Save changes"

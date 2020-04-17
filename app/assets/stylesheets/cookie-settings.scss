@@ -1,5 +1,6 @@
 .cookie-settings__form-wrapper {
   display: none;
+  padding-top: govuk-spacing(6);
 
   .js-enabled & {
     display: block;
@@ -26,4 +27,8 @@
 
 .cookies-content {
   @include govuk-font(19);
+}
+
+.cookie-settings__table-wrapper {
+  padding-top: govuk-spacing(6);
 }
