@@ -6,9 +6,10 @@ image_resource:
     tag: govuk-coronavirus-vulnerable-people-form-feature-tests
 params:
   TEST_URL:
+  RAILS_ENV: smoke_test
 inputs:
   - name: govuk-coronavirus-vulnerable-people-form
 run:
-  path: rails
+  path: bundle
   dir: govuk-coronavirus-vulnerable-people-form
-  args: ['cucumber']
+  args: ['exec', 'rspec', 'spec/features']

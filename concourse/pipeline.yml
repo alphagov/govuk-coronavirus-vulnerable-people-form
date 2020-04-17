@@ -28,7 +28,7 @@ resources:
       paths:
         - Gemfile*
         - .ruby-version
-        - features/
+        - spec/
 
   - name: every-day
     type: time
@@ -69,7 +69,7 @@ jobs:
       - put: feature-tests-image
         params:
           build: govuk-coronavirus-vulnerable-people-form-feature-tests
-          dockerfile: govuk-coronavirus-vulnerable-people-form-feature-tests/features/Dockerfile
+          dockerfile: govuk-coronavirus-vulnerable-people-form-feature-tests/spec/Dockerfile
 
   - name: deploy-to-staging
     serial: true
@@ -103,8 +103,8 @@ jobs:
         params:
           URL: 'https://govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital/live-in-england'
           MESSAGE: "Checks that the application deployed to staging is not serving HTTP error codes"
-      - task: run-cucumber-specs
-        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/run-cucumber-specs.yml
+      - task: run-smoke-tests
+        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/run-smoke-tests.yml
         params:
           TEST_URL: 'https://gds:((basic-auth-password))@govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital'
 
@@ -141,3 +141,7 @@ jobs:
         params:
           URL: 'https://coronavirus-vulnerable-people.service.gov.uk/live-in-england'
           MESSAGE: "Checks that the application deployed to production is not serving HTTP error codes. If this fails, you should investigate immediately."
+      - task: run-smoke-tests
+        file: govuk-coronavirus-vulnerable-people-form/concourse/tasks/run-smoke-tests.yml
+        params:
+          TEST_URL: 'https://coronavirus-vulnerable-people.service.gov.uk'
