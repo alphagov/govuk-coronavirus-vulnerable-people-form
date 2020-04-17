@@ -16,12 +16,12 @@ RUN apt-get update --fix-missing && apt-get -y upgrade \
 
 ENV CHROME_NO_SANDBOX=true
 
-COPY Gemfile* .ruby-version /home/chrome/src/
+COPY Gemfile* .ruby-version /application/
 
-WORKDIR /home/chrome/src
+WORKDIR /application/
 
 RUN bundle install
 
-COPY . /home/chrome/src/
+COPY . /application/
 
 ENTRYPOINT ["/bin/bash"]

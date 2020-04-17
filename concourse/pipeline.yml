@@ -69,7 +69,7 @@ jobs:
       - put: feature-tests-image
         params:
           build: govuk-coronavirus-vulnerable-people-form-feature-tests
-          dockerfile: govuk-coronavirus-vulnerable-people-form-feature-tests/spec/Dockerfile
+          dockerfile: govuk-coronavirus-vulnerable-people-form-feature-tests/concourse/Dockerfile
 
   - name: deploy-to-staging
     serial: true
