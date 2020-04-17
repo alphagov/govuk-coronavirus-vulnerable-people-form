@@ -36,6 +36,8 @@ module CoronavirusForm
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    config.courtesy_copy_email = "coronavirus-services-smoke-tests@digital.cabinet-office.gov.uk"
+
     # Don't generate system test files.
     config.generators.system_tests = nil
   end

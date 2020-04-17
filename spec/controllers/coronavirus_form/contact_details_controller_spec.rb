@@ -23,7 +23,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       {
         "phone_number_calls" => "1234<script></script>",
         "phone_number_texts" => "5678",
-        "email" => "<script></script>somewhere@somewhere.com",
+        "email" => "<script></script>tester@example.org",
       }
     end
 
@@ -31,7 +31,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       {
         phone_number_calls: "1234",
         phone_number_texts: "5678",
-        email: "somewhere@somewhere.com",
+        email: "tester@example.org",
       }
     end
 
