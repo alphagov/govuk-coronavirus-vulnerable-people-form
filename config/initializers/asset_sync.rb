@@ -1,5 +1,6 @@
 if defined?(AssetSync)
   AssetSync.configure do |config|
+    config.enabled = false if ENV["HEROKU_APP_NAME"]
     config.fog_provider = "AWS"
     config.fog_region = "eu-west-2"
     config.fog_directory = ENV["AWS_ASSETS_BUCKET_NAME"]

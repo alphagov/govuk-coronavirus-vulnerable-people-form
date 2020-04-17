@@ -11,6 +11,8 @@ Rails.application.configure do
     "govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital",
   ]
 
+  config.hosts << "#{ENV['HEROKU_APP_NAME']}.herokuapp.com" if ENV["HEROKU_APP_NAME"]
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

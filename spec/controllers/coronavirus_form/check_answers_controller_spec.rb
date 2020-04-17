@@ -35,6 +35,16 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       )
     end
 
+    context "when running as a Heroku preview app" do
+      before do
+        ENV["HEROKU_APP_NAME"] = "coronavirus-form-preview"
+      end
+
+      it "does not save the form response to the database" do
+        expect { post :submit }.to_not(change { FormResponse.count })
+      end
+    end
+
     it "resets session" do
       post :submit
       expect(session.to_hash).to eq({})
