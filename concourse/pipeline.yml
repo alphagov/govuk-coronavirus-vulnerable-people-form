@@ -93,19 +93,19 @@ jobs:
         passed: [run-quality-checks]
       - task: deploy-to-paas
         config:
-          file: git-master/concourse/tasks/deploy-to-govuk-paas.yml
-          params:
-            CF_SPACE: staging
-            INSTANCES: 5
-            CF_STARTUP_TIMEOUT: 5 # minutes
-            REQUIRE_BASIC_AUTH: "true"
-            BASIC_AUTH_PASSWORD: ((basic-auth-password))
-            AWS_ACCESS_KEY_ID: ((aws-access-key-id))
-            AWS_SECRET_ACCESS_KEY: ((aws-secret-access-key))
-            SECRET_KEY_BASE: ((secret-key-base-staging))
-            AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME: coronavirus-vulnerable-people-staging
-            AWS_ASSETS_BUCKET_NAME: govuk-coronavirus-vulnerable-people-assets-staging
-            HOSTNAME: govuk-coronavirus-vulnerable-people-form-stg
+        file: git-master/concourse/tasks/deploy-to-govuk-paas.yml
+        params:
+          CF_SPACE: staging
+          INSTANCES: 5
+          CF_STARTUP_TIMEOUT: 5 # minutes
+          REQUIRE_BASIC_AUTH: "true"
+          BASIC_AUTH_PASSWORD: ((basic-auth-password))
+          AWS_ACCESS_KEY_ID: ((aws-access-key-id))
+          AWS_SECRET_ACCESS_KEY: ((aws-secret-access-key))
+          SECRET_KEY_BASE: ((secret-key-base-staging))
+          AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME: coronavirus-vulnerable-people-staging
+          AWS_ASSETS_BUCKET_NAME: govuk-coronavirus-vulnerable-people-assets-staging
+          HOSTNAME: govuk-coronavirus-vulnerable-people-form-stg
 
   - name: smoke-test-staging
     plan:
