@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
   include FieldValidationHelper
   include FormFlowHelper
 
+  if ENV["REQUIRE_BASIC_AUTH"]
+    http_basic_authenticate_with(
+      name: ENV.fetch("BASIC_AUTH_USERNAME"),
+      password: ENV.fetch("BASIC_AUTH_PASSWORD"),
+    )
+  end
+
   rescue_from ActionController::InvalidAuthenticityToken, with: :session_expired
 
   before_action :check_first_question, only: [:show]
@@ -15,13 +22,6 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html { render controller_path }
     end
-  end
-
-  if ENV["REQUIRE_BASIC_AUTH"]
-    http_basic_authenticate_with(
-      name: ENV.fetch("BASIC_AUTH_USERNAME"),
-      password: ENV.fetch("BASIC_AUTH_PASSWORD"),
-    )
   end
 
 private
