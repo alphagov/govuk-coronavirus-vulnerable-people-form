@@ -38,7 +38,7 @@ RSpec.describe AnswersHelper, type: :helper do
         answer = {
           "phone_number_calls" => "012101234567",
           "phone_number_texts" => "0777001234567",
-          "email" => "me@example.com",
+          "email" => "tester@example.org",
         }
 
         expected_answer =
@@ -55,7 +55,7 @@ RSpec.describe AnswersHelper, type: :helper do
 
       it "only concatenates the fields that have a value" do
         answer = {
-          "email" => "me@example.com",
+          "email" => "tester@example.org",
         }
 
         expected_answer = "Email: #{answer['email']}"

@@ -82,7 +82,7 @@ module FillInTheFormSteps
     within find(".govuk-main-wrapper") do
       fill_in "phone_number_calls", with: "07000000000"
       fill_in "phone_number_texts", with: "07000000000"
-      fill_in "email", with: "test@example.com"
+      fill_in "email", with: Rails.application.config.courtesy_copy_email
       click_on I18n.t("coronavirus_form.submit_and_next")
     end
   end
