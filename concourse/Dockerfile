@@ -13,7 +13,6 @@ RUN apt-get update --fix-missing && apt-get -y upgrade \
     && apt-get install -y --no-install-recommends \
       google-chrome-unstable \
       default-jre \
-      --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /src/*.deb
 
