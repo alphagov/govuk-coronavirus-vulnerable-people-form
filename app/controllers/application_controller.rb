@@ -51,4 +51,8 @@ private
     reset_session
     redirect_to session_expired_path
   end
+
+  def preview_app?
+    ENV["HEROKU_APP_NAME"]
+  end
 end

@@ -19,7 +19,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
     session[:reference_id] = submission_reference
 
-    unless smoke_tester?
+    unless smoke_tester? || preview_app?
       FormResponse.create(
         ReferenceId: submission_reference,
         UnixTimestamp: Time.zone.now,
