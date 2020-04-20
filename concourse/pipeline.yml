@@ -78,7 +78,8 @@ jobs:
               - |
                 set -eu
                 wget https://s3.eu-central-1.amazonaws.com/dynamodb-local-frankfurt/dynamodb_local_latest.tar.gz
-                sha256sum -c <<< "d77f5371c21868dd489b53782619b7f2e418d4b1068947a28d80082052ca1d64 dynamodb_local_latest.tar.gz"
+                wget https://s3.eu-central-1.amazonaws.com/dynamodb-local-frankfurt/dynamodb_local_latest.tar.gz.sha256
+                sha256sum -c <<< "$(awk -F ' ' '{ print $1 }' dynamodb_local_latest.tar.gz.sha256) dynamodb_local_latest.tar.gz"
                 tar -xzf dynamodb_local_latest.tar.gz
                 java -jar DynamoDBLocal.jar>&1 &
                 export RAILS_ENV=test
