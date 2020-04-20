@@ -5,7 +5,7 @@ image_resource:
     repository: governmentpaas/cf-cli
     tag: latest
 inputs:
-  - name: govuk-coronavirus-vulnerable-people-form
+  - name: git-master
     path: src
 params:
   CF_API: https://api.cloud.service.gov.uk
