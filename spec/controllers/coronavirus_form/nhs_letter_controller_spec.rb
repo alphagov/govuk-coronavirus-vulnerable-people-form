@@ -48,7 +48,7 @@ RSpec.describe CoronavirusForm::NhsLetterController, type: :controller do
 
     it "redirects to check your answers if check your answers previously seen" do
       session[:check_answers_seen] = true
-      post :submit, params: { nhs_letter: "Yes" }
+      post :submit, params: { nhs_letter: I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label") }
 
       expect(response).to redirect_to(check_your_answers_path)
     end
