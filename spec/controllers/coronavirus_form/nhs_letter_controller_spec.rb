@@ -11,7 +11,7 @@ RSpec.describe CoronavirusForm::NhsLetterController, type: :controller do
 
   describe "GET show" do
     it "renders the form" do
-      session[:live_in_england] = "Yes"
+      session[:live_in_england] = I18n.t("coronavirus_form.questions.live_in_england.options.option_yes.label")
 
       get :show
       expect(response).to render_template(current_template)
@@ -48,7 +48,7 @@ RSpec.describe CoronavirusForm::NhsLetterController, type: :controller do
 
     it "redirects to check your answers if check your answers previously seen" do
       session[:check_answers_seen] = true
-      post :submit, params: { nhs_letter: "Yes" }
+      post :submit, params: { nhs_letter: I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label") }
 
       expect(response).to redirect_to(check_your_answers_path)
     end

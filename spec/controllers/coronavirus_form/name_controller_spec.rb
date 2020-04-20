@@ -11,7 +11,7 @@ RSpec.describe CoronavirusForm::NameController, type: :controller do
 
   describe "GET show" do
     it "renders the form" do
-      session[:live_in_england] = "Yes"
+      session[:live_in_england] = I18n.t("coronavirus_form.questions.live_in_england.options.option_yes.label")
 
       get :show
       expect(response).to render_template(current_template)
