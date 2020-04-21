@@ -6,7 +6,7 @@ require "capybara/rspec"
 test_url = ENV["TEST_URL"]
 
 Capybara.register_driver :apparition do |app|
-  options = { browser_options: {}, timeout: 10, skip_image_loading: true }
+  options = { browser_options: {}, timeout: 30, skip_image_loading: true }
   if ENV.key? "CHROME_NO_SANDBOX"
     options[:browser_options]["no-sandbox"] = true
   end
@@ -14,7 +14,7 @@ Capybara.register_driver :apparition do |app|
 end
 
 Capybara.javascript_driver = :apparition
-Capybara.default_max_wait_time = 10
+Capybara.default_max_wait_time = 30
 Capybara.exact = true
 Capybara.match = :one
 
