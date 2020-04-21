@@ -60,7 +60,7 @@ module FillInTheFormSteps
     within find(".govuk-main-wrapper") do
       fill_in "date_of_birth-day", with: "1"
       fill_in "date_of_birth-month", with: "1"
-      fill_in "date_of_birth-year", with: "1200"
+      fill_in "date_of_birth-year", with: "1970"
       click_on I18n.t("coronavirus_form.submit_and_next")
     end
   end
