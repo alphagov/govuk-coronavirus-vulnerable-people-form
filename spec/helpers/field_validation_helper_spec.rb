@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe FieldValidationHelper, type: :helper do
-  context "#validate_date_of_birth" do
+  describe "#validate_date_of_birth" do
     it "does not return an error for a valid date" do
       Timecop.freeze("2019-04-21") do
         invalid_fields = validate_date_of_birth("1970", "02", "01", "date")
@@ -84,7 +84,7 @@ RSpec.describe FieldValidationHelper, type: :helper do
     end
   end
 
-  context "#validate_telephone_number" do
+  describe "#validate_telephone_number" do
     it "does not return an error for a valid UK number" do
       invalid_fields = validate_telephone_number("phone-number", "01234 567 890")
       expect(invalid_fields).to be_empty
