@@ -105,4 +105,26 @@ RSpec.describe FieldValidationHelper, type: :helper do
       expect(invalid_fields).to eq [{ field: "phone-number", text: I18n.t("coronavirus_form.errors.telephone_number_format") }]
     end
   end
+
+  describe "#validate_email_address" do
+    it "does not return an error for a correctly formatted email address" do
+      invalid_fields = validate_email_address("email_address", "govuk-coronavirus-services@digital.cabinet-office.gov.uk")
+      expect(invalid_fields).to be_empty
+    end
+
+    it "returns an error for an email address containing commas" do
+      invalid_fields = validate_email_address("email_address", "govuk-coronavirus-services@digital.cabinet-office,gov.uk")
+      expect(invalid_fields).to eq [{ field: "email_address", text: I18n.t("coronavirus_form.errors.email_format") }]
+    end
+
+    it "returns an error for an email address containing spaces" do
+      invalid_fields = validate_email_address("email_address", "govuk coronavirus services@digital.cabinet-office.gov.uk")
+      expect(invalid_fields).to eq [{ field: "email_address", text: I18n.t("coronavirus_form.errors.email_format") }]
+    end
+
+    it "returns an error for the email address not containing @" do
+      invalid_fields = validate_email_address("email_address", "some-random-text")
+      expect(invalid_fields).to eq [{ field: "email_address", text: I18n.t("coronavirus_form.errors.email_format") }]
+    end
+  end
 end

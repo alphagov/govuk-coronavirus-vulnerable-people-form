@@ -74,7 +74,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
     end
 
     it "does not move to next step with an invalid email address" do
-      post :submit, params: { "email": "not-a-valid-email" }
+      post :submit, params: { "email": "govuk-coronavirus-services@digital.cabinet_office,gov.uk" }
       expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(current_template)
     end
