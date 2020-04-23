@@ -100,4 +100,12 @@ module FieldValidationHelper
       [{ field: field.to_s, text: t("coronavirus_form.errors.postcode_format") }]
     end
   end
+
+  def validate_telephone_number(field, telephone_number)
+    if TelephoneNumber.parse(telephone_number, :gb).valid?
+      []
+    else
+      [{ field: field.to_s, text: t("coronavirus_form.errors.telephone_number_format") }]
+    end
+  end
 end

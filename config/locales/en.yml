@@ -202,6 +202,7 @@ en:
       postcode_format: "Enter a real postcode"
       negative_date: "Enter a real %{field}"
       date_not_a_number: "Enter %{field} as a number"
+      telephone_number_format: "Enter a telephone number, like 01632 960 001, 07700 900 982 or +44 0808 157 0192"
     confirmation:
       title: Registration complete
       description: |

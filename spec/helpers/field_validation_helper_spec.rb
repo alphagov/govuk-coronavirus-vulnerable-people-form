@@ -83,4 +83,26 @@ RSpec.describe FieldValidationHelper, type: :helper do
       expect(invalid_fields).to eq [{ field: "date-year", text: I18n.t("coronavirus_form.errors.invalid_date") }]
     end
   end
+
+  context "#validate_telephone_number" do
+    it "does not return an error for a valid UK number" do
+      invalid_fields = validate_telephone_number("phone-number", "01234 567 890")
+      expect(invalid_fields).to be_empty
+    end
+
+    it "returns an error if number is too short" do
+      invalid_fields = validate_telephone_number("phone-number", "01234 567 89")
+      expect(invalid_fields).to eq [{ field: "phone-number", text: I18n.t("coronavirus_form.errors.telephone_number_format") }]
+    end
+
+    it "returns an error if number is too long" do
+      invalid_fields = validate_telephone_number("phone-number", "01234 567 8900")
+      expect(invalid_fields).to eq [{ field: "phone-number", text: I18n.t("coronavirus_form.errors.telephone_number_format") }]
+    end
+
+    it "returns an error if number is not a UK number" do
+      invalid_fields = validate_telephone_number("phone-number", "+353 1 234 5670")
+      expect(invalid_fields).to eq [{ field: "phone-number", text: I18n.t("coronavirus_form.errors.telephone_number_format") }]
+    end
+  end
 end
