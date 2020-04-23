@@ -21,16 +21,16 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
   describe "POST submit" do
     let(:params) do
       {
-        "phone_number_calls" => "01234 578 890<script></script>",
-        "phone_number_texts" => "01876 543 210",
+        "phone_number_calls" => "01234-578-890<script></script>",
+        "phone_number_texts" => "+44(0)1876 543 210",
         "email" => "<script></script>tester@example.org",
       }
     end
 
     let(:contact_details) do
       {
-        phone_number_calls: "01234 578 890",
-        phone_number_texts: "01876 543 210",
+        phone_number_calls: "01234 578890",
+        phone_number_texts: "01876 543210",
         email: "tester@example.org",
       }
     end
@@ -47,8 +47,8 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       }
 
       contact_details = {
-        phone_number_calls: "01234567890",
-        phone_number_texts: "01234567890",
+        phone_number_calls: "01234 567890",
+        phone_number_texts: "01234 567890",
         email: nil,
       }
 
