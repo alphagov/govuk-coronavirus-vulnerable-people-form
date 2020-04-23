@@ -10,11 +10,11 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
       },
     }
 
-    invalid_fields = if @form_responses[:contact_details].dig(:email)
-                       validate_email_address("email", @form_responses.dig(:contact_details, :email))
-                     else
-                       []
-                     end
+    invalid_fields = [
+      @form_responses[:contact_details].dig(:phone_number_calls) ? validate_telephone_number("phone_number_calls", @form_responses.dig(:contact_details, :phone_number_calls)) : [],
+      @form_responses[:contact_details].dig(:phone_number_texts) ? validate_telephone_number("phone_number_texts", @form_responses.dig(:contact_details, :phone_number_texts)) : [],
+      @form_responses[:contact_details].dig(:email) ? validate_email_address("email", @form_responses.dig(:contact_details, :email)) : [],
+    ].flatten.compact
 
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
