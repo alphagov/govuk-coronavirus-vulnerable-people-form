@@ -18,9 +18,9 @@ en:
     description: |
       <p class="govuk-body">There’s guidance from:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a class="govuk-link" href="https://www.health-ni.gov.uk/coronavirus">Northern Ireland</a></li>
-        <li><a class="govuk-link" href="https://www.gov.scot/publications/covid-shielding-contacts/">Scotland</a></li>
-        <li><a class="govuk-link" href="https://gov.wales/get-coronavirus-support-extremely-vulnerable-person">Wales</a></li>
+        <li><a class="govuk-link" href="https://www.health-ni.gov.uk/coronavirus" rel="external">Northern Ireland</a></li>
+        <li><a class="govuk-link" href="https://www.gov.scot/publications/covid-shielding-contacts/" rel="external">Scotland</a></li>
+        <li><a class="govuk-link" href="https://gov.wales/get-coronavirus-support-extremely-vulnerable-person" rel="external">Wales</a></li>
       </ul>
       <p class="govuk-body">There’s also guidance on <a href="https://www.gov.uk/coronavirus" class="govuk-link">what you need to do<a/>.</p>
       <p class="govuk-body">We won’t store the information you entered into this service.</p>
