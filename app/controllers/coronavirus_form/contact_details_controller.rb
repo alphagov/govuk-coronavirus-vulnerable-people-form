@@ -10,11 +10,11 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
       },
     }
 
-    invalid_fields = if @form_responses[:contact_details].dig(:email)
-                       validate_email_address("email", @form_responses.dig(:contact_details, :email))
-                     else
-                       []
-                     end
+    invalid_fields = [
+      @form_responses[:contact_details].dig(:phone_number_calls) ? validate_telephone_number("phone_number_calls", @form_responses.dig(:contact_details, :phone_number_calls)) : [],
+      @form_responses[:contact_details].dig(:phone_number_texts) ? validate_telephone_number("phone_number_texts", @form_responses.dig(:contact_details, :phone_number_texts)) : [],
+      @form_responses[:contact_details].dig(:email) ? validate_email_address("email", @form_responses.dig(:contact_details, :email)) : [],
+    ].flatten.compact
 
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
@@ -24,15 +24,21 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
         format.html { render controller_path, status: :unprocessable_entity }
       end
     elsif session[:check_answers_seen]
-      session[:contact_details] = @form_responses[:contact_details]
+      update_session_store
       redirect_to check_your_answers_url
     else
-      session[:contact_details] = @form_responses[:contact_details]
+      update_session_store
       redirect_to know_nhs_number_url
     end
   end
 
 private
+
+  def update_session_store
+    @form_responses[:contact_details][:phone_number_calls] = TelephoneNumber.parse(@form_responses[:contact_details][:phone_number_calls], :gb).national_number
+    @form_responses[:contact_details][:phone_number_texts] = TelephoneNumber.parse(@form_responses[:contact_details][:phone_number_texts], :gb).national_number
+    session[:contact_details] = @form_responses[:contact_details]
+  end
 
   def previous_path
     support_address_path

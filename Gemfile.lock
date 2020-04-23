@@ -348,6 +348,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     statsd-ruby (1.4.0)
+    telephone_number (1.4.6)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -404,6 +405,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-raven (~> 3.0)
   simplecov (~> 0.16)
+  telephone_number (~> 1.4)
   timecop
   uglifier (~> 4.2)
   webdrivers
