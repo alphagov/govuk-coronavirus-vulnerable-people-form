@@ -84,7 +84,7 @@ module FieldValidationHelper
   end
 
   def validate_email_address(field, email_address)
-    if email_address =~ /@/
+    if email_address =~ /(^[a-zA-Z0-9_.+\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-.]+$)/
       []
     else
       [{ field: field.to_s, text: t("coronavirus_form.errors.email_format") }]

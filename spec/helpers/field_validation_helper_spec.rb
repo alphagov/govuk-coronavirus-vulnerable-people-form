@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe FieldValidationHelper, type: :helper do
-  context "#validate_date_of_birth" do
+  describe "#validate_date_of_birth" do
     it "does not return an error for a valid date" do
       Timecop.freeze("2019-04-21") do
         invalid_fields = validate_date_of_birth("1970", "02", "01", "date")
@@ -84,7 +84,7 @@ RSpec.describe FieldValidationHelper, type: :helper do
     end
   end
 
-  context "#validate_telephone_number" do
+  describe "#validate_telephone_number" do
     it "does not return an error for a valid UK number" do
       invalid_fields = validate_telephone_number("phone-number", "01234 567 890")
       expect(invalid_fields).to be_empty
@@ -103,6 +103,28 @@ RSpec.describe FieldValidationHelper, type: :helper do
     it "returns an error if number is not a UK number" do
       invalid_fields = validate_telephone_number("phone-number", "+353 1 234 5670")
       expect(invalid_fields).to eq [{ field: "phone-number", text: I18n.t("coronavirus_form.errors.telephone_number_format") }]
+    end
+  end
+
+  describe "#validate_email_address" do
+    it "does not return an error for a correctly formatted email address" do
+      invalid_fields = validate_email_address("email_address", "govuk-coronavirus-services@digital.cabinet-office.gov.uk")
+      expect(invalid_fields).to be_empty
+    end
+
+    it "returns an error for an email address containing commas" do
+      invalid_fields = validate_email_address("email_address", "govuk-coronavirus-services@digital.cabinet-office,gov.uk")
+      expect(invalid_fields).to eq [{ field: "email_address", text: I18n.t("coronavirus_form.errors.email_format") }]
+    end
+
+    it "returns an error for an email address containing spaces" do
+      invalid_fields = validate_email_address("email_address", "govuk coronavirus services@digital.cabinet-office.gov.uk")
+      expect(invalid_fields).to eq [{ field: "email_address", text: I18n.t("coronavirus_form.errors.email_format") }]
+    end
+
+    it "returns an error for the email address not containing @" do
+      invalid_fields = validate_email_address("email_address", "some-random-text")
+      expect(invalid_fields).to eq [{ field: "email_address", text: I18n.t("coronavirus_form.errors.email_format") }]
     end
   end
 end
