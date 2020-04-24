@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
     get "/session-expired", to: "session_expired#show"
 
+    get "/refer-from-find-support", to: "refer_from_other_app#from_find_support_app"
+
     # Question 1.0: Do you live in England?
     get "/live-in-england", to: "live_in_england#show"
     post "/live-in-england", to: "live_in_england#submit"
