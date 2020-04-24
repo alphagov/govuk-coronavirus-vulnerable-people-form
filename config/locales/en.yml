@@ -185,6 +185,9 @@ en:
       <p class="govuk-body">Your session has ended because you have not done anything for 4 hours. You’ll have to start again.</p>
 
       <p class="govuk-body">We do this for your security. We’ve deleted all the details you entered to protect your data.</p>
+
+      <h2 class="govuk-heading-m">If you didn’t expect to see this page</h2>
+      <p class="govuk-body">You may be seeing this page because you’ve turned off cookies in your browser. You’ll need to <a class="govuk-link" href="https://ico.org.uk/your-data-matters/online/cookies/" rel="external" target="_blank">turn cookies on</a> before you can use this service.</p>
   coronavirus_form:
     submit_and_next: "Continue"
     errors:
