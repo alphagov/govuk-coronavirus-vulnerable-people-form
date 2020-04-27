@@ -32,7 +32,7 @@ RSpec.describe CoronavirusForm::DateOfBirthController, type: :controller do
     let(:date_of_birth) do
       {
         day: "31",
-        month: "1",
+        month: "01",
         year: "1980",
       }
     end
