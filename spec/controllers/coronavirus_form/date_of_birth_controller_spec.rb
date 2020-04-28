@@ -61,8 +61,8 @@ RSpec.describe CoronavirusForm::DateOfBirthController, type: :controller do
       post :submit, params: {
         "date_of_birth" => {
           "day" => "<script></script>31",
-          "month" => "</script>123456789 not a number",
-          "year" => "not a number",
+          "month" => "</script>11111111111",
+          "year" => "11111111111",
         },
       }
       expect(response).to have_http_status(:unprocessable_entity)
