@@ -25,15 +25,29 @@ class CoronavirusForm::DateOfBirthController < ApplicationController
         format.html { render controller_path, status: :unprocessable_entity }
       end
     elsif session[:check_answers_seen]
-      session[:date_of_birth] = @form_responses[:date_of_birth]
+      update_session_store
       redirect_to check_your_answers_url
     else
-      session[:date_of_birth] = @form_responses[:date_of_birth]
+      update_session_store
       redirect_to support_address_url
     end
   end
 
 private
+
+  def update_session_store
+    date_of_birth = DateTime.new(
+      @form_responses[:date_of_birth].dig(:year).to_i,
+      @form_responses[:date_of_birth].dig(:month).to_i,
+      @form_responses[:date_of_birth].dig(:day).to_i,
+    )
+
+    session[:date_of_birth] = {
+      year: date_of_birth.strftime("%Y"),
+      month: date_of_birth.strftime("%m"),
+      day: date_of_birth.strftime("%d"),
+      }
+  end
 
   def previous_path
     name_path
