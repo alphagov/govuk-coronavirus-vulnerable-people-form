@@ -81,6 +81,8 @@ module FieldValidationHelper
       invalid_fields << { field: "#{field}-year", text: t("coronavirus_form.errors.invalid_date") }
     end
     invalid_fields
+  rescue RangeError
+    [{ field: field, text: t("coronavirus_form.errors.invalid_date") }]
   end
 
   def validate_email_address(field, email_address)
