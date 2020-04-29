@@ -56,7 +56,7 @@ RSpec.describe CoronavirusForm::NameController, type: :controller do
       expect(session[session_key]).to eq name
     end
 
-    %w(first_name last_name).each do |field|
+    %w[first_name last_name].each do |field|
       it "validates #{field} is required" do
         post :submit, params: params.except(field)
         expect(response).to have_http_status(:unprocessable_entity)
