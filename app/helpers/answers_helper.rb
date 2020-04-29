@@ -41,7 +41,7 @@ module AnswersHelper
 
   def complete_date?(date)
     date.present? &&
-      %w(day month year).all? { |required_key| date.key?(required_key) } &&
+      %w[day month year].all? { |required_key| date.key?(required_key) } &&
       date.values.all?(&:present?)
   end
 

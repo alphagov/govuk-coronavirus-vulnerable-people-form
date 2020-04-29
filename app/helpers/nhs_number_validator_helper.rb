@@ -30,7 +30,9 @@ module NhsNumberValidatorHelper
   end
 
   def is_number?(string)
-    true if Integer(string) rescue false
+    true if Integer(string)
+  rescue StandardError
+    false
   end
 
   def is_ten_digits?(number)
