@@ -120,4 +120,7 @@ Rails.application.configure do
   #   ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context =
   #   ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  config.metrics_username = ENV["METRICS_USERNAME"]
+  config.metrics_password = ENV["METRICS_PASSWORD"]
 end

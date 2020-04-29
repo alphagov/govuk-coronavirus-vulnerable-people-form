@@ -7,6 +7,8 @@ image_resource:
 params:
   TEST_URL:
   RAILS_ENV: smoke_test
+  METRICS_USERNAME: ((metrics-username))
+  METRICS_PASSWORD: ((metrics-password))
 inputs:
   - name: git-master
 run:

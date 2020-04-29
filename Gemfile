@@ -20,6 +20,8 @@ gem "telephone_number", "~> 1.4"
 gem "timecop"
 gem "uglifier", "~> 4.2"
 
+gem "prometheus-client", "~> 2.0"
+
 group :development do
   gem "listen", "~> 3"
 end

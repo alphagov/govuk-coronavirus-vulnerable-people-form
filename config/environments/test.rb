@@ -38,6 +38,10 @@ Rails.application.configure do
 
   config.analytics_tracking_id = "12345"
 
+  config.metrics_username = ENV["METRICS_USERNAME"] || "username"
+
+  config.metrics_password = ENV["METRICS_PASSWORD"] || "password"
+
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 end
