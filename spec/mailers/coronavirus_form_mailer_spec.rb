@@ -2,7 +2,7 @@ RSpec.describe CoronavirusFormMailer, type: :mailer do
   describe "#confirmation_email" do
     let(:mail) { CoronavirusFormMailer.with(params).confirmation_email(to_address) }
     let(:to_address) { "user@example.org" }
-    let(:params) { { first_name: "John", last_name: "Smith" } }
+    let(:params) { { first_name: "John", last_name: "Smith", reference_number: "ABC123" } }
 
     it "renders the headers" do
       expect(mail.subject).to eq(I18n.t("emails.confirmation.subject"))
@@ -12,6 +12,10 @@ RSpec.describe CoronavirusFormMailer, type: :mailer do
 
     it "renders the body" do
       expect(mail.body.encoded).to include("Dear #{params.dig(:first_name)} #{params.dig(:last_name)}")
+    end
+
+    it "includes the reference" do
+      expect(mail.body.encoded).to include(params.dig(:reference_number))
     end
   end
 end
