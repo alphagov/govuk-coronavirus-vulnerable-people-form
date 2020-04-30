@@ -191,6 +191,41 @@ en:
 
       <h2 class="govuk-heading-m">If you didn’t expect to see this page</h2>
       <p class="govuk-body">You may be seeing this page because you’ve turned off cookies in your browser. You’ll need to <a class="govuk-link" href="https://ico.org.uk/your-data-matters/online/cookies/" rel="external" target="_blank">turn cookies on</a> before you can use this service.</p>
+  emails:
+    confirmation:
+      subject: "Coronavirus support service: your registration"
+      body_text: |
+        Your registration number is %{reference_number}.
+
+        You do not need to do anything else if either:
+        - you’ve had one of the letters the NHS sent to people classed as clinically extremely vulnerable (the letter was headed ‘Important advice to keep you safe from coronavirus’)
+        - your GP or hospital clinician has been in touch to confirm that you’re classed as clinically extremely vulnerable
+
+        If you haven’t had the letter or been contacted by your GP or hospital clinician, contact them as soon as possible and ask them to confirm that you’re classed as clinically extremely vulnerable. You may not get the support you need if you do not contact them.
+
+        ## What happens next
+
+        We’ll check your details to make sure you’re eligible for support. You’ll only get support if you asked for it.
+
+        It may take time for you to get support. If you have urgent care or support needs then contact your local authority.
+
+        Wherever possible you should continue to rely on friends, family and wider support to help you meet your needs.
+
+        Contact your GP or hospital clinician directly if you have urgent medical needs.
+
+        There’s guidance on things you should do if you’re extremely vulnerable to coronavirus: https://www.gov.uk/coronavirus-extremely-vulnerable-guidance.
+
+        ## If your support needs change
+
+        You should go through the questions in the service again if your support needs change: https://www.gov.uk/coronavirus-extremely-vulnerable.
+
+        Thanks,
+
+        Coronavirus support team
+
+        -----
+
+        Do not reply to this email - it’s an automatic message from an unmonitored account.
   coronavirus_form:
     submit_and_next: "Continue"
     errors:
