@@ -123,4 +123,20 @@ Rails.application.configure do
 
   config.metrics_username = ENV["METRICS_USERNAME"]
   config.metrics_password = ENV["METRICS_PASSWORD"]
+
+  # https://docs.cloud.service.gov.uk/deploying_services/redis
+  # https://docs.cloud.service.gov.uk/deploying_apps.html#system-provided-environment-variables
+  if ENV["VCAP_SERVICES"].present?
+    redis = JSON.parse(ENV["VCAP_SERVICES"]).to_h.fetch("redis", [])
+    instance = redis.first
+    redis_url = instance.dig("credentials", "uri")
+
+    Sidekiq.configure_server do |config|
+      config.redis = { url: redis_url }
+    end
+
+    Sidekiq.configure_client do |config|
+      config.redis = { url: redis_url }
+    end
+  end
 end

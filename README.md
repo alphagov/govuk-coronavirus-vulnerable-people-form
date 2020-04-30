@@ -34,6 +34,20 @@ Run the following to set up the local version of DynamoDB
 
     bundle exec rake
 
+### Running Sidekiq
+
+We're using [Sidekiq][], a redis-backed queue, which plays nicely with ActiveJob
+and ActionMailer, to send emails.
+
+In staging and production, we run instances of the application as workers,
+to process the email queue.
+
+#### Locally
+
+Sidekiq will start automatically when you run `foreman start`, but you can
+also run it alone with `bundle exec sidekiq`.
+
+[Sidekiq]: https://github.com/mperham/sidekiq
 
 ## Deployment pipeline
 

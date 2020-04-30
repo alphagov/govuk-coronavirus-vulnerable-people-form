@@ -62,6 +62,13 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.metrics_username = ENV["METRICS_USERNAME"] || "username"
-
   config.metrics_password = ENV["METRICS_PASSWORD"] || "password"
+
+  Sidekiq.configure_server do |config|
+    config.redis = { url: "redis://localhost:6379/0" }
+  end
+
+  Sidekiq.configure_client do |config|
+    config.redis = { url: "redis://localhost:6379/0" }
+  end
 end
