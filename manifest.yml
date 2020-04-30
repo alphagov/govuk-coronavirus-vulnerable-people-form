@@ -6,6 +6,7 @@ applications:
   services:
   - logit-ssl-drain
   - splunk-ssl-drain
+  - prometheus-service-broker
   env:
     GOVUK_APP_DOMAIN: cloudapps.digital
     GOVUK_WEBSITE_ROOT: www.gov.uk
