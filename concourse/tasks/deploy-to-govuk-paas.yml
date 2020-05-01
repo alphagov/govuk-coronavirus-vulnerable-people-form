@@ -57,4 +57,6 @@ run:
       cf set-env govuk-coronavirus-vulnerable-people-form METRICS_PASSWORD "$METRICS_PASSWORD"
 
       cf v3-zdt-push govuk-coronavirus-vulnerable-people-form --wait-for-deploy-complete --no-route
+      cf map-route govuk-coronavirus-vulnerable-people-form cloudapps.digital --hostname "$HOSTNAME" --path metrics
+      cf bind-route-service cloudapps.digital --hostname "$HOSTNAME" --path metrics govuk-coronavirus-auth-service
       cf map-route govuk-coronavirus-vulnerable-people-form cloudapps.digital --hostname "$HOSTNAME"
