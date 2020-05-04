@@ -363,7 +363,7 @@ en:
           <br /><br />
           You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
           <br /><br />
-          Don’t worry if you cannot find it. You’ll still be able to register.
+          If you do not provide an NHS number it may delay support getting to you.
         options:
           option_yes:
             label: "Yes, I know my NHS number"
