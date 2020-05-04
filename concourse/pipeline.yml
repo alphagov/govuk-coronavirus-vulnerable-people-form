@@ -98,6 +98,7 @@ jobs:
         params:
           CF_SPACE: staging
           INSTANCES: 5
+          WORKER_INSTANCES: 1
           CF_STARTUP_TIMEOUT: 5 # minutes
           REQUIRE_BASIC_AUTH: "true"
           BASIC_AUTH_PASSWORD: ((basic-auth-password))
@@ -107,6 +108,8 @@ jobs:
           AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME: coronavirus-vulnerable-people-staging
           AWS_ASSETS_BUCKET_NAME: govuk-coronavirus-vulnerable-people-assets-staging
           HOSTNAME: govuk-coronavirus-vulnerable-people-form-stg
+          GOVUK_NOTIFY_TEMPLATE_ID: d4fddfce-1dfd-4ff5-ab42-156e6ba3e76b
+          NOTIFY_API_KEY: ((notify-api-key-stg))
 
   - name: smoke-test-staging
     plan:
@@ -136,6 +139,7 @@ jobs:
         params:
           CF_SPACE: production
           INSTANCES: 20
+          WORKER_INSTANCES: 1
           CF_STARTUP_TIMEOUT: 15 # minutes
           REQUIRE_BASIC_AUTH:
           BASIC_AUTH_PASSWORD: ((basic-auth-password))
@@ -145,6 +149,8 @@ jobs:
           AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME: coronavirus-vulnerable-people-prod
           AWS_ASSETS_BUCKET_NAME: govuk-coronavirus-vulnerable-people-assets-prod
           HOSTNAME: govuk-coronavirus-vulnerable-people-form-prod
+          GOVUK_NOTIFY_TEMPLATE_ID: eb9f351c-f314-47e4-ba7b-656137521f74
+          NOTIFY_API_KEY: ((notify-api-key-prod))
 
   - name: smoke-test-prod
     serial: true

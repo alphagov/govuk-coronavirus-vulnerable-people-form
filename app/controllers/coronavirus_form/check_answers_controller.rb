@@ -25,6 +25,8 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
         UnixTimestamp: Time.zone.now,
         FormResponse: session,
       )
+
+      send_confirmation_email if session_with_indifferent_access.dig(:contact_details, :email).present?
     end
 
     reset_session
@@ -35,7 +37,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 private
 
   def smoke_tester?
-    email = session.dig(:contact_details, :email)
+    email = session_with_indifferent_access.dig(:contact_details, :email)
     email.present? && email == Rails.application.config.courtesy_copy_email
   end
 
@@ -43,5 +45,26 @@ private
     timestamp = Time.zone.now.strftime("%Y%m%d-%H%M%S")
     random_id = SecureRandom.hex(3).upcase
     "#{timestamp}-#{random_id}"
+  end
+
+  def send_confirmation_email
+    mailer = CoronavirusFormMailer.with(
+      first_name: session_with_indifferent_access.dig(:name, :first_name),
+      last_name: session_with_indifferent_access.dig(:name, :last_name),
+      reference_number: reference_number,
+    )
+    mailer.confirmation_email(user_email).deliver_later
+  end
+
+  def user_email
+    if ENV["PAAS_ENV"] == "staging"
+      Rails.application.config.courtesy_copy_email
+    else
+      session_with_indifferent_access.dig(:contact_details, :email)
+    end
+  end
+
+  def session_with_indifferent_access
+    session.to_h.with_indifferent_access
   end
 end

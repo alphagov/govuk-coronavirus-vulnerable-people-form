@@ -19,11 +19,14 @@ params:
   CF_SPACE:
   HOSTNAME:
   INSTANCES:
+  WORKER_INSTANCES:
   BASIC_AUTH_PASSWORD:
   AWS_ACCESS_KEY_ID:
   AWS_SECRET_ACCESS_KEY:
   METRICS_USERNAME: ((metrics-username))
   METRICS_PASSWORD: ((metrics-password))
+  GOVUK_NOTIFY_TEMPLATE_ID:
+  NOTIFY_API_KEY:
 run:
   dir: src
   path: sh
@@ -40,6 +43,7 @@ run:
       cf set-env govuk-coronavirus-vulnerable-people-form CF_STARTUP_TIMEOUT "$CF_STARTUP_TIMEOUT"
 
       cf scale -i "$INSTANCES" govuk-coronavirus-vulnerable-people-form
+      cf v3-scale --process worker -i "$WORKER_INSTANCES" govuk-coronavirus-vulnerable-people-form
 
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME "$AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME"
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_ASSETS_BUCKET_NAME "$AWS_ASSETS_BUCKET_NAME"
@@ -55,6 +59,9 @@ run:
       cf set-env govuk-coronavirus-vulnerable-people-form GA_VIEW_ID "$GA_VIEW_ID"
       cf set-env govuk-coronavirus-vulnerable-people-form METRICS_USERNAME "$METRICS_USERNAME"
       cf set-env govuk-coronavirus-vulnerable-people-form METRICS_PASSWORD "$METRICS_PASSWORD"
+      cf set-env govuk-coronavirus-vulnerable-people-form GOVUK_NOTIFY_TEMPLATE_ID "$GOVUK_NOTIFY_TEMPLATE_ID"
+      cf set-env govuk-coronavirus-vulnerable-people-form NOTIFY_API_KEY "$NOTIFY_API_KEY"
+      cf set-env govuk-coronavirus-vulnerable-people-form PAAS_ENV "$CF_SPACE"
 
       cf v3-zdt-push govuk-coronavirus-vulnerable-people-form --wait-for-deploy-complete --no-route
       cf map-route govuk-coronavirus-vulnerable-people-form cloudapps.digital --hostname "$HOSTNAME"
