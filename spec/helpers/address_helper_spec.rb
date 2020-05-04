@@ -47,5 +47,16 @@ RSpec.describe AddressHelper, type: :helper do
         end
       end
     end
+
+    it "returns 404 for an invalid or unavailable service request" do
+      VCR.use_cassette "address/404_response" do
+        stub_const(
+          "AddressHelper::API_URL",
+          "https://api.ordnancesurvey.co.uk/places/v99999999/addresses/postcode?dataset=LPI",
+        )
+
+        expect { helper.postcode_lookup("AA1A1AA") }.to raise_error(AddressLookupError)
+      end
+    end
   end
 end
