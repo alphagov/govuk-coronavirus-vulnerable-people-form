@@ -27,6 +27,7 @@ params:
   METRICS_PASSWORD: ((metrics-password))
   GOVUK_NOTIFY_TEMPLATE_ID:
   NOTIFY_API_KEY:
+  ORDNANCE_SURVEY_PLACES_API_KEY: ((ordnance-survey-places-api-key))
 run:
   dir: src
   path: sh
@@ -62,6 +63,8 @@ run:
       cf set-env govuk-coronavirus-vulnerable-people-form GOVUK_NOTIFY_TEMPLATE_ID "$GOVUK_NOTIFY_TEMPLATE_ID"
       cf set-env govuk-coronavirus-vulnerable-people-form NOTIFY_API_KEY "$NOTIFY_API_KEY"
       cf set-env govuk-coronavirus-vulnerable-people-form PAAS_ENV "$CF_SPACE"
+
+      cf set-env govuk-coronavirus-vulnerable-people-form ORDNANCE_SURVEY_PLACES_API_KEY "$ORDNANCE_SURVEY_PLACES_API_KEY"
 
       cf v3-zdt-push govuk-coronavirus-vulnerable-people-form --wait-for-deploy-complete --no-route
       cf map-route govuk-coronavirus-vulnerable-people-form cloudapps.digital --hostname "$HOSTNAME"

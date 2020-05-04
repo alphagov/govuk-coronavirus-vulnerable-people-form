@@ -11,19 +11,19 @@ locally on your machine.
 
 ### Prequisites
 
-You'll need an Amazon DynamoDB local instance running in a docker container. 
+You'll need an Amazon DynamoDB local instance running in a docker container.
 
 You'll need a JavaScript runtime: https://github.com/rails/execjs  
 Clone the app and run `bundle` locally.  
 
-### Running DynamoDB 
+### Running DynamoDB
 
 #### Docker
 Run the following to set up the local version of DynamoDB
 
 ```
-    docker pull amazon/dynamodb-local 
-    docker run -d -p 8000:8000 amazon/dynamodb-local 
+    docker pull amazon/dynamodb-local
+    docker run -d -p 8000:8000 amazon/dynamodb-local
 ```
 
 ### Running the application (DynamoDB will need to be running)
@@ -33,6 +33,10 @@ Run the following to set up the local version of DynamoDB
 ### Running the tests
 
     bundle exec rake
+
+#### VCR
+
+Some of our tests use [VCR](https://github.com/vcr/vcr) to generate stubbed responses. [Read about how to test with VCR](docs/testing/testing_with_vcr.md).
 
 ### Running Sidekiq
 

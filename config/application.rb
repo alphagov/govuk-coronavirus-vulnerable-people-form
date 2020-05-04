@@ -42,5 +42,9 @@ module CoronavirusForm
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    unless Rails.env.production?
+      ENV["ORDNANCE_SURVEY_PLACES_API_KEY"] = "123"
+    end
   end
 end
