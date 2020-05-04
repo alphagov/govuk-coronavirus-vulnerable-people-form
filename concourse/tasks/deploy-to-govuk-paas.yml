@@ -44,7 +44,6 @@ run:
       cf set-env govuk-coronavirus-vulnerable-people-form CF_STARTUP_TIMEOUT "$CF_STARTUP_TIMEOUT"
 
       cf scale -i "$INSTANCES" govuk-coronavirus-vulnerable-people-form
-      cf v3-scale --process worker -i "$WORKER_INSTANCES" govuk-coronavirus-vulnerable-people-form
 
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME "$AWS_DYNAMODB_SUBMISSIONS_TABLE_NAME"
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_ASSETS_BUCKET_NAME "$AWS_ASSETS_BUCKET_NAME"
