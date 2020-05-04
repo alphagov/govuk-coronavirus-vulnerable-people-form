@@ -65,5 +65,25 @@ RSpec.describe AddressHelper, type: :helper do
       end
     end
   end
+
+  context "disable net connections" do
+    # The API documentation implies that it can return a 405.  However, so far
+    # it has not been possible to generate one.  Until that it is possible to
+    # generate a 405 a stub has been added for testing purposes.  Note: that
+    # OS return a 500 for a not allowed method instead!
+    it "returns 405 for a method not allowed request" do
+      stub_const(
+        "AddressHelper::API_URL",
+        "https://api.ordnancesurvey.co.uk/placezzzzzzzzzz/v1/addresses/postcode?dataset=LPI",
+      )
+
+      postcode = "SW1A2AA"
+      postcode_url = "#{AddressHelper::API_URL}&postcode=#{postcode}&key=#{ENV['ORDNANCE_SURVEY_PLACES_API_KEY']}"
+
+      stub_request(:get, postcode_url)
+        .to_return(status: 405, body: {}.to_s, headers: {})
+
+      expect { helper.postcode_lookup(postcode) }.to raise_error(AddressLookupError)
+    end
   end
 end
