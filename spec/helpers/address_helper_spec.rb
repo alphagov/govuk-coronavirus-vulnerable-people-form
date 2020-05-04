@@ -58,5 +58,12 @@ RSpec.describe AddressHelper, type: :helper do
         expect { helper.postcode_lookup("AA1A1AA") }.to raise_error(AddressLookupError)
       end
     end
+
+    it "returns 500 for a request with an invalid method" do
+      VCR.use_cassette "address/500_response" do
+        expect { helper.postcode_lookup("SW1A2AA") }.to raise_error(AddressLookupError)
+      end
+    end
+  end
   end
 end
