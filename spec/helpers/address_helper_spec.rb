@@ -39,5 +39,13 @@ RSpec.describe AddressHelper, type: :helper do
         expect { helper.postcode_lookup("AA1A1AA") }.to raise_error(AddressLookupError)
       end
     end
+
+    it "returns 401 for an invalid api key" do
+      VCR.use_cassette "address/401_response" do
+        ClimateControl.modify ORDNANCE_SURVEY_PLACES_API_KEY: "1234" do
+          expect { helper.postcode_lookup("SW1A2AA") }.to raise_error(AddressLookupError)
+        end
+      end
+    end
   end
 end
