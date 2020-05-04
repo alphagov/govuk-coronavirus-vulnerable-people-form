@@ -4,6 +4,11 @@ require "byebug"
 require "simplecov"
 require "capybara/rspec"
 require "capybara/apparition"
+require "vcr"
+require "webmock/rspec"
+
+WebMock.disable_net_connect!(allow_localhost: true)
+VCR.turn_off!
 
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../config/environment", __dir__)
