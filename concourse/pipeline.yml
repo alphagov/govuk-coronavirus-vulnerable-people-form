@@ -98,6 +98,7 @@ jobs:
         params:
           CF_SPACE: staging
           INSTANCES: 5
+          WORKER_INSTANCES: 1
           CF_STARTUP_TIMEOUT: 5 # minutes
           REQUIRE_BASIC_AUTH: "true"
           BASIC_AUTH_PASSWORD: ((basic-auth-password))
@@ -136,6 +137,7 @@ jobs:
         params:
           CF_SPACE: production
           INSTANCES: 20
+          WORKER_INSTANCES: 1
           CF_STARTUP_TIMEOUT: 15 # minutes
           REQUIRE_BASIC_AUTH:
           BASIC_AUTH_PASSWORD: ((basic-auth-password))
