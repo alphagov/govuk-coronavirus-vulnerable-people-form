@@ -411,6 +411,7 @@ DEPENDENCIES
   capybara (~> 3.32.1)
   climate_control
   dynamoid
+  faraday (~> 1.0.1)
   fog-aws
   foreman (~> 0.87.1)
   govuk_app_config (~> 2.1.1)
