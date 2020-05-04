@@ -33,5 +33,11 @@ RSpec.describe AddressHelper, type: :helper do
         end
       end
     end
+
+    it "returns 400 a non-existant or malformed postcode" do
+      VCR.use_cassette "address/400_response" do
+        expect { helper.postcode_lookup("AA1A1AA") }.to raise_error(AddressLookupError)
+      end
+    end
   end
 end
