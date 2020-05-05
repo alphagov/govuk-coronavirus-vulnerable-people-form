@@ -306,9 +306,8 @@ en:
             label: "Not sure"
         custom_select_error: Select if you received the letter from the NHS
       medical_conditions:
-        title: Do you have one of the listed medical conditions, or have you been told to ‘shield’ by your GP or hospital clinician?
+        title: Do you have one of the listed medical conditions?
         description: |
-          <p class="govuk-body">‘Shielding’ means not leaving your home and minimising contact with other members of your household.</p>
           <p class="govuk-body">You have one of the listed medical conditions if you:</p>
           <ul class="govuk-list govuk-list--bullet app-list--spaced">
             <li>have had a solid organ transplant</li>
@@ -324,12 +323,10 @@ en:
             <li>are pregnant, and have a significant congenital or acquired heart disease</li>
           </ul>
         options:
-          option_yes_medical:
+          option_yes:
             label: "Yes, I have one of the listed medical conditions"
-          option_yes_gp:
-            label: "Yes, my GP or hospital clinician has told me to ‘shield’"
           option_no:
-            label: "No, I do not have one of the listed medical conditions - and I have not been told to ‘shield’"
+            label: "No, I do not have one of the listed medical conditions"
         custom_select_error: Select yes if you have one of the medical conditions on the list
       name:
         title: What is your name?

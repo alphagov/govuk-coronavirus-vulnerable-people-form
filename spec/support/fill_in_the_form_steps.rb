@@ -40,7 +40,7 @@ module FillInTheFormSteps
   def who_has_a_listed_medical_condition
     expect(page.body).to have_content(I18n.t("coronavirus_form.questions.medical_conditions.title"))
     within find(".govuk-main-wrapper") do
-      choose I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes_medical.label")
+      choose I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes.label")
       click_on I18n.t("coronavirus_form.submit_and_next")
     end
   end
