@@ -4,7 +4,6 @@
   "required": [
     "live_in_england",
     "nhs_letter",
-    "medical_conditions",
     "name",
     "date_of_birth",
     "support_address",

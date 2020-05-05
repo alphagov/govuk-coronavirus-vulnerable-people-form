@@ -33,9 +33,9 @@ RSpec.describe SchemaHelper, type: :helper do
     end
 
     describe "medical_conditions" do
-      it "returns a list of errors when medical_conditions is missing" do
+      it "allows medical_conditions to be blank" do
         data = valid_data.except(:medical_conditions)
-        expect(validate_against_form_response_schema(data).first).to include("medical_conditions")
+        expect(validate_against_form_response_schema(data)).to be_empty
       end
 
       it "returns a list of errors when medical_conditions has an unexpected value" do

@@ -21,6 +21,9 @@ class CoronavirusForm::NhsLetterController < ApplicationController
     elsif session[:check_answers_seen]
       session[:nhs_letter] = @form_responses[:nhs_letter]
       redirect_to check_your_answers_url
+    elsif @form_responses[:nhs_letter] == I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
+      session[:nhs_letter] = @form_responses[:nhs_letter]
+      redirect_to name_url
     else
       session[:nhs_letter] = @form_responses[:nhs_letter]
       redirect_to medical_conditions_url
