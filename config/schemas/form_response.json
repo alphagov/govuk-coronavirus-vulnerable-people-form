@@ -22,8 +22,8 @@
     "nhs_letter": {
       "type": "string",
       "enum": [
-        "Yes",
-        "No",
+        "Yes, I’ve been told to shield",
+        "No, I haven’t been told to shield",
         "Not sure"
       ]
     },

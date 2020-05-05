@@ -295,13 +295,13 @@ en:
             label: "No"
         custom_select_error: Select yes if you live in England
       nhs_letter:
-        title: Have you recently had a letter from the NHS about your situation as someone who’s extremely vulnerable to coronavirus?
-        hint: The title of the letter is ‘Important advice to keep you safe from coronavirus’.
+        title: Have you had a letter from the NHS or been told by your doctor to ’shield’ because you’re clinically extremely vulnerable to coronavirus?
+        hint: ’Shielding’ means not leaving your home and avoiding contact with other members of your household as much as possible.
         options:
           option_yes:
-            label: "Yes"
+            label: "Yes, I’ve been told to shield"
           option_no:
-            label: "No"
+            label: "No, I haven’t been told to shield"
           not_sure:
             label: "Not sure"
         custom_select_error: Select if you received the letter from the NHS
