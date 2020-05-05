@@ -60,7 +60,7 @@ You'll need to pass a GOV.UK Notify API key as an environment variable
 config.action_mailer.delivery_method = :notify
 ```
 
-You'll also need to set a `GOVUK_NOTIFY_TEMPLATE_ID`, which might involve
+You'll also need to set a `GOVUK_NOTIFY_EMAIL_TEMPLATE_ID`, which might involve
 creating a template in Notify if your Notify service doesn't have one.
 
 The template should have a Message of `((body))` only.
