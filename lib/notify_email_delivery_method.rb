@@ -1,6 +1,6 @@
 require "notifications/client"
 
-class NotifyDeliveryMethod
+class NotifyEmailDeliveryMethod
   attr_reader :settings
 
   def initialize(settings)

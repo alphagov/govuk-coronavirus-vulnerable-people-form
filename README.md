@@ -57,7 +57,7 @@ You'll need to pass a GOV.UK Notify API key as an environment variable
 `NOTIFY_API_KEY`, and change the delivery method in [development.rb][]:
 
 ```ruby
-config.action_mailer.delivery_method = :notify
+config.action_mailer.delivery_method = :notify_email
 ```
 
 You'll also need to set a `GOVUK_NOTIFY_EMAIL_TEMPLATE_ID`, which might involve

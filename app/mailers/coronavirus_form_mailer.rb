@@ -5,6 +5,10 @@ class CoronavirusFormMailer < ApplicationMailer
     @first_name = params[:first_name]
     @last_name = params[:last_name]
     @reference_number = params[:reference_number]
-    mail(to: email_address, subject: I18n.t("emails.confirmation.subject"))
+    mail(
+      to: email_address,
+      subject: I18n.t("emails.confirmation.subject"),
+      delivery_method: :notify_email,
+    )
   end
 end
