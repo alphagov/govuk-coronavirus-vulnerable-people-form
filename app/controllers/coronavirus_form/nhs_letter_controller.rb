@@ -18,15 +18,15 @@ class CoronavirusForm::NhsLetterController < ApplicationController
       respond_to do |format|
         format.html { render controller_path, status: :unprocessable_entity }
       end
+    elsif @form_responses[:nhs_letter] != I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
+      set_session_values
+      redirect_to medical_conditions_url
     elsif session[:check_answers_seen]
       set_session_values
       redirect_to check_your_answers_url
     elsif @form_responses[:nhs_letter] == I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
       set_session_values
       redirect_to name_url
-    else
-      set_session_values
-      redirect_to medical_conditions_url
     end
   end
 
