@@ -11,4 +11,12 @@ class CoronavirusFormMailer < ApplicationMailer
       delivery_method: :notify_email,
     )
   end
+
+  def confirmation_sms(telephone_number)
+    @reference_number = params[:reference_number]
+    mail(
+      to: telephone_number,
+      delivery_method: :notify_sms,
+    )
+  end
 end

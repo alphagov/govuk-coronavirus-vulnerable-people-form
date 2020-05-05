@@ -18,4 +18,18 @@ RSpec.describe CoronavirusFormMailer, type: :mailer do
       expect(mail.body.encoded).to include(params.dig(:reference_number))
     end
   end
+
+  describe "#confirmation_sms" do
+    let(:mail) { CoronavirusFormMailer.with(params).confirmation_sms(to_number) }
+    let(:to_number) { "07700900000" }
+    let(:params) { { reference_number: "ABC123" } }
+
+    it "renders the headers" do
+      expect(mail.to).to eq([to_number])
+    end
+
+    it "includes the reference" do
+      expect(mail.body.encoded).to include(params.dig(:reference_number))
+    end
+  end
 end
