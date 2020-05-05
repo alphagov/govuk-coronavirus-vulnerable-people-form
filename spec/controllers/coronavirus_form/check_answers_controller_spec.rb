@@ -101,13 +101,36 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       expect(session.to_hash).to eq({})
     end
 
-    it "redirects to thank you if sucessfully creates record" do
+    it "sets contact_gp to false and redirects to confirmation if user received an nhs letter" do
+      session[:nhs_letter] = I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
       post :submit
 
       expect(response).to redirect_to({
         controller: "confirmation",
         action: "show",
-        params: { reference_number: "abc" },
+        params: {
+          reference_number: "abc",
+          contact_gp: false,
+        },
+      })
+    end
+
+    it "sets contact_gp to true and redirects to confirmation if user did not receive an nhs letter" do
+      permitted_values = [
+        I18n.t("coronavirus_form.questions.basic_care_needs.options.option_no.label"),
+        I18n.t("coronavirus_form.questions.basic_care_needs.options.not_sure.label"),
+      ]
+
+      session[:nhs_letter] = permitted_values.sample
+      post :submit
+
+      expect(response).to redirect_to({
+        controller: "confirmation",
+        action: "show",
+        params: {
+          reference_number: "abc",
+          contact_gp: true,
+        },
       })
     end
 

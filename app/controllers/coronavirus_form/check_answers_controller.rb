@@ -11,6 +11,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
   def submit
     submission_reference = reference_number
+    contact_gp = contact_gp?
 
     session[:reference_id] = submission_reference
 
@@ -35,7 +36,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
     reset_session
 
-    redirect_to confirmation_url(reference_number: submission_reference)
+    redirect_to confirmation_url(reference_number: submission_reference, contact_gp: contact_gp)
   end
 
 private
@@ -88,5 +89,9 @@ private
 
   def session_with_indifferent_access
     session.to_h.with_indifferent_access
+  end
+
+  def contact_gp?
+    session[:nhs_letter] != I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
   end
 end
