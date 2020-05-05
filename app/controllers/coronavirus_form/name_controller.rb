@@ -43,6 +43,8 @@ private
   end
 
   def previous_path
+    return nhs_letter_path unless session[:medical_conditions]
+
     medical_conditions_path
   end
 end
