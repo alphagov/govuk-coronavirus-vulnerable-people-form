@@ -13,6 +13,8 @@ class CoronavirusFormMailer < ApplicationMailer
   end
 
   def confirmation_sms(telephone_number)
+    @first_name = params[:first_name]
+    @last_name = params[:last_name]
     @reference_number = params[:reference_number]
     mail(
       to: telephone_number,

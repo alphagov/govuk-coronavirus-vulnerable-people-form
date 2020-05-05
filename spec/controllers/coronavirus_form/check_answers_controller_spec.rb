@@ -73,6 +73,29 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       }.to have_enqueued_mail(CoronavirusFormMailer, :confirmation_email).on_queue("mailers").exactly(0).times
     end
 
+    it "sends an text message" do
+      ActiveJob::Base.queue_adapter = :test
+      session[:contact_details] = {
+        phone_number_texts: "07790 900000",
+      }
+
+      expect {
+        post :submit
+      }.to have_enqueued_mail(CoronavirusFormMailer, :confirmation_sms)
+        .with(a_hash_including(reference_number: "abc"), "07790900000").on_queue("mailers")
+    end
+
+    it "does not send a text message when no phone number for texting is provided" do
+      ActiveJob::Base.queue_adapter = :test
+      session[:contact_details] = {
+        phone_number_texts: "",
+      }
+
+      expect {
+        post :submit
+      }.to have_enqueued_mail(CoronavirusFormMailer, :confirmation_sms).on_queue("mailers").exactly(0).times
+    end
+
     it "resets session" do
       post :submit
       expect(session.to_hash).to eq({})
