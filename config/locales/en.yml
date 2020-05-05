@@ -294,6 +294,27 @@ en:
           <p class="govuk-body">You should <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">go through the questions in this service again</a>.</p>
           <p class="govuk-body">There’s guidance on <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">things you should do if you’re extremely vulnerable to coronavirus</a>.
           <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
+      contact_gp:
+        description: |
+          <h2 class="govuk-heading-m">Contact your GP</h2>
+
+          <p class="govuk-body">Contact your GP or hospital clinician as soon as possible so they can confirm to us you’re classed as clinically extremely vulnerable. You may not get the support you need if you do not contact them.</p>
+
+          <h2 class="govuk-heading-m">What happens next</h2>
+
+          <p class="govuk-body">When we’ve had the confirmation from your GP we’ll check your details to make sure you’re eligible for support. You’ll only get support if you asked for it.</p>
+          <p class="govuk-body">If we need to confirm any details, you’ll get a call from the National Shielding Service. The number that will show on your phone is 0333 3050466.</p>
+
+          <h2 class="govuk-heading-m">Getting support</h2>
+          <p class="govuk-body">If you’re eligible and you said that you do not have a way of getting basic supplies at the moment we will start sending you a weekly box of basic supplies.</p>
+          <p class="govuk-body">We’ll also share your details with participating supermarkets to help them prioritise you for their delivery services.</p>
+          <p class="govuk-body">If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.</p>
+          <p class="govuk-body">This can take up to a week from when we get the confirmation from your GP or hospital clinician. <a class="govuk-link" href="https://www.gov.uk/coronavirus-local-help">Contact your local authority</a> if you need supplies urgently and cannot rely on family, friends or neighbours.</p>
+          <h2 class="govuk-heading-m">If your support needs change</h2>
+          <p class="govuk-body">You can tell the delivery driver if you want to stop getting the weekly box of supplies.</p>
+          <p class="govuk-body">If your support needs change, <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">go through the questions in this service again</a>.</p>
+          <p class="govuk-body">There’s guidance on <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">things you should do if you’re extremely vulnerable to coronavirus</a>.
+          <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
     questions:
       # These should be in the order that they’re asked
       live_in_england:
