@@ -65,5 +65,16 @@ RSpec.describe CoronavirusForm::NhsLetterController, type: :controller do
 
       expect(response).to redirect_to(check_your_answers_path)
     end
+
+    it "clears the medical_conditions if the user changes their answer to Yes" do
+      session[:medical_conditions] = I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes.label")
+
+      post :submit,
+           params: {
+             nhs_letter: I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label"),
+           }
+
+      expect(session[:medical_conditions]).to be_nil
+    end
   end
 end
