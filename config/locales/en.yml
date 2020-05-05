@@ -267,32 +267,33 @@ en:
       telephone_number_format: "Enter a telephone number, like 020 7946 0000, 07700900000 or +44 0808 157 0192"
     confirmation:
       title: Registration complete
-      description: |
-        <h2 class="govuk-heading-m">What happens next</h2>
-        <p class="govuk-body">We'll check that you're eligible for support first.</p>
-        <p class="govuk-body">Then if you said that you do not have a way of getting basic supplies at the moment, we will:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>start sending you a a weekly box of basic supplies</li>
-          <li>tell participating supermarkets to give you priority for deliveries</li>
-        </ul>
-        <p class="govuk-body">This may take up to a week.</p>
-        <p class="govuk-body"><a class="govuk-link" href="https://www.theyhelpyou.co.uk/">Contact your local authority</a> if you need supplies urgently and cannot rely on family, friends or neighbours.</p>
-        <h2 class="govuk-heading-m">Priority supermarket deliveries</h2>
-        <p class="govuk-body">If you do not already have an account with a supermarket delivery service, set one up now. If you're concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li><a class="govuk-link" href="https://www.aldi.co.uk/food-parcels">Aldi</a></li>
-          <li><a class="govuk-link" href="https://groceries.asda.com/">Asda</a></li>
-          <li><a class="govuk-link" href="https://www.coop.co.uk/in-store-services/home-delivery">Co-op</a></li>
-          <li><a class="govuk-link" href="https://www.marksandspencer.com/">M&S</a></li>
-          <li><a class="govuk-link" href="https://groceries.morrisons.com">Morrisons</a></li>
-          <li><a class="govuk-link" href="https://www.ocado.com/">Ocado</a></li>
-          <li><a class="govuk-link" href="https://www.sainsburys.co.uk/">Sainsbury's</a></li>
-          <li><a class="govuk-link" href="https://www.tesco.com/">Tesco</a></li>
-        </ul>
-        <h2 class="govuk-heading-m">If your support needs change</h2>
-        <p class="govuk-body">You should <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">go through the questions in this service again</a>.</p>
-        <p class="govuk-body">There’s guidance on <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">things you should do if you’re extremely vulnerable to coronavirus</a>.
-        <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
+      no_further_action:
+        description: |
+          <h2 class="govuk-heading-m">What happens next</h2>
+          <p class="govuk-body">We’ll check that you’re eligible for support first.</p>
+          <p class="govuk-body">Then if you said that you do not have a way of getting basic supplies at the moment, we will:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>start sending you a a weekly box of basic supplies</li>
+            <li>tell participating supermarkets to give you priority for deliveries</li>
+          </ul>
+          <p class="govuk-body">This may take up to a week.</p>
+          <p class="govuk-body"><a class="govuk-link" href="https://www.theyhelpyou.co.uk/">Contact your local authority</a> if you need supplies urgently and cannot rely on family, friends or neighbours.</p>
+          <h2 class="govuk-heading-m">Priority supermarket deliveries</h2>
+          <p class="govuk-body">If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li><a class="govuk-link" href="https://www.aldi.co.uk/food-parcels">Aldi</a></li>
+            <li><a class="govuk-link" href="https://groceries.asda.com/">Asda</a></li>
+            <li><a class="govuk-link" href="https://www.coop.co.uk/in-store-services/home-delivery">Co-op</a></li>
+            <li><a class="govuk-link" href="https://www.marksandspencer.com/">M&S</a></li>
+            <li><a class="govuk-link" href="https://groceries.morrisons.com">Morrisons</a></li>
+            <li><a class="govuk-link" href="https://www.ocado.com/">Ocado</a></li>
+            <li><a class="govuk-link" href="https://www.sainsburys.co.uk/">Sainsbury’s</a></li>
+            <li><a class="govuk-link" href="https://www.tesco.com/">Tesco</a></li>
+          </ul>
+          <h2 class="govuk-heading-m">If your support needs change</h2>
+          <p class="govuk-body">You should <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">go through the questions in this service again</a>.</p>
+          <p class="govuk-body">There’s guidance on <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">things you should do if you’re extremely vulnerable to coronavirus</a>.
+          <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
     questions:
       # These should be in the order that they’re asked
       live_in_england:
