@@ -46,7 +46,7 @@ private
       year: date_of_birth.strftime("%Y"),
       month: date_of_birth.strftime("%m"),
       day: date_of_birth.strftime("%d"),
-      }
+    }
   end
 
   def previous_path
