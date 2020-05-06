@@ -76,3 +76,7 @@ which is configured in [concourse/pipeline.yml](concourse/pipeline.yml).
 
 The concourse pipeline has credentials for the `govuk-forms-deployer` user in
 GOV.UK PaaS. This user has the SpaceDeveloper role, so it can `cf push` the application.
+
+## Licence
+
+[MIT License](LICENCE)
