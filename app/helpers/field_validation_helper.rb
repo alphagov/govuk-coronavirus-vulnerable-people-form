@@ -104,7 +104,7 @@ module FieldValidationHelper
   end
 
   def validate_telephone_number(field, telephone_number)
-    if TelephoneNumber.parse(telephone_number, :gb).valid?
+    if TelephoneNumber.parse(telephone_number.gsub(/\s+/, ""), :gb).valid?
       []
     else
       [{ field: field.to_s, text: t("coronavirus_form.errors.telephone_number_format") }]
