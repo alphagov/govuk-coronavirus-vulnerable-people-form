@@ -79,7 +79,7 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       expect(session[session_key]).to eq address.merge({
         building_and_street_line_2: nil,
         county: nil,
-        })
+      })
 
       expect(response).to redirect_to(next_page)
     end

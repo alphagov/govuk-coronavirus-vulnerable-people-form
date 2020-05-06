@@ -2,9 +2,9 @@
 
 class CoronavirusForm::SupportAddressController < ApplicationController
   REQUIRED_FIELDS = %i[
-      building_and_street_line_1
-      town_city
-      postcode
+    building_and_street_line_1
+    town_city
+    postcode
   ].freeze
 
   def submit
