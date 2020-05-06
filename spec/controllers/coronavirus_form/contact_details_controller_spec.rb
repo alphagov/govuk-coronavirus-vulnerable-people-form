@@ -8,6 +8,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
 
   let(:current_template) { "coronavirus_form/contact_details" }
   let(:session_key) { :contact_details }
+  let(:next_question_path) { know_nhs_number_path }
 
   describe "GET show" do
     it "renders the form" do
@@ -58,13 +59,25 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
 
     it "redirects to next step for a permitted response" do
       post :submit, params: params
-      expect(response).to redirect_to(know_nhs_number_path)
+      expect(response).to redirect_to next_question_path
     end
 
     it "does not move to next step with an invalid phone number for calls" do
       post :submit, params: { "phone_number_calls": "1234" }
       expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(current_template)
+    end
+
+    [
+      "02033 445 566", "07711 330 382", "+44 0808 157 0192",
+      "07788990011", "077889 90011", "+447788990011",
+      "+44 77889 90011"
+    ].each do |number|
+      it "permits the valid phone number #{number}" do
+        post :submit, params: { "phone_number_calls": number }
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to next_question_path
+      end
     end
 
     it "does not move to next step with an invalid phone number for text messages" do
