@@ -48,7 +48,8 @@ private
 
   def smoke_tester?
     email = session_with_indifferent_access.dig(:contact_details, :email)
-    email.present? && email == Rails.application.config.courtesy_copy_email
+    mobile_number = session_with_indifferent_access.dig(:contact_details, :phone_number_texts)
+    (email.present? && email == Rails.application.config.courtesy_copy_email) || (mobile_number.present? && mobile_number == Rails.application.config.test_telephone_number)
   end
 
   def reference_number

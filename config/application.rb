@@ -37,6 +37,7 @@ module CoronavirusForm
     # the framework and any gems in your application.
 
     config.courtesy_copy_email = "coronavirus-services-smoke-tests@digital.cabinet-office.gov.uk"
+    config.test_telephone_number = "01234567890"
 
     config.active_job.queue_adapter = :sidekiq
 
