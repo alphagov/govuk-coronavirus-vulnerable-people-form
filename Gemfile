@@ -4,7 +4,7 @@ ruby File.read(".ruby-version").strip
 
 source "https://rubygems.org"
 
-gem "rails", "~> 6.0.2"
+gem "rails", "~> 6.0.3"
 
 gem "asset_sync"
 gem "bootsnap", "~> 1"
