@@ -5,6 +5,10 @@ class EmailDeliveryJob < ActionMailer::DeliveryJob
 
   discard_on Notifications::Client::BadRequestError
 
+  retry_on(Notifications::Client::AuthError,
+           wait: :exponentially_longer,
+           attempts: 5)
+
   retry_on(Notifications::Client::RequestError,
            wait: :exponentially_longer,
            attempts: 5)
