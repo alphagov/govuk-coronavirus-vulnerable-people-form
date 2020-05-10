@@ -1,6 +1,6 @@
-<% content_for :title do %><%= t('coronavirus_form.questions.live_in_england.title') %><% end %>
+<% content_for :title do %><%= t("coronavirus_form.questions.live_in_england.title") %><% end %>
 <% content_for :meta_tags do %>
-  <meta name="description" content="<%= t('coronavirus_form.questions.live_in_england.title') %>" />
+  <meta name="description" content="<%= t("coronavirus_form.questions.live_in_england.title") %>" />
 <% end %>
 
 <% content_for :back_link do %>
@@ -13,11 +13,11 @@
   "novalidate": "true"
 ) do %>
 <%= render "govuk_publishing_components/components/radio", {
-  heading: t('coronavirus_form.questions.live_in_england.title'),
+  heading: t("coronavirus_form.questions.live_in_england.title"),
   is_page_heading: true,
   name: "live_in_england",
   error_message: error_items('live_in_england'),
-  items: t('coronavirus_form.questions.live_in_england.options').map.with_index do |(_, item), index|
+  items: t("coronavirus_form.questions.live_in_england.options").map.with_index do |(_, item), index|
     {
       id: ("live_in_england" if index == 0),
       value: item[:label],

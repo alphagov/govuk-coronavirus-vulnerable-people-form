@@ -1,6 +1,6 @@
-<% content_for :title do %><%= t('coronavirus_form.questions.medical_conditions.title') %><% end %>
+<% content_for :title do %><%= t("coronavirus_form.questions.medical_conditions.title") %><% end %>
     <% content_for :meta_tags do %>
-      <meta name="description" content="<%= t('coronavirus_form.questions.medical_conditions.title') %>" />
+      <meta name="description" content="<%= t("coronavirus_form.questions.medical_conditions.title") %>" />
     <% end %>
 
     <% content_for :back_link do %>
@@ -9,7 +9,7 @@
 
     <% description_html = capture do %>
       <%= render "govuk_publishing_components/components/inset_text" do %>
-         <%= sanitize(t('coronavirus_form.questions.medical_conditions.description')) %>
+         <%= sanitize(t("coronavirus_form.questions.medical_conditions.description")) %>
       <% end %>
     <% end %>
 
@@ -25,7 +25,7 @@
       name: "medical_conditions",
       error_message: error_items('medical_conditions'),
       description: description_html,
-      items: t('coronavirus_form.questions.medical_conditions.options').map.with_index do |(_, item), index|
+      items: t("coronavirus_form.questions.medical_conditions.options").map.with_index do |(_, item), index|
         {
           id: ("medical_conditions" if index == 0),
           value: item[:label],
