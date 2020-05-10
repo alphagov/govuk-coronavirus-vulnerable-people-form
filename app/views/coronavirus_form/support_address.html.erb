@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :meta_tags do %>
-  <meta name="description" content="<%= t('coronavirus_form.questions.support_address.title') %>" />
+  <meta name="description" content="<%= t("coronavirus_form.questions.support_address.title") %>" />
 <% end %>
 
 <% content_for :back_link do %>
@@ -27,7 +27,7 @@
 ) do %>
 <%= render "govuk_publishing_components/components/input", {
   label: {
-    text: t('coronavirus_form.questions.support_address.building_and_street.label')
+    text: t("coronavirus_form.questions.support_address.building_and_street.label")
   },
   id: "building_and_street_line_1",
   name: "building_and_street_line_1",
@@ -38,7 +38,7 @@
 } %>
 
 <label class="govuk-visually-hidden" for="building_and_street_line_2">
-  <%= t('coronavirus_form.questions.support_address.building_and_street_line_2.label') %>
+  <%= t("coronavirus_form.questions.support_address.building_and_street_line_2.label") %>
 </label>
 <%= render "govuk_publishing_components/components/input", {
   id: "building_and_street_line_2",
@@ -50,7 +50,7 @@
 
 <%= render "govuk_publishing_components/components/input", {
   label: {
-    text: t('coronavirus_form.questions.support_address.town_city.label')
+    text: t("coronavirus_form.questions.support_address.town_city.label")
   },
   id: "town_city",
   name: "town_city",
@@ -63,7 +63,7 @@
 
 <%= render "govuk_publishing_components/components/input", {
   label: {
-    text: t('coronavirus_form.questions.support_address.county.label')
+    text: t("coronavirus_form.questions.support_address.county.label")
   },
   id: "county",
   name: "county",
@@ -75,7 +75,7 @@
 
 <%= render "govuk_publishing_components/components/input", {
   label: {
-    text: t('coronavirus_form.questions.support_address.postcode.label')
+    text: t("coronavirus_form.questions.support_address.postcode.label")
   },
   id: "postcode",
   name: "postcode",

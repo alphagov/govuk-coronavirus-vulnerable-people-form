@@ -1,6 +1,6 @@
-<% content_for :title do %><%= t('session_expired.title') %><% end %>
+<% content_for :title do %><%= t("session_expired.title") %><% end %>
 <% content_for :meta_tags do %>
-  <meta name="description" content="<%= t('session_expired.title') %>" />
+  <meta name="description" content="<%= t("session_expired.title") %>" />
 <% end %>
 
 <%= render "govuk_publishing_components/components/title", {
@@ -8,7 +8,7 @@
   margin_top: 0
 } %>
 
-<%= sanitize(t('session_expired.body_text')) %>
+<%= sanitize(t("session_expired.body_text")) %>
 
 <%= render "govuk_publishing_components/components/button", {
   text: "Start now",

@@ -25,7 +25,7 @@
     margin_top: 0,
   } %>
 
-  <%= tag.p t('cookies.settings_page.intro_html'), class: "govuk-body" %>
+  <%= tag.p t("cookies.settings_page.intro_html"), class: "govuk-body" %>
 
   <div class="cookie-settings__no-js">
     <%= render "govuk_publishing_components/components/govspeak", {
@@ -38,7 +38,7 @@
     <% end %>
   </div>
 
-  <% t('cookies.settings_page.tables').map do |table| %>
+  <% t("cookies.settings_page.tables").map do |table| %>
     <div class="cookie-settings__table-wrapper">
       <%= render "govuk_publishing_components/components/heading", {
         text: sanitize(table.dig(:header)),
@@ -63,7 +63,7 @@
         inline: false,
         heading: t("cookies.settings_page.cookie_options.header"),
         # hint: (cookies_usage_hint),
-        items: t('cookies.settings_page.cookie_options').fetch(:options, []),
+        items: t("cookies.settings_page.cookie_options").fetch(:options, []),
         margin_top: 0,
       } %>
 
