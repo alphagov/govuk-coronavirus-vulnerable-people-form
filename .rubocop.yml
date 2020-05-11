@@ -7,10 +7,6 @@ inherit_mode:
   merge:
     - Exclude
 
-Metrics/BlockLength:
-  Exclude:
-    - config/**/*
-
 Rails/HttpPositionalArguments:
   Exclude:
     - spec/requests/**/*
