@@ -35,7 +35,15 @@ Rails.application.routes.draw do
     get "/date-of-birth", to: "date_of_birth#show"
     post "/date-of-birth", to: "date_of_birth#submit"
 
-    # Question 6.0: Address where support is needed
+    # Question 6.0a: Postcode lookup
+    get "/postcode-lookup", to: "postcode_lookup#show"
+    post "/postcode-lookup", to: "postcode_lookup#submit"
+
+    # Question 6.0b: Address lookup by postcode
+    get "/address-lookup", to: "address_lookup#show"
+    post "/address-lookup", to: "address_lookup#submit"
+
+    # Question 6.1: Address where support is needed
     get "/support-address", to: "support_address#show"
     post "/support-address", to: "support_address#submit"
 

@@ -1,0 +1,50 @@
+<% content_for :title do %>
+  <%= t("coronavirus_form.questions.postcode_entry.title") %>
+<% end %>
+
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('coronavirus_form.questions.address_lookup.title') %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= render "govuk_publishing_components/components/title", {
+  title: t("coronavirus_form.questions.postcode_entry.title"),
+  margin_top: 0,
+  margin_bottom: 3,
+} %>
+
+<% if @api_failed %>
+  <p class="govuk-body">
+    <%= link_to t("coronavirus_form.questions.address_lookup.cant_find_address.label"), support_address_path, class: "govuk-link" %>
+  </p>
+<% else %>
+  <%= form_tag({},
+    "data-module": "track-coronavirus-form-vulernable-people-support-address",
+    "data-question-key": "support_address",
+    "novalidate": "true"
+  ) do %>
+  <%= render "govuk_publishing_components/components/input", {
+    label: {
+      text: t('coronavirus_form.questions.support_address.postcode.label')
+    },
+    id: "postcode",
+    name: "postcode",
+    type: "text",
+    error_message: error_items('postcode'),
+    value: params[:postcode],
+    width: 10,
+    autocomplete: "postal-code",
+  } %>
+
+  <% if @postcode_entered %>
+    <p class="govuk-body">
+      <%= link_to t("coronavirus_form.questions.postcode_entry.postcode_entered.label"), support_address_path, class: "govuk-link" %>
+    </p>
+  <% end %>
+
+  <%= render "govuk_publishing_components/components/button", text: t("coronavirus_form.submit_and_next"), margin_bottom: true %>
+  <% end %>
+<% end %>

@@ -1,0 +1,39 @@
+<% content_for :title do %>
+  <%= t("coronavirus_form.questions.address_lookup.title") %>
+<% end %>
+
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('coronavirus_form.questions.address_lookup.title') %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-vulernable-people-support-address",
+  "data-question-key": "support_address",
+  "novalidate": "true"
+) do %>
+
+<% if @addresses.present? %>
+  <%= render "govuk_publishing_components/components/select", {
+    id: "uprn",
+    name: "uprn",
+    label: t('coronavirus_form.questions.address_lookup.title'),
+    heading_size: "xl",
+    is_page_heading: true,
+    options: @addresses,
+  } %>
+<% end %>
+
+<p class="govuk-body">
+  <%= link_to t("coronavirus_form.questions.address_lookup.cant_find_address.label"), support_address_path, class: "govuk-link" %>
+</p>
+
+<%= render "govuk_publishing_components/components/button", text: t("coronavirus_form.submit_and_next"), margin_bottom: true %>
+<% end %>
+
+<p class="govuk-body">
+  <%= t("coronavirus_form.questions.address_lookup.copyright") %>
+</p>

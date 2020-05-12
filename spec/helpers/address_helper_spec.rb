@@ -1,7 +1,9 @@
 require "spec_helper"
 
 RSpec.describe AddressHelper, type: :helper do
-  context "allow net connections" do
+  let(:address_data) { YAML.load_file(Rails.root.join("spec/fixtures/address_data.yml")) }
+
+  describe "#postcode_lookup" do
     before do
       VCR.turn_on!
     end
@@ -10,80 +12,226 @@ RSpec.describe AddressHelper, type: :helper do
       VCR.turn_off!
     end
 
-    context "200 - valid postcode" do
-      it "returns all UPRN's for a valid estate block of self-contained flats" do
-        VCR.use_cassette "address/200_estate_block" do
-          response = helper.postcode_lookup("SW1P2LQ")
+    it "returns a UPRNs and address strings for a valid postcode" do
+      VCR.use_cassette "postcode/valid_postcode" do
+        response = helper.postcode_lookup(address_data["valid_postcode"]["postcode"])
 
-          expect(response.count).to be(16)
-          expect(response.first).to eq(
-            { "10033539608" => "FLAT 1, D BLOCK PEABODY ESTATE, OLD PYE STREET, LONDON, CITY OF WESTMINSTER, SW1P 2LQ" },
-          )
-        end
-      end
-
-      it "returns a UPRN for a building with it's own postcode" do
-        VCR.use_cassette "address/200_individual_building" do
-          response = helper.postcode_lookup("SW1A2AA")
-
-          expect(response.count).to be(2)
-          expect(response.first).to eq(
-            { "100023336956" => "10, DOWNING STREET, LONDON, CITY OF WESTMINSTER, SW1A 2AA" },
-          )
-        end
+        expect(response.count).to be(2)
+        expect(response.first).to eq(
+          {
+            value: address_data["valid_postcode"]["uprn"].to_s,
+            text: "10, DOWNING STREET, LONDON, CITY OF WESTMINSTER, SW1A 2AA",
+          },
+        )
       end
     end
 
     it "returns 400 a non-existant or malformed postcode" do
-      VCR.use_cassette "address/400_response" do
-        expect { helper.postcode_lookup("AA1A1AA") }.to raise_error(AddressLookupError)
+      VCR.use_cassette "postcode/non_existant" do
+        expect {
+          helper.postcode_lookup(address_data["invalid_postcode"]["postcode"])
+        }.to raise_error(AddressLookupError)
       end
     end
 
     it "returns 401 for an invalid api key" do
-      VCR.use_cassette "address/401_response" do
+      VCR.use_cassette "postcode/invalid_api_key" do
         ClimateControl.modify ORDNANCE_SURVEY_PLACES_API_KEY: "1234" do
-          expect { helper.postcode_lookup("SW1A2AA") }.to raise_error(AddressLookupError)
+          expect {
+            helper.postcode_lookup(address_data["valid_postcode"]["postcode"])
+          }.to raise_error(AddressLookupError)
         end
       end
     end
 
-    it "returns 404 for an invalid or unavailable service request" do
-      VCR.use_cassette "address/404_response" do
-        stub_const(
-          "AddressHelper::API_URL",
-          "https://api.ordnancesurvey.co.uk/places/v99999999/addresses/postcode?dataset=LPI",
-        )
-
-        expect { helper.postcode_lookup("AA1A1AA") }.to raise_error(AddressLookupError)
-      end
-    end
-
-    it "returns 500 for a request with an invalid method" do
-      VCR.use_cassette "address/500_response" do
-        expect { helper.postcode_lookup("SW1A2AA") }.to raise_error(AddressLookupError)
+    it "raises an AddressNotFoundError for a postcode without any addresses" do
+      VCR.use_cassette "postcode/no_addresses_found" do
+        expect {
+          helper.postcode_lookup(address_data["no_results"]["postcode"])
+        }.to raise_error(AddressNotFoundError)
       end
     end
   end
 
-  context "disable net connections" do
-    # The API documentation implies that it can return a 405.  However, so far
-    # it has not been possible to generate one.  Until that it is possible to
-    # generate a 405 a stub has been added for testing purposes.  Note: that
-    # OS return a 500 for a not allowed method instead!
-    it "returns 405 for a method not allowed request" do
-      stub_const(
-        "AddressHelper::API_URL",
-        "https://api.ordnancesurvey.co.uk/placezzzzzzzzzz/v1/addresses/postcode?dataset=LPI",
-      )
+  describe "#uprn_lookup" do
+    before do
+      VCR.turn_on!
+    end
 
-      postcode = "SW1A2AA"
-      postcode_url = "#{AddressHelper::API_URL}&postcode=#{postcode}&key=#{ENV['ORDNANCE_SURVEY_PLACES_API_KEY']}"
+    after do
+      VCR.turn_off!
+    end
 
-      stub_request(:get, postcode_url)
-        .to_return(status: 405, body: {}.to_s, headers: {})
+    it "returns a single address for a valid uprn" do
+      VCR.use_cassette "uprn/valid_uprn" do
+        response = helper.uprn_lookup(address_data["valid_postcode"]["uprn"])
 
-      expect { helper.postcode_lookup(postcode) }.to raise_error(AddressLookupError)
+        expect(response["header"]["totalresults"]).to eq(1)
+      end
+    end
+  end
+
+  describe "#convert_address" do
+    context "when SAO is present" do
+      it "returns SAO on line 1 and PAO + STREET_DESCRIPTION on line 2" do
+        address = {
+          "ORGANISATION" => "GDS",
+          "PAO_START_NUMBER" => "10",
+          "STREET_DESCRIPTION" => "WHITECHAPEL HIGH STREET",
+        }
+
+        result = helper.convert_address(address)
+
+        expect(result[:building_and_street_line_1]).to eq("Gds")
+        expect(result[:building_and_street_line_2]).to eq("10 Whitechapel High Street")
+      end
+    end
+
+    context "when SAO is not present" do
+      it "returns PAO and STREET_DESCRIPTION on line 1" do
+        address = {
+          "PAO_START_NUMBER" => "10",
+          "STREET_DESCRIPTION" => "WHITECHAPEL HIGH STREET",
+        }
+
+        result = helper.convert_address(address)
+
+        expect(result[:building_and_street_line_1]).to eq("10 Whitechapel High Street")
+      end
+    end
+
+    context "when SAO is not present but PAO_TEXT is" do
+      it "return PAO on line 1 and STREET_DESCRIPTION on line 2" do
+        address = {
+          "PAO_TEXT" => "Flat 10",
+          "STREET_DESCRIPTION" => "WHITECHAPEL HIGH STREET",
+        }
+
+        result = helper.convert_address(address)
+
+        expect(result[:building_and_street_line_1]).to eq("Flat 10")
+        expect(result[:building_and_street_line_2]).to eq("Whitechapel High Street")
+      end
+    end
+  end
+
+  # describe "#address_line_builder" do
+  # end
+
+  describe "#make_address_hash" do
+    it "creates an address hash containing only the required fields" do
+      address = {
+        "UPRN" => "1234",
+        "UNNESESSARY" => "FIELD",
+      }
+
+      expect(helper.make_address_hash(address)).to eq({ "UPRN" => "1234" })
+    end
+  end
+
+  describe "#update_support_address" do
+    it "updates the UPRN when the selected address compares to the given address" do
+      selected = {
+        uprn: "123456789",
+        building_and_street_line_1: "address line 1",
+        postcode: "1234 567",
+      }
+
+      given = {
+        building_and_street_line_1: "address line 1",
+        postcode: "1234 567",
+      }
+
+      expect(helper.update_support_address(selected, given).dig(:support_address, :uprn)).to eq("123456789")
+    end
+  end
+
+  describe "#compare" do
+    it "returns false if the selected address is empty" do
+      expect(helper.compare({}, {})).to be false
+    end
+
+    context "SAO is true" do
+      it "returns true if first two lines plus the postcode are equivalent" do
+        selected = {
+          sao_present: true,
+          building_and_street_line_1: "GDS",
+          building_and_street_line_2: "10 WHITECHAPEL HIGH STREET",
+          postcode: "E18QS",
+        }
+
+        given = {
+          building_and_street_line_1: "Gds",
+          building_and_street_line_2: "10, Whitechapel High Street",
+          postcode: "E18QS",
+        }
+
+        expect(helper.compare(selected, given)).to be true
+      end
+    end
+
+    context "SAO is false" do
+      it "returns true if first line and postcode are equivalent" do
+        selected = {
+          sao_present: false,
+          building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
+          postcode: "E18QS",
+        }
+
+        given = {
+          building_and_street_line_1: "10, Whitechapel High Street",
+          building_and_street_line_2: "THIS DOES NOT MATTER",
+          postcode: "E18QS",
+        }
+
+        expect(helper.compare(selected, given)).to be true
+      end
+
+      it "returns false if the postcodes do not match" do
+        selected = {
+          sao_present: false,
+          building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
+          postcode: "E18QS",
+        }
+
+        given = {
+          building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
+          postcode: "AA1A1AA",
+        }
+
+        expect(helper.compare(selected, given)).to be false
+      end
+
+      it "returns false if the first lines do not match" do
+        selected = {
+          sao_present: false,
+          building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
+          postcode: "E18QS",
+        }
+
+        given = {
+          building_and_street_line_1: "10 DOWNING STREET",
+          postcode: "E18QS",
+        }
+
+        expect(helper.compare(selected, given)).to be false
+      end
+
+      it "returns true if street description is moved from line 2 to line 1" do
+        selected = {
+          sao_present: false,
+          building_and_street_line_1: "HOUSE NAME",
+          building_and_street_line_2: "WHITECHAPEL HIGH STREET",
+          postcode: "E18QS",
+        }
+
+        given = {
+          building_and_street_line_1: "House Name, Whitechapel High Street",
+          postcode: "E18QS",
+        }
+
+        expect(helper.compare(selected, given)).to be true
+      end
     end
   end
 end

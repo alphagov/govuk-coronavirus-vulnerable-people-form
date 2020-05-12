@@ -12,7 +12,9 @@ RSpec.feature "fill in the vulnerable people form" do
       and_has_recently_received_an_nhs_letter
       and_has_given_their_name
       and_has_given_their_date_of_birth
-      and_has_given_their_address
+      and_has_given_their_postcode
+      and_has_selected_their_address
+      and_has_submited_their_address
       and_has_given_their_contact_details
       and_has_checked_their_contact_details
       and_has_given_their_nhs_number

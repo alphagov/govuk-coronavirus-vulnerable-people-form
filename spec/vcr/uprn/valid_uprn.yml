@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.ordnancesurvey.co.uk/places/v1/addresses/postcode?dataset=LPI&key=<ORDNANCE_SURVEY_PLACES_API_KEY>&postcode=SW1A2AA
+    uri: https://api.ordnancesurvey.co.uk/places/v1/addresses/uprn?dataset=LPI&key=<ORDNANCE_SURVEY_PLACES_API_KEY>&uprn=100023336956
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 04 May 2020 13:27:17 GMT
+      - Thu, 21 May 2020 15:09:49 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
@@ -27,7 +27,7 @@ http_interactions:
       Connection:
       - keep-alive
       Tx-Id:
-      - 1588598837477:477
+      - 1590073789838:838
       Status:
       - success
     body:
@@ -35,10 +35,10 @@ http_interactions:
       string: |-
         {
           "header" : {
-            "uri" : "https://api.ordnancesurvey.co.uk/places/v1/addresses/postcode?dataset=LPI&postcode=SW1A2AA",
-            "query" : "postcode=SW1A2AA",
+            "uri" : "https://api.ordnancesurvey.co.uk/places/v1/addresses/uprn?dataset=LPI&uprn=100023336956",
+            "query" : "uprn=100023336956",
             "offset" : 0,
-            "totalresults" : 2,
+            "totalresults" : 1,
             "format" : "JSON",
             "dataset" : "LPI",
             "lr" : "EN,CY",
@@ -80,42 +80,8 @@ http_interactions:
               "MATCH" : 1.0,
               "MATCH_DESCRIPTION" : "EXACT"
             }
-          }, {
-            "LPI" : {
-              "UPRN" : "10033555914",
-              "ADDRESS" : "STREET RECORD, TREASURY PASSAGE, LONDON, CITY OF WESTMINSTER, SW1A 2AA",
-              "USRN" : "8401911",
-              "LPI_KEY" : "5990L000025146",
-              "PAO_TEXT" : "STREET RECORD",
-              "STREET_DESCRIPTION" : "TREASURY PASSAGE",
-              "TOWN_NAME" : "LONDON",
-              "ADMINISTRATIVE_AREA" : "CITY OF WESTMINSTER",
-              "POSTCODE_LOCATOR" : "SW1A 2AA",
-              "RPC" : "9",
-              "X_COORDINATE" : 530077.0,
-              "Y_COORDINATE" : 179956.0,
-              "STATUS" : "APPROVED",
-              "LOGICAL_STATUS_CODE" : "1",
-              "CLASSIFICATION_CODE" : "PS",
-              "CLASSIFICATION_CODE_DESCRIPTION" : "Street Record",
-              "LOCAL_CUSTODIAN_CODE" : 5990,
-              "LOCAL_CUSTODIAN_CODE_DESCRIPTION" : "CITY OF WESTMINSTER",
-              "POSTAL_ADDRESS_CODE" : "N",
-              "POSTAL_ADDRESS_CODE_DESCRIPTION" : "Not a postal address",
-              "BLPU_STATE_CODE" : "2",
-              "BLPU_STATE_CODE_DESCRIPTION" : "In use",
-              "TOPOGRAPHY_LAYER_TOID" : "osgb1000001769242273",
-              "LAST_UPDATE_DATE" : "23/09/2018",
-              "ENTRY_DATE" : "27/04/2003",
-              "BLPU_STATE_DATE" : "27/04/2003",
-              "LPI_LOGICAL_STATUS_CODE" : "1",
-              "LPI_LOGICAL_STATUS_CODE_DESCRIPTION" : "APPROVED",
-              "LANGUAGE" : "EN",
-              "MATCH" : 1.0,
-              "MATCH_DESCRIPTION" : "EXACT"
-            }
           } ]
         }
     http_version: null
-  recorded_at: Mon, 04 May 2020 13:27:17 GMT
+  recorded_at: Thu, 21 May 2020 15:09:49 GMT
 recorded_with: VCR 5.1.0

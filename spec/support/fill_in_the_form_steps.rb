@@ -73,7 +73,32 @@ module FillInTheFormSteps
     end
   end
 
-  def and_has_given_their_address
+  def and_has_given_their_postcode
+    VCR.turn_on!
+    VCR.use_cassette "/postcode/valid_postcode" do
+      expect(page.body).to have_content(I18n.t("coronavirus_form.questions.postcode_entry.title"))
+      within find(".govuk-main-wrapper") do
+        fill_in "postcode", with: "SW1A2AA"
+        click_on I18n.t("coronavirus_form.submit_and_next")
+      end
+    end
+    VCR.turn_off!
+  end
+
+  def and_has_selected_their_address
+    VCR.turn_on!
+    VCR.use_cassette "/uprn/valid_uprn" do
+      expect(page.body).to have_content(I18n.t("coronavirus_form.questions.address_lookup.title"))
+      within find(".govuk-main-wrapper") do
+        address = "10, DOWNING STREET, LONDON, CITY OF WESTMINSTER, SW1A 2AA"
+        select(address, from: :uprn)
+        click_on I18n.t("coronavirus_form.submit_and_next")
+      end
+    end
+    VCR.turn_off!
+  end
+
+  def and_has_submited_their_address
     expect(page.body).to have_content(I18n.t("coronavirus_form.questions.support_address.title"))
     within find(".govuk-main-wrapper") do
       fill_in "building_and_street_line_1", with: "Test Please Ignore"

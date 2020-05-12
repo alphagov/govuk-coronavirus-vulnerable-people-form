@@ -1,0 +1,8 @@
+---
+  valid_postcode:
+    postcode: SW1A2AA
+    uprn: 100023336956
+  invalid_postcode:
+    postcode: AA1A1AA
+  no_results:
+    postcode: SW1A3AA
