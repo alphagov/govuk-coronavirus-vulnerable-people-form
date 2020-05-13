@@ -51,9 +51,13 @@ private
 
       invalid_fields << {
         field: field.to_s,
-        text: t("coronavirus_form.questions.#{controller_name}.#{field}.custom_error",
-                default: t("coronavirus_form.errors.missing_mandatory_text_field",
-                           field: t("coronavirus_form.questions.#{controller_name}.#{field}.label")).humanize),
+        text: t(
+          "coronavirus_form.questions.#{controller_name}.#{field}.custom_error",
+          default: t(
+            "coronavirus_form.errors.missing_mandatory_text_field",
+            field: t("coronavirus_form.questions.#{controller_name}.#{field}.label"),
+          ).humanize,
+        ),
       }
     end
   end

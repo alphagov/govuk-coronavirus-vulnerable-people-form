@@ -69,9 +69,13 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
     end
 
     [
-      "02033 445 566", "07711 330 382", "+44 0808 157 0192",
-      "07788990011", "077889 90011", "+447788990011",
-      "+44 77889 90011"
+      "02033 445 566",
+      "07711 330 382",
+      "+44 0808 157 0192",
+      "07788990011",
+      "077889 90011",
+      "+447788990011",
+      "+44 77889 90011",
     ].each do |number|
       it "permits the valid phone number #{number}" do
         post :submit, params: { "phone_number_calls": number }
