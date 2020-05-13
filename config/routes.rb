@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/", to: redirect("https://www.gov.uk/coronavirus-extremely-vulnerable")
 
   scope module: "coronavirus_form" do
+    get "/start", to: redirect("/live-in-england")
+
     get "/privacy", to: "privacy#show"
     get "/accessibility-statement", to: "accessibility_statement#show"
     get "/cookies", to: "cookies#show"
