@@ -1,5 +1,3 @@
-name: Run tests
-
 on: [push, pull_request]
 
 jobs:
@@ -18,19 +16,15 @@ jobs:
     - uses: actions/cache@v1
       with:
         path: vendor/bundle
-        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
+        key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: bundle
 
-    - name: Build App
-      env:
-        RAILS_ENV: test
-      run: |
+    - run: |
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-
-    - name: Run Tests
       env:
         RAILS_ENV: test
-      run: |
-        bundle exec rake
+
+    - run: bundle exec rake
+      env:
+        RAILS_ENV: test
