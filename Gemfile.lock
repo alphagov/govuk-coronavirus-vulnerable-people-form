@@ -165,6 +165,8 @@ GEM
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
     jmespath (1.4.0)
+    json-schema (2.8.1)
+      addressable (>= 2.4)
     jwt (2.2.1)
     kgio (2.11.3)
     kramdown (2.2.1)
@@ -404,6 +406,7 @@ DEPENDENCIES
   foreman (~> 0.87.1)
   govuk_app_config (~> 2.1.1)
   govuk_publishing_components (~> 21.46.0)
+  json-schema (~> 2.8.1)
   listen (~> 3)
   lograge
   mini_racer (~> 0.2)
