@@ -43,11 +43,7 @@ Rails.application.routes.draw do
     get "/contact-details", to: "contact_details#show"
     post "/contact-details", to: "contact_details#submit"
 
-    # Question 8.0: Do you know your NHS number?
-    get "/know-nhs-number", to: "know_nhs_number#show"
-    post "/know-nhs-number", to: "know_nhs_number#submit"
-
-    # Question 8.1: What is your NHS number
+    # Question 8.0: What is your NHS number
     get "/nhs-number", to: "nhs_number#show"
     post "/nhs-number", to: "nhs_number#submit"
 

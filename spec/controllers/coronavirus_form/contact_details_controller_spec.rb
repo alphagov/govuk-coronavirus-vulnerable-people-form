@@ -8,7 +8,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
 
   let(:current_template) { "coronavirus_form/contact_details" }
   let(:session_key) { :contact_details }
-  let(:next_question_path) { know_nhs_number_path }
+  let(:next_question_path) { nhs_number_path }
 
   describe "GET show" do
     it "renders the form" do

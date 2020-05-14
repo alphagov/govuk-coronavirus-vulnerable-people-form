@@ -28,7 +28,7 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
       redirect_to check_your_answers_url
     else
       update_session_store
-      redirect_to know_nhs_number_url
+      redirect_to nhs_number_url
     end
   end
 

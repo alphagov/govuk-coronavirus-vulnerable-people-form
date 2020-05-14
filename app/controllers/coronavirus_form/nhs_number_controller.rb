@@ -45,6 +45,6 @@ private
   end
 
   def previous_path
-    know_nhs_number_path
+    contact_details_path
   end
 end
