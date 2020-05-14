@@ -14,3 +14,7 @@ Rails/HttpPositionalArguments:
 Style/WordArray:
   Exclude:
     - config/**/*.rb
+
+Style/NumericLiterals:
+  Exclude:
+    - spec/**/*.rb

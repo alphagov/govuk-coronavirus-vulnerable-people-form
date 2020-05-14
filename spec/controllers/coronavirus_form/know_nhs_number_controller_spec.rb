@@ -42,36 +42,40 @@ RSpec.describe CoronavirusForm::KnowNhsNumberController, type: :controller do
     end
 
     it "redirects to next step for a permitted response" do
-      post :submit, params: {
-        know_nhs_number: I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label"),
-      }
+      post :submit,
+           params: {
+             know_nhs_number: I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label"),
+           }
 
       expect(response).to redirect_to(nhs_number_path)
     end
 
     it "redirects to what is your NHS number question if check your answers previously seen and answer to question is yes" do
       session[:check_answers_seen] = true
-      post :submit, params: {
-        know_nhs_number: I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label"),
-      }
+      post :submit,
+           params: {
+             know_nhs_number: I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label"),
+           }
 
       expect(response).to redirect_to(nhs_number_path)
     end
 
     it "redirects to check your answers if check your answers previously seen and answer to question is no" do
       session[:check_answers_seen] = true
-      post :submit, params: {
-        know_nhs_number: I18n.t("coronavirus_form.questions.know_nhs_number.options.option_no.label"),
-      }
+      post :submit,
+           params: {
+             know_nhs_number: I18n.t("coronavirus_form.questions.know_nhs_number.options.option_no.label"),
+           }
       expect(response).to redirect_to(check_your_answers_path)
     end
 
     it "clears the nhs_number if the user changes their answer to No" do
       session[:nhs_number] = "485 777 3456"
 
-      post :submit, params: {
-        know_nhs_number: I18n.t("coronavirus_form.questions.know_nhs_number.options.option_no.label"),
-      }
+      post :submit,
+           params: {
+             know_nhs_number: I18n.t("coronavirus_form.questions.know_nhs_number.options.option_no.label"),
+           }
 
       expect(session[:nhs_number]).to be_nil
     end

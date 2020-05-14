@@ -58,13 +58,14 @@ RSpec.describe CoronavirusForm::DateOfBirthController, type: :controller do
     end
 
     it "does not move to next step with an invalid value" do
-      post :submit, params: {
-        "date_of_birth" => {
-          "day" => "<script></script>31",
-          "month" => "</script>11111111111",
-          "year" => "11111111111",
-        },
-      }
+      post :submit,
+           params: {
+             "date_of_birth" => {
+               "day" => "<script></script>31",
+               "month" => "</script>11111111111",
+               "year" => "11111111111",
+             },
+           }
       expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(current_template)
     end

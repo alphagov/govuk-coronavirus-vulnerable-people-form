@@ -9,7 +9,7 @@ module AddressHelper
     response = Faraday.get(postcode_url)
     details = JSON.parse(response.body)
 
-    raise AddressLookupError.new(details["error"]) unless response.status == 200
+    raise AddressLookupError, details["error"] unless response.status == 200
 
     addresses = details["results"]
     addresses.map do |address|
