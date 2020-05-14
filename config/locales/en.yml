@@ -209,44 +209,39 @@ en:
   emails:
     confirmation:
       subject: "Coronavirus support service: your registration"
-      body_text: |
-        Your registration number is %{reference_number}.
+      no_further_action:
+        body_text: |
+          Your registration number is %{reference_number}.
 
-        You do not need to do anything else if you’ve had a letter from the NHS or from your doctor confirming that they’ve identified you as being clinically extremely vulnerable.
+          # What happens next
 
-        ## If you haven’t had a letter from the NHS or from your doctor
+          We’ll check your details to make sure you’re eligible for support. You’ll only get support if you asked for it.
 
-        Contact your GP or hospital clinician as soon as possible so they can confirm to us you’re classed as clinically extremely vulnerable. You may not get the support you need if you do not contact them.
+          If we need to confirm any details, you’ll get a call from the National Shielding Service. The number that will show on your phone is 0333 3050466.
 
-        ## What happens next
+          # Getting support
 
-        We’ll check your details to make sure you’re eligible for support. You’ll only get support if you asked for it.
+          If you’re eligible and you said that you do not have a way of getting basic supplies at the moment we will start sending you a weekly box of basic supplies.
 
-        If we need to confirm any details, you’ll get a call from the National Shielding Service. The number that will show on your phone is 0333 3050466.
+          If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.
 
-        ## Getting support
+          This can take up to a week. Contact your local authority if you need supplies urgently and cannot rely on family, friends or neighbours: https://www.gov.uk/coronavirus-local-help
 
-        If you’re eligible and you said that you do not have a way of getting basic supplies at the moment we will start sending you a weekly box of basic supplies.
+          # If your support needs change
 
-        If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.
+          You can tell the delivery driver if you want to stop getting the weekly box of supplies.
 
-        This can take up to a week - or longer if you haven’t had the letter from your NHS or from your doctor. Contact your local authority if you need supplies urgently and cannot rely on family, friends or neighbours: https://www.gov.uk/coronavirus-local-help
+          If your support needs change, go through the questions in the service again: https://www.gov.uk/coronavirus-extremely-vulnerable.
 
-        ## If your support needs change
+          There’s guidance on things you should do if you’re extremely vulnerable to coronavirus: https://www.gov.uk/coronavirus-extremely-vulnerable-guidance.
 
-        You can tell the delivery driver if you want to stop getting the weekly box of supplies.
+          Thanks,
 
-        If your support needs change, go through the questions in the service again: https://www.gov.uk/coronavirus-extremely-vulnerable.
+          Coronavirus support team
 
-        There’s guidance on things you should do if you’re extremely vulnerable to coronavirus: https://www.gov.uk/coronavirus-extremely-vulnerable-guidance.
+          -----
 
-        Thanks,
-
-        Coronavirus support team
-
-        -----
-
-        Do not reply to this email - it’s an automatic message from an unmonitored account.
+          Do not reply to this email - it’s an automatic message from an unmonitored account.
   coronavirus_form:
     submit_and_next: "Continue"
     errors:
