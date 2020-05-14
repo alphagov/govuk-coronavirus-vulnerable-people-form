@@ -1,5 +1,5 @@
 require "prometheus/middleware/collector"
-require "sidekiq_stats_prometheus_exporter"
+require "./lib/sidekiq_stats_prometheus_exporter"
 
 class ApplicationConfig
   def self.call
