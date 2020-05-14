@@ -30,6 +30,7 @@
     "medical_conditions": {
       "type": "string",
       "enum": [
+        "Yes, I have one of the medical conditions on the list",
         "Yes, I have one of the listed medical conditions",
         "Yes, my GP or hospital clinician has told me to ‘shield’",
         "No, I do not have one of the listed medical conditions - and I have not been told to ‘shield’"
