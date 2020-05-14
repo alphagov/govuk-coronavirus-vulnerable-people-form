@@ -16,6 +16,7 @@ RSpec.describe "prometheus metrics", type: :request do
       get "/metrics"
 
       expect(last_response).to be_ok
+      expect(last_response.body).to match(/sidekiq/)
     end
   end
 end
