@@ -11,7 +11,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
   def submit
     submission_reference = reference_number
-    contact_gp = contact_gp?
+    @contact_gp = contact_gp?
 
     session[:reference_id] = submission_reference
 
@@ -36,7 +36,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
     reset_session
 
-    redirect_to confirmation_url(reference_number: submission_reference, contact_gp: contact_gp)
+    redirect_to confirmation_url(reference_number: submission_reference, contact_gp: @contact_gp)
   end
 
 private
@@ -58,6 +58,7 @@ private
       first_name: session_with_indifferent_access.dig(:name, :first_name),
       last_name: session_with_indifferent_access.dig(:name, :last_name),
       reference_number: reference_number,
+      contact_gp: @contact_gp,
     )
     mailer.confirmation_email(user_email).deliver_later
   end

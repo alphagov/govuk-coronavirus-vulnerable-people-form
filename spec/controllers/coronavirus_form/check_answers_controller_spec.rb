@@ -59,7 +59,13 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       expect {
         post :submit
       }.to have_enqueued_mail(CoronavirusFormMailer, :confirmation_email)
-        .with(a_hash_including(first_name: "John", last_name: "Smith", reference_number: "abc"), "name@example.org").on_queue("mailers")
+        .with(a_hash_including(
+                first_name: "John",
+                last_name: "Smith",
+                reference_number: "abc",
+                contact_gp: true,
+              ),
+              "name@example.org").on_queue("mailers")
     end
 
     it "does not send an email when no email address provided" do
