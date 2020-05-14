@@ -1,5 +1,5 @@
 require "prometheus/middleware/collector"
-require "prometheus/middleware/exporter"
+require "sidekiq_stats_prometheus_exporter"
 
 class ApplicationConfig
   def self.call
@@ -8,7 +8,7 @@ class ApplicationConfig
 
       map "/metrics" do
         use Rack::Deflater
-        use Prometheus::Middleware::Exporter, path: ""
+        use SidekiqStatsPrometheusExporter, path: ""
         run ->(_) { [500, { "Content-Type" => "text/html" }, ["Metrics endpoint is unreachable!"]] }
       end
 
