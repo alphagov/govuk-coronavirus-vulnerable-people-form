@@ -161,6 +161,9 @@
     },
     "_csrf_token": {
       "type": "string"
+    },
+    "session_id": {
+      "type": "string"
     }
   },
   "definitions": {

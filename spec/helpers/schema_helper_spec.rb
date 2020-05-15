@@ -318,6 +318,11 @@ RSpec.describe SchemaHelper, type: :helper do
         data = valid_data.merge(previous_path: "/foo")
         expect(validate_against_form_response_schema(data)).to be_empty
       end
+
+      it "allows the session_id to be stored" do
+        data = valid_data.merge(session_id: SecureRandom.uuid)
+        expect(validate_against_form_response_schema(data)).to be_empty
+      end
     end
   end
 end
