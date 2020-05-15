@@ -3,6 +3,7 @@
 require "spec_helper"
 
 RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
+  include FormResponseHelper
   include_examples "redirections"
   include_examples "session expiry"
 
@@ -110,6 +111,20 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       expect {
         post :submit
       }.to_not(change { FormResponse.count })
+    end
+
+    context "schema validation" do
+      it "sends a notification to Sentry if the schema validation fails" do
+        expect(GovukError).to receive(:notify)
+        post :submit
+      end
+
+      it "does not send a notification to Sentry if the data is valid" do
+        expect(GovukError).to_not receive(:notify)
+
+        session.merge!(valid_data)
+        post :submit
+      end
     end
   end
 end

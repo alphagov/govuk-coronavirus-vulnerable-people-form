@@ -2,6 +2,7 @@
 
 class CoronavirusForm::CheckAnswersController < ApplicationController
   include AnswersHelper
+  include SchemaHelper
 
   def show
     session[:check_answers_seen] = true
@@ -18,6 +19,14 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
     end
 
     session[:reference_id] = submission_reference
+
+    validation_errors = validate_against_form_response_schema(session.to_h)
+    if validation_errors.any?
+      GovukError.notify(
+        FormResponseInvalidError.new,
+        extra: { validation_errors: validation_errors },
+      )
+    end
 
     unless smoke_tester? || preview_app?
       FormResponse.create(

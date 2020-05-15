@@ -1,0 +1,1 @@
+class FormResponseInvalidError < StandardError; end
