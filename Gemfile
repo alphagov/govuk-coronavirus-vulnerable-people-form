@@ -35,7 +35,6 @@ group :test do
   gem "capybara", "~> 3.32.1", require: false
   gem "climate_control"
   gem "mini_racer", "~> 0.2"
-  gem "scss-lint", "~> 0.7.0", require: false
   gem "selenium-webdriver"
   gem "simplecov", "~> 0.16"
   gem "vcr"
@@ -52,4 +51,5 @@ group :development, :test do
   gem "rails-controller-testing", "~> 1.0"
   gem "rspec-rails", "~> 4.0.0"
   gem "rubocop-govuk"
+  gem "scss_lint-govuk"
 end

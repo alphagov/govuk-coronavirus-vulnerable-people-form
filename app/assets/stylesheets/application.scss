@@ -3,41 +3,42 @@
 @import 'govuk_publishing_components/govuk_frontend_support';
 @import 'govuk_publishing_components/component_support';
 
-@import 'govuk_publishing_components/components/_skip-link';
-@import 'govuk_publishing_components/components/_layout-header';
-@import 'govuk_publishing_components/components/_phase-banner';
-@import 'govuk_publishing_components/components/_back-link';
-@import 'govuk_publishing_components/components/_breadcrumbs';
+@import 'govuk_publishing_components/components/skip-link';
+@import 'govuk_publishing_components/components/layout-header';
+@import 'govuk_publishing_components/components/phase-banner';
+@import 'govuk_publishing_components/components/back-link';
+@import 'govuk_publishing_components/components/breadcrumbs';
 @import 'govuk_publishing_components/components/cookie-banner';
 
-@import 'govuk_publishing_components/components/_title';
-@import 'govuk_publishing_components/components/_heading';
-@import 'govuk_publishing_components/components/_inset-text';
+@import 'govuk_publishing_components/components/title';
+@import 'govuk_publishing_components/components/heading';
+@import 'govuk_publishing_components/components/inset-text';
 
-@import 'govuk_publishing_components/components/_error-message';
-@import 'govuk_publishing_components/components/_error-summary';
+@import 'govuk_publishing_components/components/error-message';
+@import 'govuk_publishing_components/components/error-summary';
 
-@import 'govuk_publishing_components/components/_layout-footer';
+@import 'govuk_publishing_components/components/layout-footer';
 
-@import 'govuk_publishing_components/components/_summary-list';
+@import 'govuk_publishing_components/components/summary-list';
 @import 'govuk_publishing_components/components/table';
-@import 'govuk_publishing_components/components/_panel';
+@import 'govuk_publishing_components/components/panel';
 
-@import 'govuk_publishing_components/components/_fieldset';
-@import 'govuk_publishing_components/components/_hint';
-@import 'govuk_publishing_components/components/_input';
-@import 'govuk_publishing_components/components/_date-input';
-@import 'govuk_publishing_components/components/_label';
-@import 'govuk_publishing_components/components/_radio';
-@import 'govuk_publishing_components/components/_button';
+@import 'govuk_publishing_components/components/fieldset';
+@import 'govuk_publishing_components/components/hint';
+@import 'govuk_publishing_components/components/input';
+@import 'govuk_publishing_components/components/date-input';
+@import 'govuk_publishing_components/components/label';
+@import 'govuk_publishing_components/components/radio';
+@import 'govuk_publishing_components/components/button';
 
 @import 'cookie-settings';
 
 .app-list--spaced > li {
-    margin-bottom: govuk-spacing(3);
+  margin-bottom: govuk-spacing(3);
 }
+
 .app-list--spaced > li:last-child {
-    margin-bottom: govuk-spacing(0);
+  margin-bottom: govuk-spacing(0);
 }
 
 // The GOV.UK Design System team are aware of issues with lighter grey text for some disabled users
@@ -46,7 +47,7 @@
 
 // TODO: Try to allow passing through an app-hint class to the hint component
 .govuk-hint {
-    color: $govuk-text-colour
+  color: $govuk-text-colour;
 }
 
 // Make keys in Summary list easier to read on smaller screens.
@@ -54,13 +55,13 @@
 // TODO: Allow additional classes to be passed to the summary list component
 // We should be passing the .govuk-\!-width-two-thirds class instead of hardcoding it.
 .govuk-summary-list__key {
-    // https://github.com/alphagov/govuk-frontend/blob/v3.6.0/src/govuk/overrides/_width.scss#L18-L24
-    @include govuk-media-query($from: tablet) {
-        width: 66.66% !important;
-    }
+  // https://github.com/alphagov/govuk-frontend/blob/v3.6.0/src/govuk/overrides/_width.scss#L18-L24
+  @include govuk-media-query($from: tablet) {
+    width: 66.66% !important;
+  }
 }
 
 // TODO: Allow additional classes to pass to summary list link, or perhaps option to turn off visited state.
 .govuk-summary-list__actions-list-item > .govuk-link {
-    @include govuk-link-style-no-visited-state;
+  @include govuk-link-style-no-visited-state;
 }
