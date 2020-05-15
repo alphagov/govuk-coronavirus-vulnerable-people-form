@@ -34,7 +34,7 @@ group :test do
   gem "capybara", "~> 3.32.1", require: false
   gem "climate_control"
   gem "mini_racer", "~> 0.2"
-  gem "scss-lint", "~> 0.7.0", require: false
+  gem "scss-lint", "~> 0.38.0", require: false
   gem "selenium-webdriver"
   gem "simplecov", "~> 0.16"
   gem "vcr"
