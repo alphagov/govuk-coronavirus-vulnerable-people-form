@@ -4,7 +4,7 @@
 #
 # This is needed for running the feature tests in a container environment like concourse.
 #========================================================================================
-FROM ruby:2.6.5-buster
+FROM ruby:2.6.6-buster
 
 RUN apt-get update --fix-missing && apt-get -y upgrade \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
