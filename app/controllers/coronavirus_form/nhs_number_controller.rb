@@ -10,6 +10,8 @@ class CoronavirusForm::NhsNumberController < ApplicationController
 
     invalid_fields = validate_fields(@form_responses[:nhs_number])
 
+    session[:know_nhs_number] = I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label")
+
     if invalid_fields.any?
       flash.now[:validation] = invalid_fields
       log_validation_error(invalid_fields)

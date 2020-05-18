@@ -127,8 +127,7 @@
     "know_nhs_number": {
       "type": "string",
       "enum": [
-        "Yes, I know my NHS number",
-        "No, I do not know my NHS number"
+        "Yes, I know my NHS number"
       ]
     },
     "nhs_number": {

@@ -20,6 +20,11 @@ RSpec.describe CoronavirusForm::NhsNumberController, type: :controller do
   end
 
   describe "POST submit" do
+    it "defaults the know your nhs number to Yes" do
+      post :submit, params: { nhs_number: valid_nhs_number }
+      expect(session[:know_nhs_number]).to eq I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label")
+    end
+
     it "sets session variables" do
       post :submit, params: { nhs_number: valid_nhs_number }
       expect(session[session_key]).to eq "1101230614"

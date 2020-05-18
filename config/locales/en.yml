@@ -216,7 +216,7 @@ en:
 
         If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.
 
-        This can take up to a week - or longer if you haven’t had the letter from your NHS or from your doctor. Contact your local authority if you need supplies urgently and cannot rely on family, friends or neighbours: https://www.gov.uk/coronavirus-local-help   
+        This can take up to a week - or longer if you haven’t had the letter from your NHS or from your doctor. Contact your local authority if you need supplies urgently and cannot rely on family, friends or neighbours: https://www.gov.uk/coronavirus-local-help
 
         ## If your support needs change
 
@@ -359,6 +359,11 @@ en:
           label: "Phone number (for text messages)"
         email:
           label: "Email address"
+      know_nhs_number:
+        title: "Do you know your NHS number?"
+        options:
+          option_yes:
+            label: "Yes, I know my NHS number"
       nhs_number:
         title: What is your NHS number?
         hint: |
