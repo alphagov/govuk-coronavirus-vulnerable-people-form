@@ -190,6 +190,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mailcheck (1.0.0)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
@@ -409,6 +410,7 @@ DEPENDENCIES
   json-schema (~> 2.8.1)
   listen (~> 3)
   lograge
+  mailcheck (~> 1.0)
   mini_racer (~> 0.2)
   notifications-ruby-client (~> 5.1)
   prometheus-client (~> 2.0)
