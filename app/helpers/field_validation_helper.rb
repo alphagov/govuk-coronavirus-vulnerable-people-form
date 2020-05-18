@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "mailcheck"
+
 module FieldValidationHelper
   def validate_radio_field(page, radio:, other: false)
     if radio.blank?
@@ -91,6 +93,11 @@ module FieldValidationHelper
     else
       [{ field: field.to_s, text: t("coronavirus_form.errors.email_format") }]
     end
+  end
+
+  def email_address_suggestion(email_address)
+    suggestion = Mailcheck.new.suggest(email_address)
+    return suggestion[:full] if suggestion
   end
 
   def validate_postcode(field, postcode)
