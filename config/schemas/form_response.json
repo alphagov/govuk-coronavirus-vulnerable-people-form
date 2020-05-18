@@ -48,7 +48,7 @@
           "type": "string"
         },
         "middle_name": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "last_name": {
           "type": "string"
@@ -91,13 +91,13 @@
           "type": "string"
         },
         "building_and_street_line_2": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "town_city": {
           "type": "string"
         },
         "county": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "postcode": {
           "type": "string",
@@ -111,15 +111,15 @@
       "additionalProperties": false,
       "properties": {
         "phone_number_calls": {
-          "type": "string",
+          "type": ["string", "null"],
           "pattern": "^[0-9 ]*$"
         },
         "phone_number_texts": {
-          "type": "string",
+          "type": ["string", "null"],
           "pattern": "^[0-9 ]*$"
         },
         "email": {
-          "type": "string",
+          "type": ["string", "null"],
           "pattern": "[@]{1}"
         }
       }
@@ -132,7 +132,7 @@
       ]
     },
     "nhs_number": {
-      "type": "string",
+      "type": ["string", "null"],
       "pattern": "^[0-9]*$"
     },
     "essential_supplies": {
