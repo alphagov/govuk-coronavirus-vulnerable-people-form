@@ -230,7 +230,7 @@ en:
 
         If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.
 
-        This can take up to a week - or longer if you haven’t had the letter from your NHS or from your doctor. Contact your local authority if you need supplies urgently and cannot rely on family, friends or neighbours: https://www.gov.uk/coronavirus-local-help   
+        This can take up to a week - or longer if you haven’t had the letter from your NHS or from your doctor. Contact your local authority if you need supplies urgently and cannot rely on family, friends or neighbours: https://www.gov.uk/coronavirus-local-help
 
         ## If your support needs change
 
@@ -375,30 +375,27 @@ en:
           label: "Email address"
       know_nhs_number:
         title: "Do you know your NHS number?"
-        hint: |
-          An NHS number is a 10 digit number, like 485 777 3456.
-          <br /><br />
-          You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
-          <br /><br />
-          If you do not provide an NHS number it may delay support getting to you.
         options:
           option_yes:
             label: "Yes, I know my NHS number"
-          option_no:
-            label: "No, I do not know my NHS number"
-        custom_select_error: Select yes if you know your NHS number
       nhs_number:
         title: What is your NHS number?
         hint: |
-          An NHS Number is a 10 digit number, like 485 777 3456.
-          <br /><br />
-          You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.
+          <p class="govuk-body">An NHS Number is a 10 digit number, like 485 777 3456.</p>
+          <p class="govuk-body">You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.</p>
         nhs_number:
+          label: NHS number
           custom_errors:
             missing: Enter your 10-digit NHS number
-            must_be_a_number: NHS number must be a number
+            must_be_a_number: Enter a real NHS number
             must_be_ten_digits: NHS number must be 10 digits
             must_have_checksum: Enter a real NHS number
+        details:
+          title: I cannot find my NHS number
+          description: |
+            <p class="govuk-body">If you cannot find your NHS number on a letter or prescription, ask your GP.</p>
+            <p class="govuk-body">You may have an old NHS number with less than 10 digits. If so, you can find your new NHS number on an NHS letter or prescription - or ask your GP.</p>
+            <p class="govuk-body">If you do not have an NHS number <a class="govuk-link" href="https://www.nhs.uk/using-the-nhs/nhs-services/gps/how-to-register-with-a-gp-practice/">register with a GP</a>.</p>
       essential_supplies:
         title: Do you have a way of getting essential supplies delivered at the moment?
         hint: For example, friends or family who can make sure you have enough food.

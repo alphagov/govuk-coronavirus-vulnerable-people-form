@@ -15,7 +15,6 @@ RSpec.feature "fill in the vulnerable people form" do
       and_has_given_their_date_of_birth
       and_has_given_their_address
       and_has_given_their_contact_details
-      and_who_knows_their_nhs_number
       and_has_given_their_nhs_number
       and_is_not_getting_any_essential_supplies
       and_their_basic_care_needs_are_not_being_met

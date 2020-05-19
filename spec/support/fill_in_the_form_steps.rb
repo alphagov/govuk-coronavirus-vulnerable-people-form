@@ -87,14 +87,6 @@ module FillInTheFormSteps
     end
   end
 
-  def and_who_knows_their_nhs_number
-    expect(page.body).to have_content(I18n.t("coronavirus_form.questions.know_nhs_number.title"))
-    within find(".govuk-main-wrapper") do
-      choose I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label")
-      click_on I18n.t("coronavirus_form.submit_and_next")
-    end
-  end
-
   def and_has_given_their_nhs_number
     expect(page.body).to have_content(I18n.t("coronavirus_form.questions.nhs_number.title"))
     within find(".govuk-main-wrapper") do

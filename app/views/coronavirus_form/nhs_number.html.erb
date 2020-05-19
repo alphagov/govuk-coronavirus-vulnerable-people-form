@@ -15,20 +15,31 @@
       "novalidate": "true"
     ) do %>
 
+    <%= render "govuk_publishing_components/components/title", {
+      title: t("coronavirus_form.questions.nhs_number.title"),
+      margin_top: 0,
+      margin_bottom: 3,
+    } %>
+
+    <%= sanitize(t("coronavirus_form.questions.nhs_number.hint")) %>
+
     <%= render "govuk_publishing_components/components/input", {
       "id": "nhs_number",
       name: "nhs_number",
       label: {
-        text: t("coronavirus_form.questions.nhs_number.title"),
-        is_page_heading: true,
+        text: t("coronavirus_form.questions.nhs_number.nhs_number.label"),
       },
-      heading_size: "xl",
-      hint: sanitize(t("coronavirus_form.questions.nhs_number.hint")),
       type: "number",
       error_message: error_items('nhs_number'),
       value: @form_responses[:nhs_number],
       width: 10,
     } %>
+
+    <%= render "govuk_publishing_components/components/details", {
+      title: t("coronavirus_form.questions.nhs_number.details.title"),
+    } do %>
+      <%= sanitize(t("coronavirus_form.questions.nhs_number.details.description")) %>
+    <% end %>
 
     <%= render "govuk_publishing_components/components/button", text: t("coronavirus_form.submit_and_next"), margin_bottom: true %>
 <% end %>
