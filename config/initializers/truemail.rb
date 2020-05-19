@@ -28,7 +28,7 @@ Truemail.configure do |config|
   # Optional parameter. You can predefine default validation type for
   # Truemail.validate('email@email.com') call without with-parameter
   # Available validation types: :regex, :mx, :smtp
-  config.default_validation_type = :mx
+  config.default_validation_type = :smtp
 
   # Optional parameter. You can predefine which type of validation will be used for domains.
   # Also you can skip validation by domain. Available validation types: :regex, :mx, :smtp
