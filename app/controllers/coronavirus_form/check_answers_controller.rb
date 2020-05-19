@@ -36,6 +36,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
       )
 
       send_confirmation_email if session_with_indifferent_access.dig(:contact_details, :email).present?
+      send_confirmation_sms if session_with_indifferent_access.dig(:contact_details, :phone_number_texts).present? && mobile_number_provided?
     end
 
     reset_session
@@ -47,7 +48,8 @@ private
 
   def smoke_tester?
     email = session_with_indifferent_access.dig(:contact_details, :email)
-    email.present? && email == Rails.application.config.courtesy_copy_email
+    mobile_number = session_with_indifferent_access.dig(:contact_details, :phone_number_texts)
+    (email.present? && email == Rails.application.config.courtesy_copy_email) || (mobile_number.present? && mobile_number == Rails.application.config.test_telephone_number)
   end
 
   def reference_number
@@ -65,12 +67,29 @@ private
     mailer.confirmation_email(user_email).deliver_later
   end
 
+  def send_confirmation_sms
+    mailer = CoronavirusFormMailer.with(
+      first_name: session_with_indifferent_access.dig(:name, :first_name),
+      last_name: session_with_indifferent_access.dig(:name, :last_name),
+      reference_number: reference_number,
+    )
+    mailer.confirmation_sms(user_mobile_number).deliver_later
+  end
+
   def user_email
     if ENV["PAAS_ENV"] == "staging"
       Rails.application.config.courtesy_copy_email
     else
       session_with_indifferent_access.dig(:contact_details, :email)
     end
+  end
+
+  def user_mobile_number
+    TelephoneNumber.parse(session_with_indifferent_access.dig(:contact_details, :phone_number_texts), :gb).national_number(formatted: false)
+  end
+
+  def mobile_number_provided?
+    TelephoneNumber.valid?(session_with_indifferent_access.dig(:contact_details, :phone_number_texts), :gb, [:mobile])
   end
 
   def session_with_indifferent_access

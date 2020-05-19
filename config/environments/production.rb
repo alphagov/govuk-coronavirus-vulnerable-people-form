@@ -140,5 +140,5 @@ Rails.application.configure do
     end
   end
 
-  config.action_mailer.delivery_method = :notify
+  config.action_mailer.delivery_method = :notify_email
 end

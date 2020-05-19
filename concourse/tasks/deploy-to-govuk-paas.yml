@@ -25,7 +25,8 @@ params:
   AWS_SECRET_ACCESS_KEY:
   METRICS_USERNAME: ((metrics-username))
   METRICS_PASSWORD: ((metrics-password))
-  GOVUK_NOTIFY_TEMPLATE_ID:
+  GOVUK_NOTIFY_EMAIL_TEMPLATE_ID:
+  GOVUK_NOTIFY_SMS_TEMPLATE_ID:
   NOTIFY_API_KEY:
   ORDNANCE_SURVEY_PLACES_API_KEY: ((ordnance-survey-places-api-key))
 run:
@@ -60,7 +61,8 @@ run:
       cf set-env govuk-coronavirus-vulnerable-people-form GA_VIEW_ID "$GA_VIEW_ID"
       cf set-env govuk-coronavirus-vulnerable-people-form METRICS_USERNAME "$METRICS_USERNAME"
       cf set-env govuk-coronavirus-vulnerable-people-form METRICS_PASSWORD "$METRICS_PASSWORD"
-      cf set-env govuk-coronavirus-vulnerable-people-form GOVUK_NOTIFY_TEMPLATE_ID "$GOVUK_NOTIFY_TEMPLATE_ID"
+      cf set-env govuk-coronavirus-vulnerable-people-form GOVUK_NOTIFY_EMAIL_TEMPLATE_ID "$GOVUK_NOTIFY_EMAIL_TEMPLATE_ID"
+      cf set-env govuk-coronavirus-vulnerable-people-form GOVUK_NOTIFY_SMS_TEMPLATE_ID "$GOVUK_NOTIFY_SMS_TEMPLATE_ID"
       cf set-env govuk-coronavirus-vulnerable-people-form NOTIFY_API_KEY "$NOTIFY_API_KEY"
       cf set-env govuk-coronavirus-vulnerable-people-form PAAS_ENV "$CF_SPACE"
 

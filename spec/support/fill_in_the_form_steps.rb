@@ -80,8 +80,8 @@ module FillInTheFormSteps
   def and_has_given_their_contact_details
     expect(page.body).to have_content(I18n.t("coronavirus_form.questions.contact_details.title"))
     within find(".govuk-main-wrapper") do
-      fill_in "phone_number_calls", with: "01234567890"
-      fill_in "phone_number_texts", with: "01234567890"
+      fill_in "phone_number_calls", with: Rails.application.config.test_telephone_number
+      fill_in "phone_number_texts", with: Rails.application.config.test_telephone_number
       fill_in "email", with: Rails.application.config.courtesy_copy_email
       click_on I18n.t("coronavirus_form.submit_and_next")
     end

@@ -51,17 +51,18 @@ to process the email queue.
 Sidekiq will start automatically when you run `foreman start`, but you can
 also run it alone with `bundle exec sidekiq`.
 
-#### Sending emails locally
+#### Sending emails or SMSs locally
 
 You'll need to pass a GOV.UK Notify API key as an environment variable
 `NOTIFY_API_KEY`, and change the delivery method in [development.rb][]:
 
 ```ruby
-config.action_mailer.delivery_method = :notify
+config.action_mailer.delivery_method = :notify_email
 ```
 
-You'll also need to set a `GOVUK_NOTIFY_TEMPLATE_ID`, which might involve
-creating a template in Notify if your Notify service doesn't have one.
+You'll also need to set a `GOVUK_NOTIFY_EMAIL_TEMPLATE_ID` and
+`GOVUK_NOTIFY_SMS_TEMPLATE_ID`, which might involve creating a
+template in Notify if your Notify service doesn't have one.
 
 The template should have a Message of `((body))` only.
 
