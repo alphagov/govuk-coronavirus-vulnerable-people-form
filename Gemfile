@@ -22,6 +22,7 @@ gem "sentry-raven", "~> 3.0"
 gem "sidekiq", "~> 6.0"
 gem "telephone_number", "~> 1.4"
 gem "timecop"
+gem "truemail", "~> 1.7.1"
 gem "uglifier", "~> 4.2"
 
 gem "prometheus-client", "~> 2.0"
