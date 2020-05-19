@@ -86,7 +86,7 @@ module FieldValidationHelper
   end
 
   def validate_email_address(field, email_address)
-    if email_address.match?(URI::MailTo::EMAIL_REGEXP)
+    if Truemail.valid?(email_address)
       []
     else
       [{ field: field.to_s, text: t("coronavirus_form.errors.email_format") }]

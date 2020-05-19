@@ -24,7 +24,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       {
         "phone_number_calls" => "01234-578-890<script></script>",
         "phone_number_texts" => "+44(0)1876 543 210",
-        "email" => "<script></script>tester@example.org",
+        "email" => "<script></script>govuk-coronavirus-services@digital.cabinet-office.gov.uk",
       }
     end
 
@@ -32,7 +32,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       {
         phone_number_calls: "01234 578890",
         phone_number_texts: "01876 543210",
-        email: "tester@example.org",
+        email: "govuk-coronavirus-services@digital.cabinet-office.gov.uk",
       }
     end
 
@@ -91,7 +91,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
     end
 
     it "does not move to next step with an invalid email address" do
-      post :submit, params: { "email": "govuk-coronavirus-services@digital.cabinet_office,gov.uk" }
+      post :submit, params: { "email": "govuk-coronavirus-services@digital.cabinet-office,gov.uk" }
       expect(response).to have_http_status(:unprocessable_entity)
       expect(response).to render_template(current_template)
     end
