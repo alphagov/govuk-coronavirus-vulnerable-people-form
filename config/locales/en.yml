@@ -205,6 +205,19 @@ en:
           If you want priority supermarket deliveries and do not already have an account with a supermarket, set one up now. You can set up accounts with more than one supermarket.
 
           If your support needs change, go to https://www.gov.uk/coronavirus-extremely-vulnerable and answer the questions again.
+      contact_gp:
+        body_text: |
+          Hello %{first_name} %{last_name} - we’ve received your registration as someone who’s extremely vulnerable to coronavirus.
+
+          Contact your doctor as soon as possible so they can confirm to us you’re classed as clinically extremely vulnerable. You may not get the support you need if you do not contact them.
+
+          After that we’ll check that you’re eligible, and you’ll start getting support if you asked for it.
+
+          This can take up to a week from when we get the confirmation from your doctor. Contact your local authority if you need urgent support and can’t rely on friends or neighbours: https://www.gov.uk/coronavirus-local-help
+
+          If you want priority supermarket deliveries and do not already have an account with a supermarket, set one up now. You can set up accounts with more than one supermarket.
+
+          If your needs change, go to https://www.gov.uk/coronavirus-extremely-vulnerable and answer the questions again.
   emails:
     confirmation:
       subject: "Coronavirus support service: your registration"
