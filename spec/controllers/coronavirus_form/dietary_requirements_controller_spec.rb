@@ -46,8 +46,16 @@ RSpec.describe CoronavirusForm::DietaryRequirementsController, type: :controller
       expect(response).to render_template(current_template)
     end
 
-    it "redirects to check your answers if check your answers previously seen" do
+    it "redirects to to next question if check your answers previously seen and later food question not answered" do
       session[:check_answers_seen] = true
+      post :submit, params: { dietary_requirements: selected }
+
+      expect(response).to redirect_to(carry_supplies_path)
+    end
+
+    it "redirects to check your answers if check your answers previously seen and later food question answered" do
+      session[:check_answers_seen] = true
+      session[:carry_supplies] = "Yes"
       post :submit, params: { dietary_requirements: selected }
 
       expect(response).to redirect_to(check_your_answers_path)

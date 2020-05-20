@@ -9,6 +9,10 @@ RSpec.describe CoronavirusForm::EssentialSuppliesController, type: :controller d
   let(:current_template) { "coronavirus_form/essential_supplies" }
   let(:session_key) { :essential_supplies }
 
+  before :each do
+    session.clear
+  end
+
   describe "GET show" do
     it "renders the form" do
       session[:live_in_england] = I18n.t("coronavirus_form.questions.live_in_england.options.option_yes.label")
@@ -60,9 +64,34 @@ RSpec.describe CoronavirusForm::EssentialSuppliesController, type: :controller d
       expect(response).to render_template(current_template)
     end
 
-    it "redirects to check your answers if check your answers previously seen" do
+    it "redirects to check your answers if check your answers previously seen, user answers no and user has already answered later food questions" do
+      session[:dietary_requirements] = "Yes"
+      session[:carry_supplies] = "Yes"
       session[:check_answers_seen] = true
-      post :submit, params: { essential_supplies: selected }
+      post :submit, params: { essential_supplies: I18n.t("coronavirus_form.questions.essential_supplies.options.option_no.label") }
+
+      expect(response).to redirect_to(check_your_answers_path)
+    end
+
+    it "redirects to next food question if check your answers previously seen, user answers no and user has not already answered later food questions" do
+      session[:check_answers_seen] = true
+      post :submit, params: { essential_supplies: I18n.t("coronavirus_form.questions.essential_supplies.options.option_no.label") }
+
+      expect(response).to redirect_to(dietary_requirements_path)
+    end
+
+    it "redirects to check your answers if check your answers previously seen, user answers yes and user has already answered later food questions" do
+      session[:dietary_requirements] = "Yes"
+      session[:carry_supplies] = "Yes"
+      session[:check_answers_seen] = true
+      post :submit, params: { essential_supplies: I18n.t("coronavirus_form.questions.essential_supplies.options.option_yes.label") }
+
+      expect(response).to redirect_to(check_your_answers_path)
+    end
+
+    it "redirects to check your answers if check your answers previously seen, user answers yes and user has not already answered later food questions" do
+      session[:check_answers_seen] = true
+      post :submit, params: { essential_supplies: I18n.t("coronavirus_form.questions.essential_supplies.options.option_yes.label") }
 
       expect(response).to redirect_to(check_your_answers_path)
     end
