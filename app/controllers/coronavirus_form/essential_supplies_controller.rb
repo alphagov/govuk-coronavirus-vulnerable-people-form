@@ -23,7 +23,7 @@ class CoronavirusForm::EssentialSuppliesController < ApplicationController
       redirect_to check_your_answers_url
     else
       session[:essential_supplies] = @form_responses[:essential_supplies]
-      redirect_to basic_care_needs_url
+      redirect_to dietary_requirements_url
     end
   end
 

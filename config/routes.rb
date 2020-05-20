@@ -59,17 +59,17 @@ Rails.application.routes.draw do
     get "/essential-supplies", to: "essential_supplies#show"
     post "/essential-supplies", to: "essential_supplies#submit"
 
-    # Question 10.0: Are your basic care needs being met at the moment?
-    get "/basic-care-needs", to: "basic_care_needs#show"
-    post "/basic-care-needs", to: "basic_care_needs#submit"
-
-    # Question 11.0: Do you have any special dietary requirements?
+    # Question 10.0: Do you have any special dietary requirements?
     get "/dietary-requirements", to: "dietary_requirements#show"
     post "/dietary-requirements", to: "dietary_requirements#submit"
 
-    # Question 12.0: Is there someone in the house who's able to carry a delivery of supplies inside?
+    # Question 11.0: Is there someone in the house who's able to carry a delivery of supplies inside?
     get "/carry-supplies", to: "carry_supplies#show"
     post "/carry-supplies", to: "carry_supplies#submit"
+
+    # Question 12.0: Are your basic care needs being met at the moment?
+    get "/basic-care-needs", to: "basic_care_needs#show"
+    post "/basic-care-needs", to: "basic_care_needs#submit"
 
     # Check answers page: Are you ready to send your application?
     get "/check-your-answers", to: "check_answers#show"

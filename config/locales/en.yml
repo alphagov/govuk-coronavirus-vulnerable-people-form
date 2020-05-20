@@ -471,15 +471,6 @@ en:
           option_no:
             label: "No"
         custom_select_error: Select yes if you have a way of getting essential supplies delivered at the moment
-      basic_care_needs:
-        title: Are your basic care needs being met at the moment?
-        hint: For example, you have family, friends or neighbours you can talk to, and who can help you wash, bathe and keep your house clean if you need them to.
-        options:
-          option_yes:
-            label: "Yes"
-          option_no:
-            label: "No"
-        custom_select_error: Select yes if your basic care needs are being met at the moment
       dietary_requirements:
         title: Do you have any special dietary requirements?
         hint: |
@@ -501,3 +492,12 @@ en:
           option_no:
             label: "No"
         custom_select_error: Select yes if there’s someone in the house who’s able to carry a delivery of supplies inside
+      basic_care_needs:
+        title: Are your basic care needs being met at the moment?
+        hint: For example, you have family, friends or neighbours you can talk to, and who can help you wash, bathe and keep your house clean if you need them to.
+        options:
+          option_yes:
+            label: "Yes"
+          option_no:
+            label: "No"
+        custom_select_error: Select yes if your basic care needs are being met at the moment

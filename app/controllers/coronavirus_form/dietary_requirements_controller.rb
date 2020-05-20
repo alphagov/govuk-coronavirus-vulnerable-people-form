@@ -30,6 +30,6 @@ class CoronavirusForm::DietaryRequirementsController < ApplicationController
 private
 
   def previous_path
-    basic_care_needs_path
+    essential_supplies_path
   end
 end
