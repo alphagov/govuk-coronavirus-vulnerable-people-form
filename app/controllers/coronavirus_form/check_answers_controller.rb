@@ -27,7 +27,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
       FormResponse.create(
         ReferenceId: submission_reference,
         UnixTimestamp: Time.zone.now,
-        FormResponse: session,
+        FormResponse: sanitised_session,
       )
 
       send_confirmation_email if session_with_indifferent_access.dig(:contact_details, :email).present?
@@ -91,6 +91,10 @@ private
 
   def session_with_indifferent_access
     session.to_h.with_indifferent_access
+  end
+
+  def sanitised_session
+    session_with_indifferent_access.except(:session_id, :_csrf_token, :current_path, :previous_path, :check_answers_seen)
   end
 
   def contact_gp?
