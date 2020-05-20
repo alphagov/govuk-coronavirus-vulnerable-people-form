@@ -88,7 +88,11 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       expect {
         post :submit
       }.to have_enqueued_mail(CoronavirusFormMailer, :confirmation_sms)
-        .with(a_hash_including(reference_number: "abc"), "07790900000").on_queue("mailers")
+        .with(a_hash_including(
+                reference_number: "abc",
+                contact_gp: true,
+              ),
+              "07790900000").on_queue("mailers")
     end
 
     it "does not send a text message when no phone number for texting is provided" do

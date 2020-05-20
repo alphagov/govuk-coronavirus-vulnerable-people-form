@@ -68,6 +68,7 @@ private
       first_name: session_with_indifferent_access.dig(:name, :first_name),
       last_name: session_with_indifferent_access.dig(:name, :last_name),
       reference_number: reference_number,
+      contact_gp: @contact_gp,
     )
     mailer.confirmation_sms(user_mobile_number).deliver_later
   end

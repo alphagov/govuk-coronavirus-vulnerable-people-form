@@ -44,7 +44,14 @@ RSpec.describe CoronavirusFormMailer, type: :mailer do
   describe "#confirmation_sms" do
     let(:mail) { CoronavirusFormMailer.with(params).confirmation_sms(to_number) }
     let(:to_number) { "07700900000" }
-    let(:params) { { first_name: "John", last_name: "Smith", reference_number: "ABC123" } }
+    let(:params) do
+      {
+        first_name: "John",
+        last_name: "Smith",
+        reference_number: "ABC123",
+        contact_gp: false,
+      }
+    end
 
     it "renders the headers" do
       expect(mail.to).to eq([to_number])
@@ -52,6 +59,14 @@ RSpec.describe CoronavirusFormMailer, type: :mailer do
 
     it "renders the body" do
       expect(mail.body.encoded.squish).to include(I18n.t("sms.confirmation.no_further_action.body_text", first_name: "John", last_name: "Smith").squish)
+    end
+
+    it "renders alternate body text" do
+      params.merge!(contact_gp: true)
+
+      mail = CoronavirusFormMailer.with(params).confirmation_sms(to_number)
+
+      expect(mail.body.encoded.squish).to include(I18n.t("sms.confirmation.contact_gp.body_text", first_name: "John", last_name: "Smith").squish)
     end
   end
 end
