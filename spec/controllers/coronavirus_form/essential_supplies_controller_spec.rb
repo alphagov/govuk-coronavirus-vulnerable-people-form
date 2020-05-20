@@ -35,9 +35,23 @@ RSpec.describe CoronavirusForm::EssentialSuppliesController, type: :controller d
       expect(response).to render_template(current_template)
     end
 
-    it "redirects to next step for a permitted response" do
-      post :submit, params: { essential_supplies: selected }
+    it "redirects to next step for a yes response" do
+      post :submit, params: { essential_supplies: I18n.t("coronavirus_form.questions.essential_supplies.options.option_yes.label") }
+      expect(response).to redirect_to(basic_care_needs_path)
+    end
+
+    it "redirects to next step for a no response" do
+      post :submit, params: { essential_supplies: I18n.t("coronavirus_form.questions.essential_supplies.options.option_no.label") }
       expect(response).to redirect_to(dietary_requirements_path)
+    end
+
+    it "clears session values for later food questions for a yes response" do
+      session[:dietary_requirements] = "Yes"
+      session[:carry_supplies] = "Yes"
+      post :submit, params: { essential_supplies: I18n.t("coronavirus_form.questions.essential_supplies.options.option_yes.label") }
+
+      expect(session[:dietary_requirements]).to be_nil
+      expect(session[:carry_supplies]).to be_nil
     end
 
     it "validates a valid option is chosen" do

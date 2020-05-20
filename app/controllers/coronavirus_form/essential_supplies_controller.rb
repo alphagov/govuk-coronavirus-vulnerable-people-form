@@ -18,16 +18,27 @@ class CoronavirusForm::EssentialSuppliesController < ApplicationController
       respond_to do |format|
         format.html { render controller_path, status: :unprocessable_entity }
       end
+    elsif @form_responses[:essential_supplies] == I18n.t("coronavirus_form.questions.essential_supplies.options.option_no.label")
+      update_session_store
+      redirect_to dietary_requirements_url
     elsif session[:check_answers_seen]
-      session[:essential_supplies] = @form_responses[:essential_supplies]
+      update_session_store
       redirect_to check_your_answers_url
     else
-      session[:essential_supplies] = @form_responses[:essential_supplies]
-      redirect_to dietary_requirements_url
+      update_session_store
+      redirect_to basic_care_needs_url
     end
   end
 
 private
+
+  def update_session_store
+    session[:essential_supplies] = @form_responses[:essential_supplies]
+    if @form_responses[:essential_supplies] == I18n.t("coronavirus_form.questions.essential_supplies.options.option_yes.label")
+      session[:dietary_requirements] = nil
+      session[:carry_supplies] = nil
+    end
+  end
 
   def previous_path
     nhs_number_path

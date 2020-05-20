@@ -27,6 +27,8 @@ class CoronavirusForm::BasicCareNeedsController < ApplicationController
 private
 
   def previous_path
-    carry_supplies_path
+    return carry_supplies_path if @form_responses[:essential_supplies] == I18n.t("coronavirus_form.questions.essential_supplies.options.option_no.label")
+
+    essential_supplies_path
   end
 end
