@@ -51,7 +51,7 @@ RSpec.describe CoronavirusFormMailer, type: :mailer do
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to include("We’ve received your registration")
+      expect(mail.body.encoded.squish).to include(I18n.t("sms.confirmation.no_further_action.body_text", first_name: "John", last_name: "Smith").squish)
     end
   end
 end
