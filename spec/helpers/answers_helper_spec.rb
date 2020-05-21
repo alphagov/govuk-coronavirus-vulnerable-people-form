@@ -8,24 +8,20 @@ RSpec.describe AnswersHelper, type: :helper do
       end
     end
 
-    it "skips the check_contact_details question" do
-      expect(helper.answer_items.pluck(:field)).to_not include(
-        I18n.t("coronavirus_form.questions.check_contact_details.title"),
-      )
-    end
+    described_class::SKIPPABLE_QUESTIONS.each do |question|
+      context question do
+        it "includes the #{question} question if it has a value" do
+          session[question] = "1234567890"
+          expect(helper.answer_items.pluck(:field)).to include(
+            I18n.t("coronavirus_form.questions.#{question}.title"),
+          )
+        end
 
-    context "nhs_number" do
-      it "includes the nhs_number question if it has a value" do
-        session[:nhs_number] = "1234567890"
-        expect(helper.answer_items.pluck(:field)).to include(
-          I18n.t("coronavirus_form.questions.nhs_number.title"),
-        )
-      end
-
-      it "skips the nhs_number question if the value is nil" do
-        expect(helper.answer_items.pluck(:field)).to_not include(
-          I18n.t("coronavirus_form.questions.nhs_number.title"),
-        )
+        it "skips the #{question} question if the value is nil" do
+          expect(helper.answer_items.pluck(:field)).to_not include(
+            I18n.t("coronavirus_form.questions.#{question}.title"),
+          )
+        end
       end
     end
 
@@ -33,12 +29,6 @@ RSpec.describe AnswersHelper, type: :helper do
       it "includes the medical_conditions question if it has a value" do
         session[:medical_conditions] = I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes.label")
         expect(helper.answer_items.pluck(:field)).to include(
-          I18n.t("coronavirus_form.questions.medical_conditions.title"),
-        )
-      end
-
-      it "skips the medical_conditions question if the value is nil" do
-        expect(helper.answer_items.pluck(:field)).to_not include(
           I18n.t("coronavirus_form.questions.medical_conditions.title"),
         )
       end
