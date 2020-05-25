@@ -183,3 +183,14 @@ jobs:
         file: git-master/concourse/tasks/run-smoke-tests.yml
         params:
           TEST_URL: 'https://coronavirus-vulnerable-people.service.gov.uk'
+        on_failure:
+          put: govuk-coronavirus-services-tech-slack
+          params:
+            channel: '#govuk-corona-services-tech'
+            username: 'Concourse (Shielded Vulnerable Service)'
+            icon_emoji: ':concourse:'
+            silent: true
+            text: |
+              :kaboom:
+              Production smoke tests for the Shielded Vulnerable service have failed
+              Failed build: http://cd.gds-reliability.engineering/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
