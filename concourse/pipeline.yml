@@ -5,6 +5,12 @@ resource_types:
     source:
       repository: nulldriver/cf-cli-resource
 
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: cfcommunity/slack-notification-resource
+      tag: latest
+
 resources:
   - name: git-master
     type: git
@@ -34,6 +40,11 @@ resources:
     source:
       repository: ((readonly_private_ecr_repo_url))
       tag: govuk-coronavirus-vulnerable-people-tests-image
+
+  - name: govuk-coronavirus-services-tech-slack
+    type: slack-notification
+    source:
+      url: https://hooks.slack.com/((slack_webhook_url))
 
 jobs:
   - name: update-pipeline
