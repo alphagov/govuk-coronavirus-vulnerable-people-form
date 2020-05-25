@@ -175,6 +175,17 @@ jobs:
           GOVUK_NOTIFY_EMAIL_TEMPLATE_ID: eb9f351c-f314-47e4-ba7b-656137521f74
           GOVUK_NOTIFY_SMS_TEMPLATE_ID: 0480c4b5-4e08-4598-b2c1-bbc99990afc2
           NOTIFY_API_KEY: ((notify-api-key-prod))
+        on_failure:
+          put: govuk-coronavirus-services-tech-slack
+          params:
+            channel: '#govuk-corona-services-tech'
+            username: 'Concourse (Shielded Vulnerable Service)'
+            icon_emoji: ':concourse:'
+            silent: true
+            text: |
+              :kaboom:
+              Deploy to production for the Shielded Vulnerable service has failed
+              Failed build: http://cd.gds-reliability.engineering/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
 
   - name: smoke-test-prod
     serial: true
