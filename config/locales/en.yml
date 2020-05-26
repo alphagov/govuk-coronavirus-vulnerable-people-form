@@ -432,6 +432,11 @@ en:
           label: "Phone number (for text messages)"
         email:
           label: "Email address"
+      check_contact_details:
+        title: "Check this is correct"
+        email:
+          label: "Email address"
+        submit_and_next: "These details are correct"
       know_nhs_number:
         title: "Do you know your NHS number?"
         options:

@@ -1,0 +1,38 @@
+<% content_for :title do %>
+  <%= t("coronavirus_form.questions.check_contact_details.title") %>
+<% end %>
+
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t("coronavirus_form.questions.check_contact_details.title") %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-vulnerable-people-check_contact_details",
+  "data-question-key": "check_contact_details",
+  "novalidate": "true"
+) do %>
+
+<%= render "govuk_publishing_components/components/title", {
+  title: t("coronavirus_form.questions.check_contact_details.title"),
+  margin_top: 0,
+  margin_bottom: 3,
+} %>
+
+<%= render "govuk_publishing_components/components/input", {
+  id: "email",
+  name: "email",
+  label: {
+    text: t("coronavirus_form.questions.contact_details.email.label"),
+  },
+  value: @form_responses.dig(:contact_details, :email),
+  error_message: error_items("email"),
+  type: "email",
+  autocomplete: "email",
+} %>
+
+<%= render "govuk_publishing_components/components/button", text: t("coronavirus_form.questions.check_contact_details.submit_and_next"), margin_bottom: true %>
+<% end %>

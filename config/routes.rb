@@ -43,6 +43,10 @@ Rails.application.routes.draw do
     get "/contact-details", to: "contact_details#show"
     post "/contact-details", to: "contact_details#submit"
 
+    # Question 7.0: Check your contact details
+    get "/check-contact-details", to: "check_contact_details#show"
+    post "/check-contact-details", to: "check_contact_details#submit"
+
     # Question 7.9: Temporary redirects for know your NHS number
     get "/know-nhs-number", to: "nhs_number#show"
     post "/know-nhs-number", to: "nhs_number#submit"
