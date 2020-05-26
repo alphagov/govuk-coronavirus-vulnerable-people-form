@@ -8,7 +8,6 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
 
   let(:current_template) { "coronavirus_form/contact_details" }
   let(:session_key) { :contact_details }
-  let(:next_question_path) { nhs_number_path }
 
   describe "GET show" do
     it "renders the form" do
@@ -57,9 +56,19 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       expect(session[session_key]).to eq contact_details
     end
 
-    it "redirects to next step for a permitted response" do
+    it "redirects to next step for a permitted response if email is entered" do
       post :submit, params: params
-      expect(response).to redirect_to next_question_path
+      expect(response).to redirect_to check_contact_details_path
+    end
+
+    it "redirects to next step for a permitted response if email is not entered" do
+      params = {
+        "phone_number_calls" => "01234567890",
+        "phone_number_texts" => "01234567890",
+      }
+
+      post :submit, params: params
+      expect(response).to redirect_to nhs_number_path
     end
 
     it "does not move to next step with an invalid phone number for calls" do
@@ -80,7 +89,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       it "permits the valid phone number #{number}" do
         post :submit, params: { "phone_number_calls": number }
         expect(response).to have_http_status(:found)
-        expect(response).to redirect_to next_question_path
+        expect(response).to redirect_to nhs_number_path
       end
     end
 
@@ -96,7 +105,12 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       expect(response).to render_template(current_template)
     end
 
-    it "redirects to check your answers if check your answers previously seen" do
+    it "redirects to check your answers if check your answers previously seen and email not entered" do
+      params = {
+        "phone_number_calls" => "01234567890",
+        "phone_number_texts" => "01234567890",
+      }
+
       session[:check_answers_seen] = true
       post :submit, params: params
 

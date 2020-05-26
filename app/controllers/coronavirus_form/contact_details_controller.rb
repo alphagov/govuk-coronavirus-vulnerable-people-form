@@ -23,6 +23,9 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
       respond_to do |format|
         format.html { render controller_path, status: :unprocessable_entity }
       end
+    elsif @form_responses[:contact_details].dig(:email).present?
+      update_session_store
+      redirect_to check_contact_details_url
     elsif session[:check_answers_seen]
       update_session_store
       redirect_to check_your_answers_url
