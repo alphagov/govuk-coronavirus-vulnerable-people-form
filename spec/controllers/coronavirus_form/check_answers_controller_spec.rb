@@ -59,7 +59,13 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       expect {
         post :submit
       }.to have_enqueued_mail(CoronavirusFormMailer, :confirmation_email)
-        .with(a_hash_including(first_name: "John", last_name: "Smith", reference_number: "abc"), "name@example.org").on_queue("mailers")
+        .with(a_hash_including(
+                first_name: "John",
+                last_name: "Smith",
+                reference_number: "abc",
+                contact_gp: true,
+              ),
+              "name@example.org").on_queue("mailers")
     end
 
     it "does not send an email when no email address provided" do
@@ -82,7 +88,11 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       expect {
         post :submit
       }.to have_enqueued_mail(CoronavirusFormMailer, :confirmation_sms)
-        .with(a_hash_including(reference_number: "abc"), "07790900000").on_queue("mailers")
+        .with(a_hash_including(
+                reference_number: "abc",
+                contact_gp: true,
+              ),
+              "07790900000").on_queue("mailers")
     end
 
     it "does not send a text message when no phone number for texting is provided" do
@@ -101,30 +111,37 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       expect(session.to_hash).to eq({})
     end
 
-    it "redirects to thank you if sucessfully creates record" do
+    it "sets contact_gp to false and redirects to confirmation if user received an nhs letter" do
+      session[:nhs_letter] = I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
       post :submit
 
       expect(response).to redirect_to({
         controller: "confirmation",
         action: "show",
-        params: { reference_number: "abc" },
+        params: {
+          reference_number: "abc",
+          contact_gp: false,
+        },
       })
     end
 
-    it "replaces medical conditions listed response with legacy answer" do
-      session[:medical_conditions] = I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes_medical.label")
+    it "sets contact_gp to true and redirects to confirmation if user did not receive an nhs letter" do
+      permitted_values = [
+        I18n.t("coronavirus_form.questions.basic_care_needs.options.option_no.label"),
+        I18n.t("coronavirus_form.questions.basic_care_needs.options.not_sure.label"),
+      ]
 
+      session[:nhs_letter] = permitted_values.sample
       post :submit
 
-      expect(FormResponse.last.attributes.dig(:FormResponse, :medical_conditions)).to eq("Yes, I have one of the medical conditions on the list")
-    end
-
-    it "replaces medical conditions GP response with legacy answer" do
-      session[:medical_conditions] = I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes_gp.label")
-
-      post :submit
-
-      expect(FormResponse.last.attributes.dig(:FormResponse, :medical_conditions)).to eq("Yes, I have one of the medical conditions on the list")
+      expect(response).to redirect_to({
+        controller: "confirmation",
+        action: "show",
+        params: {
+          reference_number: "abc",
+          contact_gp: true,
+        },
+      })
     end
 
     it "doesn't create a FormResponse if the user is the smoke tester identidied by email" do

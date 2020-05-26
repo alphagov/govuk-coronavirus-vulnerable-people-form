@@ -10,7 +10,6 @@ RSpec.feature "fill in the vulnerable people form" do
       given_an_extremely_vulnerable_person_during_the_covid_19_pandemic
       that_lives_in_england
       and_has_recently_received_an_nhs_letter
-      who_has_a_listed_medical_condition
       and_has_given_their_name
       and_has_given_their_date_of_birth
       and_has_given_their_address
@@ -51,10 +50,19 @@ RSpec.feature "fill in the vulnerable people form" do
   scenario "visitor not eligible as they do not have a listed medical condition" do
     given_an_extremely_vulnerable_person_during_the_covid_19_pandemic
     that_lives_in_england
-    and_has_recently_received_an_nhs_letter
+    and_has_not_recently_received_an_nhs_letter
     who_does_not_have_a_listed_medical_condition
 
     expect(page.body).to have_content(I18n.t("not_eligible_medical.title"))
+  end
+
+  scenario "visitor has not received a letter, but has a medical condition" do
+    given_an_extremely_vulnerable_person_during_the_covid_19_pandemic
+    that_lives_in_england
+    and_has_not_recently_received_an_nhs_letter
+    who_has_a_listed_medical_condition
+
+    expect(page.body).to have_content(I18n.t("coronavirus_form.questions.name.title"))
   end
 
   scenario "ensure we can perform a healthcheck" do

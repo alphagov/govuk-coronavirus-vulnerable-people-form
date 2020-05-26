@@ -11,12 +11,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
   def submit
     submission_reference = reference_number
-
-    # TODO: remove this once data export has been updated to allow new answers to medical conditions question
-    if session[:medical_conditions] == I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes_medical.label") ||
-        session[:medical_conditions] == I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes_gp.label")
-      session[:medical_conditions] = "Yes, I have one of the medical conditions on the list"
-    end
+    @contact_gp = contact_gp?
 
     session[:reference_id] = submission_reference
 
@@ -41,7 +36,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
     reset_session
 
-    redirect_to confirmation_url(reference_number: submission_reference)
+    redirect_to confirmation_url(reference_number: submission_reference, contact_gp: @contact_gp)
   end
 
 private
@@ -63,6 +58,7 @@ private
       first_name: session_with_indifferent_access.dig(:name, :first_name),
       last_name: session_with_indifferent_access.dig(:name, :last_name),
       reference_number: reference_number,
+      contact_gp: @contact_gp,
     )
     mailer.confirmation_email(user_email).deliver_later
   end
@@ -72,6 +68,7 @@ private
       first_name: session_with_indifferent_access.dig(:name, :first_name),
       last_name: session_with_indifferent_access.dig(:name, :last_name),
       reference_number: reference_number,
+      contact_gp: @contact_gp,
     )
     mailer.confirmation_sms(user_mobile_number).deliver_later
   end
@@ -94,5 +91,9 @@ private
 
   def session_with_indifferent_access
     session.to_h.with_indifferent_access
+  end
+
+  def contact_gp?
+    session[:nhs_letter] != I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
   end
 end

@@ -194,59 +194,101 @@ en:
       <p class="govuk-body">You may be seeing this page because you’ve turned off cookies in your browser. You’ll need to <a class="govuk-link" href="https://ico.org.uk/your-data-matters/online/cookies/" rel="external" target="_blank">turn cookies on</a> before you can use this service.</p>
   sms:
     confirmation:
-      body_text: |
-        We’ve received your registration as someone who’s clinically extremely vulnerable to coronavirus.
+      no_further_action:
+        body_text: |
+          Hello %{first_name} %{last_name} - we’ve received your registration as someone who’s extremely vulnerable to coronavirus.
 
-        You do not need to do anything else if you’ve had a letter from the NHS or your doctor confirming that you’re clinically extremely vulnerable. If you haven’t, contact your GP as soon as possible. Otherwise you may not get support.
+          We’ll check that you’re eligible, then you’ll start getting support if you asked for it.
 
-        We’ll check you’re eligible, then you’ll start getting support if you asked for it.
+          This can take up to a week. Contact your local authority if you need urgent support and cannot rely on friends or neighbours: https://www.gov.uk/coronavirus-local-help
 
-        This can take up to a week, or longer if you haven't had the letter from your NHS or from your doctor. Contact your local authority if you need urgent support and can’t rely on friends or neighbours.
+          If you want priority supermarket deliveries and do not already have an account with a supermarket, set one up now. You can set up accounts with more than one supermarket.
 
-        If you want priority supermarket deliveries and do not already have an account with a supermarket, set one up now. You can set up accounts with more than one supermarket.
+          If your support needs change, go to https://www.gov.uk/coronavirus-extremely-vulnerable and answer the questions again.
+      contact_gp:
+        body_text: |
+          Hello %{first_name} %{last_name} - we’ve received your registration as someone who’s extremely vulnerable to coronavirus.
 
-        If your needs change, go to https://www.gov.uk/coronavirus-extremely-vulnerable and answer the questions again.
+          Contact your doctor as soon as possible so they can confirm to us you’re classed as clinically extremely vulnerable. You may not get the support you need if you do not contact them.
+
+          After that we’ll check that you’re eligible, and you’ll start getting support if you asked for it.
+
+          This can take up to a week from when we get the confirmation from your doctor. Contact your local authority if you need urgent support and can’t rely on friends or neighbours: https://www.gov.uk/coronavirus-local-help
+
+          If you want priority supermarket deliveries and do not already have an account with a supermarket, set one up now. You can set up accounts with more than one supermarket.
+
+          If your needs change, go to https://www.gov.uk/coronavirus-extremely-vulnerable and answer the questions again.
   emails:
     confirmation:
       subject: "Coronavirus support service: your registration"
-      body_text: |
-        Your registration number is %{reference_number}.
+      no_further_action:
+        body_text: |
+          Your registration number is %{reference_number}.
 
-        You do not need to do anything else if you’ve had a letter from the NHS or from your doctor confirming that they’ve identified you as being clinically extremely vulnerable.
+          # What happens next
 
-        ## If you haven’t had a letter from the NHS or from your doctor
+          We’ll check your details to make sure you’re eligible for support. You’ll only get support if you asked for it.
 
-        Contact your GP or hospital clinician as soon as possible so they can confirm to us you’re classed as clinically extremely vulnerable. You may not get the support you need if you do not contact them.
+          If we need to confirm any details, you’ll get a call from the National Shielding Service. The number that will show on your phone is 0333 3050466.
 
-        ## What happens next
+          # Getting support
 
-        We’ll check your details to make sure you’re eligible for support. You’ll only get support if you asked for it.
+          If you’re eligible and you said that you do not have a way of getting basic supplies at the moment we will start sending you a weekly box of basic supplies.
 
-        If we need to confirm any details, you’ll get a call from the National Shielding Service. The number that will show on your phone is 0333 3050466.
+          If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.
 
-        ## Getting support
+          This can take up to a week. Contact your local authority if you need supplies urgently and cannot rely on family, friends or neighbours: https://www.gov.uk/coronavirus-local-help
 
-        If you’re eligible and you said that you do not have a way of getting basic supplies at the moment we will start sending you a weekly box of basic supplies.
+          # If your support needs change
 
-        If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.
+          You can tell the delivery driver if you want to stop getting the weekly box of supplies.
 
-        This can take up to a week - or longer if you haven’t had the letter from your NHS or from your doctor. Contact your local authority if you need supplies urgently and cannot rely on family, friends or neighbours: https://www.gov.uk/coronavirus-local-help
+          If your support needs change, go through the questions in the service again: https://www.gov.uk/coronavirus-extremely-vulnerable.
 
-        ## If your support needs change
+          There’s guidance on things you should do if you’re extremely vulnerable to coronavirus: https://www.gov.uk/coronavirus-extremely-vulnerable-guidance.
 
-        You can tell the delivery driver if you want to stop getting the weekly box of supplies.
+          Thanks,
 
-        If your support needs change, go through the questions in the service again: https://www.gov.uk/coronavirus-extremely-vulnerable.
+          Coronavirus support team
 
-        There’s guidance on things you should do if you’re extremely vulnerable to coronavirus: https://www.gov.uk/coronavirus-extremely-vulnerable-guidance.
+          -----
 
-        Thanks,
+          Do not reply to this email - it’s an automatic message from an unmonitored account.
+      contact_gp:
+        body_text: |
+          # Contact your GP
 
-        Coronavirus support team
+          Contact your GP or hospital clinician as soon as possible so they can confirm to us you’re classed as clinically extremely vulnerable. You may not get the support you need if you do not contact them.
 
-        -----
+          # What happens next
 
-        Do not reply to this email - it’s an automatic message from an unmonitored account.
+          We’ll check your details to make sure you’re eligible for support. You’ll only get support if you asked for it.
+
+          If we need to confirm any details, you’ll get a call from the National Shielding Service. The number that will show on your phone is 0333 3050466.
+
+          # Getting support
+
+          If you’re eligible and you said that you do not have a way of getting basic supplies at the moment we will start sending you a weekly box of basic supplies.
+
+          If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.
+
+          This can take up to a week from when we get the confirmation from your GP or hospital clinician. Contact your local authority if you need supplies urgently and cannot rely on family, friends or neighbours: https://www.gov.uk/coronavirus-local-help
+
+          # If your support needs change
+
+          You can tell the delivery driver if you want to stop getting the weekly box of supplies.
+
+          If your support needs change, go through the questions in the service again: https://www.gov.uk/coronavirus-extremely-vulnerable.
+
+          There’s guidance on things you should do if you’re extremely vulnerable to coronavirus: https://www.gov.uk/coronavirus-extremely-vulnerable-guidance.
+
+          Thanks,
+
+          Coronavirus support team
+
+          -----
+
+          Do not reply to this email - it’s an automatic message from an unmonitored account.
   coronavirus_form:
     submit_and_next: "Continue"
     errors:
@@ -267,23 +309,43 @@ en:
       telephone_number_format: "Enter a telephone number, like 020 7946 0000, 07700900000 or +44 0808 157 0192"
     confirmation:
       title: Registration complete
-      description: |
-        <p class="govuk-body">You do not need to do anything else if you’ve had a letter from the NHS or from your doctor confirming that they’ve identified you as being clinically extremely vulnerable.</p>
-        <h2 class="govuk-heading-m">If you haven’t had a letter from the NHS or from your doctor</h2>
-        <p class="govuk-body">Contact your GP or hospital clinician as soon as possible so they can confirm to us you’re classed as clinically extremely vulnerable. You may not get the support you need if you do not contact them.</p>
-        <h2 class="govuk-heading-m">What happens next</h2>
-        <p class="govuk-body">We’ll check your details to make sure you’re eligible for support. You’ll only get support if you asked for it.</p>
-        <p class="govuk-body">If we need to confirm any details, you’ll get a call from the National Shielding Service. The number that will show on your phone is 0333 3050466.</p>
-        <h2 class="govuk-heading-m">Getting support</h2>
-        <p class="govuk-body">If you’re eligible and you said that you do not have a way of getting basic supplies at the moment we will start sending you a weekly box of basic supplies.</p>
-        <p class="govuk-body">We’ll also share your details with participating supermarkets to help them prioritise you for their delivery services.</p>
-        <p class="govuk-body">If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.</p>
-        <p class="govuk-body">This can take up to a week - or longer if you haven’t had the letter from your NHS or from your doctor. <a class="govuk-link" href="https://www.gov.uk/coronavirus-local-help">Contact your local authority</a> if you need supplies urgently and cannot rely on family, friends or neighbours.</p>
-        <h2 class="govuk-heading-m">If your support needs change</h2>
-        <p class="govuk-body">You can tell the delivery driver if you want to stop getting the weekly box of supplies.</p>
-        <p class="govuk-body">If your support needs change, <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">go through the questions in this service again</a>.</p>
-        <p class="govuk-body">There’s guidance on <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">things you should do if you’re extremely vulnerable to coronavirus</a>.
-        <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
+      no_further_action:
+        description: |
+          <h2 class="govuk-heading-m">What happens next</h2>
+
+          <p class="govuk-body">We’ll check your details to make sure you’re eligible for support. You’ll only get support if you asked for it.</p>
+          <p class="govuk-body">If we need to confirm any details, you’ll get a call from the National Shielding Service. The number that will show on your phone is 0333 3050466.</p>
+          <h2 class="govuk-heading-m">Getting support</h2>
+          <p class="govuk-body">If you’re eligible and you said that you do not have a way of getting basic supplies at the moment we will start sending you a weekly box of basic supplies.</p>
+          <p class="govuk-body">We’ll also share your details with participating supermarkets to help them prioritise you for their delivery services.</p>
+          <p class="govuk-body">If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.</p>
+          <p class="govuk-body">This can take up to a week. <a class="govuk-link" href="https://www.gov.uk/coronavirus-local-help">Contact your local authority</a> if you need supplies urgently and cannot rely on family, friends or neighbours.</p>
+          <h2 class="govuk-heading-m">If your support needs change</h2>
+          <p class="govuk-body">You can tell the delivery driver if you want to stop getting the weekly box of supplies.</p>
+          <p class="govuk-body">If your support needs change, <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">go through the questions in this service again</a>.</p>
+          <p class="govuk-body">There’s guidance on <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">things you should do if you’re extremely vulnerable to coronavirus</a>.
+          <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
+      contact_gp:
+        description: |
+          <h2 class="govuk-heading-m">Contact your GP</h2>
+
+          <p class="govuk-body">Contact your GP or hospital clinician as soon as possible so they can confirm to us you’re classed as clinically extremely vulnerable. You may not get the support you need if you do not contact them.</p>
+
+          <h2 class="govuk-heading-m">What happens next</h2>
+
+          <p class="govuk-body">When we’ve had the confirmation from your GP we’ll check your details to make sure you’re eligible for support. You’ll only get support if you asked for it.</p>
+          <p class="govuk-body">If we need to confirm any details, you’ll get a call from the National Shielding Service. The number that will show on your phone is 0333 3050466.</p>
+
+          <h2 class="govuk-heading-m">Getting support</h2>
+          <p class="govuk-body">If you’re eligible and you said that you do not have a way of getting basic supplies at the moment we will start sending you a weekly box of basic supplies.</p>
+          <p class="govuk-body">We’ll also share your details with participating supermarkets to help them prioritise you for their delivery services.</p>
+          <p class="govuk-body">If you do not already have an account with a supermarket delivery service, set one up now. If you’re concerned about not being able to get a delivery slot, you can set up accounts with more than one supermarket.</p>
+          <p class="govuk-body">This can take up to a week from when we get the confirmation from your GP or hospital clinician. <a class="govuk-link" href="https://www.gov.uk/coronavirus-local-help">Contact your local authority</a> if you need supplies urgently and cannot rely on family, friends or neighbours.</p>
+          <h2 class="govuk-heading-m">If your support needs change</h2>
+          <p class="govuk-body">You can tell the delivery driver if you want to stop getting the weekly box of supplies.</p>
+          <p class="govuk-body">If your support needs change, <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">go through the questions in this service again</a>.</p>
+          <p class="govuk-body">There’s guidance on <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">things you should do if you’re extremely vulnerable to coronavirus</a>.
+          <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
     questions:
       # These should be in the order that they’re asked
       live_in_england:
@@ -295,20 +357,19 @@ en:
             label: "No"
         custom_select_error: Select yes if you live in England
       nhs_letter:
-        title: Have you recently had a letter from the NHS about your situation as someone who’s extremely vulnerable to coronavirus?
-        hint: The title of the letter is ‘Important advice to keep you safe from coronavirus’.
+        title: Have you had a letter from the NHS or been told by your doctor to ’shield’ because you’re clinically extremely vulnerable to coronavirus?
+        hint: ’Shielding’ means not leaving your home and avoiding contact with other members of your household as much as possible.
         options:
           option_yes:
-            label: "Yes"
+            label: "Yes, I’ve been told to shield"
           option_no:
-            label: "No"
+            label: "No, I haven’t been told to shield"
           not_sure:
             label: "Not sure"
         custom_select_error: Select if you received the letter from the NHS
       medical_conditions:
-        title: Do you have one of the listed medical conditions, or have you been told to ‘shield’ by your GP or hospital clinician?
+        title: Do you have one of the listed medical conditions?
         description: |
-          <p class="govuk-body">‘Shielding’ means not leaving your home and minimising contact with other members of your household.</p>
           <p class="govuk-body">You have one of the listed medical conditions if you:</p>
           <ul class="govuk-list govuk-list--bullet app-list--spaced">
             <li>have had a solid organ transplant</li>
@@ -324,12 +385,10 @@ en:
             <li>are pregnant, and have a significant congenital or acquired heart disease</li>
           </ul>
         options:
-          option_yes_medical:
+          option_yes:
             label: "Yes, I have one of the listed medical conditions"
-          option_yes_gp:
-            label: "Yes, my GP or hospital clinician has told me to ‘shield’"
           option_no:
-            label: "No, I do not have one of the listed medical conditions - and I have not been told to ‘shield’"
+            label: "No, I do not have one of the listed medical conditions"
         custom_select_error: Select yes if you have one of the medical conditions on the list
       name:
         title: What is your name?

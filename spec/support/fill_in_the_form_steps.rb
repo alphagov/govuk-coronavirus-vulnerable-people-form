@@ -29,10 +29,18 @@ module FillInTheFormSteps
     end
   end
 
+  def and_has_not_recently_received_an_nhs_letter
+    expect(page.body).to have_content(I18n.t("coronavirus_form.questions.nhs_letter.title"))
+    within find(".govuk-main-wrapper") do
+      choose I18n.t("coronavirus_form.questions.nhs_letter.options.option_no.label")
+      click_on I18n.t("coronavirus_form.submit_and_next")
+    end
+  end
+
   def who_has_a_listed_medical_condition
     expect(page.body).to have_content(I18n.t("coronavirus_form.questions.medical_conditions.title"))
     within find(".govuk-main-wrapper") do
-      choose I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes_medical.label")
+      choose I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes.label")
       click_on I18n.t("coronavirus_form.submit_and_next")
     end
   end

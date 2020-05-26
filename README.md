@@ -51,18 +51,31 @@ to process the email queue.
 Sidekiq will start automatically when you run `foreman start`, but you can
 also run it alone with `bundle exec sidekiq`.
 
-#### Sending emails or SMSs locally
+### Sending emails or SMSs locally
 
-You'll need to pass a GOV.UK Notify API key as an environment variable
-`NOTIFY_API_KEY`, and change the delivery method in [development.rb][]:
+Change the delivery method in [development.rb][]:
 
 ```ruby
 config.action_mailer.delivery_method = :notify_email
 ```
 
-You'll also need to set a `GOVUK_NOTIFY_EMAIL_TEMPLATE_ID` and
-`GOVUK_NOTIFY_SMS_TEMPLATE_ID`, which might involve creating a
-template in Notify if your Notify service doesn't have one.
+You'll then need to pass a GOV.UK Notify API key as an environment variable
+`NOTIFY_API_KEY` as well the `GOVUK_NOTIFY_EMAIL_TEMPLATE_ID` and
+`GOVUK_NOTIFY_SMS_TEMPLATE_ID` template IDs.
+
+You can create an api key here: https://www.notifications.service.gov.uk/services/6ba785b8-71e0-4d0e-9f41-b7aa8876e5a9/api/keys
+
+Make sure to pick either "Team and whitelist" or "Testing". The api key can be revoked later.
+
+If you're testing SMS as well, make sure you have a mobile number associated with your Notify profile.
+
+#### Running the app
+
+```bash
+GOVUK_NOTIFY_EMAIL_TEMPLATE_ID=<email_template_id_from_notify> GOVUK_NOTIFY_SMS_TEMPLATE_ID=<sms_template_id_from_notify> NOTIFY_API_KEY=<your_api_key> foreman start
+```
+
+If your Notify service doesn't have a template you'll need to create a template in Notify.
 
 The template should have a Message of `((body))` only.
 

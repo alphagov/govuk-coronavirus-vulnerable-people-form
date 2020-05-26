@@ -3,4 +3,8 @@
   title: t("coronavirus_form.confirmation.title")
 } %>
 
-<%= sanitize(t("coronavirus_form.confirmation.description")) %>
+<% if @contact_gp == "true" %>
+  <%= sanitize(t('coronavirus_form.confirmation.contact_gp.description')) %>
+<% else %>
+  <%= sanitize(t('coronavirus_form.confirmation.no_further_action.description')) %>
+<% end %>

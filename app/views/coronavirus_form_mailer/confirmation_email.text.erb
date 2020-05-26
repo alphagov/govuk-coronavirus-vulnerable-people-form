@@ -1,3 +1,7 @@
 Dear <%= @first_name %> <%= @last_name %>,
 
-<%= t("emails.confirmation.body_text", reference_number: @reference_number) %>
+<% if @contact_gp %>
+  <%= t("emails.confirmation.contact_gp.body_text", reference_number: @reference_number) %>
+<% else %>
+  <%= t("emails.confirmation.no_further_action.body_text", reference_number: @reference_number) %>
+<% end %>

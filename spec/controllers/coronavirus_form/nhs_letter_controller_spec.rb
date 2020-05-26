@@ -41,7 +41,20 @@ RSpec.describe CoronavirusForm::NhsLetterController, type: :controller do
       expect(response).to render_template(current_template)
     end
 
-    it "redirects to next step for a permitted response" do
+    it "redirects to what is your name question if user answers yes" do
+      selected = I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
+      post :submit, params: { nhs_letter: selected }
+      expect(response).to redirect_to(name_path)
+    end
+
+    it "redirects to medical conditions question if user answers no" do
+      selected = I18n.t("coronavirus_form.questions.nhs_letter.options.option_no.label")
+      post :submit, params: { nhs_letter: selected }
+      expect(response).to redirect_to(medical_conditions_path)
+    end
+
+    it "redirects to medical conditions question if user answers not sure" do
+      selected = I18n.t("coronavirus_form.questions.nhs_letter.options.not_sure.label")
       post :submit, params: { nhs_letter: selected }
       expect(response).to redirect_to(medical_conditions_path)
     end
@@ -51,6 +64,17 @@ RSpec.describe CoronavirusForm::NhsLetterController, type: :controller do
       post :submit, params: { nhs_letter: I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label") }
 
       expect(response).to redirect_to(check_your_answers_path)
+    end
+
+    it "clears the medical_conditions if the user changes their answer to Yes" do
+      session[:medical_conditions] = I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes.label")
+
+      post :submit,
+           params: {
+             nhs_letter: I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label"),
+           }
+
+      expect(session[:medical_conditions]).to be_nil
     end
   end
 end
