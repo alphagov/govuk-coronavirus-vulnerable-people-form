@@ -274,6 +274,11 @@ RSpec.describe SchemaHelper, type: :helper do
         data = valid_data.merge(dietary_requirements: "Foo")
         expect(validate_against_form_response_schema(data).first).to include("dietary_requirements")
       end
+
+      it "does not return a list of errors when dietary_requirements has a nil value" do
+        data = valid_data.merge(dietary_requirements: nil)
+        expect(validate_against_form_response_schema(data)).to be_empty
+      end
     end
 
     describe "carry_supplies" do
@@ -285,6 +290,11 @@ RSpec.describe SchemaHelper, type: :helper do
       it "returns a list of errors when carry_supplies has an unexpected value" do
         data = valid_data.merge(carry_supplies: "Foo")
         expect(validate_against_form_response_schema(data).first).to include("carry_supplies")
+      end
+
+      it "does not return a list of errors when carry_supplies has a nil value" do
+        data = valid_data.merge(carry_supplies: nil)
+        expect(validate_against_form_response_schema(data)).to be_empty
       end
     end
 
