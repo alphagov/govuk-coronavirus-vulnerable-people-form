@@ -5,6 +5,12 @@ resource_types:
     source:
       repository: nulldriver/cf-cli-resource
 
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: cfcommunity/slack-notification-resource
+      tag: latest
+
 resources:
   - name: git-master
     type: git
@@ -34,6 +40,11 @@ resources:
     source:
       repository: ((readonly_private_ecr_repo_url))
       tag: govuk-coronavirus-vulnerable-people-tests-image
+
+  - name: govuk-coronavirus-services-tech-slack
+    type: slack-notification
+    source:
+      url: https://hooks.slack.com/((slack_webhook_url))
 
 jobs:
   - name: update-pipeline
@@ -111,6 +122,17 @@ jobs:
           GOVUK_NOTIFY_EMAIL_TEMPLATE_ID: d4fddfce-1dfd-4ff5-ab42-156e6ba3e76b
           GOVUK_NOTIFY_SMS_TEMPLATE_ID: a2166a39-91f5-4370-bbbf-c59276975d49
           NOTIFY_API_KEY: ((notify-api-key-stg))
+        on_failure:
+          put: govuk-coronavirus-services-tech-slack
+          params:
+            channel: '#govuk-corona-services-tech'
+            username: 'Concourse (Shielded Vulnerable Service)'
+            icon_emoji: ':concourse:'
+            silent: true
+            text: |
+              :kaboom:
+              Deploy to staging for the Shielded Vulnerable service has failed
+              Failed build: http://cd.gds-reliability.engineering/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
 
   - name: smoke-test-staging
     plan:
@@ -128,6 +150,17 @@ jobs:
         file: git-master/concourse/tasks/run-smoke-tests.yml
         params:
           TEST_URL: 'https://gds:((basic-auth-password))@govuk-coronavirus-vulnerable-people-form-stg.cloudapps.digital'
+        on_failure:
+          put: govuk-coronavirus-services-tech-slack
+          params:
+            channel: '#govuk-corona-services-tech'
+            username: 'Concourse (Shielded Vulnerable Service)'
+            icon_emoji: ':concourse:'
+            silent: true
+            text: |
+              :kaboom:
+              Staging smoke tests for the Shielded Vulnerable service have failed
+              Failed build: http://cd.gds-reliability.engineering/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
 
   - name: deploy-to-prod
     serial: true
@@ -153,6 +186,17 @@ jobs:
           GOVUK_NOTIFY_EMAIL_TEMPLATE_ID: eb9f351c-f314-47e4-ba7b-656137521f74
           GOVUK_NOTIFY_SMS_TEMPLATE_ID: 0480c4b5-4e08-4598-b2c1-bbc99990afc2
           NOTIFY_API_KEY: ((notify-api-key-prod))
+        on_failure:
+          put: govuk-coronavirus-services-tech-slack
+          params:
+            channel: '#govuk-corona-services-tech'
+            username: 'Concourse (Shielded Vulnerable Service)'
+            icon_emoji: ':concourse:'
+            silent: true
+            text: |
+              :kaboom:
+              Deploy to production for the Shielded Vulnerable service has failed
+              Failed build: http://cd.gds-reliability.engineering/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
 
   - name: smoke-test-prod
     serial: true
@@ -172,3 +216,14 @@ jobs:
         file: git-master/concourse/tasks/run-smoke-tests.yml
         params:
           TEST_URL: 'https://coronavirus-vulnerable-people.service.gov.uk'
+        on_failure:
+          put: govuk-coronavirus-services-tech-slack
+          params:
+            channel: '#govuk-corona-services-tech'
+            username: 'Concourse (Shielded Vulnerable Service)'
+            icon_emoji: ':concourse:'
+            silent: true
+            text: |
+              :kaboom:
+              Production smoke tests for the Shielded Vulnerable service have failed
+              Failed build: http://cd.gds-reliability.engineering/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
