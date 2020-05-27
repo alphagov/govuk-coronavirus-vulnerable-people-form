@@ -94,7 +94,7 @@ private
   end
 
   def sanitised_session
-    session_with_indifferent_access.except(:session_id, :_csrf_token, :current_path, :previous_path, :check_answers_seen)
+    session_with_indifferent_access.except(:_csrf_token, :current_path, :previous_path, :check_answers_seen)
   end
 
   def contact_gp?
