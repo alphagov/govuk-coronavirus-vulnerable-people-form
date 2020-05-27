@@ -10,8 +10,15 @@ class CoronavirusForm::SupportAddressController < ApplicationController
   def show
     session[:support_address] ||= {}
     @form_responses = session.to_hash.with_indifferent_access
-    respond_to do |format|
-      format.html { render controller_path }
+
+    if session[:flash].present?
+      flash.now[:validation] = [{ text: session[:flash], field: "" }]
+      session.delete(:flash)
+      render controller_path, status: :ok
+    else
+      respond_to do |format|
+        format.html { render controller_path }
+      end
     end
   end
 

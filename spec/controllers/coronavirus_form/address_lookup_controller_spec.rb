@@ -44,6 +44,21 @@ RSpec.describe CoronavirusForm::AddressLookupController, type: :controller do
         end
       end
     end
+
+    context "API key is invalid" do
+      it "calls GovukError and redirects to support_address_path" do
+        VCR.use_cassette "/postcode/invalid_api_key" do
+          ClimateControl.modify ORDNANCE_SURVEY_PLACES_API_KEY: "1234" do
+            session[:live_in_england] = I18n.t("coronavirus_form.questions.live_in_england.options.option_yes.label")
+            session[:postcode] = address_data["valid_postcode"]["postcode"]
+
+            expect(GovukError).to receive(:notify)
+            get :show
+            expect(response).to redirect_to(support_address_path)
+          end
+        end
+      end
+    end
   end
 
   describe "POST submit" do

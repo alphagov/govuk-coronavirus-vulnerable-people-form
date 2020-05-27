@@ -22,6 +22,7 @@ module AddressHelper
     response = Faraday.get(url)
     details = JSON.parse(response.body)
 
+    raise AddressAuthError if response.status == 401
     raise AddressLookupError, response.status unless response.status == 200
 
     details

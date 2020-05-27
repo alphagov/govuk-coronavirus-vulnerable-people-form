@@ -4,6 +4,10 @@ class CoronavirusForm::AddressLookupController < ApplicationController
   def show
     @addresses = helpers.postcode_lookup(session[:postcode])
     render controller_path, status: :ok
+  rescue AddressAuthError => e
+    session[:flash] = e.message
+    GovukError.notify("API Key is invalid!")
+    redirect_to support_address_path
   rescue AddressLookupError, AddressNotFoundError => e
     session[:flash] = e.message
     redirect_to postcode_lookup_url

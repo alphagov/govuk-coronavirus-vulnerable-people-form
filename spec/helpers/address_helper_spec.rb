@@ -39,7 +39,7 @@ RSpec.describe AddressHelper, type: :helper do
         ClimateControl.modify ORDNANCE_SURVEY_PLACES_API_KEY: "1234" do
           expect {
             helper.postcode_lookup(address_data["valid_postcode"]["postcode"])
-          }.to raise_error(AddressLookupError)
+          }.to raise_error(AddressAuthError)
         end
       end
     end
