@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class CoronavirusForm::CheckContactDetailsController < ApplicationController
+  def show
+    @form_responses = session.to_hash.with_indifferent_access
+    @email_suggestion = email_address_suggestion(@form_responses[:contact_details].dig(:email))
+    super
+  end
 
   def submit
     @form_responses = {

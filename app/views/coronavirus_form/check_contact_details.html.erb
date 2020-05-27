@@ -10,7 +10,7 @@
   <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
 <% end %>
 
-<%= form_tag({},
+<%= form_tag(controller: "coronavirus_form/check_contact_details", action: "submit",
   "data-module": "track-coronavirus-form-vulnerable-people-check_contact_details",
   "data-question-key": "check_contact_details",
   "novalidate": "true"
@@ -21,6 +21,10 @@
   margin_top: 0,
   margin_bottom: 3,
 } %>
+
+<% if @email_suggestion %>
+  <%= sanitize(t("coronavirus_form.questions.check_contact_details.hint", field: @email_suggestion)) %>
+<% end %>
 
 <%= render "govuk_publishing_components/components/input", {
   id: "email",

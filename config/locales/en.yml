@@ -434,6 +434,8 @@ en:
           label: "Email address"
       check_contact_details:
         title: "Check this is correct"
+        hint: |
+          <p class="govuk-body">Did you mean <strong>%{field}?</strong></p>
         email:
           label: "Email address"
         submit_and_next: "These details are correct"
