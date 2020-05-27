@@ -145,9 +145,6 @@
     },
     "reference_id": {
       "type": "string"
-    },
-    "session_id": {
-      "type": "string"
     }
   },
   "definitions": {
