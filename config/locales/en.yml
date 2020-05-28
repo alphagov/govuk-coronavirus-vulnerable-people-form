@@ -409,7 +409,7 @@ en:
       date_of_birth:
         title: What is your date of birth?
         hint: For example, 31 3 1980
-      postcode_entry:
+      postcode_lookup:
         title: Enter your postcode
         postcode_entered:
           label: My address or postcode was not found

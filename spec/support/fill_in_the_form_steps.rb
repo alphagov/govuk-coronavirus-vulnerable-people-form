@@ -76,7 +76,7 @@ module FillInTheFormSteps
   def and_has_given_their_postcode
     VCR.turn_on!
     VCR.use_cassette "/postcode/valid_postcode" do
-      expect(page.body).to have_content(I18n.t("coronavirus_form.questions.postcode_entry.title"))
+      expect(page.body).to have_content(I18n.t("coronavirus_form.questions.postcode_lookup.title"))
       within find(".govuk-main-wrapper") do
         fill_in "postcode", with: "SW1A2AA"
         click_on I18n.t("coronavirus_form.submit_and_next")

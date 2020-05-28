@@ -14,13 +14,9 @@ class CoronavirusForm::AddressLookupController < ApplicationController
   end
 
   def submit
-    if session[:check_answers_seen]
-      redirect_to check_your_answers_url
-    else
-      address = helpers.uprn_lookup(params[:uprn]).dig("results", 0, "LPI")
-      session[:support_address] = helpers.convert_address(address)
-      redirect_to support_address_path
-    end
+    address = helpers.uprn_lookup(params[:uprn]).dig("results", 0, "LPI")
+    session[:support_address] = helpers.convert_address(address)
+    redirect_to support_address_path
   end
 
 private

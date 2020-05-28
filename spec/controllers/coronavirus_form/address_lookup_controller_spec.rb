@@ -71,16 +71,5 @@ RSpec.describe CoronavirusForm::AddressLookupController, type: :controller do
         expect(response).to redirect_to(support_address_path)
       end
     end
-
-    context "check answer page already visited" do
-      it "redirect to the check answers page" do
-        session[:live_in_england] = I18n.t("coronavirus_form.questions.live_in_england.options.option_yes.label")
-        session[:check_answers_seen] = true
-
-        post :submit
-
-        expect(response).to redirect_to(check_your_answers_path)
-      end
-    end
   end
 end

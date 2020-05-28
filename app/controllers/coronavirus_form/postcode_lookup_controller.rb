@@ -13,10 +13,8 @@ class CoronavirusForm::PostcodeLookupController < ApplicationController
   end
 
   def submit
-    redirect_to check_your_answers_url if session[:check_answers_seen]
-
     if params[:postcode].blank?
-      flash.now[:validation] = [{ text: I18n.t("coronavirus_form.questions.postcode_entry.title"), field: "postcode" }]
+      flash.now[:validation] = [{ text: I18n.t("coronavirus_form.questions.postcode_lookup.title"), field: "postcode" }]
       render controller_path, status: :unprocessable_entity
     else
       errors = helpers.validate_postcode("postcode", params[:postcode])
