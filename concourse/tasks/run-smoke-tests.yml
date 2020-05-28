@@ -12,6 +12,10 @@ params:
 inputs:
   - name: git-master
 run:
-  path: bundle
+  path: sh
   dir: git-master
-  args: ['exec', 'rspec', 'spec/features']
+  args:
+    - '-c'
+    - |
+      bundle
+      bundle exec rspec spec/features
