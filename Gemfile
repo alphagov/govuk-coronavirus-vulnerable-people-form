@@ -54,3 +54,5 @@ group :development, :test do
   gem "rubocop-govuk"
   gem "scss_lint-govuk"
 end
+
+gem "aws-sdk-s3", "~> 1.64"

@@ -23,6 +23,8 @@ params:
   BASIC_AUTH_PASSWORD:
   AWS_ACCESS_KEY_ID:
   AWS_SECRET_ACCESS_KEY:
+  AWS_ERROR_PAGES_BUCKET_NAME:
+  AWS_REGION: eu-west-2
   METRICS_USERNAME: ((metrics-username))
   METRICS_PASSWORD: ((metrics-password))
   GOVUK_NOTIFY_EMAIL_TEMPLATE_ID:
@@ -65,6 +67,8 @@ run:
       cf set-env govuk-coronavirus-vulnerable-people-form GOVUK_NOTIFY_SMS_TEMPLATE_ID "$GOVUK_NOTIFY_SMS_TEMPLATE_ID"
       cf set-env govuk-coronavirus-vulnerable-people-form NOTIFY_API_KEY "$NOTIFY_API_KEY"
       cf set-env govuk-coronavirus-vulnerable-people-form PAAS_ENV "$CF_SPACE"
+      cf set-env govuk-coronavirus-vulnerable-people-form AWS_ERROR_PAGES_BUCKET_NAME "$AWS_ERROR_PAGES_BUCKET_NAME"
+      cf set-env govuk-coronavirus-vulnerable-people-form AWS_REGION "$AWS_REGION"
 
       cf set-env govuk-coronavirus-vulnerable-people-form ORDNANCE_SURVEY_PLACES_API_KEY "$ORDNANCE_SURVEY_PLACES_API_KEY"
 
