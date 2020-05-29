@@ -32,7 +32,6 @@ module FormResponseHelper
       basic_care_needs: I18n.t("coronavirus_form.questions.basic_care_needs.options").map { |_, item| item[:label] }.sample,
       dietary_requirements: I18n.t("coronavirus_form.questions.dietary_requirements.options").map { |_, item| item[:label] }.sample,
       carry_supplies: I18n.t("coronavirus_form.questions.carry_supplies.options").map { |_, item| item[:label] }.sample,
-      check_answers_seen: true,
     }
   end
 end

@@ -294,34 +294,26 @@ RSpec.describe SchemaHelper, type: :helper do
         expect(validate_against_form_response_schema(data)).to be_empty
       end
 
-      it "allows check_answers_seen to be stored" do
-        data = valid_data.merge(check_answers_seen: true)
-        expect(validate_against_form_response_schema(data)).to be_empty
-      end
-
       it "returns a list of errors when check_answers_seen has an invalid value" do
         data = valid_data.merge(check_answers_seen: "Foo")
         expect(validate_against_form_response_schema(data).first).to include("check_answers_seen")
       end
 
-      it "allows a _csrf_token to be stored" do
-        data = valid_data.merge(_csrf_token: "abc")
-        expect(validate_against_form_response_schema(data)).to be_empty
-      end
-
-      it "allows the current_path to be stored" do
-        data = valid_data.merge(current_path: "/foo")
-        expect(validate_against_form_response_schema(data)).to be_empty
-      end
-
-      it "allows the previous_path to be stored" do
-        data = valid_data.merge(previous_path: "/foo")
-        expect(validate_against_form_response_schema(data)).to be_empty
-      end
-
-      it "allows the session_id to be stored" do
-        data = valid_data.merge(session_id: SecureRandom.uuid)
-        expect(validate_against_form_response_schema(data)).to be_empty
+      it "returns errors for unnecessary session keys" do
+        data = valid_data.merge(
+          check_answers_seen: true,
+          _csrf_token: "abc",
+          current_path: "/foo",
+          previous_path: "/foo",
+          session_id: SecureRandom.uuid,
+        )
+        expect(validate_against_form_response_schema(data).first).to include(
+          "check_answers_seen",
+          "_csrf_token",
+          "current_path",
+          "previous_path",
+          "session_id",
+        )
       end
     end
   end

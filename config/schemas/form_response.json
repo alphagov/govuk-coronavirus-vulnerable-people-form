@@ -143,22 +143,7 @@
     "carry_supplies": {
       "$ref": "#/definitions/yes_no"
     },
-    "current_path": {
-      "type": "string"
-    },
-    "previous_path": {
-      "type": "string"
-    },
-    "check_answers_seen": {
-      "type": "boolean"
-    },
     "reference_id": {
-      "type": "string"
-    },
-    "_csrf_token": {
-      "type": "string"
-    },
-    "session_id": {
       "type": "string"
     }
   },
