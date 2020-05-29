@@ -19,7 +19,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Thu, 21 May 2020 15:08:24 GMT
+      - Fri, 29 May 2020 11:46:14 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
@@ -36,5 +36,5 @@ http_interactions:
           }
         }
     http_version: null
-  recorded_at: Thu, 21 May 2020 15:08:24 GMT
+  recorded_at: Fri, 29 May 2020 11:46:14 GMT
 recorded_with: VCR 5.1.0

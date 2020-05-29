@@ -86,16 +86,12 @@ module FillInTheFormSteps
   end
 
   def and_has_selected_their_address
-    VCR.turn_on!
-    VCR.use_cassette "/uprn/valid_uprn" do
-      expect(page.body).to have_content(I18n.t("coronavirus_form.questions.address_lookup.title"))
-      within find(".govuk-main-wrapper") do
-        address = "10, DOWNING STREET, LONDON, CITY OF WESTMINSTER, SW1A 2AA"
-        select(address, from: :uprn)
-        click_on I18n.t("coronavirus_form.submit_and_next")
-      end
+    expect(page.body).to have_content(I18n.t("coronavirus_form.questions.address_lookup.title"))
+    within find(".govuk-main-wrapper") do
+      address = "10, DOWNING STREET, LONDON, CITY OF WESTMINSTER, SW1A 2AA"
+      select(address, from: :address)
+      click_on I18n.t("coronavirus_form.submit_and_next")
     end
-    VCR.turn_off!
   end
 
   def and_has_submited_their_address

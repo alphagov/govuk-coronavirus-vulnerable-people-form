@@ -14,9 +14,13 @@ class CoronavirusForm::AddressLookupController < ApplicationController
   end
 
   def submit
-    address = helpers.uprn_lookup(params[:uprn]).dig("results", 0, "LPI")
+    raise AddressNotProvidedError if params[:address].blank?
+
+    address = JSON.parse(params[:address]).to_h
     session[:support_address] = helpers.convert_address(address)
     redirect_to support_address_path
+  rescue JSON::ParserError, AddressNotProvidedError
+    render controller_path, status: :unprocessable_entity
   end
 
 private

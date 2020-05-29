@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.ordnancesurvey.co.uk/places/v1/addresses/postcode?dataset=LPI&key=1234&postcode=SW1A2AA
+    uri: https://api.ordnancesurvey.co.uk/places/v1/addresses/postcode?dataset=LPI&key=<ORDNANCE_SURVEY_PLACES_API_KEY>&postcode=SW1A2AA
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Thu, 21 May 2020 15:09:57 GMT
+      - Fri, 29 May 2020 11:46:14 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -30,5 +30,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"fault":{"faultstring":"Invalid ApiKey","detail":{"errorcode":"oauth.v2.InvalidApiKey"}}}'
     http_version: null
-  recorded_at: Thu, 21 May 2020 15:09:57 GMT
+  recorded_at: Fri, 29 May 2020 11:46:14 GMT
 recorded_with: VCR 5.1.0

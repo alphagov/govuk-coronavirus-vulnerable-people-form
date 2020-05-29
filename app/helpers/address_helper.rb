@@ -14,18 +14,21 @@ module AddressHelper
   LINE_1_AND_POSTCODE = %i[building_and_street_line_1 postcode].freeze
   LINE_1_2_AND_POSTCODE = %i[building_and_street_line_1 building_and_street_line_2 postcode].freeze
 
+  API_HOSTNAME = "https://api.ordnancesurvey.co.uk"
+
   def api_url_builder(resource_name, resource)
-    "https://api.ordnancesurvey.co.uk/places/v1/addresses/#{resource_name}?dataset=LPI&#{resource_name}=#{resource}&key=#{ENV['ORDNANCE_SURVEY_PLACES_API_KEY']}"
+    "#{API_HOSTNAME}/places/v1/addresses/#{resource_name}?dataset=LPI&#{resource_name}=#{resource}&key=#{Rails.application.secrets.os_api_key}"
   end
 
   def os_api_caller(url)
     response = Faraday.get(url)
-    details = JSON.parse(response.body)
 
     raise AddressAuthError if response.status == 401
     raise AddressLookupError, response.status unless response.status == 200
 
-    details
+    JSON.parse(response.body)
+  rescue Faraday::Error
+    raise AddressLookupError, 502
   end
 
   def postcode_lookup(postcode)
@@ -36,13 +39,9 @@ module AddressHelper
     response["results"].map do |address|
       {
         text: address.dig("LPI", "ADDRESS"),
-        value: address.dig("LPI", "UPRN"),
+        value: JSON.generate(address.dig("LPI").slice(*WANTED_VALUES)),
       }
     end
-  end
-
-  def uprn_lookup(uprn)
-    os_api_caller(api_url_builder("uprn", uprn))
   end
 
   def convert_address(address)

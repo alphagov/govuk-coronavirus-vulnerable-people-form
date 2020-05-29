@@ -19,7 +19,7 @@ RSpec.describe AddressHelper, type: :helper do
         expect(response.count).to be(2)
         expect(response.first).to eq(
           {
-            value: address_data["valid_postcode"]["uprn"].to_s,
+            value: address_data["valid_postcode"]["value"],
             text: "10, DOWNING STREET, LONDON, CITY OF WESTMINSTER, SW1A 2AA",
           },
         )
@@ -34,9 +34,12 @@ RSpec.describe AddressHelper, type: :helper do
       end
     end
 
-    it "returns 401 for an invalid api key" do
-      VCR.use_cassette "postcode/invalid_api_key" do
-        ClimateControl.modify ORDNANCE_SURVEY_PLACES_API_KEY: "1234" do
+    context "with an invalid api key" do
+      before do
+        allow(Rails.application.secrets).to receive(:os_api_key).and_return("1234")
+      end
+      it "returns 401 for an invalid api key" do
+        VCR.use_cassette "postcode/invalid_api_key" do
           expect {
             helper.postcode_lookup(address_data["valid_postcode"]["postcode"])
           }.to raise_error(AddressAuthError)
@@ -49,24 +52,6 @@ RSpec.describe AddressHelper, type: :helper do
         expect {
           helper.postcode_lookup(address_data["no_results"]["postcode"])
         }.to raise_error(AddressNotFoundError)
-      end
-    end
-  end
-
-  describe "#uprn_lookup" do
-    before do
-      VCR.turn_on!
-    end
-
-    after do
-      VCR.turn_off!
-    end
-
-    it "returns a single address for a valid uprn" do
-      VCR.use_cassette "uprn/valid_uprn" do
-        response = helper.uprn_lookup(address_data["valid_postcode"]["uprn"])
-
-        expect(response["header"]["totalresults"]).to eq(1)
       end
     end
   end
@@ -114,9 +99,6 @@ RSpec.describe AddressHelper, type: :helper do
       end
     end
   end
-
-  # describe "#address_line_builder" do
-  # end
 
   describe "#make_address_hash" do
     it "creates an address hash containing only the required fields" do

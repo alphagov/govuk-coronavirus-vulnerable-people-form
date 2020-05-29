@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 21 May 2020 15:09:58 GMT
+      - Fri, 29 May 2020 11:46:32 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
@@ -27,7 +27,7 @@ http_interactions:
       Connection:
       - keep-alive
       Tx-Id:
-      - 1590073798261:261
+      - 1590752792632:632
       Status:
       - success
     body:
@@ -48,5 +48,5 @@ http_interactions:
           }
         }
     http_version: null
-  recorded_at: Thu, 21 May 2020 15:09:58 GMT
+  recorded_at: Fri, 29 May 2020 11:46:32 GMT
 recorded_with: VCR 5.1.0

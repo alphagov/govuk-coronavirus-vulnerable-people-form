@@ -1,7 +1,7 @@
 ---
   valid_postcode:
     postcode: SW1A2AA
-    uprn: 100023336956
+    value: '{"UPRN":"100023336956","PAO_START_NUMBER":"10","STREET_DESCRIPTION":"DOWNING STREET","TOWN_NAME":"LONDON","ADMINISTRATIVE_AREA":"CITY OF WESTMINSTER","POSTCODE_LOCATOR":"SW1A 2AA"}'
   invalid_postcode:
     postcode: AA1A1AA
   no_results:
