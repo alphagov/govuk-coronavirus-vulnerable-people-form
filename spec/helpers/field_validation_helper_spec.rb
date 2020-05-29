@@ -127,4 +127,21 @@ RSpec.describe FieldValidationHelper, type: :helper do
       expect(invalid_fields).to eq [{ field: "email_address", text: I18n.t("coronavirus_form.errors.email_format") }]
     end
   end
+
+  describe "#email_address_suggestion" do
+    let(:valid_email_address) { "me@example.com" }
+    let(:invalid_email_address) { "me@example..com" }
+
+    it "does not return anything if the email address is valid" do
+      expect(email_address_suggestion(valid_email_address)).to be nil
+    end
+
+    it "returns a email address suggestion if the email address is not valid" do
+      expect(email_address_suggestion(invalid_email_address)).to eq(valid_email_address)
+    end
+
+    it "does not return anything if email address is nil" do
+      expect(email_address_suggestion(nil)).to be nil
+    end
+  end
 end

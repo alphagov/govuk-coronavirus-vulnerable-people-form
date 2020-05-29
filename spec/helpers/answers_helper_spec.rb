@@ -8,6 +8,12 @@ RSpec.describe AnswersHelper, type: :helper do
       end
     end
 
+    it "skips the check_contact_details question" do
+      expect(helper.answer_items.pluck(:field)).to_not include(
+        I18n.t("coronavirus_form.questions.check_contact_details.title"),
+      )
+    end
+
     context "nhs_number" do
       it "includes the nhs_number question if it has a value" do
         session[:nhs_number] = "1234567890"

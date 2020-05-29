@@ -17,7 +17,7 @@ module AnswersHelper
   end
 
   def skip_question?(question, answer)
-    question.in?(%w[nhs_number medical_conditions]) && answer.nil?
+    question.in?(%w[check_contact_details medical_conditions nhs_number]) && answer.nil?
   end
 
   def concat_answer(answer, question)

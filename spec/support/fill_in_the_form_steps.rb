@@ -95,6 +95,13 @@ module FillInTheFormSteps
     end
   end
 
+  def and_has_checked_their_contact_details
+    expect(page.body).to have_content(I18n.t("coronavirus_form.questions.check_contact_details.title"))
+    within find(".govuk-main-wrapper") do
+      click_on I18n.t("coronavirus_form.questions.check_contact_details.submit_and_next")
+    end
+  end
+
   def and_has_given_their_nhs_number
     expect(page.body).to have_content(I18n.t("coronavirus_form.questions.nhs_number.title"))
     within find(".govuk-main-wrapper") do
