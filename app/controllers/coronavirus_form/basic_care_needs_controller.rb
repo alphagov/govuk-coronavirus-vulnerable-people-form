@@ -18,18 +18,17 @@ class CoronavirusForm::BasicCareNeedsController < ApplicationController
       respond_to do |format|
         format.html { render controller_path, status: :unprocessable_entity }
       end
-    elsif session[:check_answers_seen]
-      session[:basic_care_needs] = @form_responses[:basic_care_needs]
-      redirect_to check_your_answers_url
     else
       session[:basic_care_needs] = @form_responses[:basic_care_needs]
-      redirect_to dietary_requirements_url
+      redirect_to check_your_answers_url
     end
   end
 
 private
 
   def previous_path
+    return carry_supplies_path if @form_responses[:essential_supplies] == I18n.t("coronavirus_form.questions.essential_supplies.options.option_no.label")
+
     essential_supplies_path
   end
 end

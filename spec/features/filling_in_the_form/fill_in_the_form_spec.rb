@@ -17,9 +17,9 @@ RSpec.feature "fill in the vulnerable people form" do
       and_has_checked_their_contact_details
       and_has_given_their_nhs_number
       and_is_not_getting_any_essential_supplies
-      and_their_basic_care_needs_are_not_being_met
       and_does_not_have_any_special_dietary_requirements
       where_there_is_no_one_available_to_carry_supplies
+      and_their_basic_care_needs_are_not_being_met
       and_has_accepted_the_terms_and_conditions
       then_they_can_be_supported
     end

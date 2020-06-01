@@ -138,10 +138,10 @@
       "$ref": "#/definitions/yes_no"
     },
     "dietary_requirements": {
-      "$ref": "#/definitions/yes_no"
+      "$ref": "#/definitions/yes_no_optional"
     },
     "carry_supplies": {
-      "$ref": "#/definitions/yes_no"
+      "$ref": "#/definitions/yes_no_optional"
     },
     "reference_id": {
       "type": "string"
@@ -151,6 +151,10 @@
     "yes_no": {
       "type": "string",
       "enum": ["Yes", "No"]
+    },
+    "yes_no_optional": {
+      "type": ["string", "null"],
+      "enum": ["Yes", "No", null]
     }
   }
 }

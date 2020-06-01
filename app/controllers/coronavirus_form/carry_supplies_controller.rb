@@ -18,9 +18,12 @@ class CoronavirusForm::CarrySuppliesController < ApplicationController
       respond_to do |format|
         format.html { render controller_path, status: :unprocessable_entity }
       end
-    else
+    elsif session[:check_answers_seen]
       session[:carry_supplies] = @form_responses[:carry_supplies]
       redirect_to check_your_answers_url
+    else
+      session[:carry_supplies] = @form_responses[:carry_supplies]
+      redirect_to basic_care_needs_url
     end
   end
 
