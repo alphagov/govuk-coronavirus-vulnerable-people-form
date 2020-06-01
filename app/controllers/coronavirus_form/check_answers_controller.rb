@@ -15,7 +15,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 
     session[:reference_id] = submission_reference
 
-    validation_errors = validate_against_form_response_schema(session.to_h)
+    validation_errors = validate_against_form_response_schema(sanitised_session)
     if validation_errors.any?
       GovukError.notify(
         FormResponseInvalidError.new,
