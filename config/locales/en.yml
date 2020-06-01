@@ -415,11 +415,15 @@ en:
         postcode_entered:
           label: My address or postcode was not found
       address_lookup:
-        title: Select your address from the list
+        title: Select your address
         hint: Select your address
+        where_you_need_support:
+          label: What is the address where you need support?
+        postcode:
+          label: Postcode
         cant_find_address:
           label: My address isn't listed or is wrong
-        copyright: Contains Royal Mail © Royal Mail copyright and database right 2020
+        copyright: Contains Royal Mail data © Royal Mail copyright and database rights 2020
       support_address:
         title: What is the address where you need support?
         hint: If you’re applying for someone else, enter the address of the person who needs support.
