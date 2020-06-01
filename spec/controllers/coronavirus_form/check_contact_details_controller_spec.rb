@@ -47,6 +47,17 @@ RSpec.describe CoronavirusForm::CheckContactDetailsController, type: :controller
       expect(session[:contact_details]).to eq existing_contact_details.merge(contact_details)
     end
 
+    context "session[:contact_details] is unset" do
+      before do
+        session[:contact_details] = nil
+      end
+
+      it "sets the new session variables successfully" do
+        post :submit, params: params
+        expect(session[:contact_details]).to eq contact_details
+      end
+    end
+
     it "redirects to next step for a permitted response" do
       post :submit, params: params
       expect(response).to redirect_to nhs_number_path

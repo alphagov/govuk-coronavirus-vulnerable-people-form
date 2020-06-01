@@ -37,6 +37,7 @@ class CoronavirusForm::CheckContactDetailsController < ApplicationController
 private
 
   def update_session_store
+    session[:contact_details] ||= {}
     session[:contact_details].merge!(@form_responses[:contact_details])
   end
 
