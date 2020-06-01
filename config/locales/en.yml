@@ -358,7 +358,7 @@ en:
         custom_select_error: Select yes if you live in England
       nhs_letter:
         title: Have you had a letter from the NHS or been told by your doctor to ’shield’ because you’re clinically extremely vulnerable to coronavirus?
-        hint: ’Shielding’ means not leaving your home and avoiding contact with other members of your household as much as possible.
+        hint: ’Shielding’ means staying at home as much as possible and keeping visits outside to a minimum.
         options:
           option_yes:
             label: "Yes, I’ve been told to shield"
