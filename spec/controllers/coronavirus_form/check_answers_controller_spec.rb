@@ -171,6 +171,8 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       it "does not send a notification to Sentry if the data is valid" do
         expect(GovukError).to_not receive(:notify)
 
+        # Add one of the scrubbed items to the session to ensure it is sanitised and doesn't trigger notify
+        session[:session_id] = "dummy_id"
         session.merge!(valid_data)
         post :submit
       end
