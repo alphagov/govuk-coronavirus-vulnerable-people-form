@@ -38,6 +38,7 @@ module CoronavirusForm
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.autoload_paths << Rails.root.join("lib")
 
     # Settings in config/environments/* take precedence over those specified
     # here.
@@ -47,6 +48,9 @@ module CoronavirusForm
 
     config.courtesy_copy_email = "coronavirus-services-smoke-tests@digital.cabinet-office.gov.uk"
     config.test_telephone_number = "01234567890"
+
+    # By default don't upload error pages to S3
+    config.upload_error_pages_to_s3 = ENV["UPLOAD_ERROR_PAGES_TO_S3"] || false
 
     config.active_job.queue_adapter = :sidekiq
 

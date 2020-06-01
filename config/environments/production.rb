@@ -124,6 +124,8 @@ Rails.application.configure do
   config.metrics_username = ENV["METRICS_USERNAME"]
   config.metrics_password = ENV["METRICS_PASSWORD"]
 
+  config.upload_error_pages_to_s3 = true unless ENV["HEROKU_APP_NAME"]
+
   # https://docs.cloud.service.gov.uk/deploying_services/redis
   # https://docs.cloud.service.gov.uk/deploying_apps.html#system-provided-environment-variables
   if ENV["VCAP_SERVICES"].present?
