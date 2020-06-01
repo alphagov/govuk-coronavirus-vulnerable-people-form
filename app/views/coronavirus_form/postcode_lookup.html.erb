@@ -16,6 +16,10 @@
   margin_bottom: 3,
 } %>
 
+<%= render "govuk_publishing_components/components/hint", {
+  text: t("coronavirus_form.questions.postcode_lookup.hint"),
+} %>
+
 <% if @api_failed %>
   <p class="govuk-body">
     <%= link_to t("coronavirus_form.questions.address_lookup.cant_find_address.label"), support_address_path, class: "govuk-link" %>

@@ -410,7 +410,8 @@ en:
         title: What is your date of birth?
         hint: For example, 31 3 1980
       postcode_lookup:
-        title: Enter your postcode
+        title: What is the postcode where you need support?
+        hint: If you’re applying for someone else, enter the postcode of the person who needs support.
         postcode_entered:
           label: My address or postcode was not found
       address_lookup:
