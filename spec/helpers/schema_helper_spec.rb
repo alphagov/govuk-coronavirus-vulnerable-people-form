@@ -159,6 +159,22 @@ RSpec.describe SchemaHelper, type: :helper do
 
         expect(validate_against_form_response_schema(data).first).to include("postcode")
       end
+
+      it "allows uprn to be unset" do
+        data = valid_data.tap do |valid_data|
+          valid_data[:support_address].delete(:uprn)
+        end
+
+        expect(validate_against_form_response_schema(data)).to be_empty
+      end
+
+      it "returns a list of errors when uprn has an invalid value" do
+        data = valid_data.tap do |valid_data|
+          valid_data[:support_address][:uprn] = "Foo"
+        end
+
+        expect(validate_against_form_response_schema(data).first).to include("uprn")
+      end
     end
 
     describe "contact_details" do

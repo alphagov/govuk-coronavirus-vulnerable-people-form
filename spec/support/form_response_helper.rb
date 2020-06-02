@@ -20,6 +20,7 @@ module FormResponseHelper
         town_city: "City",
         county: "County",
         postcode: "E1 8QS",
+        uprn: "0123456789",
       },
       contact_details: {
         phone_number_calls: "0123456789",
