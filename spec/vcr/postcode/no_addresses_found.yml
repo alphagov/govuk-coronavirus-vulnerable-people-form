@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.ordnancesurvey.co.uk/places/v1/addresses/postcode?dataset=LPI&key=<ORDNANCE_SURVEY_PLACES_API_KEY>&postcode=SW1A3AA
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 29 May 2020 11:46:32 GMT
+      Content-Type:
+      - application/json;charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Tx-Id:
+      - 1590752792632:632
+      Status:
+      - success
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "header" : {
+            "uri" : "https://api.ordnancesurvey.co.uk/places/v1/addresses/postcode?dataset=LPI&postcode=SW1A3AA",
+            "query" : "postcode=SW1A3AA",
+            "offset" : 0,
+            "totalresults" : 0,
+            "format" : "JSON",
+            "dataset" : "LPI",
+            "lr" : "EN,CY",
+            "maxresults" : 100,
+            "epoch" : "75",
+            "output_srs" : "EPSG:27700"
+          }
+        }
+    http_version: null
+  recorded_at: Fri, 29 May 2020 11:46:32 GMT
+recorded_with: VCR 5.1.0

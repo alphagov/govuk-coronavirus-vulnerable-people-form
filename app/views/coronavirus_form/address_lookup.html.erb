@@ -1,0 +1,56 @@
+<% content_for :title do %>
+  <%= t("coronavirus_form.questions.address_lookup.title") %>
+<% end %>
+
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t('coronavirus_form.questions.address_lookup.title') %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= render "govuk_publishing_components/components/title", {
+  title: t("coronavirus_form.questions.address_lookup.where_you_need_support.label"),
+  margin_top: 0,
+  margin_bottom: 6,
+} %>
+
+<%= render "govuk_publishing_components/components/heading", {
+  text: t("coronavirus_form.questions.address_lookup.postcode.label"),
+  heading_level: 2,
+  margin_top: 3,
+  margin_bottom: 2,
+} %>
+
+<p class="govuk-body">
+  <span class="govuk-!-font-weight-bold govuk-!-padding-right-3"><%= session[:postcode] %></span>
+  <%= link_to "Change", previous_path, class: "govuk-link" %>
+</p>
+
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-vulernable-people-support-address",
+  "data-question-key": "support_address",
+  "novalidate": "true"
+) do %>
+
+<% if @addresses.present? %>
+  <%= render "govuk_publishing_components/components/select", {
+    id: "address",
+    name: "address",
+    label: t('coronavirus_form.questions.address_lookup.title'),
+    heading_size: "m",
+    options: @addresses,
+  } %>
+<% end %>
+
+<p class="govuk-body">
+  <%= link_to t("coronavirus_form.questions.address_lookup.cant_find_address.label"), support_address_path, class: "govuk-link" %>
+</p>
+
+<%= render "govuk_publishing_components/components/button", text: t("coronavirus_form.submit_and_next"), margin_bottom: true %>
+<% end %>
+
+<p class="govuk-body-s govuk-!-padding-top-3">
+  <%= t("coronavirus_form.questions.address_lookup.copyright") %>
+</p>

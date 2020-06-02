@@ -291,6 +291,11 @@ en:
           Do not reply to this email - it’s an automatic message from an unmonitored account.
   coronavirus_form:
     submit_and_next: "Continue"
+    api_errors:
+      400: "Could not find postcode"
+      401: "An error has occurred, please enter your address manually"
+      error: "There has been an unexpected error"
+      no_addresses_found: "No addresses found for %{postcode}"
     errors:
       page_title_prefix: 'Error: '
       heading: "There is a problem"
@@ -404,6 +409,21 @@ en:
       date_of_birth:
         title: What is your date of birth?
         hint: For example, 31 3 1980
+      postcode_lookup:
+        title: What is the postcode where you need support?
+        hint: If you’re applying for someone else, enter the postcode of the person who needs support.
+        postcode_entered:
+          label: My address or postcode was not found
+      address_lookup:
+        title: Select your address
+        hint: Select your address
+        where_you_need_support:
+          label: What is the address where you need support?
+        postcode:
+          label: Postcode
+        cant_find_address:
+          label: My address isn't listed or is wrong
+        copyright: Contains Royal Mail data © Royal Mail copyright and database rights 2020
       support_address:
         title: What is the address where you need support?
         hint: If you’re applying for someone else, enter the address of the person who needs support.

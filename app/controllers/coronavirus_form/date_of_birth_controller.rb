@@ -29,7 +29,7 @@ class CoronavirusForm::DateOfBirthController < ApplicationController
       redirect_to check_your_answers_url
     else
       update_session_store
-      redirect_to support_address_url
+      redirect_to postcode_lookup_url
     end
   end
 
