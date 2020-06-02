@@ -55,4 +55,4 @@ group :development, :test do
   gem "scss_lint-govuk"
 end
 
-gem "aws-sdk-s3", "~> 1.64"
+gem "aws-sdk-s3", "~> 1.67"
