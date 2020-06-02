@@ -9,9 +9,7 @@
     "support_address",
     "know_nhs_number",
     "essential_supplies",
-    "basic_care_needs",
-    "dietary_requirements",
-    "carry_supplies"
+    "basic_care_needs"
   ],
   "additionalProperties": false,
   "properties": {
