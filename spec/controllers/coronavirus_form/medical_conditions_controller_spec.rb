@@ -37,12 +37,12 @@ RSpec.describe CoronavirusForm::MedicalConditionsController, type: :controller d
 
     it "redirects to next step for a yes (have medical condition) response" do
       post :submit, params: { medical_conditions: I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes_medical.label") }
-      expect(response).to redirect_to(name_path)
+      expect(response).to redirect_to(nhs_number_path)
     end
 
     it "redirects to next step for a yes (GP or hospital told to shield) response" do
       post :submit, params: { medical_conditions: I18n.t("coronavirus_form.questions.medical_conditions.options.option_yes_gp.label") }
-      expect(response).to redirect_to(name_path)
+      expect(response).to redirect_to(nhs_number_path)
     end
 
     it "redirects to ineligible page for a no response" do

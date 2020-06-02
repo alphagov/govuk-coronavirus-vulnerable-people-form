@@ -60,7 +60,7 @@ RSpec.describe CoronavirusForm::CheckContactDetailsController, type: :controller
 
     it "redirects to next step for a permitted response" do
       post :submit, params: params
-      expect(response).to redirect_to nhs_number_path
+      expect(response).to redirect_to essential_supplies_path
     end
 
     it "does not move to next step with an invalid email address" do

@@ -24,7 +24,7 @@ class CoronavirusForm::NhsNumberController < ApplicationController
       redirect_to check_your_answers_url
     else
       session[:nhs_number] = @form_responses[:nhs_number]
-      redirect_to essential_supplies_url
+      redirect_to name_url
     end
   end
 
@@ -47,6 +47,8 @@ private
   end
 
   def previous_path
-    contact_details_path
+    return nhs_letter_path unless session[:medical_conditions]
+
+    medical_conditions_path
   end
 end

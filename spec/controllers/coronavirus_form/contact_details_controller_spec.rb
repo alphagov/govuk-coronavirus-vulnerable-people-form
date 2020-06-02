@@ -68,7 +68,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       }
 
       post :submit, params: params
-      expect(response).to redirect_to nhs_number_path
+      expect(response).to redirect_to essential_supplies_path
     end
 
     it "does not move to next step with an invalid phone number for calls" do
@@ -89,7 +89,7 @@ RSpec.describe CoronavirusForm::ContactDetailsController, type: :controller do
       it "permits the valid phone number #{number}" do
         post :submit, params: { "phone_number_calls": number }
         expect(response).to have_http_status(:found)
-        expect(response).to redirect_to nhs_number_path
+        expect(response).to redirect_to essential_supplies_path
       end
     end
 

@@ -30,7 +30,7 @@ class CoronavirusForm::CheckContactDetailsController < ApplicationController
       redirect_to check_your_answers_url
     else
       update_session_store
-      redirect_to nhs_number_url
+      redirect_to essential_supplies_url
     end
   end
 
