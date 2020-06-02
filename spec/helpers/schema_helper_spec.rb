@@ -265,11 +265,6 @@ RSpec.describe SchemaHelper, type: :helper do
     end
 
     describe "dietary_requirements" do
-      it "returns a list of errors when dietary_requirements is missing" do
-        data = valid_data.except(:dietary_requirements)
-        expect(validate_against_form_response_schema(data).first).to include("dietary_requirements")
-      end
-
       it "returns a list of errors when dietary_requirements has an unexpected value" do
         data = valid_data.merge(dietary_requirements: "Foo")
         expect(validate_against_form_response_schema(data).first).to include("dietary_requirements")
@@ -282,11 +277,6 @@ RSpec.describe SchemaHelper, type: :helper do
     end
 
     describe "carry_supplies" do
-      it "returns a list of errors when carry_supplies is missing" do
-        data = valid_data.except(:carry_supplies)
-        expect(validate_against_form_response_schema(data).first).to include("carry_supplies")
-      end
-
       it "returns a list of errors when carry_supplies has an unexpected value" do
         data = valid_data.merge(carry_supplies: "Foo")
         expect(validate_against_form_response_schema(data).first).to include("carry_supplies")
