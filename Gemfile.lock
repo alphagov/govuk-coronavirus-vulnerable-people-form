@@ -355,6 +355,8 @@ GEM
     simplecov (0.18.5)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
+    simplecov-cobertura (1.3.1)
+      simplecov (~> 0.8)
     simplecov-html (0.12.2)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -433,6 +435,7 @@ DEPENDENCIES
   sentry-raven (~> 3.0)
   sidekiq (~> 6.0)
   simplecov (~> 0.16)
+  simplecov-cobertura
   telephone_number (~> 1.4)
   timecop
   uglifier (~> 4.2)
