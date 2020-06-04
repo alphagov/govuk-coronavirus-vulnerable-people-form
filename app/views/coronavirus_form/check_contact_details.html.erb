@@ -10,7 +10,7 @@
   <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
 <% end %>
 
-<%= form_tag(controller: "coronavirus_form/check_contact_details", action: "submit",
+<%= form_tag({ controller: "coronavirus_form/check_contact_details", action: "submit" },
   "data-module": "track-coronavirus-form-vulnerable-people-check_contact_details",
   "data-question-key": "check_contact_details",
   "novalidate": "true"
