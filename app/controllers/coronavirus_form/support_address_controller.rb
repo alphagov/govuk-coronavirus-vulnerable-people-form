@@ -7,8 +7,9 @@ class CoronavirusForm::SupportAddressController < ApplicationController
     postcode
   ].freeze
 
+  before_action :set_default_support_address
+
   def show
-    session[:support_address] ||= {}
     @form_responses = session.to_hash.with_indifferent_access
 
     if session[:flash].present?
@@ -35,7 +36,7 @@ class CoronavirusForm::SupportAddressController < ApplicationController
         format.html { render controller_path, status: :unprocessable_entity }
       end
     else
-      @form_responses = helpers.update_support_address(session[:support_address].symbolize_keys, given_address)
+      @form_responses = helpers.update_support_address(session[:support_address]&.symbolize_keys, given_address)
 
       session[:support_address] = @form_responses[:support_address]
 
@@ -48,6 +49,10 @@ class CoronavirusForm::SupportAddressController < ApplicationController
   end
 
 private
+
+  def set_default_support_address
+    session[:support_address] ||= {}
+  end
 
   def given_address
     {
