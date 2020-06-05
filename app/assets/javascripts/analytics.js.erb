@@ -6,6 +6,8 @@ var analyticsInit = function() {
   <% if Rails.application.config.analytics_tracking_id.present? %>
     var trackingId = "<%= Rails.application.config.analytics_tracking_id %>"
 
+    var crossDomainTrackingId = "<%= Rails.application.config.analytics_cross_domain_id %>"
+
     // Start analytics only if we have user consent
     var consentCookie = window.GOVUK.getConsentCookie();
     if (consentCookie && consentCookie["usage"]) {
@@ -14,10 +16,19 @@ var analyticsInit = function() {
                               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga')
 
+      // /govuk-coronavirus-vulnerable-people-form Google Analytics
       ga('create', trackingId, 'auto')
       ga('set', 'allowAdFeatures', false);
       ga('set', 'anonymizeIp', true);
       ga('send', 'pageview');
+
+      // Cross Government Domain Google Analytics
+      ga('create', crossDomainTrackingId, 'auto', 'govuk_shared', {'allowLinker': true});
+      ga('govuk_shared.require', 'linker');
+      ga('govuk_shared.set', 'anonymizeIp', true);
+      ga('govuk_shared.set', 'allowAdFeatures', false);
+      ga('govuk_shared.linker:autoLink', ['www.gov.uk']);
+      ga('govuk_shared.send', 'pageview');
     }
   <% end %>
 }

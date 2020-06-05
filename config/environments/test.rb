@@ -37,6 +37,7 @@ Rails.application.configure do
   config.active_support.deprecation = :stderr
 
   config.analytics_tracking_id = "12345"
+  config.analytics_cross_domain_id = "54321"
 
   config.metrics_username = ENV["METRICS_USERNAME"] || "username"
 

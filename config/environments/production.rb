@@ -89,6 +89,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   config.analytics_tracking_id = ENV["GA_VIEW_ID"]
+  config.analytics_cross_domain_id = ENV["GA_CROSS_DOMAIN_ID"]
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
