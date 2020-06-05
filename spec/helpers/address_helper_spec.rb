@@ -112,108 +112,153 @@ RSpec.describe AddressHelper, type: :helper do
   end
 
   describe "#update_support_address" do
-    it "updates the UPRN when the selected address compares to the given address" do
-      selected = {
+    it "updates the UPRN when the ordnance_address address compares to the edited_address address" do
+      ordnance_address = {
         uprn: "123456789",
         building_and_street_line_1: "address line 1",
         postcode: "1234 567",
       }
 
-      given = {
+      edited_address = {
         building_and_street_line_1: "address line 1",
         postcode: "1234 567",
       }
 
-      expect(helper.update_support_address(selected, given).dig(:support_address, :uprn)).to eq("123456789")
+      expect(helper.update_support_address(ordnance_address, edited_address).dig(:support_address, :uprn)).to eq("123456789")
+    end
+  end
+
+  describe "#sanitize_address" do
+    it "returns an empty array if the address is blank" do
+      expect(helper.sanitize_address(nil)).to eq []
+      expect(helper.sanitize_address({})).to eq []
+    end
+
+    it "returns a valid array if the address is present" do
+      address = {
+        one: "one two three 1234567890 ±§!@£$%^&*()_+-={}[]:\"|;'\<>?,./`~",
+        postcode: "AA1A 1AA",
+      }
+      array = %w[1234567890 AA1A1AA ONE THREE TWO]
+
+      expect(helper.sanitize_address(address)).to eq array
+    end
+  end
+
+  describe "#sanitize_postcode" do
+    it "removes non alphanumeric characters and whitespace" do
+      expect(helper.sanitize_postcode(" _ A!A@1£A$ 1%A^A& -")).to eq "AA1A1AA"
     end
   end
 
   describe "#compare" do
-    it "returns false if the selected address is empty" do
-      expect(helper.compare({}, {})).to be false
+    it "returns false if the ordnance address address is blank" do
+      edited_address = {
+        building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
+        postcode: "E1 8QS",
+      }
+
+      expect(helper.compare(nil, edited_address)).to be false
+      expect(helper.compare({}, edited_address)).to be false
     end
 
-    context "SAO is true" do
-      it "returns true if first two lines plus the postcode are equivalent" do
-        selected = {
-          sao_present: true,
-          building_and_street_line_1: "GDS",
-          building_and_street_line_2: "10 WHITECHAPEL HIGH STREET",
-          postcode: "E18QS",
-        }
+    it "returns false if the edited address is blank" do
+      ordnance_address = {
+        building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
+        postcode: "E1 8QS",
+      }
 
-        given = {
-          building_and_street_line_1: "Gds",
-          building_and_street_line_2: "10, Whitechapel High Street",
-          postcode: "E18QS",
-        }
-
-        expect(helper.compare(selected, given)).to be true
-      end
+      expect(helper.compare(ordnance_address, nil)).to be false
+      expect(helper.compare(ordnance_address, {})).to be false
     end
 
-    context "SAO is false" do
-      it "returns true if first line and postcode are equivalent" do
-        selected = {
-          sao_present: false,
-          building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
-          postcode: "E18QS",
-        }
+    it "returns true if nothing has changed" do
+      address = {
+        building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
+        postcode: "E1 8QS",
+      }
 
-        given = {
-          building_and_street_line_1: "10, Whitechapel High Street",
-          building_and_street_line_2: "THIS DOES NOT MATTER",
-          postcode: "E18QS",
-        }
+      expect(helper.compare(address, address)).to be true
+    end
 
-        expect(helper.compare(selected, given)).to be true
-      end
+    it "returns true if something has been added but nothing has been removed" do
+      ordnance_address = {
+        building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
+        postcode: "E1 8QS",
+      }
 
-      it "returns false if the postcodes do not match" do
-        selected = {
-          sao_present: false,
-          building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
-          postcode: "E18QS",
-        }
+      edited_address = {
+        building_and_street_line_1: "10, Whitechapel High Street",
+        building_and_street_line_2: "THIS WILL BE IGNORED",
+        postcode: "e1 8qs",
+      }
 
-        given = {
-          building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
-          postcode: "AA1A1AA",
-        }
+      expect(helper.compare(ordnance_address, edited_address)).to be true
+    end
 
-        expect(helper.compare(selected, given)).to be false
-      end
+    it "returns true if anything is moved but not removed" do
+      ordnance_address = {
+        building_and_street_line_1: "HOUSE NAME",
+        building_and_street_line_2: "WHITECHAPEL HIGH STREET",
+        town_city: "LONDON",
+        postcode: "E1 8QS",
+      }
 
-      it "returns false if the first lines do not match" do
-        selected = {
-          sao_present: false,
-          building_and_street_line_1: "10 WHITECHAPEL HIGH STREET",
-          postcode: "E18QS",
-        }
+      edited_address = {
+        building_and_street_line_1: "House Name, Whitechapel High Street, London",
+        postcode: "E1 8QS",
+      }
 
-        given = {
-          building_and_street_line_1: "10 DOWNING STREET",
-          postcode: "E18QS",
-        }
+      expect(helper.compare(ordnance_address, edited_address)).to be true
+    end
 
-        expect(helper.compare(selected, given)).to be false
-      end
+    it "returns false if anything has been removed from building_and_street_line_1" do
+      ordnance_address = {
+        building_and_street_line_1: "10, Whitechapel High Street",
+        postcode: "E1 8QS",
+      }
 
-      it "returns true if street description is moved from line 2 to line 1" do
-        selected = {
-          sao_present: false,
-          building_and_street_line_1: "HOUSE NAME",
-          building_and_street_line_2: "WHITECHAPEL HIGH STREET",
-          postcode: "E18QS",
-        }
+      edited_address = {
+        building_and_street_line_1: "10, Whitechapel Street",
+        postcode: "E1 8QS",
+      }
 
-        given = {
-          building_and_street_line_1: "House Name, Whitechapel High Street",
-          postcode: "E18QS",
-        }
+      expect(helper.compare(ordnance_address, edited_address)).to be false
+    end
 
-        expect(helper.compare(selected, given)).to be true
-      end
+    it "returns false if the postcode has been changed" do
+      ordnance_address = { postcode: "E1 8QS" }
+      edited_address = { postcode: "AA1A 1AA" }
+
+      expect(helper.compare(ordnance_address, edited_address)).to be false
+    end
+
+    it "returns true if the county field has changed" do
+      ordnance_address = {
+        county: "LONDON",
+        postcode: "E1 8QS",
+      }
+
+      edited_address = {
+        county: "",
+        postcode: "E1 8QS",
+      }
+
+      expect(helper.compare(ordnance_address, edited_address)).to be true
+    end
+
+    it "returns true if the town_city field has changed" do
+      ordnance_address = {
+        town_city: "GREATER LONDON",
+        postcode: "E1 8QS",
+      }
+
+      edited_address = {
+        town_city: "London",
+        postcode: "E1 8QS",
+      }
+
+      expect(helper.compare(ordnance_address, edited_address)).to be true
     end
   end
 end

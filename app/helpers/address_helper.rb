@@ -58,7 +58,6 @@ module AddressHelper
       town_city: address_line_builder(raw_address, TOWN_CITY).titleize,
       county: address_line_builder(raw_address, COUNTY).titleize,
       postcode: address_line_builder(raw_address, POSTCODE).delete(" "),
-      sao_present: sao.present?,
     }
 
     if sao.present?
@@ -86,19 +85,40 @@ module AddressHelper
     address.slice(*WANTED_VALUES)
   end
 
-  def update_support_address(selected, given)
-    given[:uprn] = selected[:uprn] if compare(selected, given)
-    given.delete(:sao_present)
-    { support_address: given }
+  def update_support_address(ordnance_address, edited_address)
+    edited_address[:uprn] = ordnance_address[:uprn] if compare(ordnance_address, edited_address)
+    { support_address: edited_address }
   end
 
-  def compare(selected, given)
-    return false if selected.empty?
+  def sanitize_postcode(postcode)
+    postcode.gsub(/[^0-9a-zA-Z]+/, "")
+  end
 
-    line_one_and_two = address_comparison_line_builder(selected, LINE_1_2_AND_POSTCODE) == address_comparison_line_builder(given, LINE_1_2_AND_POSTCODE)
+  def sanitize_address(address)
+    return [] if address.blank?
 
-    line_one = address_comparison_line_builder(selected, LINE_1_AND_POSTCODE) == address_comparison_line_builder(given, LINE_1_AND_POSTCODE)
+    if address.values.any?
+      copy_of_address = address
+      copy_of_address[:postcode] = sanitize_postcode(address[:postcode])
 
-    selected[:sao_present] ? line_one_and_two : line_one_and_two || line_one
+      copy_of_address
+        .with_indifferent_access
+        .except(:uprn, :county, :town_city)
+        .values
+        .map(&:upcase).join(" ")
+        .gsub(/[^0-9A-Z]+/, " ")
+        .split(" ")
+        .sort
+        .compact
+    end
+  end
+
+  def compare(ordnance_address, edited_address)
+    return false if ordnance_address.blank?
+
+    sanitized_ordnance_address = sanitize_address(ordnance_address)
+    sanitized_edited_address = sanitize_address(edited_address)
+
+    sanitized_edited_address & sanitized_ordnance_address == sanitized_ordnance_address
   end
 end
