@@ -13,6 +13,7 @@ params:
   CF_PASSWORD: ((paas-password))
   CF_ORG: govuk_development
   GA_VIEW_ID: UA-43115970-1
+  GA_CROSS_DOMAIN_ID: UA-145652997-7
   SENTRY_DSN: https://((sentry-dsn))
   SECRET_KEY_BASE:
   CF_STARTUP_TIMEOUT:
@@ -61,6 +62,7 @@ run:
       cf set-env govuk-coronavirus-vulnerable-people-form AWS_SECRET_ACCESS_KEY "$AWS_SECRET_ACCESS_KEY"
       cf set-env govuk-coronavirus-vulnerable-people-form SECRET_KEY_BASE "$SECRET_KEY_BASE"
       cf set-env govuk-coronavirus-vulnerable-people-form GA_VIEW_ID "$GA_VIEW_ID"
+      cf set-env govuk-coronavirus-vulnerable-people-form GA_CROSS_DOMAIN_ID "$GA_CROSS_DOMAIN_ID"
       cf set-env govuk-coronavirus-vulnerable-people-form METRICS_USERNAME "$METRICS_USERNAME"
       cf set-env govuk-coronavirus-vulnerable-people-form METRICS_PASSWORD "$METRICS_PASSWORD"
       cf set-env govuk-coronavirus-vulnerable-people-form GOVUK_NOTIFY_EMAIL_TEMPLATE_ID "$GOVUK_NOTIFY_EMAIL_TEMPLATE_ID"
