@@ -3,7 +3,7 @@
 class CoronavirusForm::CheckContactDetailsController < ApplicationController
   def show
     @form_responses = session.to_hash.with_indifferent_access
-    @email_suggestion = email_address_suggestion(@form_responses[:contact_details].dig(:email))
+    @email_suggestion = email_address_suggestion(@form_responses[:contact_details]&.dig(:email))
     super
   end
 
@@ -15,7 +15,7 @@ class CoronavirusForm::CheckContactDetailsController < ApplicationController
     }
 
     invalid_fields = [
-      @form_responses[:contact_details].dig(:email) ? validate_email_address("email", @form_responses.dig(:contact_details, :email)) : [],
+      @form_responses[:contact_details]&.dig(:email) ? validate_email_address("email", @form_responses&.dig(:contact_details, :email)) : [],
     ].flatten.compact
 
     if invalid_fields.any?
