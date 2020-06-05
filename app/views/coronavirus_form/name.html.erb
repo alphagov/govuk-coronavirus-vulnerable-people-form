@@ -10,7 +10,7 @@
   <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
 <% end %>
 
-<%= form_tag({},
+<%= form_tag({ controller: "coronavirus_form/name", action: "submit" },
   "data-module": "track-coronavirus-form-vulnerable-people-name",
   "data-question-key": "name",
   "novalidate": "true"
@@ -33,7 +33,7 @@
   id: "first_name",
   name: "first_name",
   error_message: error_items("first_name"),
-  value: @form_responses.dig(:name, "first_name"),
+  value: @form_responses.dig(:name, :first_name),
   autocomplete: "given-name",
 } %>
 
@@ -44,7 +44,7 @@
   id: "middle_name",
   name: "middle_name",
   error_message: error_items("middle_name"),
-  value: @form_responses.dig(:name, "middle_name"),
+  value: @form_responses.dig(:name, :middle_name),
 } %>
 
 <%= render "govuk_publishing_components/components/input", {
@@ -54,7 +54,7 @@
   id: "last_name",
   name: "last_name",
   error_message: error_items("last_name"),
-  value: @form_responses.dig(:name, "last_name"),
+  value: @form_responses.dig(:name, :last_name),
   autocomplete: "family-name",
 } %>
 <%= render "govuk_publishing_components/components/button", text: t("coronavirus_form.submit_and_next"), margin_bottom: true %>
