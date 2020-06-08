@@ -41,6 +41,10 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
         ENV["HEROKU_APP_NAME"] = "coronavirus-form-preview"
       end
 
+      after do
+        ENV["HEROKU_APP_NAME"] = nil
+      end
+
       it "does not save the form response to the database" do
         expect { post :submit }.to_not(change { FormResponse.count })
       end
@@ -160,6 +164,25 @@ RSpec.describe CoronavirusForm::CheckAnswersController, type: :controller do
       expect {
         post :submit
       }.to_not(change { FormResponse.count })
+    end
+
+    context "when given excluded fields" do
+      before do
+        @submitted_data = valid_data.merge(reference_id: "abc")
+        session.merge!(@submitted_data)
+        described_class::EXCLUDED_FIELDS.each do |field|
+          session[field.to_sym] = "bad_value"
+        end
+      end
+
+      it "excluded fields are removed before creating the FormResponse" do
+        expect(GovukError).to_not receive(:notify)
+
+        post :submit
+        expect(response).to have_http_status(:found)
+
+        expect(FormResponse.first.FormResponse).to eq(@submitted_data)
+      end
     end
 
     context "schema validation" do

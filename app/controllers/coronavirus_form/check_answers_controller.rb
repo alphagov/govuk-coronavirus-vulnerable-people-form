@@ -39,6 +39,8 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
     redirect_to confirmation_url(reference_number: submission_reference, contact_gp: @contact_gp)
   end
 
+  EXCLUDED_FIELDS = %i[session_id _csrf_token current_path previous_path check_answers_seen postcode].freeze
+
 private
 
   def smoke_tester?
@@ -94,7 +96,7 @@ private
   end
 
   def sanitised_session
-    session_with_indifferent_access.except(:session_id, :_csrf_token, :current_path, :previous_path, :check_answers_seen)
+    session_with_indifferent_access.except(*EXCLUDED_FIELDS)
   end
 
   def contact_gp?
