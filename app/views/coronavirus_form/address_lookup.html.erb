@@ -24,7 +24,7 @@
 } %>
 
 <p class="govuk-body">
-  <span class="govuk-!-font-weight-bold govuk-!-padding-right-3"><%= session[:postcode] %></span>
+  <span class="govuk-!-font-weight-bold govuk-!-padding-right-3"><%= session.dig(:support_address, :postcode) %></span>
   <%= link_to "Change", previous_path, class: "govuk-link" %>
 </p>
 

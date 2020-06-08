@@ -2,7 +2,7 @@
 
 class CoronavirusForm::AddressLookupController < ApplicationController
   def show
-    @addresses = helpers.postcode_lookup(session[:postcode])
+    @addresses = helpers.postcode_lookup(session.to_h.with_indifferent_access.dig(:support_address, :postcode))
     render controller_path, status: :ok
   rescue AddressAuthError => e
     session[:flash] = e.message
@@ -18,7 +18,6 @@ class CoronavirusForm::AddressLookupController < ApplicationController
 
     address = JSON.parse(params[:address]).to_h
     session[:support_address] = helpers.convert_address(address)
-    session.delete(:postcode)
     redirect_to support_address_path
   rescue JSON::ParserError, AddressNotProvidedError
     render controller_path, status: :unprocessable_entity

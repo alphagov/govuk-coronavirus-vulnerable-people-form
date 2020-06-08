@@ -23,7 +23,8 @@ class CoronavirusForm::PostcodeLookupController < ApplicationController
         flash.now[:validation] = errors
         render controller_path, status: :unprocessable_entity
       else
-        session[:postcode] = params[:postcode]
+        session[:support_address] ||= {}
+        session[:support_address]["postcode"] = strip_tags(params[:postcode]&.gsub(/[[:space:]]+/, "")).presence
         redirect_to address_lookup_path
       end
     end
