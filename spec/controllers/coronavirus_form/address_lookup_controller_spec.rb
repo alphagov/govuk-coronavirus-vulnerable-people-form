@@ -27,7 +27,7 @@ RSpec.describe CoronavirusForm::AddressLookupController, type: :controller do
     context "valid postcode" do
       it "renders the postcode form" do
         VCR.use_cassette "/postcode/valid_postcode" do
-          session[:postcode] = address_data["valid_postcode"]["postcode"]
+          session[:support_address] = { postcode: address_data["valid_postcode"]["postcode"] }
           get :show
           expect(response).to render_template(current_template)
         end
@@ -42,7 +42,7 @@ RSpec.describe CoronavirusForm::AddressLookupController, type: :controller do
       it "redirects to postcode lookup page" do
         stub_request(:get, /#{AddressHelper::API_HOSTNAME}/).to_raise(Faraday::TimeoutError)
 
-        session[:postcode] = address_data["invalid_postcode"]["postcode"]
+        session[:support_address] = { postcode: address_data["invalid_postcode"]["postcode"] }
         get :show
 
         expect(response).to redirect_to(postcode_lookup_path)
@@ -52,7 +52,7 @@ RSpec.describe CoronavirusForm::AddressLookupController, type: :controller do
     context "invalid postcode" do
       it "renders an error message if the postcode is invalid" do
         VCR.use_cassette "/postcode/non_existant" do
-          session[:postcode] = address_data["invalid_postcode"]["postcode"]
+          session[:support_address] = { postcode: address_data["invalid_postcode"]["postcode"] }
 
           get :show
 
@@ -68,7 +68,7 @@ RSpec.describe CoronavirusForm::AddressLookupController, type: :controller do
       it "calls GovukError and redirects to support_address_path" do
         VCR.use_cassette "/postcode/invalid_api_key" do
           session[:live_in_england] = I18n.t("coronavirus_form.questions.live_in_england.options.option_yes.label")
-          session[:postcode] = address_data["valid_postcode"]["postcode"]
+          session[:support_address] = { postcode: address_data["valid_postcode"]["postcode"] }
 
           expect(GovukError).to receive(:notify)
           get :show
