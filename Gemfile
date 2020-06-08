@@ -7,6 +7,7 @@ source "https://rubygems.org"
 gem "rails", "~> 6.0.3"
 
 gem "asset_sync"
+gem "aws-sdk-s3", "~> 1.67"
 gem "bootsnap", "~> 1"
 gem "dynamoid"
 gem "faraday", "~> 1.0.1"
@@ -17,6 +18,7 @@ gem "json-schema", "~> 2.8.1"
 gem "lograge"
 gem "mailcheck", "~> 1.0"
 gem "notifications-ruby-client", "~> 5.1"
+gem "prometheus-client", "~> 2.0"
 gem "puma", "~> 4.3"
 gem "sass-rails", "< 6"
 gem "sentry-raven", "~> 3.0"
@@ -25,8 +27,6 @@ gem "simplecov-cobertura"
 gem "telephone_number", "~> 1.4"
 gem "timecop"
 gem "uglifier", "~> 4.2"
-
-gem "prometheus-client", "~> 2.0"
 
 group :development do
   gem "listen", "~> 3"
@@ -45,6 +45,7 @@ end
 
 group :development, :test do
   gem "awesome_print", "~> 1.8"
+  gem "brakeman", "~> 4.8"
   gem "byebug", "~> 11"
   gem "foreman", "~> 0.87.1"
   gem "pry", "~> 0.13.1"
@@ -54,5 +55,3 @@ group :development, :test do
   gem "rubocop-govuk"
   gem "scss_lint-govuk"
 end
-
-gem "aws-sdk-s3", "~> 1.67"
