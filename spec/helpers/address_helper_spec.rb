@@ -143,6 +143,28 @@ RSpec.describe AddressHelper, type: :helper do
 
       expect(helper.sanitize_address(address)).to eq array
     end
+
+    it "returns a valid array if part of the address is nil" do
+      address = {
+        one: "one two three 1234567890",
+        two: nil,
+        postcode: "AA1A 1AA",
+      }
+      array = %w[1234567890 AA1A1AA ONE THREE TWO]
+
+      expect(helper.sanitize_address(address)).to eq array
+    end
+
+    it "returns a valid array if part of the address is a boolean" do
+      address = {
+        one: "one two three 1234567890",
+        two: false,
+        postcode: "AA1A 1AA",
+      }
+      array = %w[1234567890 AA1A1AA FALSE ONE THREE TWO]
+
+      expect(helper.sanitize_address(address)).to eq array
+    end
   end
 
   describe "#sanitize_postcode" do
