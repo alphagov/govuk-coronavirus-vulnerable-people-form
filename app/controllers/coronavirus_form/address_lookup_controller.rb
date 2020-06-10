@@ -16,7 +16,7 @@ class CoronavirusForm::AddressLookupController < ApplicationController
   def submit
     raise AddressNotProvidedError if params[:address].blank?
 
-    address = JSON.parse(params[:address]).to_h
+    address = helpers.remove_changes_to_ordnance_survey_api_response(params[:address])
     session[:support_address] = helpers.convert_address(address)
     redirect_to support_address_path
   rescue JSON::ParserError, AddressNotProvidedError
