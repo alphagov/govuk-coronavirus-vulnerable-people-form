@@ -144,24 +144,21 @@ RSpec.describe AddressHelper, type: :helper do
       expect(helper.sanitize_address(address)).to eq array
     end
 
-    it "returns a valid array if part of the address is nil" do
+    it "returns an array of strings if the address contains non-string values" do
       address = {
-        one: "one two three 1234567890",
-        two: nil,
+        string: "one",
+        boolean: true,
+        null: nil,
+        integer: 100,
+        float: 1.34,
+        object: Object.new,
+        struct: Struct.new("Ignored"),
+        array: [],
+        hash: {},
+        symbol: :ignored,
         postcode: "AA1A 1AA",
       }
-      array = %w[1234567890 AA1A1AA ONE THREE TWO]
-
-      expect(helper.sanitize_address(address)).to eq array
-    end
-
-    it "returns a valid array if part of the address is a boolean" do
-      address = {
-        one: "one two three 1234567890",
-        two: false,
-        postcode: "AA1A 1AA",
-      }
-      array = %w[1234567890 AA1A1AA FALSE ONE THREE TWO]
+      array = %w[AA1A1AA ONE]
 
       expect(helper.sanitize_address(address)).to eq array
     end

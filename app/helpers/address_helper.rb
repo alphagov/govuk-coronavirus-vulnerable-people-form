@@ -105,8 +105,9 @@ module AddressHelper
         .with_indifferent_access
         .except(:uprn, :county, :town_city)
         .values
-        .map(&:to_s)
-        .map(&:upcase).join(" ")
+        .select { |value| value.instance_of?(String) }
+        .map(&:upcase)
+        .join(" ")
         .gsub(/[^0-9A-Z]+/, " ")
         .split(" ")
         .sort
