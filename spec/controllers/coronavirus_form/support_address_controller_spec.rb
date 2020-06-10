@@ -73,7 +73,7 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
     it "does not require address line 2" do
       post :submit, params: params.except("building_and_street_line_2")
 
-      expect(session[session_key]).to eq address.merge(building_and_street_line_2: nil)
+      expect(session[session_key]).to eq address.merge(building_and_street_line_2: "")
       expect(response).to redirect_to(next_page)
     end
 
@@ -81,8 +81,8 @@ RSpec.describe CoronavirusForm::SupportAddressController, type: :controller do
       post :submit, params: params.except("building_and_street_line_2", "county")
 
       expect(session[session_key]).to eq address.merge({
-        building_and_street_line_2: nil,
-        county: nil,
+        building_and_street_line_2: "",
+        county: "",
       })
 
       expect(response).to redirect_to(next_page)
