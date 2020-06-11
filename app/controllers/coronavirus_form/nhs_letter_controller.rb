@@ -26,7 +26,7 @@ class CoronavirusForm::NhsLetterController < ApplicationController
       redirect_to check_your_answers_url
     elsif @form_responses[:nhs_letter] == I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
       set_session_values
-      redirect_to name_url
+      redirect_to nhs_number_url
     end
   end
 

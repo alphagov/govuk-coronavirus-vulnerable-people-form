@@ -44,7 +44,7 @@ RSpec.describe CoronavirusForm::NhsLetterController, type: :controller do
     it "redirects to what is your name question if user answers yes" do
       selected = I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
       post :submit, params: { nhs_letter: selected }
-      expect(response).to redirect_to(name_path)
+      expect(response).to redirect_to(nhs_number_path)
     end
 
     it "redirects to medical conditions question if user answers no" do

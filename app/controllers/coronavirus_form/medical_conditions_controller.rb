@@ -26,7 +26,7 @@ class CoronavirusForm::MedicalConditionsController < ApplicationController
       redirect_to check_your_answers_url
     else
       session[:medical_conditions] = @form_responses[:medical_conditions]
-      redirect_to name_url
+      redirect_to nhs_number_url
     end
   end
 
