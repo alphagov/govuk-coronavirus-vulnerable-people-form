@@ -1,3 +1,4 @@
+# typed: false
 RSpec.describe "start" do
   describe "GET /start" do
     it "redirects to the first question" do

@@ -1,3 +1,4 @@
+# typed: true
 class CoronavirusFormMailer < ApplicationMailer
   self.delivery_job = EmailDeliveryJob
 

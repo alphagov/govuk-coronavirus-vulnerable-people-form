@@ -24,12 +24,14 @@ gem "sass-rails", "< 6"
 gem "sentry-raven", "~> 3.0"
 gem "sidekiq", "~> 6.0"
 gem "simplecov-cobertura"
+gem "sorbet-runtime"
 gem "telephone_number", "~> 1.4"
 gem "timecop"
 gem "uglifier", "~> 4.2"
 
 group :development do
   gem "listen", "~> 3"
+  gem "sorbet"
 end
 
 group :test do

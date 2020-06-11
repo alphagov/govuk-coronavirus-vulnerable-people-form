@@ -1,3 +1,4 @@
+# typed: strict
 if defined?(AssetSync)
   AssetSync.configure do |config|
     config.enabled = false if ENV["HEROKU_APP_NAME"]

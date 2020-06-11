@@ -1,3 +1,4 @@
+# typed: false
 module FormFlowHelper
   FIRST_QUESTION = "live_in_england".freeze
 

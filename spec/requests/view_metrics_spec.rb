@@ -1,3 +1,4 @@
+# typed: false
 require_relative "../../helpers/application_config"
 require "rack/test"
 require "spec_helper"

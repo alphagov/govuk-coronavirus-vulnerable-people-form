@@ -1,3 +1,4 @@
+# typed: true
 class AddressLookupError < StandardError
   def initialize(code)
     super(

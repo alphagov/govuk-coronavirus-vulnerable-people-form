@@ -1,3 +1,4 @@
+# typed: strict
 class FormResponse
   include Dynamoid::Document
 

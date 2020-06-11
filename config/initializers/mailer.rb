@@ -1,3 +1,4 @@
+# typed: strict
 require "notify_email_delivery_method"
 require "notify_sms_delivery_method"
 

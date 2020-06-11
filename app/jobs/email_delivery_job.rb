@@ -1,3 +1,4 @@
+# typed: strict
 class EmailDeliveryJob < ActionMailer::DeliveryJob
   # retry at 3s, 18s, 83s, 258s, 627s
 

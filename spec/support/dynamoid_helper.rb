@@ -1,3 +1,4 @@
+# typed: true
 module DynamoidReset
   def self.all
     Dynamoid.adapter.list_tables.each do |table|

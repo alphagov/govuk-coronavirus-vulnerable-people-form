@@ -1,3 +1,4 @@
+# typed: false
 module AnswersHelper
   SKIPPABLE_QUESTIONS = %w[
     carry_supplies

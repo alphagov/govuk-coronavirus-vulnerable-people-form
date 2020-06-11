@@ -1,3 +1,4 @@
+# typed: false
 require "prometheus/middleware/collector"
 require "./lib/sidekiq_stats_prometheus_exporter"
 

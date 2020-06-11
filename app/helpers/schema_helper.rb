@@ -1,3 +1,4 @@
+# typed: true
 module SchemaHelper
   FORM_RESPONSE_SCHEMA = File.read(Rails.root.join("config/schemas/form_response.json"))
 

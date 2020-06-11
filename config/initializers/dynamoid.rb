@@ -1,3 +1,4 @@
+# typed: strict
 require "dynamoid"
 
 Dynamoid.configure do |config|

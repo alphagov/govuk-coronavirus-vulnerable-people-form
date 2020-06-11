@@ -1,3 +1,4 @@
+# typed: false
 RSpec.describe CoronavirusFormMailer, type: :mailer do
   describe "#confirmation_email" do
     let(:mail) { CoronavirusFormMailer.with(params).confirmation_email(to_address) }

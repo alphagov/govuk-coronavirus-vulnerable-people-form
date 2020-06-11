@@ -1,3 +1,4 @@
+# typed: true
 class UploadErrorPages
   def initialize(error_pages: [], s3_client:, bucket_name:)
     @error_pages = error_pages

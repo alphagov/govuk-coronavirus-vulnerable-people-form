@@ -1,3 +1,4 @@
+# typed: false
 RSpec.describe UploadErrorPages do
   describe "#upload" do
     it "uploads error pages to S3" do

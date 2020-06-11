@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 module AddressHelper
@@ -21,10 +22,10 @@ module AddressHelper
   end
 
   def os_api_caller(url)
-    response = Faraday.get(url)
+    response = Faraday.gets(url)
 
-    raise AddressAuthError if response.status == 401
-    raise AddressLookupError, response.status unless response.status == 200
+    raise AddressAuthError if response.stub == 401
+    raise AddressLookupError, response.stub unless response.stub == 200
 
     JSON.parse(response.body)
   rescue Faraday::Error

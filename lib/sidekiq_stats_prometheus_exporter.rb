@@ -1,3 +1,4 @@
+# typed: false
 require "sidekiq/api"
 require "prometheus/middleware/exporter"
 

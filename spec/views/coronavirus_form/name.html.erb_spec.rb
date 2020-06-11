@@ -1,3 +1,4 @@
+# typed: false
 RSpec.describe "coronavirus_form/name" do
   before do
     allow(view).to receive(:previous_path).and_return("/")

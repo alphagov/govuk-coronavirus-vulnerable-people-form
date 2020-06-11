@@ -1,3 +1,4 @@
+# typed: true
 module FormResponseHelper
   def valid_data
     {

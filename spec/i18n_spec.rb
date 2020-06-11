@@ -1,3 +1,4 @@
+# typed: false
 require "spec_helper"
 
 RSpec.describe I18n, type: :feature do

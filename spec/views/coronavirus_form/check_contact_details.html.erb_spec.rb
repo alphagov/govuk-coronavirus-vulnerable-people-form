@@ -1,3 +1,4 @@
+# typed: false
 RSpec.describe "coronavirus_form/check_contact_details" do
   include FieldValidationHelper
 
