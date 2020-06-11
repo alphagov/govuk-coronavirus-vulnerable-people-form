@@ -40,14 +40,14 @@ RSpec.feature "fill in the vulnerable people form" do
   scenario "visit an intermediate question without having previously visited the form" do
     visit essential_supplies_path
 
-    expect(page.body).to have_content(I18n.t("coronavirus_form.questions.live_in_england.title"))
+    expect(page).to have_content(I18n.t("coronavirus_form.questions.live_in_england.title"))
   end
 
   scenario "visitor not eligible as they live outside of England" do
     given_an_extremely_vulnerable_person_during_the_covid_19_pandemic
     who_does_not_live_in_england
 
-    expect(page.body).to have_content(I18n.t("not_eligible_england.title"))
+    expect(page).to have_content(I18n.t("not_eligible_england.title"))
   end
 
   scenario "visitor not eligible as they do not have a listed medical condition" do
@@ -56,7 +56,7 @@ RSpec.feature "fill in the vulnerable people form" do
     and_has_not_recently_received_an_nhs_letter
     who_does_not_have_a_listed_medical_condition
 
-    expect(page.body).to have_content(I18n.t("not_eligible_medical.title"))
+    expect(page).to have_content(I18n.t("not_eligible_medical.title"))
   end
 
   scenario "visitor has not received a letter, but has a medical condition" do
@@ -65,24 +65,24 @@ RSpec.feature "fill in the vulnerable people form" do
     and_has_not_recently_received_an_nhs_letter
     who_has_a_listed_medical_condition
 
-    expect(page.body).to have_content(I18n.t("coronavirus_form.questions.nhs_number.title"))
+    expect(page).to have_content(I18n.t("coronavirus_form.questions.nhs_number.title"))
   end
 
   scenario "ensure we can perform a healthcheck" do
     visit healthcheck_path
 
-    expect(page.body).to have_content("OK")
+    expect(page).to have_content("OK")
   end
 
   scenario "ensure the privacy notice page is visible" do
     visit privacy_path
 
-    expect(page.body).to have_content(I18n.t("privacy_page.title"))
+    expect(page).to have_content(I18n.t("privacy_page.title"))
   end
 
   scenario "ensure the accessibility statement page is visible" do
     visit accessibility_statement_path
 
-    expect(page.body).to have_content(I18n.t("accessibility_statement.title"))
+    expect(page).to have_content(I18n.t("accessibility_statement.title"))
   end
 end
