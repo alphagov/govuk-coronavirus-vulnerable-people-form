@@ -131,4 +131,12 @@ module AddressHelper
       WANTED_VALUES.include?(key) && value.instance_of?(String)
     end
   end
+
+  def strip_tags_from_address_field(address_field)
+    strip_tags(address_field&.strip).presence || ""
+  end
+
+  def strip_tags_from_postcode_field(postcode)
+    strip_tags_from_address_field(postcode).gsub(/[[:space:]]+/, "")
+  end
 end

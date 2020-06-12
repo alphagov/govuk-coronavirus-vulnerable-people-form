@@ -353,4 +353,36 @@ RSpec.describe AddressHelper, type: :helper do
       expect(helper.remove_changes_to_ordnance_survey_api_response(changed_selected_address)).to eq returned_address
     end
   end
+
+  describe "#strip_tags_from_address_field" do
+    it "strips HTML tags if there are any in the address field" do
+      expect(helper.strip_tags_from_address_field("<p>hello</p> <strong>world</strong>")).to eq "hello world"
+    end
+
+    it "returns the same value if there are no HTML tags in the address field" do
+      expect(helper.strip_tags_from_address_field("hello world")).to eq "hello world"
+    end
+
+    it "returns an empty string if there are only HTML tags in the address field but no content" do
+      expect(helper.strip_tags_from_address_field("<p></p>")).to eq ""
+    end
+
+    it "returns an empty string when given an empty string" do
+      expect(helper.strip_tags_from_address_field("")).to eq ""
+    end
+
+    it "returns an empty string when given nil" do
+      expect(helper.strip_tags_from_address_field(nil)).to eq ""
+    end
+  end
+
+  describe "#strip_tags_from_postcode_field" do
+    it "strips HTML tags if there are any in the postcode" do
+      expect(helper.strip_tags_from_postcode_field("<p>SW1A</p><strong>1AA</strong>")).to eq "SW1A1AA"
+    end
+
+    it "strips spaces if there are any in the postcode" do
+      expect(helper.strip_tags_from_postcode_field(" SW1A  1AA ")).to eq "SW1A1AA"
+    end
+  end
 end
