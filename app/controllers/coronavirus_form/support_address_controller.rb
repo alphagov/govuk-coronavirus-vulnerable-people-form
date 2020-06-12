@@ -56,12 +56,20 @@ private
 
   def given_address
     {
-      building_and_street_line_1: strip_tags(params[:building_and_street_line_1]&.strip).presence,
-      building_and_street_line_2: strip_tags(params[:building_and_street_line_2]&.strip).presence,
-      town_city: strip_tags(params[:town_city]&.strip).presence,
-      county: strip_tags(params[:county]&.strip).presence,
-      postcode: strip_tags(params[:postcode]&.gsub(/[[:space:]]+/, "")).presence,
+      building_and_street_line_1: strip_tags_from_address_field(params[:building_and_street_line_1]),
+      building_and_street_line_2: strip_tags_from_address_field(params[:building_and_street_line_2]),
+      town_city: strip_tags_from_address_field(params[:town_city]),
+      county: strip_tags_from_address_field(params[:county]),
+      postcode: strip_tags_from_postcode_field(params[:postcode]),
     }
+  end
+
+  def strip_tags_from_address_field(param)
+    param.nil? ? "" : strip_tags(param&.strip).presence
+  end
+
+  def strip_tags_from_postcode_field(postcode)
+    postcode.nil? ? "" : strip_tags(postcode&.gsub(/[[:space:]]+/, "")).presence
   end
 
   def validate_fields

@@ -123,4 +123,12 @@ module AddressHelper
 
     sanitized_edited_address & sanitized_ordnance_address == sanitized_ordnance_address
   end
+
+  def remove_changes_to_ordnance_survey_api_response(ordnance_address)
+    address = JSON.parse(ordnance_address).to_h
+
+    address.select do |key, value|
+      WANTED_VALUES.include?(key) && value.instance_of?(String)
+    end
+  end
 end

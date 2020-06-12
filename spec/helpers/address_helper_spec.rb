@@ -280,4 +280,77 @@ RSpec.describe AddressHelper, type: :helper do
       expect(helper.compare(ordnance_address, edited_address)).to be true
     end
   end
+
+  describe "#remove_changes_to_ordnance_survey_api_response" do
+    it "returns the same address if all fields exist in the Ordance Survery Places API response definition and all values are strings" do
+      selected_address = <<~ADDRESS.squish
+        {
+          "UPRN" : "123456789",
+          "SAO_TEXT" : "FLAT 1",
+          "PAO_TEXT" : "A BLOCK",
+          "STREET_DESCRIPTION" : "BEDROCK STREET",
+          "TOWN_NAME" : "BEDROCK",
+          "ADMINISTRATIVE_AREA" : "GREATER BEDROCK",
+          "POSTCODE_LOCATOR" : "BE1D 1RK"
+        }
+      ADDRESS
+
+      returned_address = {
+        "UPRN" => "123456789",
+        "SAO_TEXT" => "FLAT 1",
+        "PAO_TEXT" => "A BLOCK",
+        "STREET_DESCRIPTION" => "BEDROCK STREET",
+        "TOWN_NAME" => "BEDROCK",
+        "ADMINISTRATIVE_AREA" => "GREATER BEDROCK",
+        "POSTCODE_LOCATOR" => "BE1D 1RK",
+      }
+
+      expect(helper.remove_changes_to_ordnance_survey_api_response(selected_address)).to eq returned_address
+    end
+
+    it "removes all fields where the key does not exist in the Ordance Survery Places API response definition" do
+      changed_selected_address = <<~ADDRESS.squish
+        {
+          "UPRN" : "123456789",
+          "DANGER" : "FLAT 1",
+          "WILL" : "A BLOCK",
+          "ROBINSON" : "BEDROCK STREET",
+          "TOWN_NAME" : "BEDROCK",
+          "ADMINISTRATIVE_AREA" : "GREATER BEDROCK",
+          "POSTCODE_LOCATOR" : "BE1D 1RK"
+        }
+      ADDRESS
+
+      returned_address = {
+        "UPRN" => "123456789",
+        "TOWN_NAME" => "BEDROCK",
+        "ADMINISTRATIVE_AREA" => "GREATER BEDROCK",
+        "POSTCODE_LOCATOR" => "BE1D 1RK",
+      }
+
+      expect(helper.remove_changes_to_ordnance_survey_api_response(changed_selected_address)).to eq returned_address
+    end
+
+    it "removes all fields where the value is not a string" do
+      changed_selected_address = <<~ADDRESS.squish
+        {
+          "UPRN" : "123456789",
+          "SAO_TEXT" : null,
+          "PAO_TEXT" : false,
+          "STREET_DESCRIPTION" : 1.34,
+          "TOWN_NAME" : 1234,
+          "ADMINISTRATIVE_AREA" : "GREATER BEDROCK",
+          "POSTCODE_LOCATOR" : "BE1D 1RK"
+        }
+      ADDRESS
+
+      returned_address = {
+        "UPRN" => "123456789",
+        "ADMINISTRATIVE_AREA" => "GREATER BEDROCK",
+        "POSTCODE_LOCATOR" => "BE1D 1RK",
+      }
+
+      expect(helper.remove_changes_to_ordnance_survey_api_response(changed_selected_address)).to eq returned_address
+    end
+  end
 end
