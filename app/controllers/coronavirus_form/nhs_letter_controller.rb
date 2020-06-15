@@ -6,7 +6,7 @@ class CoronavirusForm::NhsLetterController < ApplicationController
 
   sig { void }
   def submit
-    @form_responses = T.let({ nhs_letter: strip_tags(params[:nhs_letter]).presence }, T.nilable(T::Hash[T.untyped, T.untyped]))
+    @form_responses = T.let({ nhs_letter: strip_tags(params[:nhs_letter]).presence }, T.nilable(T::Hash[Symbol, String]))
 
     invalid_fields = validate_radio_field(
       controller_name,
