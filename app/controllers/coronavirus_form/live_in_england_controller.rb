@@ -3,9 +3,6 @@
 
 class CoronavirusForm::LiveInEnglandController < ApplicationController
   extend T::Sig
-  class SubmitParams < T::Struct
-    const :live_in_england, T.nilable(String)
-  end
 
   skip_before_action :check_first_question
 
@@ -17,9 +14,8 @@ class CoronavirusForm::LiveInEnglandController < ApplicationController
 
   sig { void }
   def submit
-    typed_params = TypedParams[SubmitParams].new.extract!(params)
     @form_responses = {
-      live_in_england: strip_tags(typed_params.live_in_england).presence,
+      live_in_england: strip_tags(params[:live_in_england]).presence,
     }
 
     invalid_fields = validate_radio_field(
