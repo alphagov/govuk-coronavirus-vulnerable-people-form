@@ -1,15 +1,16 @@
-# typed: false
+# typed: strict
 # frozen_string_literal: true
 
 class CoronavirusForm::NhsLetterController < ApplicationController
+  extend T::Sig
+
+  sig { void }
   def submit
-    @form_responses = {
-      nhs_letter: strip_tags(params[:nhs_letter]).presence,
-    }
+    @form_responses = T.let({ nhs_letter: strip_tags(params[:nhs_letter]).presence }, T.nilable(T::Hash[T.untyped, T.untyped]))
 
     invalid_fields = validate_radio_field(
       controller_name,
-      radio: @form_responses[:nhs_letter],
+      radio: T.must(@form_responses)[:nhs_letter],
     )
 
     if invalid_fields.any?
@@ -19,25 +20,26 @@ class CoronavirusForm::NhsLetterController < ApplicationController
       respond_to do |format|
         format.html { render controller_path, status: :unprocessable_entity }
       end
-    elsif @form_responses[:nhs_letter] != I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
+    elsif T.must(@form_responses)[:nhs_letter] != I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
       set_session_values
       redirect_to medical_conditions_url
     elsif session[:check_answers_seen]
       set_session_values
       redirect_to check_your_answers_url
-    elsif @form_responses[:nhs_letter] == I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
+    elsif T.must(@form_responses)[:nhs_letter] == I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
       set_session_values
       redirect_to nhs_number_url
     end
   end
 
 private
-
+  sig { void }
   def set_session_values
-    session[:nhs_letter] = @form_responses[:nhs_letter]
-    session[:medical_conditions] = nil if @form_responses[:nhs_letter] == I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
+    session[:nhs_letter] = T.must(@form_responses)[:nhs_letter]
+    session[:medical_conditions] = nil if T.must(@form_responses)[:nhs_letter] == I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
   end
 
+  sig {returns(String)}
   def previous_path
     live_in_england_path
   end
