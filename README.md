@@ -91,6 +91,10 @@ which is configured in [concourse/pipeline.yml](concourse/pipeline.yml).
 The concourse pipeline has credentials for the `govuk-forms-deployer` user in
 GOV.UK PaaS. This user has the SpaceDeveloper role, so it can `cf push` the application.
 
+## How to deploy breaking changes
+
+Details can be found [here](docs/how-to-deploy-breaking-changes).
+
 ## Licence
 
 [MIT License](LICENCE)

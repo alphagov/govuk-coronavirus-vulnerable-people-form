@@ -43,6 +43,7 @@
 <%= render "govuk_publishing_components/components/input", {
   id: "building_and_street_line_2",
   name: "building_and_street_line_2",
+  type: "text",
   error_message: error_items('building_and_street_line_2'),
   value: @form_responses.dig(:support_address, :building_and_street_line_2),
   autocomplete: "address-line2",

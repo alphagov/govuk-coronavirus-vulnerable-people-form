@@ -57,11 +57,11 @@ private
 
   def given_address
     {
-      building_and_street_line_1: strip_tags(params[:building_and_street_line_1]&.strip).presence,
-      building_and_street_line_2: strip_tags(params[:building_and_street_line_2]&.strip).presence,
-      town_city: strip_tags(params[:town_city]&.strip).presence,
-      county: strip_tags(params[:county]&.strip).presence,
-      postcode: strip_tags(params[:postcode]&.gsub(/[[:space:]]+/, "")).presence,
+      building_and_street_line_1: helpers.strip_tags_from_address_field(params[:building_and_street_line_1]),
+      building_and_street_line_2: helpers.strip_tags_from_address_field(params[:building_and_street_line_2]),
+      town_city: helpers.strip_tags_from_address_field(params[:town_city]),
+      county: helpers.strip_tags_from_address_field(params[:county]),
+      postcode: helpers.strip_tags_from_postcode_field(params[:postcode]),
     }
   end
 
