@@ -6,9 +6,9 @@ class CoronavirusForm::LiveInEnglandController < ApplicationController
 
   skip_before_action :check_first_question
 
-  sig { returns CoronavirusForm::LiveInEnglandController }
+  sig { returns T.nilable(CoronavirusForm::LiveInEnglandController) }
   def initialize
-    @form_responses = T.let( {}, T::Hash[Symbol, String])
+    @form_responses = T.let({}, T::Hash[Symbol, String])
     super
   end
 

@@ -6,7 +6,7 @@ class CoronavirusForm::NhsLetterController < ApplicationController
 
   sig { void }
   def submit
-    @form_responses = T.let({ nhs_letter: strip_tags(params[:nhs_letter]).presence }, T.nilable(T::Hash[Symbol, String]))
+    @form_responses = T.let({ nhs_letter: strip_tags(params[:nhs_letter]).presence }, T.nilable(T::Hash[Symbol, T.nilable(String)]))
 
     invalid_fields = validate_radio_field(
       controller_name,
@@ -33,13 +33,14 @@ class CoronavirusForm::NhsLetterController < ApplicationController
   end
 
 private
+
   sig { void }
   def set_session_values
     session[:nhs_letter] = T.must(@form_responses)[:nhs_letter]
     session[:medical_conditions] = nil if T.must(@form_responses)[:nhs_letter] == I18n.t("coronavirus_form.questions.nhs_letter.options.option_yes.label")
   end
 
-  sig {returns(String)}
+  sig { returns(String) }
   def previous_path
     live_in_england_path
   end
