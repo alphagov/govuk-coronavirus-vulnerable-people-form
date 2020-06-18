@@ -7,6 +7,10 @@ describe('stripPII', function () {
     expect(stripPII(null)).toEqual('')
   })
 
+  it('returns an empty string given undefined', function () {
+    expect(stripPII(undefined)).toEqual('')
+  })
+
   it ('replaces nothing if there is no query string', function () {
     var givenURL = new URL('http://example.com/')
     var expectedURL = 'http://example.com/'
@@ -14,37 +18,30 @@ describe('stripPII', function () {
     expect(stripPII(givenURL)).toEqual(expectedURL)
   })
 
-  it ('replaces nothing if there are no redactable params', function () {
-    var givenURL = new URL('http://example.com/?test=blah')
-    var expectedURL = 'http://example.com/?test=blah'
-
-    expect(stripPII(givenURL)).toEqual(expectedURL)
-  })
-
-  it ('replaces reference_number', function() {
+  it ('redacts reference_number', function() {
     var givenURL = new URL('http://example.com/?test=blah&reference_number=12345')
-    var expectedURL = 'http://example.com/?test=blah&reference_number=<REFERENCE_NUMBER>'
+    var expectedURL = 'http://example.com/?test=<TEST>&reference_number=<REFERENCE_NUMBER>'
 
     expect(stripPII(givenURL)).toEqual(expectedURL)
   })
 
-  it('replaces contact_gp', function() {
+  it('redacts contact_gp', function() {
     var givenURL = new URL('http://example.com/?test=blah&contact_gp=12345')
-    var expectedURL = 'http://example.com/?test=blah&contact_gp=<CONTACT_GP>'
+    var expectedURL = 'http://example.com/?test=<TEST>&contact_gp=<CONTACT_GP>'
 
     expect(stripPII(givenURL)).toEqual(expectedURL)
   })
 
-  it ('replaces both reference_number and contact_gp', function() {
+  it ('redacts all query string parameters', function() {
     var givenURL = new URL('http://example.com/?contact_gp=12345&test=blah&reference_number=12345')
-    var expectedURL = 'http://example.com/?contact_gp=<CONTACT_GP>&test=blah&reference_number=<REFERENCE_NUMBER>'
+    var expectedURL = 'http://example.com/?contact_gp=<CONTACT_GP>&test=<TEST>&reference_number=<REFERENCE_NUMBER>'
 
     expect(stripPII(givenURL)).toEqual(expectedURL)
   })
 
-  it ('replaces contact_gp with a page link', function() {
+  it('redacts all query string parameters with a page link is present', function() {
     var givenURL = new URL('http://example.com/?test=blah&contact_gp=12345#page_link')
-    var expectedURL = 'http://example.com/?test=blah&contact_gp=<CONTACT_GP>#page_link'
+    var expectedURL = 'http://example.com/?test=<TEST>&contact_gp=<CONTACT_GP>#page_link'
 
     expect(stripPII(givenURL)).toEqual(expectedURL)
   })
