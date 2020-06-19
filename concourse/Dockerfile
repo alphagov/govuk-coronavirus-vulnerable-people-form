@@ -7,14 +7,11 @@
 FROM ruby:2.6.6-buster
 
 RUN apt-get update --fix-missing && apt-get -y upgrade \
-    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
-    && apt-get update \
+    && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
     && apt-get install -y --no-install-recommends \
-      google-chrome-unstable \
+      ./google-chrome-stable_current_amd64.deb \
       default-jre \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /src/*.deb
+    && rm ./google-chrome-stable_current_amd64.deb
 
 
 ENV CHROME_NO_SANDBOX=true
