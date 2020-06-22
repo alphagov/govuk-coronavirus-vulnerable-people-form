@@ -1,3 +1,5 @@
+window.GOVUK = window.GOVUK || {}
+
 // Start cookie banner (display settings controlled internally by cookies)
 var element = document.querySelector('[data-module="cookie-banner"]')
 new GOVUK.Modules.CookieBanner().start($(element))
@@ -20,6 +22,7 @@ var analyticsInit = function() {
       ga('create', trackingId, 'auto')
       ga('set', 'allowAdFeatures', false);
       ga('set', 'anonymizeIp', true);
+      ga('set', 'location', window.GOVUK.stripPII(window.location));
       ga('send', 'pageview');
 
       // Cross Government Domain Google Analytics
@@ -28,6 +31,7 @@ var analyticsInit = function() {
       ga('govuk_shared.set', 'anonymizeIp', true);
       ga('govuk_shared.set', 'allowAdFeatures', false);
       ga('govuk_shared.linker:autoLink', ['www.gov.uk']);
+      ga('govuk_shared.set', 'location', window.GOVUK.stripPII(window.location));
       ga('govuk_shared.send', 'pageview');
     }
   <% end %>
