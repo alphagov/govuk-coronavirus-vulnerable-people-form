@@ -490,6 +490,9 @@ en:
             label: "Yes"
           option_no:
             label: "No"
+        further_information: |
+          <p class="govuk-body">If you select ‘no’, we’ll send you a weekly box of basic supplies and share your details with supermarkets so you can get priority for deliveries. You’ll be able to cancel the boxes by telling the delivery driver.</p>
+          <p class="govuk-body">The last boxes will be sent out by 31 July. You’ll keep priority access to supermarket deliveries after this.</p>
         custom_select_error: Select yes if you have a way of getting essential supplies delivered at the moment
       dietary_requirements:
         title: Do you have any special dietary requirements?

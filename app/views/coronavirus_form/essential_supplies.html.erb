@@ -30,5 +30,8 @@
         }
       end
     } %>
+
+    <%= sanitize(t("coronavirus_form.questions.essential_supplies.further_information")) %>
+
     <%= render "govuk_publishing_components/components/button", text: t("coronavirus_form.submit_and_next"), margin_bottom: true %>
     <% end %>
