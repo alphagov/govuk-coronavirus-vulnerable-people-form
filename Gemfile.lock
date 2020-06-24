@@ -58,6 +58,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    aes_key_wrap (1.0.1)
     apparition (0.5.0)
       capybara (~> 3.13, < 4)
       websocket-driver (>= 0.6.5)
@@ -67,6 +68,7 @@ GEM
       mime-types (>= 2.99)
       unf
     ast (2.4.0)
+    attr_required (1.0.1)
     awesome_print (1.8.0)
     aws-eventstream (1.0.3)
     aws-partitions (1.294.0)
@@ -80,6 +82,7 @@ GEM
       aws-sigv4 (~> 1.1)
     aws-sigv4 (1.1.1)
       aws-eventstream (~> 1.0, >= 1.0.2)
+    bindata (2.4.7)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -160,14 +163,20 @@ GEM
       sassc-rails (>= 2.0.1)
       sprockets (< 4)
     hashdiff (1.0.1)
+    hashie (4.1.0)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httpclient (2.8.3)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
     jaro_winkler (1.5.4)
     jmespath (1.4.0)
+    json-jwt (1.13.0)
+      activesupport (>= 4.2)
+      aes_key_wrap
+      bindata
     jwt (2.2.1)
     kgio (2.11.3)
     kramdown (2.2.1)
@@ -215,6 +224,19 @@ GEM
       jwt (>= 1.5, < 3)
     null-logger (0.1.5)
     null_logger (0.0.1)
+    omniauth (1.9.1)
+      hashie (>= 3.4.6)
+      rack (>= 1.6.2, < 3)
+    openid_connect (1.2.0)
+      activemodel
+      attr_required (>= 1.0.0)
+      json-jwt (>= 1.5.0)
+      rack-oauth2 (>= 1.6.1)
+      swd (>= 1.0.0)
+      tzinfo
+      validate_email
+      validate_url
+      webfinger (>= 1.0.1)
     parallel (1.19.1)
     parser (2.7.1.2)
       ast (~> 2.4.0)
@@ -231,6 +253,12 @@ GEM
     rack (2.2.2)
     rack-cache (1.11.1)
       rack (>= 0.4)
+    rack-oauth2 (1.14.0)
+      activesupport
+      attr_required
+      httpclient
+      json-jwt (>= 1.11.0)
+      rack (>= 2.1.0)
     rack-protection (2.0.8.1)
       rack
     rack-test (1.1.0)
@@ -367,6 +395,10 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     statsd-ruby (1.4.0)
+    swd (1.2.0)
+      activesupport (>= 3)
+      attr_required (>= 0.0.5)
+      httpclient (>= 2.4)
     telephone_number (1.4.7)
     thor (1.0.1)
     thread_safe (0.3.6)
@@ -383,11 +415,20 @@ GEM
     unicorn (5.5.5)
       kgio (~> 2.6)
       raindrops (~> 0.7)
+    validate_email (0.1.6)
+      activemodel (>= 3.0)
+      mail (>= 2.2.5)
+    validate_url (1.0.11)
+      activemodel (>= 3.0.0)
+      public_suffix
     vcr (5.1.0)
     webdrivers (4.3.0)
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
+    webfinger (1.1.0)
+      activesupport
+      httpclient (>= 2.4)
     webmock (3.8.3)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -420,6 +461,8 @@ DEPENDENCIES
   lograge
   mini_racer (~> 0.2)
   notifications-ruby-client (~> 5.1)
+  omniauth (~> 1.9)
+  openid_connect (~> 1.2)
   prometheus-client (~> 2.0)
   pry (~> 0.13.1)
   pry-rails (~> 0.3.9)

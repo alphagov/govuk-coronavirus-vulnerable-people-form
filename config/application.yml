@@ -1,0 +1,5 @@
+ISSUER: 'auth.sandpit.signin.nhs.uk'
+REDIRECT_URL: 'http://localhost:3000/auth/oidc/callback'
+CLIENT_ID: 'initial-spark'
+VTR: '["P0.Cp.Cd", "P0.Cp.Ck", "P0.Cm"]'
+SCOPES: 'openid profile email phone'

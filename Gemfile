@@ -52,3 +52,7 @@ group :development, :test do
   gem "rspec-rails", "~> 4.0.0"
   gem "rubocop-govuk"
 end
+
+gem "omniauth", "~> 1.9"
+
+gem "openid_connect", "~> 1.2"
