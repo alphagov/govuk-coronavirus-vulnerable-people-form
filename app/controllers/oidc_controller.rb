@@ -2,17 +2,26 @@
 
 class OidcController < ApplicationController
   def callback
-    reset_session
-    pp request.env["omniauth.auth"].to_h
     nhs_number = request.env["omniauth.auth"].info["nhs_number"]
     if nhs_number
-      session[:know_nhs_number] = t("coronavirus_form.questions.know_nhs_number.options.option_yes")
+      session[:know_nhs_number] = t("coronavirus_form.questions.know_nhs_number.options.option_yes.label")
       session[:nhs_number] = request.env["omniauth.auth"].info["nhs_number"]
     end
-    session[:email] = request.env["omniauth.auth"].info["email"]
-    session[:phone_number_calls] = request.env["omniauth.auth"].info["phone_number"]
-    session[:phone_number_texts] = request.env["omniauth.auth"].info["phone_number"]
-    session[:date_of_birth] = request.env["omniauth.auth"].info["birthdate"]
+    session[:name] = { last_name: request.env["omniauth.auth"].info["surname"] }
+    session[:contact_details] = {
+      phone_number_calls: request.env["omniauth.auth"].info["phone_number"],
+      phone_number_texts: request.env["omniauth.auth"].info["phone_number"],
+      email: request.env["omniauth.auth"].info["email"],
+    }
+    birthdate_string = request.env["omniauth.auth"].info["date_of_birth"]
+    if birthdate_string
+      birthdate = Date.parse(birthdate_string)
+      session[:date_of_birth] = {
+        year: birthdate.year,
+        day: birthdate.day,
+        month: birthdate.month,
+      }
+    end
     redirect_to live_in_england_path
   end
 
