@@ -7,7 +7,7 @@ source "https://rubygems.org"
 gem "rails", "~> 6.0.3"
 
 gem "asset_sync"
-gem "aws-sdk-s3", "~> 1.70"
+gem "aws-sdk-s3", "~> 1.71"
 gem "bootsnap", "~> 1"
 gem "dynamoid"
 gem "faraday", "~> 1.0.1"
