@@ -56,3 +56,5 @@ end
 gem "omniauth", "~> 1.9"
 
 gem "openid_connect", "~> 1.2"
+
+gem "figaro", "~> 1.2"
