@@ -268,6 +268,16 @@ en:
         <p class="govuk-body">If your support needs change, <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable">go through the questions in this service again</a>.</p>
         <p class="govuk-body">There’s guidance on <a class="govuk-link" href="https://www.gov.uk/coronavirus-extremely-vulnerable-guidance">things you should do if you’re extremely vulnerable to coronavirus</a>.
         <p class="govuk-body"><a class="govuk-link" href="https://www.gov.uk/done/coronavirus-extremely-vulnerable">Give feedback on this service</a>.</p>
+    preamble:
+      use_nhs_account:
+        title: Do you want to log in with your nhs account?
+        hint: Logging in with your nhs account will allow this form to retrieve certain details, such as your nhs number from that account.
+        options:
+          option_yes:
+            label: "Yes"
+          option_no:
+            label: "No"
+        custom_select_error: You must choose if you want to log in with your NHS account
     questions:
       # These should be in the order that they’re asked
       live_in_england:

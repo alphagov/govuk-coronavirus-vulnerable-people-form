@@ -1,0 +1,35 @@
+<% content_for :title do %><%= t("coronavirus_form.preamble.use_nhs_account.title") %><% end %>
+<% content_for :meta_tags do %>
+  <meta name="description" content="<%= t("coronavirus_form.preamble.use_nhs_account.title") %>" />
+<% end %>
+
+<% content_for :back_link do %>
+  <%= render "govuk_publishing_components/components/back_link", { href: previous_path } %>
+<% end %>
+
+<%= form_tag({},
+  "data-module": "track-coronavirus-form-vulnerable-people-use_nhs_account",
+  "data-question-key": "use_nhs_account",
+  "novalidate": "true"
+) do %>
+
+<%= render "govuk_publishing_components/components/radio", {
+  heading: t("coronavirus_form.preamble.use_nhs_account.title"),
+  is_page_heading: true,
+  name: "use_nhs_account",
+  error_message: error_items('use_nhs_account'),
+  items: t("coronavirus_form.preamble.use_nhs_account.options").map.with_index do |(_, item), index|
+    {
+      id: ("use_nhs_account" if index == 0),
+      value: item[:label],
+      text: item[:label],
+      checked: @form_responses[:use_nhs_account] == item[:label],
+    }
+  end
+} %>
+<%= render "govuk_publishing_components/components/hint", {
+  text: t("coronavirus_form.preamble.use_nhs_account.hint"),
+} %>
+
+<%= render "govuk_publishing_components/components/button", text: t("coronavirus_form.submit_and_next"), margin_bottom: true %>
+<% end %>

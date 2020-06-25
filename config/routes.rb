@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get "/healthcheck", to: proc { [200, {}, %w[OK]] }
 
   get "/", to: redirect("https://www.gov.uk/coronavirus-extremely-vulnerable")
+
+  get "auth/oidc/callback" => "oidc#callback"
+  get "auth/failure" => "oidc#failure"
 
   scope module: "coronavirus_form" do
     get "/privacy", to: "privacy#show"
@@ -12,6 +17,10 @@ Rails.application.routes.draw do
     get "/cookies", to: "cookies#show"
 
     get "/session-expired", to: "session_expired#show"
+
+    # Preamble: Would you like to use your nhs account to populate this form?
+    get "/use-nhs-account", to: "use_nhs_account#show"
+    post "/use-nhs-account", to: "use_nhs_account#submit"
 
     # Question 1.0: Do you live in England?
     get "/live-in-england", to: "live_in_england#show"

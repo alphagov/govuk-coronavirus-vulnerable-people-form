@@ -1,5 +1,5 @@
 module FormFlowHelper
-  FIRST_QUESTION = "live_in_england".freeze
+  FIRST_QUESTION = "use_nhs_account".freeze
 
   def check_first_question
     redirect_to_first_question unless first_question_answered?

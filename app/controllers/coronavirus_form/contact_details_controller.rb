@@ -28,11 +28,21 @@ class CoronavirusForm::ContactDetailsController < ApplicationController
       redirect_to check_your_answers_url
     else
       update_session_store
-      redirect_to know_nhs_number_url
+      if nhs_account_number_prepopulated_from_nhs_login?
+        redirect_to nhs_number_url
+      else
+        redirect_to know_nhs_number_url
+      end
     end
   end
 
 private
+
+  def nhs_account_number_prepopulated_from_nhs_login?
+    session[:use_nhs_account] == t("coronavirus_form.preamble.use_nhs_account.options.option_yes.label") \
+      && session[:nhs_number] \
+      && session[:know_nhs_number] == I18n.t("coronavirus_form.questions.know_nhs_number.options.option_yes.label")
+  end
 
   def update_session_store
     @form_responses[:contact_details][:phone_number_calls] = TelephoneNumber.parse(@form_responses[:contact_details][:phone_number_calls], :gb).national_number
