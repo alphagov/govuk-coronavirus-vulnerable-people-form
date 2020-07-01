@@ -3,7 +3,7 @@ image_resource:
   type: docker-image
   source:
     repository: governmentpaas/cf-cli
-    tag: latest
+    tag: 5b44bd954693937ddd07ee6c9e113923bc620aed
 inputs:
   - name: git-master
     path: src
