@@ -13,7 +13,7 @@ params:
   CF_PASSWORD: ((paas-password))
   CF_ORG: govuk_development
   GA_VIEW_ID: UA-43115970-1
-  GA_CROSS_DOMAIN_ID: UA-145652997-7
+  GA_CROSS_DOMAIN_ID: UA-145652997-1
   SENTRY_DSN: https://((sentry-dsn))
   SECRET_KEY_BASE:
   CF_STARTUP_TIMEOUT:
