@@ -131,7 +131,7 @@
       ]
     },
     "nhs_number": {
-      "type": ["string", "null"],
+      "type": "string",
       "pattern": "^[0-9]*$"
     },
     "essential_supplies": {
