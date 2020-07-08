@@ -63,6 +63,15 @@ module FillInTheFormSteps
     end
   end
 
+  def and_has_given_the_minimal_name_information
+    expect(page).to have_content(I18n.t("coronavirus_form.questions.name.title"))
+    within find(".govuk-main-wrapper") do
+      fill_in "first_name", with: "Test Please Ignore"
+      fill_in "last_name", with: "Test Please Ignore"
+      click_on I18n.t("coronavirus_form.submit_and_next")
+    end
+  end
+
   def and_has_given_their_date_of_birth
     expect(page).to have_content(I18n.t("coronavirus_form.questions.date_of_birth.title"))
     within find(".govuk-main-wrapper") do
@@ -94,7 +103,7 @@ module FillInTheFormSteps
     end
   end
 
-  def and_has_submited_their_address
+  def and_has_submitted_their_address
     expect(page).to have_content(I18n.t("coronavirus_form.questions.support_address.title"))
     within find(".govuk-main-wrapper") do
       fill_in "building_and_street_line_1", with: "Test Please Ignore"
@@ -106,12 +115,29 @@ module FillInTheFormSteps
     end
   end
 
+  def and_has_submitted_the_miminum_address_information
+    expect(page).to have_content(I18n.t("coronavirus_form.questions.support_address.title"))
+    within find(".govuk-main-wrapper") do
+      fill_in "building_and_street_line_1", with: "Test Please Ignore"
+      fill_in "town_city", with: "Test Please Ignore"
+      fill_in "postcode", with: "ZZ99 9ZZ"
+      click_on I18n.t("coronavirus_form.submit_and_next")
+    end
+  end
+
   def and_has_given_their_contact_details
     expect(page).to have_content(I18n.t("coronavirus_form.questions.contact_details.title"))
     within find(".govuk-main-wrapper") do
       fill_in "phone_number_calls", with: Rails.application.config.test_telephone_number
       fill_in "phone_number_texts", with: Rails.application.config.test_telephone_number
       fill_in "email", with: Rails.application.config.courtesy_copy_email
+      click_on I18n.t("coronavirus_form.submit_and_next")
+    end
+  end
+
+  def and_has_given_no_contact_details
+    expect(page).to have_content(I18n.t("coronavirus_form.questions.contact_details.title"))
+    within find(".govuk-main-wrapper") do
       click_on I18n.t("coronavirus_form.submit_and_next")
     end
   end

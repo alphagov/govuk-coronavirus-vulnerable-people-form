@@ -15,7 +15,7 @@ RSpec.feature "fill in the vulnerable people form" do
       and_has_given_their_date_of_birth
       and_has_given_their_postcode
       and_has_selected_their_address
-      and_has_submited_their_address
+      and_has_submitted_their_address
       and_has_given_their_contact_details
       and_has_checked_their_contact_details
       and_is_not_getting_any_essential_supplies
@@ -25,6 +25,25 @@ RSpec.feature "fill in the vulnerable people form" do
       and_has_accepted_the_terms_and_conditions
       then_they_can_be_supported
     end
+  end
+
+  scenario "fill in the form with minimal information" do
+    given_an_extremely_vulnerable_person_during_the_covid_19_pandemic
+    that_lives_in_england
+    and_has_recently_received_an_nhs_letter
+    and_has_given_their_nhs_number
+    and_has_given_the_minimal_name_information
+    and_has_given_their_date_of_birth
+    and_has_given_their_postcode
+    and_has_selected_their_address
+    and_has_submitted_the_miminum_address_information
+    and_has_given_no_contact_details
+    and_is_not_getting_any_essential_supplies
+    and_does_not_have_any_special_dietary_requirements
+    where_there_is_no_one_available_to_carry_supplies
+    and_their_basic_care_needs_are_not_being_met
+    and_has_accepted_the_terms_and_conditions
+    then_they_can_be_supported
   end
 
   describe "fill in the form" do
