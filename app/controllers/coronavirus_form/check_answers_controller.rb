@@ -30,8 +30,8 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
         FormResponse: sanitised_session,
       )
 
-      send_confirmation_email if session_with_indifferent_access.dig(:contact_details, :email).present?
-      send_confirmation_sms if session_with_indifferent_access.dig(:contact_details, :phone_number_texts).present? && mobile_number_provided?
+      send_confirmation_email if session.dig(:contact_details, :email).present?
+      send_confirmation_sms if session.dig(:contact_details, :phone_number_texts).present? && mobile_number_provided?
     end
 
     reset_session
@@ -42,8 +42,8 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
 private
 
   def smoke_tester?
-    email = session_with_indifferent_access.dig(:contact_details, :email)
-    mobile_number = session_with_indifferent_access.dig(:contact_details, :phone_number_texts)
+    email = session.dig(:contact_details, :email)
+    mobile_number = session.dig(:contact_details, :phone_number_texts)
     (email.present? && email == Rails.application.config.courtesy_copy_email) || (mobile_number.present? && mobile_number == Rails.application.config.test_telephone_number)
   end
 
@@ -55,8 +55,8 @@ private
 
   def send_confirmation_email
     mailer = CoronavirusFormMailer.with(
-      first_name: session_with_indifferent_access.dig(:name, :first_name),
-      last_name: session_with_indifferent_access.dig(:name, :last_name),
+      first_name: session.dig(:name, :first_name),
+      last_name: session.dig(:name, :last_name),
       reference_number: reference_number,
       contact_gp: @contact_gp,
     )
@@ -65,8 +65,8 @@ private
 
   def send_confirmation_sms
     mailer = CoronavirusFormMailer.with(
-      first_name: session_with_indifferent_access.dig(:name, :first_name),
-      last_name: session_with_indifferent_access.dig(:name, :last_name),
+      first_name: session.dig(:name, :first_name),
+      last_name: session.dig(:name, :last_name),
       reference_number: reference_number,
       contact_gp: @contact_gp,
     )
@@ -77,24 +77,20 @@ private
     if ENV["PAAS_ENV"] == "staging"
       Rails.application.config.courtesy_copy_email
     else
-      session_with_indifferent_access.dig(:contact_details, :email)
+      session.dig(:contact_details, :email)
     end
   end
 
   def user_mobile_number
-    TelephoneNumber.parse(session_with_indifferent_access.dig(:contact_details, :phone_number_texts), :gb).national_number(formatted: false)
+    TelephoneNumber.parse(session.dig(:contact_details, :phone_number_texts), :gb).national_number(formatted: false)
   end
 
   def mobile_number_provided?
-    TelephoneNumber.valid?(session_with_indifferent_access.dig(:contact_details, :phone_number_texts), :gb, [:mobile])
-  end
-
-  def session_with_indifferent_access
-    session.to_h.with_indifferent_access
+    TelephoneNumber.valid?(session.dig(:contact_details, :phone_number_texts), :gb, [:mobile])
   end
 
   def sanitised_session
-    session_with_indifferent_access.except(:session_id, :_csrf_token, :current_path, :previous_path, :check_answers_seen)
+    session.to_h.except("session_id", "_csrf_token", "current_path", "previous_path", "check_answers_seen")
   end
 
   def contact_gp?
