@@ -13,9 +13,9 @@
     <%= yield :meta_tags %>
   </head>
   <body class="govuk-template__body">
-    <script>
+    <%= javascript_tag nonce: true do %>
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
-    </script>
+    <% end %>
     <%= render "govuk_publishing_components/components/cookie_banner", {
       title: t("cookies.banner.title"),
       text: t("cookies.banner.text"),
@@ -75,6 +75,6 @@
         ]
       }
     } %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application", nonce: true %>
   </body>
 </html>
