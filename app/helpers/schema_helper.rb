@@ -3,6 +3,6 @@ module SchemaHelper
 
   def validate_against_form_response_schema(data)
     schema = JSON.parse(FORM_RESPONSE_SCHEMA)
-    JSON::Validator.fully_validate(schema, data)
+    JsonValidator.new(schema, data)
   end
 end
