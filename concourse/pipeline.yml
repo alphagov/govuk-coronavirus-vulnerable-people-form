@@ -173,7 +173,7 @@ jobs:
         file: git-master/concourse/tasks/deploy-to-govuk-paas.yml
         params:
           CF_SPACE: production
-          INSTANCES: 20
+          INSTANCES: 2
           WORKER_INSTANCES: 1
           CF_STARTUP_TIMEOUT: 15 # minutes
           REQUIRE_BASIC_AUTH:
