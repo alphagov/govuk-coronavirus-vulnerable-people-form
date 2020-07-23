@@ -36,7 +36,7 @@ class CoronavirusForm::DateOfBirthController < ApplicationController
 private
 
   def update_session_store
-    date_of_birth = DateTime.new(
+    date_of_birth = Time.zone.local(
       @form_responses[:date_of_birth].dig(:year).to_i,
       @form_responses[:date_of_birth].dig(:month).to_i,
       @form_responses[:date_of_birth].dig(:day).to_i,

@@ -75,11 +75,11 @@ module FieldValidationHelper
       invalid_fields << { field: "#{field}-day", text: t("coronavirus_form.errors.invalid_date") }
     end
     # Check for date being after the current date
-    unless invalid_fields != [] || DateTime.new(year.to_i, month.to_i, day.to_i) < Time.zone.now
+    unless invalid_fields != [] || Time.zone.local(year.to_i, month.to_i, day.to_i) < Time.zone.now
       invalid_fields << { field: "#{field}-day", text: t("coronavirus_form.errors.date_order") }
     end
     # Check for date being more than 150 years ago
-    unless invalid_fields != [] || DateTime.new(year.to_i, month.to_i, day.to_i) >= 150.years.ago
+    unless invalid_fields != [] || Time.zone.local(year.to_i, month.to_i, day.to_i) >= 150.years.ago
       invalid_fields << { field: "#{field}-year", text: t("coronavirus_form.errors.invalid_date") }
     end
     invalid_fields

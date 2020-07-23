@@ -24,7 +24,7 @@ class CoronavirusForm::CheckAnswersController < ApplicationController
     end
 
     unless smoke_tester? || preview_app?
-      FormResponse.create(
+      FormResponse.create!(
         ReferenceId: submission_reference,
         UnixTimestamp: Time.zone.now,
         FormResponse: sanitised_session,
