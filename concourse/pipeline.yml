@@ -199,33 +199,3 @@ jobs:
               :kaboom:
               Deploy to production for the Shielded Vulnerable service has failed
               Failed build: http://cd.gds-reliability.engineering/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
-
-  - name: smoke-test-prod
-    serial: true
-    plan:
-      - get: git-master
-        trigger: true
-        passed: [deploy-to-prod]
-      - get: tests-image
-        passed: [build-tests-image]
-      - task: smoke-test
-        file: git-master/concourse/tasks/smoke-test.yml
-        timeout: 5m
-        params:
-          URL: 'https://coronavirus-vulnerable-people.service.gov.uk/live-in-england'
-          MESSAGE: "Checks that the application deployed to production is not serving HTTP error codes. If this fails, you should investigate immediately."
-      - task: run-smoke-tests
-        file: git-master/concourse/tasks/run-smoke-tests.yml
-        params:
-          TEST_URL: 'https://coronavirus-vulnerable-people.service.gov.uk'
-        on_failure:
-          put: govuk-coronavirus-services-tech-slack
-          params:
-            channel: '#govuk-corona-services-tech'
-            username: 'Concourse (Shielded Vulnerable Service)'
-            icon_emoji: ':concourse:'
-            silent: true
-            text: |
-              :kaboom:
-              Production smoke tests for the Shielded Vulnerable service have failed
-              Failed build: http://cd.gds-reliability.engineering/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
