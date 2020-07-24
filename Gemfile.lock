@@ -178,12 +178,12 @@ GEM
     i18n (1.8.4)
       concurrent-ruby (~> 1.0)
     ipaddress (0.8.3)
-    jasmine (3.5.1)
-      jasmine-core (~> 3.5.0)
+    jasmine (3.6.0)
+      jasmine-core (~> 3.6.0)
       phantomjs
       rack (>= 1.2.1)
       rake
-    jasmine-core (3.5.0)
+    jasmine-core (3.6.0)
     jasmine_selenium_runner (3.0.0)
       jasmine (~> 3.0)
       selenium-webdriver (~> 3.8)
@@ -440,7 +440,7 @@ DEPENDENCIES
   govuk_app_config (~> 2.2.1)
   govuk_publishing_components (~> 21.59.0)
   govuk_test (~> 1.0)
-  jasmine (~> 3.5, >= 3.5.1)
+  jasmine (~> 3.6)
   jasmine_selenium_runner
   json_schemer (~> 0.2)
   listen (~> 3)
