@@ -74,5 +74,5 @@ run:
 
       cf set-env govuk-coronavirus-vulnerable-people-form ORDNANCE_SURVEY_PLACES_API_KEY "$ORDNANCE_SURVEY_PLACES_API_KEY"
 
-      cf v3-zdt-push govuk-coronavirus-vulnerable-people-form --wait-for-deploy-complete --no-route
+      cf push govuk-coronavirus-vulnerable-people-form --strategy rolling
       cf map-route govuk-coronavirus-vulnerable-people-form cloudapps.digital --hostname "$HOSTNAME"
