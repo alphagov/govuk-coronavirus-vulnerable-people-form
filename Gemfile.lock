@@ -153,7 +153,7 @@ GEM
       rails (>= 5.0.0.1)
       rouge
       sprockets (< 4)
-    govuk_test (1.0.3)
+    govuk_test (2.0.0)
       brakeman (~> 4.6)
       capybara
       puma
@@ -234,7 +234,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.3)
@@ -416,7 +416,7 @@ DEPENDENCIES
   foreman (~> 0.87.1)
   govuk_app_config (~> 2.4.0)
   govuk_publishing_components (~> 23.9.1)
-  govuk_test (~> 1.0)
+  govuk_test (~> 2.0)
   jasmine (~> 3.6)
   jasmine_selenium_runner
   json_schemer (~> 0.2)
