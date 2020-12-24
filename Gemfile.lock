@@ -146,7 +146,7 @@ GEM
       sentry-raven (>= 2.7.1, < 3.1.0)
       statsd-ruby (~> 1.4.0)
       unicorn (>= 5.4, < 5.8)
-    govuk_publishing_components (23.9.1)
+    govuk_publishing_components (23.10.2)
       govuk_app_config
       kramdown
       plek
@@ -272,7 +272,7 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rainbow (3.0.0)
     raindrops (0.19.1)
-    rake (13.0.1)
+    rake (13.0.3)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -370,7 +370,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     timecop (0.9.1)
-    tzinfo (1.2.8)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -415,7 +415,7 @@ DEPENDENCIES
   fog-aws
   foreman (~> 0.87.1)
   govuk_app_config (~> 2.4.0)
-  govuk_publishing_components (~> 23.9.1)
+  govuk_publishing_components (~> 23.10.2)
   govuk_test (~> 1.0)
   jasmine (~> 3.6)
   jasmine_selenium_runner
