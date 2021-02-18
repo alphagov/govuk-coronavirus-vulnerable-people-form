@@ -4,7 +4,7 @@ ruby File.read(".ruby-version").strip
 
 source "https://rubygems.org"
 
-gem "rails", "~> 6.0.3"
+gem "rails", "~> 6.1.3"
 
 gem "asset_sync"
 gem "aws-sdk-s3", "~> 1.74"
