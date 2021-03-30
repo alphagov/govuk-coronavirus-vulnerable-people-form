@@ -181,7 +181,7 @@ GEM
       uri_template (~> 0.7)
     jwt (2.2.1)
     kgio (2.11.3)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     libv8 (7.3.492.27.1)
     listen (3.2.1)
@@ -209,7 +209,9 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     mini_racer (0.2.15)
