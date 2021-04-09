@@ -437,7 +437,6 @@ DEPENDENCIES
   sass-rails (< 6)
   scss_lint-govuk
   selenium-webdriver
-  sentry-raven (~> 3.0)
   sidekiq (~> 6.1)
   simplecov (~> 0.16)
   simplecov-cobertura
