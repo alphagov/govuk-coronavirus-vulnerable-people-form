@@ -54,7 +54,7 @@ group :development, :test do
   gem "pry", "~> 0.13.1"
   gem "pry-rails", "~> 0.3.9"
   gem "rails-controller-testing", "~> 1.0"
-  gem "rspec-rails", "~> 4.0.1"
+  gem "rspec-rails", "~> 5.0.1"
   gem "rubocop-govuk"
   gem "scss_lint-govuk"
 end
