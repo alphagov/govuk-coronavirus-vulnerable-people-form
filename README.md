@@ -1,5 +1,7 @@
 ![Run tests](https://github.com/alphagov/govuk-coronavirus-vulnerable-people-form/workflows/Run%20tests/badge.svg)
 
+This codebase is archived. It has been superseded by [alphagov/govuk-shielded-vulnerable-people-service](https://github.com/alphagov/govuk-shielded-vulnerable-people-service).
+
 # CoronavirusForm
 
 This is an application for submitting a form.
